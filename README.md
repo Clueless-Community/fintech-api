@@ -14,6 +14,31 @@
 
 ---
 
+## Want to contribute? 🎯
+
+
+<h1 align='center'>Contribute to CodePeak 2022</h1>
+
+![codepeak-readme-cover](https://user-images.githubusercontent.com/91758830/205308086-df454271-2d7a-4158-a743-4359a18e8038.jpeg)
+
+
+
+## About CodePeak 
+CODE PEAK is a month-long program that helps students understand the paradigm of Open Source contribution and gives them real-world software development experience. The event targets first-timers who wish to participate in Free and Open Source(FOSS) Contributions and the experienced developers who want to show their skills by contributing to real-world projects.
+
+## Rewards
+Do you know we are sponsering CodePeak 2022 : 
+1. Top 5 contributors of CodePeak will get an amazing swag kit from us. ( Which includes a t-shirt, stickers and custom printed cheatsheets and much more.)
+2. Top Contributors of ClueLess projects may get an opportunity to work with ClueLess.  
+3. Top 5 winners will be both featured on ClueLess official website as well as social media handles.
+
+
+
+If you are willing to contibute to this project, you are warmly welcome.
+Do check the [Contribution](https://github.com/Clueless-Community/flutter-ui-components/blob/master/CONTRIBUTING.md) guidelines before contributing.
+
+---
+
 ## Tech Stack 💻
 
   ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
