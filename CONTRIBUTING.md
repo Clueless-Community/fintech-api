@@ -55,7 +55,7 @@ uvicorn main:app --reload
 ```
 
 What to contribute?👀 
-Check the [project workflow]() section below.
+Check the [project workflow](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-worflow) section below.
 
 Once you are done with the changes you wanted to add. Follow the steps to make the pull request.
 ## Create and checkout to the new branch.
@@ -98,9 +98,11 @@ def simple_interest_rate(amount_paid:float, principle_amount:float, months:int):
     interest_paid = amount_paid-principle_amount
     rate = (interest_paid*100)/(principle_amount*term)
     return rate
-``Cross-validate your endpoint output from some online calculators available or even manually.
+```
++ Cross-validate your endpoint output from some online calculators available or even manually.
 
 + Once the function is ready, create an endpoint in the `main.py` file following all the good practices of Fast API.
+
 ```python
 @app.get('/simple_interest',tags=["simple_interest"], description="Calculate simple interest rates")
 def simple_interest_rate(amount_paid:float, principle_amount:float, months:int):
