@@ -59,11 +59,11 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
 
 # Endpoints to calculate certificate of deposit (CD)
 @app.get(
-    "/cd",
+    "/certificate_of_deposit",
     tags=["certificate_of_deposit"],
     description="Calculate certificate of deposit (CD)",
 )
-def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int, compounding_per_yr:float):
+def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int, compounding_per_yr:int):
     try:
         cd = functions.certificate_of_deposit(principal_amount, interest_rate, yrs, compounding_per_yr)
         return {

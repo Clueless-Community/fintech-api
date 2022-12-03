@@ -6,6 +6,6 @@ def simple_interest_rate(amount_paid:float, principle_amount:float, months:int):
     return rate
 
 # Function to Calculate Certificate of Deposit (CD)
-def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int, compounding_per_yr:float):
+def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int, compounding_per_yr:int):
     cd = principal_amount * (1 + interest_rate / (100 * compounding_per_yr) ) ** (compounding_per_yr * yrs)
-    return cd
+    return float(cd)

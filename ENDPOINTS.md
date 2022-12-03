@@ -13,3 +13,16 @@
 }
 ```
 
+**GET** `/certificate_of_deposit`
++ Required parameters : `principal_amount`, `interest_rate`, `yrs`, and `compounding_per_yr`
++ Sample output
+```py
+{
+    "Tag": "Certificate of Deposit (CD)",
+    "Principal amount": 5000.0,
+    "Interest Rate": 5.0,
+    "Time in Years": 3,
+    "Number of Compounding per Year": 1,
+    "Certificate of Deposit (CD)": 5788.13,
+}
+```
