@@ -51,5 +51,9 @@ Do check the [Contribution](https://github.com/Clueless-Community/flutter-ui-com
 ## What do we exactly do? 🤔
 The ambition of this project is to help user to deal with some simple financial calculations from *Simple Interest*, *Compound Interest*, *ROI*, etc to complex calculations like *APR*, *FHA Loan*, *Debt-to-Income ratio*. You can integrate this API easily in your web app, mobile application, chrome extension, etc.
 
+*For the contributors, do checkout the [project workflow]() section.*  
+
 ## Wants to contribute? 👀
 Before start contributing, we recommend you go through the [CONTRIBUTING.md](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md) file, where all the guidelines have been mentioned that will guide you to make your contribution.
+
+---

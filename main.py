@@ -9,7 +9,7 @@ app = FastAPI()
 def index():
     return {"details": ""}
 
-@app.get('/rate',tags=["simple_interest"], description="Calculate simple interest rates")
+@app.get('/simple_interest',tags=["simple_interest"], description="Calculate simple interest rates")
 def simple_interest_rate(amount_paid:float, principle_amount:float, months:int):
     try:
         rate = functions.simple_interest_rate(amount_paid, principle_amount,months)
