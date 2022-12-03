@@ -13,3 +13,15 @@
 }
 ```
 
+**GET** `/roi`
++ Required parameters : `gain_from_investment` and`cost_of_investment`
++ Sample output
+```py
+{
+    "Tag":"Return on Investment",
+    "Gain from Investment":100,
+    "Cost of Investment":2,
+    "Return on Investment":f"49.0%"
+ }
+ ```
+

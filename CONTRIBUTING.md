@@ -27,6 +27,7 @@ fintect-api
 📄main.py
 📄README.md
 📄requirements.txt
+📄test_main.py
 ```
 
 
@@ -52,6 +53,14 @@ pip install -r requirements.txt
 ## Run the FastAPI server
 ```powershell
 uvicorn main:app --reload
+```
+
+## Run pytest
+from root directory (FINTECH-API) where test_main.py is located 
+```powershell
+pip install pytest # install pytest, only need to do once
+pip install httpx
+pytest #run the test
 ```
 
 What to contribute?👀 
