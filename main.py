@@ -40,8 +40,8 @@ def index():
 
 # Endpoints to calculate simple interest.
 @app.get(
-    "/simple_interest",
-    tags=["simple_interest"],
+    "/simple_interest_rate",
+    tags=["simple_interest_rate"],
     description="Calculate simple interest rates",
 )
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
