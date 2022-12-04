@@ -15,3 +15,8 @@ def compound_interest(principal_amount:float, intrest_rate:float, years:int, com
 def inflation(present_amount:float , inflation_rate:float ,years:int):
     future_amount = present_amount*(pow((1+inflation_rate),years))
     return future_amount
+
+# Function to Calculate Effective Annual Rate
+def effective_annual_rate(annual_interest_rate:float , compounding_period:int):
+    EAR = pow((1+(annual_interest_rate/compounding_period)),compounding_period) -1
+    return EAR

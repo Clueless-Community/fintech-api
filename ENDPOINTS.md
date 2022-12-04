@@ -27,15 +27,15 @@
 }
 ```
 
-**GET** `//inflation`
-+ Required parameters : `present_amount`, `inflation_rate`  and `years`
+**GET** `/effective_annual_rate`
++ Required parameters : `annual_interest_rate`and `compounding_period`
 + Sample output
 ```py
 {
-    "Tag": "Inflated Amount",
-    "Present Amount": 1000.0,
-    "Inflation Rate": 0.05,
-    "Time in Years": 10.0,
-    "Future Amount": "1628.894626777442"
+  "Tag": "Effective Annual Rate",
+  "Annual Intrest Rate": 0.05,
+  "Compounding Period": 2,
+  "Effective Annual Rate (in percentage)": "5.062499999999992%"
 }
 ```
+
