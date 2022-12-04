@@ -56,3 +56,23 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoints to calculate compound intrest.
+@app.get(
+    "/compound_interest" ,
+    tags=["compound_interest_amount"],
+    description="Calculate compound interest amount",
+)
+def compound_intrest(principal_amount:float, intrest_rate:float, years:int, compounding_period:int):
+    try:
+        amount = functions.compound_interest(principal_amount, intrest_rate, years, compounding_period)
+        return{
+            "Tag":"Compound Intrest Amount" ,
+            "Principle amount" : principal_amount,
+            "Intrest Rate" : intrest_rate,
+            "Time in Years": years,
+            "Compounding Period": compounding_period,
+            "Amount after intrest":f"{amount}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
