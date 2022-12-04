@@ -27,3 +27,15 @@
 }
 ```
 
+**GET** `//inflation`
++ Required parameters : `present_amount`, `inflation_rate`  and `years`
++ Sample output
+```py
+{
+    "Tag": "Inflated Amount",
+    "Present Amount": 1000.0,
+    "Inflation Rate": 0.05,
+    "Time in Years": 10.0,
+    "Future Amount": "1628.894626777442"
+}
+```

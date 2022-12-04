@@ -11,3 +11,7 @@ def compound_interest(principal_amount:float, intrest_rate:float, years:int, com
     print(amount)
     return amount
 
+# Function to Calculate Inflation
+def inflation(present_amount:float , inflation_rate:float ,years:int):
+    future_amount = present_amount*(pow((1+inflation_rate),years))
+    return future_amount
