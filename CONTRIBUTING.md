@@ -81,9 +81,11 @@ git push origin <branch_name>
 # Project worflow
 Briefly explaining, this project is an API providing endpoints that makes your financial calculation easy. This API can be easily integrated into websites, mobile applications, chrome extensions, etc. So how it works?
 
-+ Once you run the server, and route to a path. For now, be it `/simple_interest_rate` (mentioned in **main.py**). 
++ Once you run the server, and route to a path. For now, be it `/simple_interest_rate` (mentioned in **main.py**). You'll need to pass some query parameters. 
+
 + As it is described, this endpoint returns the simple interest based on some input provided by the user.
 
++ Or you can route to the `/docs` path, where you can easily access and visualize the endpoints through a dashboard provided by swagger UI.
 
 + Here you can see, we are calling a function `sinple_interest_rate()` that is defined inside `./helpers/functions.py`.
 + This function is responsible for making some calculations based on the parameter passed and returns the required value.
