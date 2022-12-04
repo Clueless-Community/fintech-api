@@ -21,3 +21,15 @@ def test_certificate_of_deposit():
             "Number of Compounding per Year":1,
             "Certificate of Deposit (CD)": "5788.125000000001"
     }
+
+#Compounding per year cannot be 0, as it is division by 0 error
+def test_certificate_of_deposit_invalid_value():
+    response = client.get("/certificate_of_deposit/?principal_amount=5000.0&interest_rate=5.0&yrs=3&compounding_per_yr=0")
+    assert response.json()["status_code"] == 500
+
+#Years cannot be a float, as it is a type error
+def test_certificate_of_deposit_invalid_type():
+    response = client.get("/certificate_of_deposit/?principal_amount=5000.0&interest_rate=5.0&yrs=3.5&compounding_per_yr=1")
+    assert response.json() == {"detail": [{"loc": ["query", "yrs"],
+            "msg": "value is not a valid integer",
+            "type": "type_error.integer"}]}
