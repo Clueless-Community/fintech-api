@@ -13,6 +13,7 @@
 }
 ```
 
+
 **GET** `/compound_interest`
 + Required parameters : `principal_amount`, `intrest_rate`  , `years` and `compounding_period`
 + Sample output
@@ -38,4 +39,16 @@
   "Effective Annual Rate (in percentage)": "5.062499999999992%"
 }
 ```
+
+**GET** `/roi`
++ Required parameters : `gain_from_investment` and`cost_of_investment`
++ Sample output
+```py
+{
+    "Tag":"Return on Investment",
+    "Gain from Investment":100,
+    "Cost of Investment":2,
+    "Return on Investment":f"49.0%"
+ }
+ ```
 

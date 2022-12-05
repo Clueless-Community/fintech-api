@@ -5,6 +5,7 @@ def simple_interest_rate(amount_paid:float, principle_amount:float, months:int):
     rate = (interest_paid*100)/(principle_amount*term)
     return rate
 
+
 # Function to Calculate Compound Intrest 
 def compound_interest(principal_amount:float, intrest_rate:float, years:int, compounding_period:int):
     amount = principal_amount * (pow((1 + (intrest_rate / compounding_period)), (compounding_period*years)))
@@ -20,3 +21,12 @@ def inflation(present_amount:float , inflation_rate:float ,years:int):
 def effective_annual_rate(annual_interest_rate:float , compounding_period:int):
     EAR = pow((1+(annual_interest_rate/compounding_period)),compounding_period) -1
     return EAR
+
+
+
+# Function to Calculate Return on Investment
+def return_on_investment(gain_from_investment:float, cost_of_investment:float):
+    roi = (gain_from_investment - cost_of_investment)/cost_of_investment
+    return roi
+
+
