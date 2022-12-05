@@ -22,11 +22,14 @@ def effective_annual_rate(annual_interest_rate:float , compounding_period:int):
     EAR = pow((1+(annual_interest_rate/compounding_period)),compounding_period) -1
     return EAR
 
+# Function to Calculate Certificate of Deposit (CD)
+def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int, compounding_per_yr:int):
+    cd = principal_amount * (1 + interest_rate / (100 * compounding_per_yr) ) ** (compounding_per_yr * yrs)
+    return float(cd)
 
 
 # Function to Calculate Return on Investment
 def return_on_investment(gain_from_investment:float, cost_of_investment:float):
     roi = (gain_from_investment - cost_of_investment)/cost_of_investment
     return roi
-
 

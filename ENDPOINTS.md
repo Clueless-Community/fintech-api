@@ -13,7 +13,6 @@
 }
 ```
 
-
 **GET** `/compound_interest`
 + Required parameters : `principal_amount`, `intrest_rate`  , `years` and `compounding_period`
 + Sample output
@@ -37,6 +36,18 @@
   "Annual Intrest Rate": 0.05,
   "Compounding Period": 2,
   "Effective Annual Rate (in percentage)": "5.062499999999992%"
+
+**GET** `/certificate_of_deposit`
++ Required parameters : `principal_amount`, `interest_rate`, `yrs`, and `compounding_per_yr`
++ Sample output
+```py
+{
+    "Tag": "Certificate of Deposit (CD)",
+    "Principal amount": 5000.0,
+    "Interest Rate": 5.0,
+    "Time in Years": 3,
+    "Number of Compounding per Year": 1,
+    "Certificate of Deposit (CD)": 5788.13,
 }
 ```
 
