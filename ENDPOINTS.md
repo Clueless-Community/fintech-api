@@ -13,6 +13,7 @@
 }
 ```
 
+
 **GET** `/certificate_of_deposit`
 + Required parameters : `principal_amount`, `interest_rate`, `yrs`, and `compounding_per_yr`
 + Sample output
@@ -26,3 +27,16 @@
     "Certificate of Deposit (CD)": 5788.13,
 }
 ```
+
+**GET** `/roi`
++ Required parameters : `gain_from_investment` and`cost_of_investment`
++ Sample output
+```py
+{
+    "Tag":"Return on Investment",
+    "Gain from Investment":100,
+    "Cost of Investment":2,
+    "Return on Investment":f"49.0%"
+ }
+ ```
+
