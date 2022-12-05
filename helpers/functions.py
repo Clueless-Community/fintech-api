@@ -5,6 +5,9 @@ def simple_interest_rate(amount_paid:float, principle_amount:float, months:int):
     rate = (interest_paid*100)/(principle_amount*term)
     return rate
 
+def payback_period(years_before_recovery:int, unrecovered_cost:float, cash_flow:float):
+    period=years_before_recovery+(unrecovered_cost/cash_flow)
+    return period
 
 # Function to Calculate Compound Intrest 
 def compound_interest(principal_amount:float, intrest_rate:float, years:int, compounding_period:int):
@@ -32,4 +35,3 @@ def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int,
 def return_on_investment(gain_from_investment:float, cost_of_investment:float):
     roi = (gain_from_investment - cost_of_investment)/cost_of_investment
     return roi
-
