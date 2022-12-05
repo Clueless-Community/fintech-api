@@ -13,6 +13,29 @@
 }
 ```
 
+**GET** `/compound_interest`
++ Required parameters : `principal_amount`, `intrest_rate`  , `years` and `compounding_period`
++ Sample output
+```py
+{
+    "Tag": "Compound Intrest Amount",
+    "Principle amount": 1000.0,
+    "Intrest Rate": 0.05,
+    "Time in Years": 2,
+    "Compounding Period": 1,
+    "Amount after intrest": "1102.5"
+}
+```
+
+**GET** `/effective_annual_rate`
++ Required parameters : `annual_interest_rate`and `compounding_period`
++ Sample output
+```py
+{
+  "Tag": "Effective Annual Rate",
+  "Annual Intrest Rate": 0.05,
+  "Compounding Period": 2,
+  "Effective Annual Rate (in percentage)": "5.062499999999992%"
 
 **GET** `/certificate_of_deposit`
 + Required parameters : `principal_amount`, `interest_rate`, `yrs`, and `compounding_per_yr`
