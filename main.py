@@ -57,6 +57,27 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+# Endpoints to calculate certificate of deposit (CD)
+@app.get(
+    "/certificate_of_deposit",
+    tags=["certificate_of_deposit"],
+    description="Calculate certificate of deposit (CD)",
+)
+def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int, compounding_per_yr:int):
+    try:
+        cd = functions.certificate_of_deposit(principal_amount, interest_rate, yrs, compounding_per_yr)
+        return {
+            "Tag": "Certificate of Deposit (CD)",
+            "Principal amount": principal_amount,
+            "Interest Rate": interest_rate,
+            "Time in Years": yrs,
+            "Number of Compounding per Year": compounding_per_yr,
+            "Certificate of Deposit (CD)": f"{cd}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 @app.get('/roi',tags=["return_on_investment"], description="Calculate return on investment")
 def return_on_investment(gain_from_investment:float, cost_of_investment:float):
     try:
@@ -71,3 +92,4 @@ def return_on_investment(gain_from_investment:float, cost_of_investment:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
+
