@@ -40,3 +40,9 @@ def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int,
 def return_on_investment(gain_from_investment:float, cost_of_investment:float):
     roi = (gain_from_investment - cost_of_investment)/cost_of_investment
     return roi
+
+# Function to calculate Compounded Annual Growth Rate (CAGR)
+def compounded_annual_growth_rate(end_investment_value:float, initial_investment_value:float, years:int):
+    n=1/years
+    cagr=(end_investment_value/initial_investment_value)**n -1
+    return cagr

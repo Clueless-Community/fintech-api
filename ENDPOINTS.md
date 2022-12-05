@@ -80,3 +80,15 @@
     "Return on Investment":f"49.0%"
  }
  ```
+ **GET** `/cagr`
+ + Required parameters : `end_investment_value`, `initial_investment_value` and`years`
+ + Sample output
+ ```py
+ {
+    "Tag":"Compounded Annual Growth Rate",
+    "End investment value":100000,
+    "Initial investment value":70000,
+    "Years":3,
+    "Compunded Annual Growth Rate":0.12624788
+ }
+ ```
