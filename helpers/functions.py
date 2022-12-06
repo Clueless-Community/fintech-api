@@ -47,6 +47,17 @@ def compounded_annual_growth_rate(end_investment_value:float, initial_investment
     cagr=(end_investment_value/initial_investment_value)**n -1
     return cagr
 
+#Function to calculate Jensens Alpha
+def jensens_alpha(return_from_investment:float,return_of_appropriate_market_index:float,risk_free_rate:float,beta:float):
+    alpha=return_from_investment-(risk_free_rate+beta*(return_of_appropriate_market_index-risk_free_rate))
+    return alpha 
+
+#Function to calculate Weighted Average Cost of Capital (WACC) 
+def weighted_average_cost_of_capital(firm_equity:float,firm_debt:float,cost_of_equity:float,cost_of_debt:float,corporate_tax_rate:float):
+    v=firm_debt+firm_equity
+    wacc=(firm_equity*cost_of_equity/v)+(firm_debt*cost_of_debt*(1-corporate_tax_rate)/v)
+    return wacc
+    
 # Function to calculate variance of a two asset portfolio
 def asset_portfolio(price_A:float, price_B:float, retrun1:float, return2:float, standard_dev_A:float, standard_dev_B:float, stock_correlation:float):
     weight_A = price_A/(price_A + price_B)
