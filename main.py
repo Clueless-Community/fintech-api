@@ -56,3 +56,24 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/loan_emi",
+    tags=["load_emi"],
+    description="Calculate Loan EMI",
+)
+def loan_emi(principle_amount: float, annual_rate: float, months: int):
+    try:
+        emi = functions.loan_emi(principle_amount, annual_rate, months)
+        return {
+            "Tag": "Loan Emi",
+            "Princiapl amount borrowed": principle_amount,
+            "Annual Rate of interest": annual_rate,
+            "Total number of monthly payments": months,
+            "EMI": f"{emi}%",
+            "Total Amount Payble": f"{emi*months}%",
+            "Interest amount": f"{emi*months-principle_amount}%"
+        }
+    except Exception as e:
+        print(e)
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
