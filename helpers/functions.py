@@ -10,4 +10,46 @@ def loan_emi(principle_amount: float, annual_rate: float, months: int):
     monthly_rate=annual_rate/1200
     emi= (principle_amount*monthly_rate*(1+monthly_rate)**months)/(((1+monthly_rate)**months -1))
     return emi
+    
+def future_sip(interval_investment:float, rate_of_return:float, number_of_payments:int):
+    interest= (rate_of_return/100)/12
+    value = interval_investment*((1+ interest)**number_of_payments - 1)*(1+interest)/interest
+    return value
 
+
+def payback_period(years_before_recovery:int, unrecovered_cost:float, cash_flow:float):
+    period=years_before_recovery+(unrecovered_cost/cash_flow)
+    return period
+
+# Function to Calculate Compound Intrest 
+def compound_interest(principal_amount:float, intrest_rate:float, years:int, compounding_period:int):
+    amount = principal_amount * (pow((1 + (intrest_rate / compounding_period)), (compounding_period*years)))
+    print(amount)
+    return amount
+
+# Function to Calculate Inflation
+def inflation(present_amount:float , inflation_rate:float ,years:int):
+    future_amount = present_amount*(pow((1+inflation_rate),years))
+    return future_amount
+
+# Function to Calculate Effective Annual Rate
+def effective_annual_rate(annual_interest_rate:float , compounding_period:int):
+    EAR = pow((1+(annual_interest_rate/compounding_period)),compounding_period) -1
+    return EAR
+
+# Function to Calculate Certificate of Deposit (CD)
+def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int, compounding_per_yr:int):
+    cd = principal_amount * (1 + interest_rate / (100 * compounding_per_yr) ) ** (compounding_per_yr * yrs)
+    return float(cd)
+
+
+# Function to Calculate Return on Investment
+def return_on_investment(gain_from_investment:float, cost_of_investment:float):
+    roi = (gain_from_investment - cost_of_investment)/cost_of_investment
+    return roi
+
+# Function to calculate Compounded Annual Growth Rate (CAGR)
+def compounded_annual_growth_rate(end_investment_value:float, initial_investment_value:float, years:int):
+    n=1/years
+    cagr=(end_investment_value/initial_investment_value)**n -1
+    return cagr
