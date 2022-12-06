@@ -52,7 +52,7 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
             "Total amount paid": amount_paid,
             "Principle amount": principle_amount,
             "Interest Paid": amount_paid - principle_amount,
-            "Interest Rate": f"{rate}%",
+            "Interest Rate": f"{rate}%"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -70,7 +70,10 @@ def future_sip(interval_investment:float, rate_of_return:float, number_of_paymen
             "Investment at every Interval": interval_investment,
             "Interest": (rate_of_return/100)/12,
             "Number of Payments": number_of_payments,
-            "Future Value": f"{value}%",
+            "Future Value": f"{value}%"
+        }         
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
 #endpoint for payback period
 @app.get('/payback_period',tags=["payback_period_years"], description="Calculate payback period")
@@ -102,7 +105,10 @@ def compound_intrest(principal_amount:float, intrest_rate:float, years:int, comp
             "Intrest Rate" : intrest_rate,
             "Time in Years": years,
             "Compounding Period": compounding_period,
-            "Amount after intrest":f"{amount}",
+            "Amount after intrest":f"{amount}"
+       }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Endpoints to calculate certificate of deposit (CD)
 @app.get(
@@ -119,7 +125,7 @@ def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int,
             "Interest Rate": interest_rate,
             "Time in Years": yrs,
             "Number of Compounding per Year": compounding_per_yr,
-            "Certificate of Deposit (CD)": f"{cd}",
+            "Certificate of Deposit (CD)": f"{cd}"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -241,3 +247,23 @@ def weighted_average_cost_of_capital(firm_equity,firm_debt,cost_of_equity,cost_o
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)            
 
 
+# Endpoint to calculate Variance of a Two Asset Portfolio
+@app.get(
+    "/asset_portfolio",
+    tags=["asset_portfolio"],
+    description="Calculate Variance of a Two Asset Portfolio",
+)
+def asset_portfolio(price_A:float, price_B:float, return_A:float, return_B:float, standard_dev_A:float, standard_dev_B:float, correlation:float):
+    try:
+        weight_A = price_A/(price_A + price_B)
+        weight_B = price_B/(price_A + price_B)
+        cov = correlation*standard_dev_A*standard_dev_B
+        portfolio_variance = weight_A*weight_A*standard_dev_A*standard_dev_A + weight_B*weight_B*standard_dev_B*standard_dev_B + 2*weight_A*weight_B*cov
+        expected_return = 100*(weight_A*return_A + weight_B*return_B)
+        return {
+            "Tag": "Portfolio Variance",
+            "Expected Returns": f"{expected_return}%",
+            "Portfolio Variance": f"{portfolio_variance}", 
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
