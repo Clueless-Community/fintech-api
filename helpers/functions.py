@@ -46,3 +46,11 @@ def compounded_annual_growth_rate(end_investment_value:float, initial_investment
     n=1/years
     cagr=(end_investment_value/initial_investment_value)**n -1
     return cagr
+
+# Function to calculate variance of a two asset portfolio
+def asset_portfolio(price_A:float, price_B:float, retrun1:float, return2:float, standard_dev_A:float, standard_dev_B:float, stock_correlation:float):
+    weight_A = price_A/(price_A + price_B)
+    weight_B = price_B/(price_A + price_B)
+    cov = stock_correlation*standard_dev_A*standard_dev_B
+    portfolio_variance = weight_A*weight_A*standard_dev_A*standard_dev_A + weight_B*weight_B*standard_dev_B*standard_dev_B + 2*weight_A*weight_B*cov
+    return portfolio_variance
