@@ -197,3 +197,23 @@ def compounded_annual_growth_rate(end_investment_value:float, initial_investment
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+# Endpoint to calculate Variance of a Two Asset Portfolio
+@app.get(
+    "/asset_portfolio",
+    tags=["asset_portfolio"],
+    description="Calculate Variance of a Two Asset Portfolio",
+)
+def asset_portfolio(price_A:float, price_B:float, return_A:float, return_B:float, standard_dev_A:float, standard_dev_B:float, correlation:float):
+    try:
+        weight_A = price_A/(price_A + price_B)
+        weight_B = price_B/(price_A + price_B)
+        cov = correlation*standard_dev_A*standard_dev_B
+        portfolio_variance = weight_A*weight_A*standard_dev_A*standard_dev_A + weight_B*weight_B*standard_dev_B*standard_dev_B + 2*weight_A*weight_B*cov
+        expected_return = 100*(weight_A*return_A + weight_B*return_B)
+        return {
+            "Tag": "Portfolio Variance",
+            "Expected Returns": f"{expected_return}%",
+            "Portfolio Variance": f"{portfolio_variance}", 
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
