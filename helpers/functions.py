@@ -53,7 +53,7 @@ def jensens_alpha(return_from_investment:float,return_of_appropriate_market_inde
     return alpha 
 
 #Function to calculate Weighted Average Cost of Capital (WACC) 
-def weighted_average_cost_of_capital(firm_equity,firm_debt,cost_of_equity,cost_of_debt,corporate_tax_rate):
+def weighted_average_cost_of_capital(firm_equity:float,firm_debt:float,cost_of_equity:float,cost_of_debt:float,corporate_tax_rate:float):
     v=firm_debt+firm_equity
     wacc=(firm_equity*cost_of_equity/v)+(firm_debt*cost_of_debt*(1-corporate_tax_rate)/v)
 
