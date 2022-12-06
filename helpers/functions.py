@@ -46,3 +46,8 @@ def compounded_annual_growth_rate(end_investment_value:float, initial_investment
     n=1/years
     cagr=(end_investment_value/initial_investment_value)**n -1
     return cagr
+
+#Function to calculate Jensens Alpha
+def jensens_alpha(return_from_investment:float,return_of_appropriate_market_index:float,risk_free_rate:float,beta:float):
+    alpha=return_from_investment-(risk_free_rate+beta*(return_of_appropriate_market_index-risk_free_rate))
+    return alpha 
