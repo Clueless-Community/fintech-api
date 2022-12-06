@@ -52,7 +52,7 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
             "Total amount paid": amount_paid,
             "Principle amount": principle_amount,
             "Interest Paid": amount_paid - principle_amount,
-            "Interest Rate": f"{rate}%",
+            "Interest Rate": f"{rate}%"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -70,7 +70,10 @@ def future_sip(interval_investment:float, rate_of_return:float, number_of_paymen
             "Investment at every Interval": interval_investment,
             "Interest": (rate_of_return/100)/12,
             "Number of Payments": number_of_payments,
-            "Future Value": f"{value}%",
+            "Future Value": f"{value}%"
+        }         
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
 #endpoint for payback period
 @app.get('/payback_period',tags=["payback_period_years"], description="Calculate payback period")
@@ -102,7 +105,10 @@ def compound_intrest(principal_amount:float, intrest_rate:float, years:int, comp
             "Intrest Rate" : intrest_rate,
             "Time in Years": years,
             "Compounding Period": compounding_period,
-            "Amount after intrest":f"{amount}",
+            "Amount after intrest":f"{amount}"
+       }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Endpoints to calculate certificate of deposit (CD)
 @app.get(
@@ -119,7 +125,7 @@ def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int,
             "Interest Rate": interest_rate,
             "Time in Years": yrs,
             "Number of Compounding per Year": compounding_per_yr,
-            "Certificate of Deposit (CD)": f"{cd}",
+            "Certificate of Deposit (CD)": f"{cd}"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
