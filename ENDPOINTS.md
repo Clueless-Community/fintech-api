@@ -92,8 +92,20 @@
     "Compunded Annual Growth Rate":0.12624788
  }
  ```
- 
- 
+**GET** `/asset_portfolio`
+
+- Required parameters : `price_A`, `price_B`, `return_A`, `return_B`, `standard_dev_A`, `standard_dev_B` and `correlation` where A and B refer to the 2 stocks.
+- Sample output
+
+```py
+{
+     "Tag": "Portfolio Variance",
+     "Expected Returns": 16.8%,
+     "Portfolio Variance": 0.046,
+}
+```
+
+
 **GET** `/loan_emi`
 
 - Required parameters : `principle_amount`, `annual_rate` and `months`
