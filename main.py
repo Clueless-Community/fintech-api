@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException, status
 from helpers import functions
 
-
 app = FastAPI(
     title="FinTech API",
     description="An API that helps you to deal with your financial calculations.",
@@ -76,7 +75,10 @@ def future_sip(interval_investment:float, rate_of_return:float, number_of_paymen
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
 #endpoint for payback period
-@app.get('/payback_period',tags=["payback_period_years"], description="Calculate payback period")
+@app.get('/payback_period',
+tags=["payback_period_years"], 
+description="Calculate payback period",
+)
 def payback_period(years_before_recovery:int, unrecovered_cost:float, cash_flow:float):
     try:
         period = functions.payback_period(years_before_recovery, unrecovered_cost, cash_flow)
@@ -246,6 +248,28 @@ def weighted_average_cost_of_capital(firm_equity,firm_debt,cost_of_equity,cost_o
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)            
 
+
+
+@app.get(
+    "/loan_emi",
+    tags=["load_emi"],
+    description="Calculate Loan EMI",
+)
+def loan_emi(principle_amount: float, annual_rate: float, months: int):
+    try:
+        emi = functions.loan_emi(principle_amount, annual_rate, months)
+        return {
+            "Tag": "Loan Emi",
+            "Princiapl amount borrowed": principle_amount,
+            "Annual Rate of interest": annual_rate,
+            "Total number of monthly payments": months,
+            "EMI": f"{round(emi,3)}",
+            "Total Amount Payble": f"{round(emi*months,3)}",
+            "Interest amount": f"{round(emi*months-principle_amount,3)}"
+        }
+    except Exception as e:
+        print(e)
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Endpoint to calculate Variance of a Two Asset Portfolio
 @app.get(
