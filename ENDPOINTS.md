@@ -92,3 +92,21 @@
     "Compunded Annual Growth Rate":0.12624788
  }
  ```
+ 
+ 
+**GET** `/loan_emi`
+
+- Required parameters : `principle_amount`, `annual_rate` and `months`
+- Sample output
+
+```py
+{
+    "Tag": "Loan Emi",
+    "Princiapl amount borrowed": 100000.0,
+    "Annual Rate of interest": 7.0,
+    "Total number of monthly payments": 120,
+    "EMI": "1161.085",
+    "Total Amount Payble": "139330.175",
+    "Interest amount": "39330.175"
+}
+```

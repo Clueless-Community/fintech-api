@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException, status
 from helpers import functions
 
-
 app = FastAPI(
     title="FinTech API",
     description="An API that helps you to deal with your financial calculations.",
@@ -219,9 +218,9 @@ def loan_emi(principle_amount: float, annual_rate: float, months: int):
             "Princiapl amount borrowed": principle_amount,
             "Annual Rate of interest": annual_rate,
             "Total number of monthly payments": months,
-            "EMI": f"{emi}%",
-            "Total Amount Payble": f"{emi*months}%",
-            "Interest amount": f"{emi*months-principle_amount}%"
+            "EMI": f"{round(emi,3)}",
+            "Total Amount Payble": f"{round(emi*months,3)}",
+            "Interest amount": f"{round(emi*months-principle_amount,3)}"
         }
     except Exception as e:
         print(e)
