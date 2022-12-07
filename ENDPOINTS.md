@@ -104,3 +104,20 @@
      "Portfolio Variance": 0.046,
 }
 ```
+**GET** `/wacc`
+
+- Required parameters : `firm_equity`, `firm_debt`, `cost_of_equity`, `cost_of_debt`, `corporate_tax_rate`
+- Sample output
+```py
+{
+    "Tag": "Weighted Average Cost of Capital(WACC)",
+    "Marketvalue of firm's equity" : 30000000,
+    "Market value of firm's debt" : 2000000,
+    "Cost of equity" : 0.09,
+    "Cost of debt" : 0.06,
+    "Corporate tax rate" : 0.21,
+    "WACC" : 7.3%,
+}
+```
+   
+
