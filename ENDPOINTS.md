@@ -137,6 +137,22 @@
     "Interest amount": "39330.175"
 }
 ```
+
+**GET** `/put-call-parity`
+
+- Required parameters : `call_price`, `put_price` and `strike_price`
+- Sample output
+
+```py
+{
+  "Tag": "Pull Call Parity",
+  "Future Price": "800.0",
+  "Call Price": "1000.0",
+  "Put Price": "500.0",
+  "Strike Price": "300.0"
+}
+```
+
 **GET** `/bep`
 
 - Required parameters : `fixed_cost`, `selling_price` and `variable_cost`
