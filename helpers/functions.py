@@ -72,3 +72,10 @@ def asset_portfolio(price_A:float, price_B:float, retrun1:float, return2:float, 
     cov = stock_correlation*standard_dev_A*standard_dev_B
     portfolio_variance = weight_A*weight_A*standard_dev_A*standard_dev_A + weight_B*weight_B*standard_dev_B*standard_dev_B + 2*weight_A*weight_B*cov
     return portfolio_variance
+
+#Function to calculate break even point 
+def break_even_point(fixed_cost:float, selling_price:float, variable_cost:float):
+    contribution_margin = selling_price - variable_cost
+    units = fixed_cost//contribution_margin
+    rupees = fixed_cost//(contribution_margin/selling_price)
+    return units,rupees
