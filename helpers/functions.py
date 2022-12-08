@@ -72,3 +72,8 @@ def asset_portfolio(price_A:float, price_B:float, retrun1:float, return2:float, 
     cov = stock_correlation*standard_dev_A*standard_dev_B
     portfolio_variance = weight_A*weight_A*standard_dev_A*standard_dev_A + weight_B*weight_B*standard_dev_B*standard_dev_B + 2*weight_A*weight_B*cov
     return portfolio_variance
+
+# Function to calculate the future price in a put - call parity
+def put_call_parity(call_price:float, put_price:float, strike_price:float):
+    future_price = call_price + strike_price - put_price
+    return future_price
