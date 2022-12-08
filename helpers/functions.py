@@ -77,3 +77,10 @@ def asset_portfolio(price_A:float, price_B:float, retrun1:float, return2:float, 
 def put_call_parity(call_price:float, put_price:float, strike_price:float):
     future_price = call_price + strike_price - put_price
     return future_price
+
+#Function to calculate break even point 
+def break_even_point(fixed_cost:float, selling_price:float, variable_cost:float):
+    contribution_margin = selling_price - variable_cost
+    units = fixed_cost//contribution_margin
+    rupees = fixed_cost//(contribution_margin/selling_price)
+    return units,rupees

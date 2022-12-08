@@ -152,3 +152,19 @@
   "Strike Price": "300.0"
 }
 ```
+
+**GET** `/bep`
+
+- Required parameters : `fixed_cost`, `selling_price` and `variable_cost`
+- Sample Output
+
+```py
+{
+    "Tag" : "Break Even Point (BEP)",
+    "Fixed costs" : 2000,
+    "Selling price per unit" : 1.50,
+    "Variable cost per unit" : 0.40,
+    "Break Even Point in units" : 1818.0,
+    "Break Even Point in Rupees" : 2727,
+}
+```
