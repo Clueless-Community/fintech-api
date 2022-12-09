@@ -152,3 +152,15 @@
     "Break Even Point in Rupees" : 2727,
 }
 ```
+**GET** `\fcff`
+- Required parameters : `sales`,`operating_cost`,`depreciation`, `interest`,`tax_rate`,`fcInv` and `wcInv`
+- Sample Output (for sales = 200, operating_cost = 20, depreciation = 20, interest = 30, tax_rate = 40%, wcInv = -40 and fcInv = 0
+```py
+{
+    "Tag" : "Free Cash Flow to Firm (FCFF)",
+    "Earnings before interest, taxes, depreciation and amortization" : 80.0, 
+    "Earnings before interest and taxes : " : 60.0 ,
+    "Net Income" : 18.0,
+    "Free Cash Flow to Firm" : 46.0,
+}
+```
