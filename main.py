@@ -331,3 +331,22 @@ def break_even_point(fixed_cost:float,selling_price:float,variable_cost:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+#Endpoint to calculate Price-to-earning ratio
+@app.get(
+    "/price_to_earning_ratio",
+    tags=["price_to_earning_ratio"],
+    description="Calculate price to earning ratio",
+)
+def price_to_earning_ratio(share_price:float, earnings_per_share:float):
+    try:
+        p_e_ratio = functions.price_to_earning(share_price, earnings_per_share)
+        return{
+            "Tag" : "Price to Earning ratio",
+            "Share price" : share_price,
+            "Earning per share" : earnings_per_share,
+            "Price to Earning ratio" : f"{p_e_ratio}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+

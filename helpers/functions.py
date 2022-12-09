@@ -84,3 +84,8 @@ def break_even_point(fixed_cost:float, selling_price:float, variable_cost:float)
     units = fixed_cost//contribution_margin
     rupees = fixed_cost//(contribution_margin/selling_price)
     return units,rupees
+
+#Function to calculate the Price-to-Earning ratio (P/E ratio):
+def price_to_earning_ratio(share_price:float, earnings_per_share:float):
+    p_e_ratio = share_price//earnings_per_share
+    return p_e_ratio  
