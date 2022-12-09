@@ -79,3 +79,12 @@ def break_even_point(fixed_cost:float, selling_price:float, variable_cost:float)
     units = fixed_cost//contribution_margin
     rupees = fixed_cost//(contribution_margin/selling_price)
     return units,rupees
+
+#Function to calculate free cash flow to firm
+def free_cash_flow_to_firm(sales:float,operating_cost:float,depreciation:float,interest:float,tax_rate:float,fcInv:float,wcInv:float):
+    ebitda = sales - operating_cost
+    ebit = ebitda - depreciation
+    ebt = ebit - interest
+    eat = ebt - ebt/(tax_rate*0.01)
+    wcInv = abs(wcInv)
+    return (ebit*(1-tax_rate*0.01))) + depreciation - fcInv - wcInv
