@@ -350,3 +350,21 @@ def price_to_earning_ratio(share_price:float, earnings_per_share:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+#Endpoint to calculate Dividend yield ratio 
+@app.get(
+    "/dividend_yield_ratio",
+    tags=["dividend_yield_ratio"],
+    description="Calculate dividend yield ratio",
+)
+def dividend_yield_ratio(dividend_per_share:float,share_price:float):
+    try:
+        dividend_yield = functions.dividend_yield_ratio(dividend_per_share, share_price)
+        return{
+            "Tag":"Dividend yield ratio",
+            "Dividend per share" : dividend_per_share,
+            "Share price" : share_price,
+            "Dividend yield ratio" : f"{dividend_yield}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
