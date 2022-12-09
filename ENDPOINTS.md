@@ -196,3 +196,18 @@
     "Dividend yield ratio" : 10.0%,
 }
 ```
+
+
+**GET** `/dividend_payout_ratio`
+
+- Required parameters : `dividend_per_share`, `earnings_per_share`
+- Sample Output
+
+```py
+{
+    "Tag":"Dividend payout ratio",
+    "Dividend per share" : 200.0,
+    "Earnings per share" : 20.0,
+    "Dividend payout ratio" : 10.0%,
+}
+```

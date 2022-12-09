@@ -94,4 +94,11 @@ def price_to_earning_ratio(share_price:float, earnings_per_share:float):
 def dividend_yield_ratio(dividend_per_share:float,share_price:float):
     dividend_yield = dividend_per_share//share_price
     return dividend_yield
+
+
+# Function to calculate the dividend payout ratio 
+def dividend_payout_ratio(dividend_per_share:float,earnings_per_share:float):
+    dividend_payout = dividend_per_share//earnings_per_share
+    return dividend_payout
+    
      

@@ -368,3 +368,21 @@ def dividend_yield_ratio(dividend_per_share:float,share_price:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+#Endpoint to calculate Dividend payout ratio 
+@app.get(
+    "/dividend_payout_ratio",
+    tags=["dividend_payout_ratio"],
+    description="Calculate dividend payout ratio",
+)
+def dividend_payout_ratio(dividend_per_share:float,earnings_per_share:float):
+    try:
+        dividend_payout = functions.dividend_yield_ratio(dividend_per_share, earnings_per_share)
+        return{
+            "Tag":"Dividend payout ratio",
+            "Dividend per share" : dividend_per_share,
+            "Share price" : earnings_per_share,
+            "Dividend yield ratio" : f"{dividend_payout}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
