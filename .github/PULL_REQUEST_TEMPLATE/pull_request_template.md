@@ -5,9 +5,10 @@
 - Describe the issue fixed here
 -----------------------------------------------------------
 ## Checklist:
-- [ ] Testing
-- [ ] No conflicts with the main branch
+- [ ] Tested the endpoint on sample data.
+- [ ] No conflicts
+- [ ] Have mentioned the endpoint in the `ENDPOINTS.md` file.
 -----------------------------------------------------------
 ## Screenshot of the changes:
-Earlier | Current
+Python script snapshot | Sample output screenshot
 --------|----------
