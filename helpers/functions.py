@@ -92,7 +92,7 @@ def free_cash_flow_to_firm(sales:float,operating_cost:float,depreciation:float,i
     ebt = ebit - interest
     eat = ebt - ebt/(tax_rate*0.01)
     wcInv = abs(wcInv)
-    return (ebit*(1-tax_rate*0.01))) + depreciation - fcInv - wcInv
+    return (ebit*(1-tax_rate*0.01)) + depreciation - fcInv - wcInv
 
 #Function to calculate the Price-to-Earning ratio (P/E ratio):
 def price_to_earning_ratio(share_price:float, earnings_per_share:float):
@@ -116,3 +116,7 @@ def inventory_shrinkage_rate(recorded_inventory:float, actual_inventory:float):
     inventory_shrinkage_rate = (recorded_inventory-actual_inventory)/recorded_inventory
     return inventory_shrinkage_rate
 
+#Function to calculate Markup Percentage
+def markup_percentage(price:float, cost:float):
+    markup_percentage = ((price-cost)/cost)*100
+    return markup_percentage

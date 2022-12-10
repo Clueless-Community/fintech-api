@@ -175,7 +175,7 @@
 ```py
 {
     "Tag" : "Free Cash Flow to Firm (FCFF)",
-    "Earnings before interest, taxes, depreciation and amortization" : 80.0, 
+    "Earnings before interest, taxes, depreciation and amortization" : 80.0,
     "Earnings before interest and taxes : " : 60.0 ,
     "Net Income" : 18.0,
     "Free Cash Flow to Firm" : 46.0,
@@ -238,5 +238,20 @@
     "Actual Inventory" : 35000,
     "Invenory Shrinkage Rate" : 0.07894736842105263,
     "Invenory Shrinkage Rate (%)" : 7.894736842105263,
+}
+```
+
+
+**GET** `/markup_percentage`
+
+- Required parameters : `price`, `cost`
+- Sample Output
+
+```py
+{
+    "Tag": "Markup Percentage",
+    "Price": 50,
+    "Cost": 5,
+    "Markup Percentage": 900
 }
 ```

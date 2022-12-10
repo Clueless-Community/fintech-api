@@ -330,7 +330,7 @@ def break_even_point(fixed_cost:float,selling_price:float,variable_cost:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-           
+
 #Endpoint to calculate free cash flow to firm
 @app.get(
     "\fcff",
@@ -346,7 +346,7 @@ def free_cash_flow_to_firm(sales:float,operating_cost:float,depreciation:float,i
         fcff = functions.fcff(sales,operating_cost,depreciation,interest,tax_rate,fcInv,wcInv)
         return{
             "Tag" : "Free Cash Flow to Firm (FCFF)",
-            "Earnings before interest, taxes, depreciation and amortization" : f"{ebitda}", 
+            "Earnings before interest, taxes, depreciation and amortization" : f"{ebitda}",
             "Earnings before interest and taxes : " : f"{ebit}" ,
             "Net Income" : f"{eat}",
             "Free Cash Flow to Firm" : f"{fcff}",
@@ -429,3 +429,20 @@ def inventory_shrinkage_rate(recorded_inventory:float, actual_inventory:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+#Endpoint to calculate Markup Percentage
+@app.get(
+    "/markup_percentage",
+    tags=["markup_percentage"],
+    description="Calculate markup percentage",
+)
+def markup_percentage(price:float, cost:float):
+    try:
+        markup_percentage = functions.markup_percentage(price, cost)
+        return{
+            "Tag":"Markup Percentage",
+            "Price": price,
+            "Cost": cost,
+            "Markup Percentage": markup_percentage
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
