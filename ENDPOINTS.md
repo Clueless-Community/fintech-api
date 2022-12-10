@@ -225,12 +225,22 @@
 }
 ```
 
+**GET** `/fixed_charge_coverage_ratio`
+- Required parameters : `earnings_before_interest_taxes`, `fixed_charge_before_tax`,`interest`
+```py
+{
+
+    "Tag":"fixed charges coverage ratio",
+    "Earnings before interest taxes" : 3000000.0,
+    "Fixed charge before tax" : 500000.0,
+    "Interest" : 300000.0,
+    "Fixed charges coverage ratio" : 4.375%,
+}
+```
 
 **GET** `/inventory_shrinkage rate`
-
 - Required parameters : `recorded_inventory`, `actual_inventory`
 - Sample Output
-
 ```py
 {
     "Tag":"Inventory shrinkage rate",
@@ -241,12 +251,10 @@
 }
 ```
 
-
 **GET** `/markup_percentage`
 
 - Required parameters : `price`, `cost`
 - Sample Output
-
 ```py
 {
     "Tag": "Markup Percentage",

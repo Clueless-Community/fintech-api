@@ -110,6 +110,16 @@ def dividend_payout_ratio(dividend_per_share:float,earnings_per_share:float):
     dividend_payout = dividend_per_share//earnings_per_share
     return dividend_payout
 
+    
+#Function to calculate the Fixed-charge coverage ratio :
+def fixed_charge_coverage_ratio(earnings_before_interest_taxes:float,fixed_charge_before_tax:float,interest:float):
+    a = earnings_before_interest_taxes + fixed_charge_before_tax
+    b = interest + fixed_charge_before_tax
+    fccr = a//b
+    return fccr    
+
+
+
 
 #Function to calculate Inventory Shrinkage
 def inventory_shrinkage_rate(recorded_inventory:float, actual_inventory:float):
@@ -120,3 +130,4 @@ def inventory_shrinkage_rate(recorded_inventory:float, actual_inventory:float):
 def markup_percentage(price:float, cost:float):
     markup_percentage = ((price-cost)/cost)*100
     return markup_percentage
+
