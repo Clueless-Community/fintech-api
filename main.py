@@ -291,6 +291,25 @@ def asset_portfolio(price_A:float, price_B:float, return_A:float, return_B:float
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to Calculate Future Price in Put-Call Parity
+@app.get(
+    "/put-call-parity",
+    tags=["/put-call-parity"],
+    description="Calculate Future Price in Pull-Call Parity",
+)
+def put_call_parity(call_price:float, put_price:float, strike_price:float):
+    try:
+        future_amount = functions.put_call_parity(call_price, put_price, strike_price)
+        return {
+            "Tag": "Pull Call Parity",
+            "Future Price": f"{future_amount}",
+            "Call Price": f"{call_price}", 
+            "Put Price": f"{put_price}", 
+            "Strike Price": f"{strike_price}", 
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 #Endpoint to calculate break even point 
 @app.get(
@@ -311,7 +330,7 @@ def break_even_point(fixed_cost:float,selling_price:float,variable_cost:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            
+           
 #Endpoint to calculate free cash flow to firm
 @app.get(
     "\fcff",
@@ -331,6 +350,61 @@ def free_cash_flow_to_firm(sales:float,operating_cost:float,depreciation:float,i
             "Earnings before interest and taxes : " : f"{ebit}" ,
             "Net Income" : f"{eat}",
             "Free Cash Flow to Firm" : f"{fcff}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+#Endpoint to calculate Price-to-earning ratio
+@app.get(
+    "/price_to_earning_ratio",
+    tags=["price_to_earning_ratio"],
+    description="Calculate price to earning ratio",
+)
+def price_to_earning_ratio(share_price:float, earnings_per_share:float):
+    try:
+        p_e_ratio = functions.price_to_earning(share_price, earnings_per_share)
+        return{
+            "Tag" : "Price to Earning ratio",
+            "Share price" : share_price,
+            "Earning per share" : earnings_per_share,
+            "Price to Earning ratio" : f"{p_e_ratio}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#Endpoint to calculate Dividend yield ratio 
+@app.get(
+    "/dividend_yield_ratio",
+    tags=["dividend_yield_ratio"],
+    description="Calculate dividend yield ratio",
+)
+def dividend_yield_ratio(dividend_per_share:float,share_price:float):
+    try:
+        dividend_yield = functions.dividend_yield_ratio(dividend_per_share, share_price)
+        return{
+            "Tag":"Dividend yield ratio",
+            "Dividend per share" : dividend_per_share,
+            "Share price" : share_price,
+            "Dividend yield ratio" : f"{dividend_yield}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+#Endpoint to calculate Dividend payout ratio 
+@app.get(
+    "/dividend_payout_ratio",
+    tags=["dividend_payout_ratio"],
+    description="Calculate dividend payout ratio",
+)
+def dividend_payout_ratio(dividend_per_share:float,earnings_per_share:float):
+    try:
+        dividend_payout = functions.dividend_yield_ratio(dividend_per_share, earnings_per_share)
+        return{
+            "Tag":"Dividend payout ratio",
+            "Dividend per share" : dividend_per_share,
+            "Share price" : earnings_per_share,
+            "Dividend yield ratio" : f"{dividend_payout}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

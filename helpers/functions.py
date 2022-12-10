@@ -73,6 +73,11 @@ def asset_portfolio(price_A:float, price_B:float, retrun1:float, return2:float, 
     portfolio_variance = weight_A*weight_A*standard_dev_A*standard_dev_A + weight_B*weight_B*standard_dev_B*standard_dev_B + 2*weight_A*weight_B*cov
     return portfolio_variance
 
+# Function to calculate the future price in a put - call parity
+def put_call_parity(call_price:float, put_price:float, strike_price:float):
+    future_price = call_price + strike_price - put_price
+    return future_price
+
 #Function to calculate break even point 
 def break_even_point(fixed_cost:float, selling_price:float, variable_cost:float):
     contribution_margin = selling_price - variable_cost
@@ -88,3 +93,20 @@ def free_cash_flow_to_firm(sales:float,operating_cost:float,depreciation:float,i
     eat = ebt - ebt/(tax_rate*0.01)
     wcInv = abs(wcInv)
     return (ebit*(1-tax_rate*0.01))) + depreciation - fcInv - wcInv
+
+#Function to calculate the Price-to-Earning ratio (P/E ratio):
+def price_to_earning_ratio(share_price:float, earnings_per_share:float):
+    p_e_ratio = share_price//earnings_per_share
+    return p_e_ratio  
+
+#Function to calculate the Dividend yield ratio:
+def dividend_yield_ratio(dividend_per_share:float,share_price:float):
+    dividend_yield = dividend_per_share//share_price
+    return dividend_yield
+
+
+# Function to calculate the dividend payout ratio 
+def dividend_payout_ratio(dividend_per_share:float,earnings_per_share:float):
+    dividend_payout = dividend_per_share//earnings_per_share
+    return dividend_payout
+    

@@ -137,6 +137,22 @@
     "Interest amount": "39330.175"
 }
 ```
+
+**GET** `/put-call-parity`
+
+- Required parameters : `call_price`, `put_price` and `strike_price`
+- Sample output
+
+```py
+{
+  "Tag": "Pull Call Parity",
+  "Future Price": "800.0",
+  "Call Price": "1000.0",
+  "Put Price": "500.0",
+  "Strike Price": "300.0"
+}
+```
+
 **GET** `/bep`
 
 - Required parameters : `fixed_cost`, `selling_price` and `variable_cost`
@@ -152,6 +168,7 @@
     "Break Even Point in Rupees" : 2727,
 }
 ```
+
 **GET** `\fcff`
 - Required parameters : `sales`,`operating_cost`,`depreciation`, `interest`,`tax_rate`,`fcInv` and `wcInv`
 - Sample Output (for sales = 200, operating_cost = 20, depreciation = 20, interest = 30, tax_rate = 40%, wcInv = -40 and fcInv = 0
@@ -162,5 +179,48 @@
     "Earnings before interest and taxes : " : 60.0 ,
     "Net Income" : 18.0,
     "Free Cash Flow to Firm" : 46.0,
+}
+```
+
+**GET** `/price_to_earning_ratio`
+
+- Required parameters : `share_price`, `earnings_per_share`
+- Sample Output
+
+```py
+{
+    "Tag" : "Price to Earning ratio",
+    "Share price" : 200.0,
+    "Earning per share" : 20.0,
+    "Price to Earning ratio" : 10.0%,
+}
+```
+
+**GET** `/dividend_yield_ratio`
+
+- Required parameters : `dividend_per_share`, `share_price`
+- Sample Output
+
+```py
+{
+    "Tag":"Dividend yield ratio",
+    "Dividend per share" : 200.0,
+    "Share price" : 20.0,
+    "Dividend yield ratio" : 10.0%,
+}
+```
+
+
+**GET** `/dividend_payout_ratio`
+
+- Required parameters : `dividend_per_share`, `earnings_per_share`
+- Sample Output
+
+```py
+{
+    "Tag":"Dividend payout ratio",
+    "Dividend per share" : 200.0,
+    "Earnings per share" : 20.0,
+    "Dividend payout ratio" : 10.0%,
 }
 ```
