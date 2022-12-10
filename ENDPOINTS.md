@@ -211,3 +211,18 @@
     "Dividend payout ratio" : 10.0%,
 }
 ```
+
+**GET** `/fixed_charges_coverage_ratio`
+
+- Required parameters : `earnings_before_interest_taxes`, `fixed_charge_before_tax`,`interest`
+- Sample Output
+
+```py
+{
+    "Tag":"fixed charges coverage ratio",
+    "Earnings before interest taxes" : 3000000.0,
+    "Fixed charge before tax" : 500000.0,
+    "Interest" : 300000.0,
+    "Fixed charges coverage ratio" : 4.375%,
+}
+```
