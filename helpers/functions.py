@@ -89,3 +89,10 @@ def break_even_point(fixed_cost:float, selling_price:float, variable_cost:float)
 def price_to_earning_ratio(share_price:float, earnings_per_share:float):
     p_e_ratio = share_price//earnings_per_share
     return p_e_ratio  
+
+#Function to calculate the debt-to-income ratio (DTI ratio):
+def debt_to_income_ratio(annual_income:float,total_debt_per_month:float):
+    income_per_month = annual_income/1200
+    DTI = total_debt_per_month//income_per_month
+    return DTI
+
