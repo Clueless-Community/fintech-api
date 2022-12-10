@@ -212,7 +212,7 @@
 }
 ```
 
-**GET** `/fixed_charges_coverage_ratio`
+**GET** `/fixed_charge_coverage_ratio`
 
 - Required parameters : `earnings_before_interest_taxes`, `fixed_charge_before_tax`,`interest`
 - Sample Output

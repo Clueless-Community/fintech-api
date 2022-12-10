@@ -387,7 +387,7 @@ def dividend_payout_ratio(dividend_per_share:float,earnings_per_share:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint to calculate Dividend payout ratio 
+#Endpoint to calculate fixed charge coverage ratio: 
 @app.get(
     "/fixed_charges_coverage_ratio",
     tags=["fixed_charges_coverage_ratio"],
@@ -401,7 +401,7 @@ def fixed_charge_coverage_ratio(earnings_before_interest_taxes:float,fixed_charg
             "Earnings before interest taxes" : earnings_before_interest_taxes,
             "Fixed charge before tax" : fixed_charge_before_tax,
             "Interest" : interest,
-            "Fixed charges coverage ratio" : f"{fccr}%",
+            "Fixed charge coverage ratio" : f"{fccr}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
