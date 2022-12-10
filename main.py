@@ -349,6 +349,8 @@ def price_to_earning_ratio(share_price:float, earnings_per_share:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+#Endpoint to calculate DTI
 @app.get(
     "/debt_to_income_ratio",
     tags=["debt_to_income_ratio"],
