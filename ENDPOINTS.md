@@ -168,3 +168,46 @@
     "Break Even Point in Rupees" : 2727,
 }
 ```
+
+**GET** `/price_to_earning_ratio`
+
+- Required parameters : `share_price`, `earnings_per_share`
+- Sample Output
+
+```py
+{
+    "Tag" : "Price to Earning ratio",
+    "Share price" : 200.0,
+    "Earning per share" : 20.0,
+    "Price to Earning ratio" : 10.0%,
+}
+```
+
+**GET** `/dividend_yield_ratio`
+
+- Required parameters : `dividend_per_share`, `share_price`
+- Sample Output
+
+```py
+{
+    "Tag":"Dividend yield ratio",
+    "Dividend per share" : 200.0,
+    "Share price" : 20.0,
+    "Dividend yield ratio" : 10.0%,
+}
+```
+
+
+**GET** `/dividend_payout_ratio`
+
+- Required parameters : `dividend_per_share`, `earnings_per_share`
+- Sample Output
+
+```py
+{
+    "Tag":"Dividend payout ratio",
+    "Dividend per share" : 200.0,
+    "Earnings per share" : 20.0,
+    "Dividend payout ratio" : 10.0%,
+}
+```

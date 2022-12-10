@@ -90,9 +90,20 @@ def price_to_earning_ratio(share_price:float, earnings_per_share:float):
     p_e_ratio = share_price//earnings_per_share
     return p_e_ratio  
 
+
+#Function to calculate the Dividend yield ratio:
+def dividend_yield_ratio(dividend_per_share:float,share_price:float):
+    dividend_yield = dividend_per_share//share_price
+    return dividend_yield
+
+
+# Function to calculate the dividend payout ratio 
+def dividend_payout_ratio(dividend_per_share:float,earnings_per_share:float):
+    dividend_payout = dividend_per_share//earnings_per_share
+    return dividend_payout
+    
 #Function to calculate the debt-to-income ratio (DTI ratio):
 def debt_to_income_ratio(annual_income:float,total_debt_per_month:float):
     income_per_month = annual_income/1200
     DTI = total_debt_per_month//income_per_month
     return DTI
-
