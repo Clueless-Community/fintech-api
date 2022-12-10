@@ -224,3 +224,18 @@
     "Dividend payout ratio" : 10.0%,
 }
 ```
+
+
+**GET** `/debt_to_income_ratio`
+
+- Required parameters : `annual_income`, `total_debt_per_month`
+- Sample Output
+
+```py
+{
+  "Tag": "Debt to income ratio",
+  "Annual income": 72000,
+  "Total debt per month": 3600,
+  "Debt to income ratio per month": "60.0%"
+}
+```
