@@ -372,8 +372,8 @@ def price_to_earning_ratio(share_price:float, earnings_per_share:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
 #Endpoint to calculate Dividend yield ratio
+
 @app.get(
     "/dividend_yield_ratio",
     tags=["dividend_yield_ratio"],
@@ -408,6 +408,22 @@ def dividend_payout_ratio(dividend_per_share:float,earnings_per_share:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#Endpoint to calculate DTI
+@app.get(
+    "/debt_to_income_ratio",
+    tags=["debt_to_income_ratio"],
+    description="Calculate debt to income ratio per month",
+)
+def debt_to_income_ratio(annual_income:float, total_debt_per_month:float):
+    try:
+        DTI = functions.debt_to_income_ratio(annual_income, total_debt_per_month)
+        return{
+            "Tag" : "Debt to income ratio",
+            "Annual income" : annual_income,
+            "Total debt per month" : total_debt_per_month,
+            "Debt to income ratio per month" : f"{DTI}%",
 
 #Endpoint to calculate fixed charge coverage ratio: 
 @app.get(
@@ -465,4 +481,3 @@ def markup_percentage(price:float, cost:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-

@@ -99,6 +99,7 @@ def price_to_earning_ratio(share_price:float, earnings_per_share:float):
     p_e_ratio = share_price//earnings_per_share
     return p_e_ratio
 
+
 #Function to calculate the Dividend yield ratio:
 def dividend_yield_ratio(dividend_per_share:float,share_price:float):
     dividend_yield = dividend_per_share//share_price
@@ -110,6 +111,12 @@ def dividend_payout_ratio(dividend_per_share:float,earnings_per_share:float):
     dividend_payout = dividend_per_share//earnings_per_share
     return dividend_payout
 
+ 
+#Function to calculate the debt-to-income ratio (DTI ratio):
+def debt_to_income_ratio(annual_income:float,total_debt_per_month:float):
+    income_per_month = annual_income/1200
+    DTI = total_debt_per_month//income_per_month
+    return DTI
     
 #Function to calculate the Fixed-charge coverage ratio :
 def fixed_charge_coverage_ratio(earnings_before_interest_taxes:float,fixed_charge_before_tax:float,interest:float):
@@ -117,8 +124,6 @@ def fixed_charge_coverage_ratio(earnings_before_interest_taxes:float,fixed_charg
     b = interest + fixed_charge_before_tax
     fccr = a//b
     return fccr    
-
-
 
 
 #Function to calculate Inventory Shrinkage
@@ -130,4 +135,5 @@ def inventory_shrinkage_rate(recorded_inventory:float, actual_inventory:float):
 def markup_percentage(price:float, cost:float):
     markup_percentage = ((price-cost)/cost)*100
     return markup_percentage
+
 
