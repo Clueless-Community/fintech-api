@@ -70,13 +70,13 @@ def future_sip(interval_investment:float, rate_of_return:float, number_of_paymen
             "Interest": (rate_of_return/100)/12,
             "Number of Payments": number_of_payments,
             "Future Value": f"{value}%"
-        }         
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            
+
 #endpoint for payback period
 @app.get('/payback_period',
-tags=["payback_period_years"], 
+tags=["payback_period_years"],
 description="Calculate payback period",
 )
 def payback_period(years_before_recovery:int, unrecovered_cost:float, cash_flow:float):
@@ -132,7 +132,7 @@ def certificate_of_deposit(principal_amount:float, interest_rate:float, yrs:int,
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-# EndPoint to calculate Inflation 
+# EndPoint to calculate Inflation
 @app.get(
     "/inflation" ,
     tags=["inflated"],
@@ -204,7 +204,7 @@ def compounded_annual_growth_rate(end_investment_value:float, initial_investment
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            
+
 #Endpoint to calculate Jensen's Alpha
 @app.get(
     "/jensens_alpha",
@@ -223,11 +223,11 @@ def jensens_alpha(return_from_investment:float,return_of_appropriate_market_inde
             "Alpha of the return ":f'{alpha}%'
         }
     except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)            
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 
-#Endpoint to calculate WACC 
+#Endpoint to calculate WACC
 @app.get(
     "/wacc",
     tags=["wacc"],
@@ -246,7 +246,7 @@ def weighted_average_cost_of_capital(firm_equity,firm_debt,cost_of_equity,cost_o
             "WACC":f'{wacc}%'
         }
     except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)            
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 
@@ -287,7 +287,7 @@ def asset_portfolio(price_A:float, price_B:float, return_A:float, return_B:float
         return {
             "Tag": "Portfolio Variance",
             "Expected Returns": f"{expected_return}%",
-            "Portfolio Variance": f"{portfolio_variance}", 
+            "Portfolio Variance": f"{portfolio_variance}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -304,14 +304,14 @@ def put_call_parity(call_price:float, put_price:float, strike_price:float):
         return {
             "Tag": "Pull Call Parity",
             "Future Price": f"{future_amount}",
-            "Call Price": f"{call_price}", 
-            "Put Price": f"{put_price}", 
-            "Strike Price": f"{strike_price}", 
+            "Call Price": f"{call_price}",
+            "Put Price": f"{put_price}",
+            "Strike Price": f"{strike_price}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-#Endpoint to calculate break even point 
+
+#Endpoint to calculate break even point
 @app.get(
     "/bep",
     tags=["bep"],
@@ -330,7 +330,7 @@ def break_even_point(fixed_cost:float,selling_price:float,variable_cost:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-           
+
 #Endpoint to calculate free cash flow to firm
 @app.get(
     "\fcff",
@@ -346,7 +346,7 @@ def free_cash_flow_to_firm(sales:float,operating_cost:float,depreciation:float,i
         fcff = functions.fcff(sales,operating_cost,depreciation,interest,tax_rate,fcInv,wcInv)
         return{
             "Tag" : "Free Cash Flow to Firm (FCFF)",
-            "Earnings before interest, taxes, depreciation and amortization" : f"{ebitda}", 
+            "Earnings before interest, taxes, depreciation and amortization" : f"{ebitda}",
             "Earnings before interest and taxes : " : f"{ebit}" ,
             "Net Income" : f"{eat}",
             "Free Cash Flow to Firm" : f"{fcff}",
@@ -373,7 +373,7 @@ def price_to_earning_ratio(share_price:float, earnings_per_share:float):
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-#Endpoint to calculate Dividend yield ratio 
+#Endpoint to calculate Dividend yield ratio
 @app.get(
     "/dividend_yield_ratio",
     tags=["dividend_yield_ratio"],
@@ -391,7 +391,7 @@ def dividend_yield_ratio(dividend_per_share:float,share_price:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint to calculate Dividend payout ratio 
+#Endpoint to calculate Dividend payout ratio
 @app.get(
     "/dividend_payout_ratio",
     tags=["dividend_payout_ratio"],
@@ -427,3 +427,42 @@ def fixed_charge_coverage_ratio(earnings_before_interest_taxes:float,fixed_charg
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#Endpoint to calculate Inventory Shrinkage Rate
+@app.get(
+    "/inventory_shrinkage_rate",
+    tags=["inventory_shrinkage_rate"],
+    description="Calculate inventory shrinkage rate",
+)
+def inventory_shrinkage_rate(recorded_inventory:float, actual_inventory:float):
+    try:
+        inventory_shrinkage_rate = functions.inventory_shrinkage_rate(recorded_inventory, actual_inventory)
+        return{
+            "Tag":"Inventory shrinkage rate",
+            "Recorded Inventory" : recorded_inventory,
+            "Actual Inventory" : actual_inventory,
+            "Invenory Shrinkage Rate" : inventory_shrinkage_rate,
+            "Invenory Shrinkage Rate (%)" : inventory_shrinkage_rate*100,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+#Endpoint to calculate Markup Percentage
+@app.get(
+    "/markup_percentage",
+    tags=["markup_percentage"],
+    description="Calculate markup percentage",
+)
+def markup_percentage(price:float, cost:float):
+    try:
+        markup_percentage = functions.markup_percentage(price, cost)
+        return{
+            "Tag":"Markup Percentage",
+            "Price": price,
+            "Cost": cost,
+            "Markup Percentage": markup_percentage
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+

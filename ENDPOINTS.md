@@ -120,7 +120,7 @@
     "WACC" : 7.3%,
 }
 ```
-  
+
 **GET** `/loan_emi`
 
 - Required parameters : `principle_amount`, `annual_rate` and `months`
@@ -175,7 +175,7 @@
 ```py
 {
     "Tag" : "Free Cash Flow to Firm (FCFF)",
-    "Earnings before interest, taxes, depreciation and amortization" : 80.0, 
+    "Earnings before interest, taxes, depreciation and amortization" : 80.0,
     "Earnings before interest and taxes : " : 60.0 ,
     "Net Income" : 18.0,
     "Free Cash Flow to Firm" : 46.0,
@@ -226,16 +226,40 @@
 ```
 
 **GET** `/fixed_charge_coverage_ratio`
-
 - Required parameters : `earnings_before_interest_taxes`, `fixed_charge_before_tax`,`interest`
-- Sample Output
-
 ```py
 {
+
     "Tag":"fixed charges coverage ratio",
     "Earnings before interest taxes" : 3000000.0,
     "Fixed charge before tax" : 500000.0,
     "Interest" : 300000.0,
     "Fixed charges coverage ratio" : 4.375%,
+}
+```
+
+**GET** `/inventory_shrinkage rate`
+- Required parameters : `recorded_inventory`, `actual_inventory`
+- Sample Output
+```py
+{
+    "Tag":"Inventory shrinkage rate",
+    "Recorded Inventory" : 38000,
+    "Actual Inventory" : 35000,
+    "Invenory Shrinkage Rate" : 0.07894736842105263,
+    "Invenory Shrinkage Rate (%)" : 7.894736842105263,
+}
+```
+
+**GET** `/markup_percentage`
+
+- Required parameters : `price`, `cost`
+- Sample Output
+```py
+{
+    "Tag": "Markup Percentage",
+    "Price": 50,
+    "Cost": 5,
+    "Markup Percentage": 900
 }
 ```
