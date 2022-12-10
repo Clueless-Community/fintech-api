@@ -85,6 +85,15 @@ def break_even_point(fixed_cost:float, selling_price:float, variable_cost:float)
     rupees = fixed_cost//(contribution_margin/selling_price)
     return units,rupees
 
+#Function to calculate free cash flow to firm
+def free_cash_flow_to_firm(sales:float,operating_cost:float,depreciation:float,interest:float,tax_rate:float,fcInv:float,wcInv:float):
+    ebitda = sales - operating_cost
+    ebit = ebitda - depreciation
+    ebt = ebit - interest
+    eat = ebt - ebt/(tax_rate*0.01)
+    wcInv = abs(wcInv)
+    return (ebit*(1-tax_rate*0.01))) + depreciation - fcInv - wcInv
+
 #Function to calculate the Price-to-Earning ratio (P/E ratio):
 def price_to_earning_ratio(share_price:float, earnings_per_share:float):
     p_e_ratio = share_price//earnings_per_share
@@ -101,9 +110,10 @@ def dividend_yield_ratio(dividend_per_share:float,share_price:float):
 def dividend_payout_ratio(dividend_per_share:float,earnings_per_share:float):
     dividend_payout = dividend_per_share//earnings_per_share
     return dividend_payout
-    
+ 
 #Function to calculate the debt-to-income ratio (DTI ratio):
 def debt_to_income_ratio(annual_income:float,total_debt_per_month:float):
     income_per_month = annual_income/1200
     DTI = total_debt_per_month//income_per_month
     return DTI
+
