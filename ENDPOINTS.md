@@ -120,7 +120,7 @@
     "WACC" : 7.3%,
 }
 ```
-  
+
 **GET** `/loan_emi`
 
 - Required parameters : `principle_amount`, `annual_rate` and `months`
@@ -209,5 +209,21 @@
     "Dividend per share" : 200.0,
     "Earnings per share" : 20.0,
     "Dividend payout ratio" : 10.0%,
+}
+```
+
+
+**GET** `/inventory_shrinkage rate`
+
+- Required parameters : `recorded_inventory`, `actual_inventory`
+- Sample Output
+
+```py
+{
+    "Tag":"Inventory shrinkage rate",
+    "Recorded Inventory" : 38000,
+    "Actual Inventory" : 35000,
+    "Invenory Shrinkage Rate" : 0.07894736842105263,
+    "Invenory Shrinkage Rate (%)" : 7.894736842105263,
 }
 ```
