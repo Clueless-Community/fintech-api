@@ -597,7 +597,7 @@ def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventor
     try:
         cogs = functions.cost_of_goods_sold(beginning_inventory,purchases,ending_inventory)
         return{
-            "Tag" = "Cost of Goods Sold",
+            "Tag" : "Cost of Goods Sold",
             "Beginning Inventory" : beginning_inventory,
             "Purchases during the period" : purchases,
             "Ending Inventory" : ending_inventory,
