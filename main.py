@@ -595,7 +595,7 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float, standard_deviat
 )
 def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security: float, expected_market_return: float):
     try:
-        sharpe_ratio = functions.Capital_Asset_Pricing_Model(risk_free_interest_rate,beta_of_security,expected_market_return)
+        Capital_Asset_Pricing_Model = functions.Capital_Asset_Pricing_Model(risk_free_interest_rate,beta_of_security,expected_market_return)
         return {
             "Tag": "Capital Asset Pricing Model",
             "Risk free interest rate": risk_free_interest_rate,
