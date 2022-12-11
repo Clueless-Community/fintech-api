@@ -1,0 +1,11 @@
+name: 💡 General Feature Request
+description: Have a new idea/feature for FinTech API? Please suggest!
+title: "[FEATURE] <description>"
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What bug or feature you wants to report.
+      description: Explain about it a bit ...
+    validations:
+      required: false
