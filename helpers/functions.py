@@ -220,3 +220,8 @@ def markup_percentage(price: float, cost: float):
 def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviation_of_portfolio: float):
     sharpe_ratio = (portfolio_return - risk_free_rate)/standard_deviation_of_portfolio
     return sharpe_ratio
+
+# Function to calculate cost of goods sold
+def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
+    cogs = beginning_inventory + purchases - ending_inventory
+    return cogs
