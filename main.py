@@ -319,7 +319,7 @@ def put_call_parity(call_price:float, put_price:float, strike_price:float):
 )
 def break_even_point(fixed_cost:float,selling_price:float,variable_cost:float):
     try:
-        bep = functions.bep(fixed_cost,selling_price,variable_cost)
+        bep = functions.break_even_point(fixed_cost,selling_price,variable_cost)
         return{
             "Tag" : "Break Even Point (BEP)",
             "Fixed costs" : fixed_cost,
