@@ -293,3 +293,15 @@
 
 }
 ```
+**GET** `/cogs`
+- Required parameters : `beginning_inventory`,`purchases` and `ending_inventory`
+- Sample Output
+```py
+{
+   "Tag": "Cost of Goods Sold",
+  "Beginning Inventory": 2000,
+  "Purchases during the period": 1500,
+  "Ending Inventory": 1000,
+  "Cost of Goods Sold(In Rupees)": "2500.0"
+}
+```
