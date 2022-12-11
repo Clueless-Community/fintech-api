@@ -277,3 +277,19 @@
     "Markup Percentage": 900
 }
 ```
+
+**GET** `/sharpe_ratio`
+
+- Required parameters : `portfolio_return`, `risk_free_rate`,`standard_deviation_of_portfolio`
+- Sample Output
+```py
+{
+
+  "Tag": "Sharpe Ratio",
+  "Portfolio Return": 25,
+  "Risk Free Rate": 5,
+  "Standard Deviation of Portfolio": 10,
+  "Sharpe Ratio": "2.0"
+
+}
+```
