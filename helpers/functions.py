@@ -218,3 +218,9 @@ def markup_percentage(price: float, cost: float):
 def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviation_of_portfolio: float):
     sharpe_ratio = (portfolio_return - risk_free_rate)/standard_deviation_of_portfolio
     return sharpe_ratio
+
+
+# Function to calculate calculate Capital Asset Pricing Model
+def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security: float, expected_market_return: float):
+    capital_asset_expected_return = risk_free_interest_rate + beta_of_security*(expected_market_return - risk_free_interest_rate)
+    return capital_asset_expected_return
