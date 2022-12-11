@@ -73,7 +73,7 @@ def future_sip(
             "Investment at every Interval": interval_investment,
             "Interest": (rate_of_return / 100) / 12,
             "Number of Payments": number_of_payments,
-            "Future Value": f"{value}%",
+            "Future Value": f"{value}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
