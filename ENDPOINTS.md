@@ -293,3 +293,18 @@
 
 }
 ```
+**GET** `/Capital_Asset_Pricing_Model`
+
+- Required parameters : `risk_free_interest_rate`, `beta_of_security`,`expected_market_return`
+- Sample Output
+```py
+{
+
+  "Tag": "Capital_Asset_Pricing_Model",
+  "risk_free_interest_rate": 2.5 + "%",
+  "beta_of_security": 1.25,
+  "expected_market_return": 7.5 + "%",
+  "Capital_Asset_Pricing_Model": "11.9%"
+
+}
+```
