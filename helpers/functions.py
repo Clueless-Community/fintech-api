@@ -213,3 +213,8 @@ def inventory_shrinkage_rate(recorded_inventory: float, actual_inventory: float)
 def markup_percentage(price: float, cost: float):
     markup_percentage = ((price - cost) / cost) * 100
     return markup_percentage
+
+# Function to calculate Sharpe Ratio
+def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviation_of_portfolio: float):
+    sharpe_ratio = (portfolio_return - risk_free_rate)/standard_deviation_of_portfolio
+    return sharpe_ratio

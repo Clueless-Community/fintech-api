@@ -566,3 +566,22 @@ def markup_percentage(price: float, cost: float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate Sharpe ratio
+@app.get(
+    "/sharpe_ratio",
+    tags=["sharpe_ratio"],
+    description="Calculate sharpe ratio",
+)
+def sharpe_ratio(portfolio_return: float, risk_free_rate: float, standard_deviation_of_portfolio: float):
+    try:
+        sharpe_ratio = functions.sharpe_ratio(portfolio_return,risk_free_rate,standard_deviation_of_portfolio)
+        return {
+            "Tag": "Sharpe Ratio",
+            "Portfolio Return": portfolio_return,
+            "Risk Free Rate": risk_free_rate,
+            "Standard Deviation of Portfolio": standard_deviation_of_portfolio,
+            "Sharpe Ratio": f"{sharpe_ratio}"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
