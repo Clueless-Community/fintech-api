@@ -48,7 +48,7 @@ def compound_interest(
 
 # Function to Calculate Inflation
 def inflation(present_amount: float, inflation_rate: float, years: int):
-    future_amount = present_amount * (pow((1 + inflation_rate), years))
+    future_amount = present_amount * (pow((1 + inflation_rate/100), years))
     return future_amount
 
 
