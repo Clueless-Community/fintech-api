@@ -605,3 +605,38 @@ def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventor
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+# Endpoint to calculate rule of 72
+@app.get(
+    "/ruleof72",
+    tags = ["ruleof72"],
+    description = "Calculate Rule of 72",
+)
+def rule_of_72(rate_of_roi:float):
+    try:
+        time_period = funtions.rule_of_72(rate_of_roi)
+        return{
+            "Tag" : "Rule of 72",
+            "Rate of ROI" : rate_of_roi,
+            "Time peroid in which investment get double(in years)" : f"{time_period}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+# Endpoint to calculate acid test ratio
+@app.get(
+    "/acid-test-ratio",
+    tags = ["acid-test-ratio"],
+    description = "Calculate Acid test ratio",
+)
+def acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:float,current_liabilities:float):
+    try:
+        ratio = functions.acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:float,current_liabilities:float)
+        return{
+            "Tag" : "Acid Test Ratio",
+            "Cash and Cash Equivalents" : cash,
+            "Marketable Securities" : marketable_securitie,
+            "Accounts Receivable" : accounts_receivable,
+            "Current Liabilities" : current_liabilities,
+            "Acid Test Ratio (Quick Ratio)" : f"{ratio}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
