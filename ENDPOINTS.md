@@ -385,3 +385,29 @@
 }
 ```
 
+=======
+**GET** `/ruleof72`
+- Required parameters : `rate_of_roi` it should be in percentage only
+- Sample output
+```py
+{
+    "Tag": "Rule of 72",
+    "Rate of ROI": 5,
+    "Time peroid in which investment get double(in years)": "14.4"
+}
+```
+**GET** `/acid-test-ratio`
+- Required parameters : `cash`,`marketable_securities`,`accounts_receivable` and `current_liabilities` Note : cash = cash + cash equivalents
+- Sample Outuputs
+```py
+{
+    "Tag": "Acid Test Ratio",
+    "Cash and Cash Equivalents": 10000,
+    "Marketable Securities": 5000,
+    "Accounts Receivable": 20000,
+    "Current Liabilities": 30000,
+    "Acid Test Ratio (Quick Ratio)": "1.17"
+}
+```
+
+
