@@ -293,6 +293,21 @@
 
 }
 ```
+
+**GET** `/cost_of_equity`
+- Required parameters : `risk_free_rate_of_return`, `Beta`, `market_rate_of_return`
+- Sample Output
+```py
+{
+    "Tag": "Cost of Equity",
+    "Risk free rate of return": 100,0,
+    "Beta": 3.0,
+    "Market rate of return ": 200.0,
+    "Cost of equity": 400.0%
+
+}
+```
+
 **GET** `/cogs`
 - Required parameters : `beginning_inventory`,`purchases` and `ending_inventory`
 - Sample Output
@@ -305,3 +320,4 @@
   "Cost of Goods Sold(In Rupees)": "2500.0"
 }
 ```
+

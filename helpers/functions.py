@@ -221,7 +221,14 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviati
     sharpe_ratio = (portfolio_return - risk_free_rate)/standard_deviation_of_portfolio
     return sharpe_ratio
 
+
+#Function to calculate cost of equity:
+def cost_of_equity(risk_free_rate_of_return:float,Beta:float,market_rate_of_return:float):
+    costOfEquity = risk_free_rate_of_return + Beta *(market_rate_of_return-risk_free_rate_of_return)
+    return costOfEquity    
+
 # Function to calculate cost of goods sold
 def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
     cogs = beginning_inventory + purchases - ending_inventory
     return cogs
+
