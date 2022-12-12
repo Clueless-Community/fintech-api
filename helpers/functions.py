@@ -222,6 +222,11 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviati
     return sharpe_ratio
 
 
+# Function to calculate calculate Capital Asset Pricing Model
+def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security: float, expected_market_return: float):
+    capital_asset_expected_return = risk_free_interest_rate + beta_of_security*(expected_market_return - risk_free_interest_rate)
+    return capital_asset_expected_return
+
 #Function to calculate cost of equity:
 def cost_of_equity(risk_free_rate_of_return:float,Beta:float,market_rate_of_return:float):
     costOfEquity = risk_free_rate_of_return + Beta *(market_rate_of_return-risk_free_rate_of_return)
@@ -231,4 +236,3 @@ def cost_of_equity(risk_free_rate_of_return:float,Beta:float,market_rate_of_retu
 def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
     cogs = beginning_inventory + purchases - ending_inventory
     return cogs
-
