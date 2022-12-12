@@ -225,3 +225,12 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviati
 def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
     cogs = beginning_inventory + purchases - ending_inventory
     return cogs
+# Function to calculate Rule of 72
+def rule_of_72(rate_of_roi:float):
+    time_period = 72/rate_of_roi
+    return time_period
+
+# Function to calculate Acid test ratio
+def acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:float,current_liabilities:float):
+    ratio = (cash + marketable_securitie + accounts_receivable) / current_liabilities
+    return round(ratio,2)
