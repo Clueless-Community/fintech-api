@@ -161,6 +161,7 @@ def free_cash_flow_to_firm(
     ebt = ebit - interest
     eat = ebt - ebt / (tax_rate * 0.01)
     wcInv = abs(wcInv)
+
     return (ebit * (1 - tax_rate * 0.01)) + depreciation - fcInv - wcInv
 
 
@@ -168,6 +169,7 @@ def free_cash_flow_to_firm(
 def price_to_earning_ratio(share_price: float, earnings_per_share: float):
     p_e_ratio = share_price // earnings_per_share
     return p_e_ratio
+
 
 
 # Function to calculate the Dividend yield ratio:
@@ -218,3 +220,8 @@ def markup_percentage(price: float, cost: float):
 def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviation_of_portfolio: float):
     sharpe_ratio = (portfolio_return - risk_free_rate)/standard_deviation_of_portfolio
     return sharpe_ratio
+
+# Function to calculate cost of goods sold
+def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
+    cogs = beginning_inventory + purchases - ending_inventory
+    return cogs
