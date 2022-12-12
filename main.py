@@ -613,7 +613,7 @@ def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventor
 )
 def rule_of_72(rate_of_roi:float):
     try:
-        time_period = funtions.rule_of_72(rate_of_roi)
+        time_period = functions.rule_of_72(rate_of_roi)
         return{
             "Tag" : "Rule of 72",
             "Rate of ROI" : rate_of_roi,
