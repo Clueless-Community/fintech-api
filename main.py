@@ -629,7 +629,7 @@ def rule_of_72(rate_of_roi:float):
 )
 def acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:float,current_liabilities:float):
     try:
-        ratio = functions.acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:float,current_liabilities:float)
+        ratio = functions.acid_test_ratio(cash,marketable_securitie,accounts_receivable,current_liabilities)
         return{
             "Tag" : "Acid Test Ratio",
             "Cash and Cash Equivalents" : cash,
