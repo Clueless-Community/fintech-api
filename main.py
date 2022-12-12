@@ -587,7 +587,77 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float, standard_deviat
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+@app.get(
+    "/purchasing_power",
+    tags=["purchasing_power"],
+    description="Calculate Purchasing Power",
+)
+def purchasing_power(initial_amount:float,annual_inflation_rate:float,time:float):
+    try:
+        purchasing_power = functions.purchasing_power(initial_amount,annual_inflation_rate,time)
+        return {
+            "Tag": "Purchasing Power",
+            "Initial Amount": initial_amount,
+            "Annual Inflation Rate": annual_inflation_rate,
+            "Time in years": time,
+            "Purchasing Power": f"{a}"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+@app.get(
+    "/monthly_emi",
+    tags=["monthly_emi"],
+    description="Monthly EMI",
+)
+def monthly_emi(loan_amt:float,interest_rate:float,number_of_installments:float):
+    try:
+        monthly_emi = functions.monthly_emi(loan_amt,interest_rate,number_of_installments)
+        return {
+            "Tag": "Monthly EMI",
+            "Loan Amount": loan_amt,
+            "Interest Rate":interest_rate,
+            "Number of Installments": number_of_installments,
+            "Total EMI": f"{emi}"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/doubling_time",
+    tags=["doubling_time"],
+    description="Doubling Time",
+)
+def doubling_time(r):
+    try:
+        doubling_time = functions.doubling_time(r:float)
+        return {
+            "Tag": "Doubling Time",
+            "Rate of Interest": r,
+            "Time in years to double the money": f"{t}"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/weighted_average",
+    tags=["weighted_average"],
+    description="Weighted Average",
+)
+def weighted_average(ratio:list,rates:list):
+    try:
+        weighted_average = functions.weighted_average(ratio,rates)
+        return {
+            "Tag": "Weighted Average",
+            "Ratio of each investment principal": ratio,
+            "Rates": rates,
+            "Weighted average : ":f'{wa}'
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+=======
 
         
 # Endpoint to calculate Capital Asset Pricing Model
