@@ -293,3 +293,47 @@
 
 }
 ```
+
+**GET** `/Capital_Asset_Pricing_Model`
+
+- Required parameters : `risk_free_interest_rate`, `beta_of_security`,`expected_market_return`
+- Sample Output
+```py
+{
+
+  "Tag": "Capital_Asset_Pricing_Model",
+  "risk_free_interest_rate": 2.5 + "%",
+  "beta_of_security": 1.25,
+  "expected_market_return": 7.5 + "%",
+  "Capital_Asset_Pricing_Model": "11.9%"
+
+}
+```
+
+**GET** `/cost_of_equity`
+- Required parameters : `risk_free_rate_of_return`, `Beta`, `market_rate_of_return`
+- Sample Output
+```py
+{
+    "Tag": "Cost of Equity",
+    "Risk free rate of return": 100,0,
+    "Beta": 3.0,
+    "Market rate of return ": 200.0,
+    "Cost of equity": 400.0%
+
+}
+```
+
+**GET** `/cogs`
+- Required parameters : `beginning_inventory`,`purchases` and `ending_inventory`
+- Sample Output
+```py
+{
+   "Tag": "Cost of Goods Sold",
+  "Beginning Inventory": 2000,
+  "Purchases during the period": 1500,
+  "Ending Inventory": 1000,
+  "Cost of Goods Sold(In Rupees)": "2500.0"
+}
+```
+

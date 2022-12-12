@@ -161,6 +161,7 @@ def free_cash_flow_to_firm(
     ebt = ebit - interest
     eat = ebt - ebt / (tax_rate * 0.01)
     wcInv = abs(wcInv)
+
     return (ebit * (1 - tax_rate * 0.01)) + depreciation - fcInv - wcInv
 
 
@@ -168,6 +169,7 @@ def free_cash_flow_to_firm(
 def price_to_earning_ratio(share_price: float, earnings_per_share: float):
     p_e_ratio = share_price // earnings_per_share
     return p_e_ratio
+
 
 
 # Function to calculate the Dividend yield ratio:
@@ -218,7 +220,8 @@ def markup_percentage(price: float, cost: float):
 def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviation_of_portfolio: float):
     sharpe_ratio = (portfolio_return - risk_free_rate)/standard_deviation_of_portfolio
     return sharpe_ratio
-
+    
+    
 #Function to calculate Purchasing Power
 def purchasing_power(initial_amount:float,annual_inflation_rate:float,time:float):
     a= initial_amount* ((100/(100+annual_inflation_rate))**time)
@@ -248,3 +251,18 @@ def weighted_average(ratio:list,rates:list):
     # print("Weighted Average returns: ",wa)
     return wa 
 
+
+# Function to calculate calculate Capital Asset Pricing Model
+def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security: float, expected_market_return: float):
+    capital_asset_expected_return = risk_free_interest_rate + beta_of_security*(expected_market_return - risk_free_interest_rate)
+    return capital_asset_expected_return
+
+#Function to calculate cost of equity:
+def cost_of_equity(risk_free_rate_of_return:float,Beta:float,market_rate_of_return:float):
+    costOfEquity = risk_free_rate_of_return + Beta *(market_rate_of_return-risk_free_rate_of_return)
+    return costOfEquity    
+
+# Function to calculate cost of goods sold
+def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
+    cogs = beginning_inventory + purchases - ending_inventory
+    return cogs
