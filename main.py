@@ -471,7 +471,7 @@ def dividend_yield_ratio(dividend_per_share: float, share_price: float):
 )
 def dividend_payout_ratio(dividend_per_share: float, earnings_per_share: float):
     try:
-        dividend_payout = functions.dividend_yield_ratio(
+        dividend_payout = functions.dividend_payout_ratio(
             dividend_per_share, earnings_per_share
         )
         return {
@@ -587,6 +587,47 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float, standard_deviat
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+        
+# Endpoint to calculate Capital Asset Pricing Model
+@app.get(
+    "/Capital_Asset_Pricing_Model",
+    tags=["Capital_Asset_Pricing_Model"],
+    description="Calculating Capital Asset Pricing Model",
+)
+def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security: float, expected_market_return: float):
+    try:
+        Capital_Asset_Pricing_Model = functions.Capital_Asset_Pricing_Model(risk_free_interest_rate,beta_of_security,expected_market_return)
+        return {
+            "Tag": "Capital Asset Pricing Model",
+            "Risk free interest rate": risk_free_interest_rate,
+            "Beta of security": beta_of_security,
+            "Expected market return": expected_market_return,
+            "Capital asset expected return": f"{Capital_Asset_Pricing_Model}"
+            }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate cost of equity
+@app.get(
+    "/cost_of_equity",
+    tags=["cost_of_equity"],
+    description="Calculate cost of equity",
+)
+def cost_of_equity(risk_free_rate_of_return:float,Beta:float,market_rate_of_return:float):
+    try:
+        costOfEquity = functions.cost_of_equity(risk_free_rate_of_return, Beta, market_rate_of_return)
+        return {
+            "Tag": "Cost of Equity",
+            "Risk free rate of return": risk_free_rate_of_return,
+            "Beta": Beta,
+            "Market rate of return ": market_rate_of_return,
+            "Cost of equity": f"{costOfEquity}%"
+            }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 # Endpoint to calculate cost of goods sold
 @app.get(
     "/cogs",
@@ -601,7 +642,7 @@ def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventor
             "Beginning Inventory" : beginning_inventory,
             "Purchases during the period" : purchases,
             "Ending Inventory" : ending_inventory,
-            "Cost of Goods Sold(In Rupees)" : f"{cogs}",
+            "Cost of Goods Sold(In Rupees)" : f"{cogs}"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
