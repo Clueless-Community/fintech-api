@@ -471,7 +471,7 @@ def dividend_yield_ratio(dividend_per_share: float, share_price: float):
 )
 def dividend_payout_ratio(dividend_per_share: float, earnings_per_share: float):
     try:
-        dividend_payout = functions.dividend_yield_ratio(
+        dividend_payout = functions.dividend_payout_ratio(
             dividend_per_share, earnings_per_share
         )
         return {
