@@ -374,14 +374,15 @@ def put_call_parity(call_price: float, put_price: float, strike_price: float):
 )
 def break_even_point(fixed_cost: float, selling_price: float, variable_cost: float):
     try:
-        bep = functions.bep(fixed_cost, selling_price, variable_cost)
-        return {
-            "Tag": "Break Even Point (BEP)",
-            "Fixed costs": fixed_cost,
-            "Selling price per unit": selling_price,
-            "Variable cost per unit": variable_cost,
-            "Break Even Point in units": f"{bep[0]}",
-            "Break Even Point in Rupees": f"{bep[1]}",
+
+        bep = functions.break_even_point(fixed_cost,selling_price,variable_cost)
+        return{
+            "Tag" : "Break Even Point (BEP)",
+            "Fixed costs" : fixed_cost,
+            "Selling price per unit" : selling_price,
+            "Variable cost per unit" : variable_cost,
+            "Break Even Point in units" : f"{bep[0]}",
+            "Break Even Point in Rupees" : f"{bep[1]}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -389,9 +390,11 @@ def break_even_point(fixed_cost: float, selling_price: float, variable_cost: flo
 
 # Endpoint to calculate free cash flow to firm
 @app.get(
-    "\fcff",
-    tags=["fcff"],
-    description="Calculate Free Cash Flow to Firm",
+
+    "/fcff",
+    tags = ["fcff"],
+    description = "Calculate Free Cash Flow to Firm",
+
 )
 def free_cash_flow_to_firm(
     sales: float,
@@ -406,16 +409,15 @@ def free_cash_flow_to_firm(
         ebitda = sales - operating_cost
         ebit = ebitda - depreciation
         ebt = ebit - interest
-        eat = ebt - ebt * (tax_rate * 0.01)
-        fcff = functions.fcff(
-            sales, operating_cost, depreciation, interest, tax_rate, fcInv, wcInv
-        )
-        return {
-            "Tag": "Free Cash Flow to Firm (FCFF)",
-            "Earnings before interest, taxes, depreciation and amortization": f"{ebitda}",
-            "Earnings before interest and taxes : ": f"{ebit}",
-            "Net Income": f"{eat}",
-            "Free Cash Flow to Firm": f"{fcff}",
+
+        eat = ebt - ebt*(tax_rate*0.01)
+        fcff = functions.free_cash_flow_to_firm(sales,operating_cost,depreciation,interest,tax_rate,fcInv,wcInv)
+        return{
+            "Tag" : "Free Cash Flow to Firm (FCFF)",
+            "Earnings before interest, taxes, depreciation and amortization" : f"{ebitda}", 
+            "Earnings before interest and taxes : " : f"{ebit}" ,
+            "Net Income" : f"{eat}",
+            "Free Cash Flow to Firm" : f"{fcff}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -469,7 +471,7 @@ def dividend_yield_ratio(dividend_per_share: float, share_price: float):
 )
 def dividend_payout_ratio(dividend_per_share: float, earnings_per_share: float):
     try:
-        dividend_payout = functions.dividend_yield_ratio(
+        dividend_payout = functions.dividend_payout_ratio(
             dividend_per_share, earnings_per_share
         )
         return {
@@ -586,6 +588,7 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float, standard_deviat
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
         
 # Endpoint to calculate Capital Asset Pricing Model
 @app.get(
@@ -602,6 +605,44 @@ def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security
             "Beta of security": beta_of_security,
             "Expected market return": expected_market_return,
             "Capital asset expected return": f"{Capital_Asset_Pricing_Model}"
+            }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate cost of equity
+@app.get(
+    "/cost_of_equity",
+    tags=["cost_of_equity"],
+    description="Calculate cost of equity",
+)
+def cost_of_equity(risk_free_rate_of_return:float,Beta:float,market_rate_of_return:float):
+    try:
+        costOfEquity = functions.cost_of_equity(risk_free_rate_of_return, Beta, market_rate_of_return)
+        return {
+            "Tag": "Cost of Equity",
+            "Risk free rate of return": risk_free_rate_of_return,
+            "Beta": Beta,
+            "Market rate of return ": market_rate_of_return,
+            "Cost of equity": f"{costOfEquity}%"
+            }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate cost of goods sold
+@app.get(
+    "/cogs",
+    tags = ["cogs"],
+    description = "Calculate Cost of Goods Sold",
+)
+def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
+    try:
+        cogs = functions.cost_of_goods_sold(beginning_inventory,purchases,ending_inventory)
+        return{
+            "Tag" : "Cost of Goods Sold",
+            "Beginning Inventory" : beginning_inventory,
+            "Purchases during the period" : purchases,
+            "Ending Inventory" : ending_inventory,
+            "Cost of Goods Sold(In Rupees)" : f"{cogs}"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
