@@ -657,7 +657,7 @@ def weighted_average(ratio:list,rates:list):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-=======
+
 
         
 # Endpoint to calculate Capital Asset Pricing Model
