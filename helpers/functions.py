@@ -276,3 +276,21 @@ def rule_of_72(rate_of_roi:float):
 def acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:float,current_liabilities:float):
     ratio = (cash + marketable_securitie + accounts_receivable) / current_liabilities
     return round(ratio,2)
+# Function to calculate inflation adjusted return
+def inflation_adjusted_return(
+    beginning_price:float,
+    ending_price:float,
+    dividends:float,
+    beginning_cpi_level:float,
+    ending_cpi__level:float
+    ):
+        stock_return = (ending_price-beginning_price+dividends) / beginning_price
+        
+        inflation = (ending_cpi__level - beginning_cpi_level) / beginning_cpi_level
+        
+        inflation_adj = ((1+stock_return)/(1+inflation) -1)*100 
+        return round(inflation_adj,2)
+# Function to calculate compound annual growth rate
+def compound_annual_growth_rate(beginning_value:float,ending_value:float,years:int):
+    rate = (pow((beginning_value/ending_value),1/years)-1) * 100
+    return round(rate,1)

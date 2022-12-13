@@ -409,5 +409,25 @@
     "Acid Test Ratio (Quick Ratio)": "1.17"
 }
 ```
-
-
+**GET** `/inflation-adjusted-return`
+- Required parameters : `beginning_price`, `ending_price`, `dividends`, `beginning_cpi_level` and `ending_cpi_level`
+- Sample output
+```py
+{
+    "Tag": "Inflation Adjusted Return",
+    "Stock Return": "0.23333333333333334%",
+    "Inflation Rate": "0.03%",
+    "Inflation Adjusted Return": "19.74%"
+}
+```
+**GET** `/cogr`
+- Required parameters : `beginning_value`, `ending_value` and `years`
+- Sample output
+```py
+{
+    "Tag": "Coumpound Annual Growth Rate",
+    "Beginning Value": 176000,
+    "Ending Value": 64900,
+    "Compound Annual Growth Rate": "39.5%"
+}
+```
