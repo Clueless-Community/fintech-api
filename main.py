@@ -754,7 +754,7 @@ def acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:fl
 #Endpoint to calculate inflation adjusted return 
 @app.get(
     "/inflation-adjusted-return",
-    tag = ["inflation-adjusted-return"],
+    tags = ["inflation-adjusted-return"],
     description = "Calculate Inflation Adjusted Return",
 )
 def inflation_adjusted_return(
@@ -779,7 +779,7 @@ def inflation_adjusted_return(
 # Endpoint to calculate compound annual growth rate
 @app.get(
     "/cogr",
-    tag = ["cogr"],   
+    tags = ["cogr"],   
     description = "Calculate Compound Annual Growth Rate",
 )
 def compound_annual_growth_rate(beginning_value:float,ending_value:float,years:int):
