@@ -431,3 +431,20 @@
     "Compound Annual Growth Rate": "39.5%"
 }
 ```
+
+
+**GET** `/current_liability_coverage_ratio`
+
+- Required parameters : `net_cash_from_operating_activities`, `total_current_liabilities`, `number_of_liabilities`
+- Sample Output
+```py
+{
+
+  "Tag": "current liability coverage ratio",
+  "net_cash_from_operating_activities": 100,
+  "total_current_liabilities": 1700,
+  "number_of_liabilities": 2,
+  "current_liability_coverage_ratio": "0.12"
+
+}
+```

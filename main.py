@@ -793,3 +793,22 @@ def compound_annual_growth_rate(beginning_value:float,ending_value:float,years:i
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate current liability coverage ratio
+@app.get(
+    "/current_liability_coverage_ratio",
+    tags=["current_liability_coverage_ratio"],
+    description="Calculating current liability coverage ratio",
+)
+def current_liability_coverage_ratio(net_cash_from_operating_activities: float, total_current_liabilities: float, number_of_liabilities: int):
+    try:
+        current_liability_coverage_ratio = functions.current_liability_coverage_ratio(net_cash_from_operating_activities, total_current_liabilities, number_of_liabilities)
+        return {
+            "Tag": "current liability coverage ratio",
+            "net cash from operating activities": net_cash_from_operating_activities,
+            "total current liabilities": total_current_liabilities,
+            "number of liabilities": number_of_liabilities,
+            "current liability coverage ratio": f"{current_liability_coverage_ratio}"
+            }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
