@@ -629,9 +629,9 @@ def monthly_emi(loan_amt:float,interest_rate:float,number_of_installments:float)
     tags=["doubling_time"],
     description="Doubling Time",
 )
-def doubling_time(r):
+def doubling_time(r:float):
     try:
-        doubling_time = functions.doubling_time(r:float)
+        doubling_time = functions.doubling_time(r)
         return {
             "Tag": "Doubling Time",
             "Rate of Interest": r,
