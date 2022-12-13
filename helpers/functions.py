@@ -161,6 +161,7 @@ def free_cash_flow_to_firm(
     ebt = ebit - interest
     eat = ebt - ebt / (tax_rate * 0.01)
     wcInv = abs(wcInv)
+
     return (ebit * (1 - tax_rate * 0.01)) + depreciation - fcInv - wcInv
 
 
@@ -168,6 +169,7 @@ def free_cash_flow_to_firm(
 def price_to_earning_ratio(share_price: float, earnings_per_share: float):
     p_e_ratio = share_price // earnings_per_share
     return p_e_ratio
+
 
 
 # Function to calculate the Dividend yield ratio:
@@ -218,3 +220,58 @@ def markup_percentage(price: float, cost: float):
 def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviation_of_portfolio: float):
     sharpe_ratio = (portfolio_return - risk_free_rate)/standard_deviation_of_portfolio
     return sharpe_ratio
+    
+    
+#Function to calculate Purchasing Power
+def purchasing_power(initial_amount:float,annual_inflation_rate:float,time:float):
+    a= initial_amount* ((100/(100+annual_inflation_rate))**time)
+    
+    return a
+
+#Function to create Monthly EMI 
+def monthly_emi(loan_amt:float,interest_rate:float,number_of_installments:float):
+    # print("Total Loan Amount: ",loan_amt)
+    # print("Rate of Interest: ",interest_rate)
+    # print("Number of installments: ",number_of_installments)
+    r_mon=  r/(12*100)
+    emi = p * r_mon * ((1+r_mon)**n)/((1+r_mon)**n - 1)
+    return emi
+
+#Function to calculate doubling time
+def doubling_time(r:float):
+    # print("Rate of Interest: ",r)
+    t= math.log(2)/math.log(1+ (r/100))
+    # print("Time taken in years to double money at",r,"percent PA: ", t)
+
+#Function to calculate Weighted Average
+def weighted_average(ratio:list,rates:list):
+    wa=0
+    for i in range(len(ratio)):
+        wa= wa+ ratio[i]*rates[i]
+    # print("Weighted Average returns: ",wa)
+    return wa 
+
+
+# Function to calculate calculate Capital Asset Pricing Model
+def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security: float, expected_market_return: float):
+    capital_asset_expected_return = risk_free_interest_rate + beta_of_security*(expected_market_return - risk_free_interest_rate)
+    return capital_asset_expected_return
+
+#Function to calculate cost of equity:
+def cost_of_equity(risk_free_rate_of_return:float,Beta:float,market_rate_of_return:float):
+    costOfEquity = risk_free_rate_of_return + Beta *(market_rate_of_return-risk_free_rate_of_return)
+    return costOfEquity    
+
+# Function to calculate cost of goods sold
+def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
+    cogs = beginning_inventory + purchases - ending_inventory
+    return cogs
+# Function to calculate Rule of 72
+def rule_of_72(rate_of_roi:float):
+    time_period = 72/rate_of_roi
+    return time_period
+
+# Function to calculate Acid test ratio
+def acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:float,current_liabilities:float):
+    ratio = (cash + marketable_securitie + accounts_receivable) / current_liabilities
+    return round(ratio,2)

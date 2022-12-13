@@ -293,3 +293,121 @@
 
 }
 ```
+
+**GET** `/Capital_Asset_Pricing_Model`
+
+- Required parameters : `risk_free_interest_rate`, `beta_of_security`,`expected_market_return`
+- Sample Output
+```py
+{
+
+  "Tag": "Capital_Asset_Pricing_Model",
+  "risk_free_interest_rate": 2.5 + "%",
+  "beta_of_security": 1.25,
+  "expected_market_return": 7.5 + "%",
+  "Capital_Asset_Pricing_Model": "11.9%"
+
+}
+```
+
+**GET** `/cost_of_equity`
+- Required parameters : `risk_free_rate_of_return`, `Beta`, `market_rate_of_return`
+- Sample Output
+```py
+{
+    "Tag": "Cost of Equity",
+    "Risk free rate of return": 100,0,
+    "Beta": 3.0,
+    "Market rate of return ": 200.0,
+    "Cost of equity": 400.0%
+
+}
+```
+
+**GET** `/cogs`
+- Required parameters : `beginning_inventory`,`purchases` and `ending_inventory`
+- Sample Output
+```py
+{
+   "Tag": "Cost of Goods Sold",
+  "Beginning Inventory": 2000,
+  "Purchases during the period": 1500,
+  "Ending Inventory": 1000,
+  "Cost of Goods Sold(In Rupees)": "2500.0"
+}
+```
+
+**GET** `/purchasing_power`
++ Required parameters : `initial_amount`, `annual_inflation_rate`  , `time`
++ Sample output
+```py
+{
+     "Tag": "Purchasing Power",
+     "Initial Amount": 10000,
+     "Annual Inflation Rate": 5,
+     "Time in years": 10,
+     "Purchasing Power": 6139.13253540759
+}
+```
+**GET** `/monthly_emi`
++ Required parameters : `loan_amt`,`interest_rate`,`number_of_installments`
++ Sample output
+```py
+{
+    "Tag": "Monthly EMI",
+    "Loan Amount": 500000,
+    "Interest Rate":8,
+    "Number of Installments":24,
+    "Total EMI": 22613.645728092295
+}
+```
+
+**GET** `/doubling_time`
++ Required parameters : `r`
++ Sample output
+```py
+{
+    "Tag": "Doubling Time",
+    "Rate of Interest": 8,
+    "Time in years to double the money": 9.006468342000588
+}
+```
+
+**GET** `/weighted_average`
++ Required parameters : `ratio`,`rates`
++ Sample output
+```py
+{
+    "Tag": "Weighted Average",
+    "Ratio of each investment principal": [0.20, 0.25, 0.35,0.10, 0.10],
+    "Rates":[7.5, 8.5, 8, 5, 6],
+    "Weighted average : ": 7.525
+}
+```
+
+=======
+**GET** `/ruleof72`
+- Required parameters : `rate_of_roi` it should be in percentage only
+- Sample output
+```py
+{
+    "Tag": "Rule of 72",
+    "Rate of ROI": 5,
+    "Time peroid in which investment get double(in years)": "14.4"
+}
+```
+**GET** `/acid-test-ratio`
+- Required parameters : `cash`,`marketable_securities`,`accounts_receivable` and `current_liabilities` Note : cash = cash + cash equivalents
+- Sample Outuputs
+```py
+{
+    "Tag": "Acid Test Ratio",
+    "Cash and Cash Equivalents": 10000,
+    "Marketable Securities": 5000,
+    "Accounts Receivable": 20000,
+    "Current Liabilities": 30000,
+    "Acid Test Ratio (Quick Ratio)": "1.17"
+}
+```
+
+
