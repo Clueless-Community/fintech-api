@@ -69,8 +69,9 @@ def certificate_of_deposit(
 
 
 # Function to Calculate Return on Investment
-def return_on_investment(gain_from_investment: float, cost_of_investment: float):
-    roi = (gain_from_investment - cost_of_investment) / cost_of_investment
+def return_on_investment(current_value_of_investment: float, cost_of_investment: float):
+    roi = (current_value_of_investment - cost_of_investment) / cost_of_investment
+    roi*=100
     return roi
 
 
