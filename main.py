@@ -194,13 +194,13 @@ def inflation(annual_interest_rate: float, compounding_period: int):
 @app.get(
     "/roi", tags=["return_on_investment"], description="Calculate return on investment"
 )
-def return_on_investment(gain_from_investment: float, cost_of_investment: float):
+def return_on_investment(current_value_of_investment: float, cost_of_investment: float):
     try:
-        roi = functions.return_on_investment(gain_from_investment, cost_of_investment)
+        roi = functions.return_on_investment(current_value_of_investment, cost_of_investment)
 
         return {
             "Tag": "Return on Investment",
-            "Gain from Investment": gain_from_investment,
+            "Current Value of Investment": current_value_of_investment,
             "Cost of Investment": cost_of_investment,
             "Return on Investment": f"{roi}%",
         }
@@ -657,7 +657,7 @@ def weighted_average(ratio:list,rates:list):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-=======
+
 
         
 # Endpoint to calculate Capital Asset Pricing Model
