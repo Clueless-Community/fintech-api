@@ -300,3 +300,9 @@ def current_liability_coverage_ratio(net_cash_from_operating_activities: float, 
     average_current_liabilities = total_current_liabilities/number_of_liabilities
     current_liability_coverage_ratio = net_cash_from_operating_activities/average_current_liabilities
     return current_liability_coverage_ratio
+
+#Function to calculate Levered beta:
+def levered_beta(unlevered_beta:float,tax_rate:float,debt:float,equity:float):
+    l_beta = unlevered_beta*(1+(1-tax_rate)*(debt//equity))
+    return l_beta
+
