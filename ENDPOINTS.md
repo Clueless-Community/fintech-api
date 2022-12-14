@@ -445,3 +445,19 @@
     "Levered Beta":20.0% 
 }
 ```
+
+**GET** `/convexity_duration`
+- Required parameters : `rate`,`coupon_rate`,`frequency`,`face_value`,`settlement_date`,`maturity_date`
+- Sample output
+```py
+{
+        "Tag": "Convexity Adjusted Duration",   
+        "Market Rate": 6,
+        "Coupon rate":10,
+        'Frequency':2
+        "Face Value": 100,
+        "Settlement Date": '1-1-2020',
+        "Maturity Date": '10-10-2024',
+        "Convexity Adjusted Duration":3.437535660034277
+}
+```
