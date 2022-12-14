@@ -133,6 +133,25 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 ```
+
++Also add your funtion in `ENDPOINTS.md`.
+```
+**GET** `/simple_interest_rate`
+
+- Required parameters : `amount_paid`, `principle_amount` and `months`
+- Sample output
+
+```py
+{
+    "Tag": "Simple Interest Rate",
+    "Total amount paid": 5000.0,
+    "Principle amount": 4500.0,
+    "Interest Paid": 500.0,
+    "Interest Rate": "11.11111111111111%"
+}
+```
+```
 + And that's it, you are now ready to make your pull request.
 
 ---
+

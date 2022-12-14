@@ -15,6 +15,22 @@
 }
 ```
 
+**GET** `/convexity_duration`
+- Required parameters : `rate`,`coupon_rate`,`frequency`,`face_value`,`settlement_date`,`maturity_date`
+- Sample output
+```py
+{
+        "Tag": "Convexity Adjusted Duration",   
+        "Market Rate": 6,
+        "Coupon rate":10,
+        'Frequency':2
+        "Face Value": 100,
+        "Settlement Date": '1-1-2020',
+        "Maturity Date": '10-10-2024',
+        "Convexity Adjusted Duration":3.437535660034277
+}
+```
+
 **GET** `/payback_period`
 
 - Required parameters : `years_before_recovery`, `unrecovered_cost` and`cash_flow`
@@ -385,7 +401,7 @@
 }
 ```
 
-=======
+
 **GET** `/ruleof72`
 - Required parameters : `rate_of_roi` it should be in percentage only
 - Sample output
@@ -432,6 +448,21 @@
 }
 ```
 
+**GET** `/current_liability_coverage_ratio`
+
+- Required parameters : `net_cash_from_operating_activities`, `total_current_liabilities`, `number_of_liabilities`
+- Sample Output
+```py
+{
+
+  "Tag": "current liability coverage ratio",
+  "net_cash_from_operating_activities": 100,
+  "total_current_liabilities": 1700,
+  "number_of_liabilities": 2,
+  "current_liability_coverage_ratio": "0.12"
+}
+```
+
 **GET** `/levered_beta`
 - Required parameters : `unlevered_beta`, `tax_rate`, `debt`,`equity`
 - Sample output
@@ -443,21 +474,9 @@
     "debt": 100.0,
     "Equity": 50.0,
     "Levered Beta":20.0% 
+
 }
 ```
 
-**GET** `/convexity_duration`
-- Required parameters : `rate`,`coupon_rate`,`frequency`,`face_value`,`settlement_date`,`maturity_date`
-- Sample output
-```py
-{
-        "Tag": "Convexity Adjusted Duration",   
-        "Market Rate": 6,
-        "Coupon rate":10,
-        'Frequency':2
-        "Face Value": 100,
-        "Settlement Date": '1-1-2020',
-        "Maturity Date": '10-10-2024',
-        "Convexity Adjusted Duration":3.437535660034277
-}
-```
+
+
