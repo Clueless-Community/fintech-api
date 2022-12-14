@@ -294,3 +294,10 @@ def inflation_adjusted_return(
 def compound_annual_growth_rate(beginning_value:float,ending_value:float,years:int):
     rate = (pow((beginning_value/ending_value),1/years)-1) * 100
     return round(rate,1)
+
+#Function to calculate Levered beta:
+def levered_beta(unlevered_beta:float,tax_rate:float,debt:float,equity:float):
+    l_beta = unlevered_beta*(1+(1-tax_rate)*(debt//equity))
+    return l_beta
+
+    

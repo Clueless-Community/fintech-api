@@ -431,3 +431,17 @@
     "Compound Annual Growth Rate": "39.5%"
 }
 ```
+
+**GET** `/levered_beta`
+- Required parameters : `unlevered_beta`, `tax_rate`, `debt`,`equity`
+- Sample output
+```py
+{
+    "Tag": "Levered Beta",
+    "Unlevered Beta": 10.0,
+    "Tax rate":0.5,
+    "debt": 100.0,
+    "Equity": 50.0,
+    "Levered Beta":20.0% 
+}
+```

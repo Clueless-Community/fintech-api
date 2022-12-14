@@ -793,3 +793,22 @@ def compound_annual_growth_rate(beginning_value:float,ending_value:float,years:i
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/levered_beta",
+    tags=["levered_beta"],
+    description="Levered Beta",
+)
+def levered_beta(unlevered_beta:float,tax_rate:float,debt:float,equity:float):
+    try:
+        l_beta = functions.levered_beta(unlevered_beta, tax_rate, debt, equity)
+        return {
+            "Tag": "Levered Beta",
+            "Unlevered Beta": unlevered_beta,
+            "Tax rate":tax_rate,
+            "debt": debt,
+            "Equity": equity,
+            "Levered Beta": f"{l_beta}%"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
