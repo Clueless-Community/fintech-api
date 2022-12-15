@@ -339,8 +339,10 @@ def duration(rate:float,coupon_rate:float,frequency:float,face_value:float,settl
     factor=1/(data['dcoupon'].sum()*(1+rate/frequency)**2)
     data['cf']=data['dcoupon']*(data['period']**2+data['period'])/(1+rate/frequency)**data['period']
     convexity=factor*data['cf'].sum()
+    
+    result=round(duration,3)
 
-    return duration
+    return result
 
 
 
