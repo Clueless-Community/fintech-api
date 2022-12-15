@@ -1,3 +1,5 @@
+import math
+
 # Function to Calculate Simmple Interest Rate
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
     term = months / 12
@@ -226,23 +228,18 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviati
 #Function to calculate Purchasing Power
 def purchasing_power(initial_amount:float,annual_inflation_rate:float,time:float):
     a= initial_amount* ((100/(100+annual_inflation_rate))**time)
-    
     return a
 
 #Function to create Monthly EMI 
 def monthly_emi(loan_amt:float,interest_rate:float,number_of_installments:float):
-    # print("Total Loan Amount: ",loan_amt)
-    # print("Rate of Interest: ",interest_rate)
-    # print("Number of installments: ",number_of_installments)
-    r_mon=  r/(12*100)
-    emi = p * r_mon * ((1+r_mon)**n)/((1+r_mon)**n - 1)
+    emi = loan_amt * interest_rate * ((1+interest_rate)**number_of_installments)/((1+interest_rate)**number_of_installments - 1)
     return emi
 
 #Function to calculate doubling time
 def doubling_time(r:float):
-    # print("Rate of Interest: ",r)
     t= math.log(2)/math.log(1+ (r/100))
-    # print("Time taken in years to double money at",r,"percent PA: ", t)
+    return t
+
 
 #Function to calculate Weighted Average
 def weighted_average(ratio:list,rates:list):
