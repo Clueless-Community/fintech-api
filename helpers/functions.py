@@ -306,3 +306,43 @@ def levered_beta(unlevered_beta:float,tax_rate:float,debt:float,equity:float):
     l_beta = unlevered_beta*(1+(1-tax_rate)*(debt//equity))
     return l_beta
 
+#Function to calculate Duration With Convexity Adjustment
+def duration(rate:float,coupon_rate:float,frequency:float,face_value:float,settlement_date:float,maturity_date:float):
+    import numpy as np 
+    import pandas as pd 
+    try:
+        settlement_date=pd.to_datetime(settlement_date,format="%d/%m/%Y")
+
+    except:
+        settlement_date=pd.to_datetime(settlement_date,format="%d-%m-%Y")
+
+    try:
+        maturity_date=pd.to_datetime(maturity_date,format="%d/%m/%Y")
+    except:
+        maturity_date=pd.to_datetime(maturity_date,format="%d-%m-%Y")
+
+    data=pd.DataFrame()
+    rate=rate/100
+    coupon_rate=coupon_rate/100
+
+    n=pd.to_numeric(((pd.to_datetime(maturity_date)-pd.to_datetime(settlement_date))/365).days)
+    total_payment=n*frequency
+    coupon_payment=coupon/frequency*face_value 
+    payment=[coupon_payment]*(total_payment-1)+[coupon_payment+face_value]
+    data['period']=pd.DataFrame(np.arange(1,total_payment+1))
+    data['payment']=pd.DataFrame(payment)
+    data['dcoupon']=data['payment']/((1+rate/frequency)**data['period'])
+    data['pv']=data['dcoupon']/frequency*data['period']/data['dcoupon'].sum()
+    duration=data['pv'].sum()
+    m_duration=duration/(1+rate/frequency)
+
+    factor=1/(data['dcoupon'].sum()*(1+rate/frequency)**2)
+    data['cf']=data['dcoupon']*(data['period']**2+data['period'])/(1+rate/frequency)**data['period']
+    convexity=factor*data['cf'].sum()
+    
+    result=round(duration,3)
+
+    return result
+
+
+
