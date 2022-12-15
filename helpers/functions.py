@@ -306,3 +306,9 @@ def levered_beta(unlevered_beta:float,tax_rate:float,debt:float,equity:float):
     l_beta = unlevered_beta*(1+(1-tax_rate)*(debt//equity))
     return l_beta
 
+#Function to calculate monthly payment: 
+def monthly_payment(principal:float,interest_rate:float,number_of_periods:float,payments_per_period:float):
+    a = principal*(interest_rate//payments_per_period)
+    b = 1 - (1+(interest_rate//payments_per_period))**(-payments_per_period*number_of_periods)
+    monthly_pay = a//b
+    return monthly_pay
