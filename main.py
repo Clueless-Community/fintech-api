@@ -587,7 +587,8 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float, standard_deviat
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
+# Endpoint to calculate purchase power 
 @app.get(
     "/purchasing_power",
     tags=["purchasing_power"],
@@ -601,11 +602,12 @@ def purchasing_power(initial_amount:float,annual_inflation_rate:float,time:float
             "Initial Amount": initial_amount,
             "Annual Inflation Rate": annual_inflation_rate,
             "Time in years": time,
-            "Purchasing Power": f"{a}"
+            "Purchasing Power": f"{purchasing_power}"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+# Endpoint to calculate Monthly EMI
 @app.get(
     "/monthly_emi",
     tags=["monthly_emi"],
@@ -619,11 +621,12 @@ def monthly_emi(loan_amt:float,interest_rate:float,number_of_installments:float)
             "Loan Amount": loan_amt,
             "Interest Rate":interest_rate,
             "Number of Installments": number_of_installments,
-            "Total EMI": f"{emi}"
+            "Total EMI": f"{monthly_emi}"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+# Endpoint to calculate doubling time
 @app.get(
     "/doubling_time",
     tags=["doubling_time"],
@@ -635,11 +638,12 @@ def doubling_time(r:float):
         return {
             "Tag": "Doubling Time",
             "Rate of Interest": r,
-            "Time in years to double the money": f"{t}"
+            "Time in years to double the money": f"{doubling_time}"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+# Endpoint to calculate weighted average
 @app.get(
     "/weighted_average",
     tags=["weighted_average"],
@@ -652,13 +656,10 @@ def weighted_average(ratio:list,rates:list):
             "Tag": "Weighted Average",
             "Ratio of each investment principal": ratio,
             "Rates": rates,
-            "Weighted average : ":f'{wa}'
+            "Weighted average : ":f'{weighted_average}'
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-
         
 # Endpoint to calculate Capital Asset Pricing Model
 @app.get(
@@ -751,6 +752,7 @@ def acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:fl
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 #Endpoint to calculate inflation adjusted return 
 @app.get(
     "/inflation-adjusted-return",
