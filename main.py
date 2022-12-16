@@ -854,4 +854,20 @@ def duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+# Endpoint to calculate current ratio
+@app.get(
+    "/current-ratio",
+    tags = ["current-ratio"],
+    description = "Current Ratio",
+)
+def current_ratio(total_current_assets:float,total_liabilities:float):
+    try:
+        ratio = def current_ratio(total_current_assets,total_liabilities)
+        return{
+            "Tag" : "Current Ratio",
+            "Total Current Assets" : total_current_assets,
+            "Total Liabilities" : total_liabilities,
+            "Current Ratio" : f"{ratio}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
