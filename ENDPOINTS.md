@@ -489,6 +489,20 @@
 }
 ```
 
+**GET** `/monthly_payment`
+- Required parameters : `principal`, `interest_rate`, `number_of_periods`,`payments_per_period`
+- Sample output
+```py
+{
+    "Tag": "Monthly Payment",
+    "Principal": 20000,
+    "Interest Rate": 16,
+    "Number of Periods" : 3,
+    "Payments per period": 2,
+    "Levered Beta": 160000.0%
+    }
+```
+
 **GET** `/inventory-turnover-ratio`
 - Required parameters : `cost_of_goods_sold`,`beginnning_inventory` and `ending_inventory`
 - Sample output
