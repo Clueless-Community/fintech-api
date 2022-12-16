@@ -854,4 +854,37 @@ def duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+# Endpoint to calculate current ratio
+@app.get(
+    "/current-ratio",
+    tags = ["current-ratio"],
+    description = "Current Ratio",
+)
+def current_ratio(total_current_assets:float,total_liabilities:float):
+    try:
+        ratio = functions.current_ratio(total_current_assets,total_liabilities)
+        return{
+            "Tag" : "Current Ratio",
+            "Total Current Assets" : total_current_assets,
+            "Total Liabilities" : total_liabilities,
+            "Current Ratio" : f"{ratio}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+ # Endpoint to calculate inventory turnover ratio
+@app.get(
+    "/inventory-turnover-ratio",
+    tags = ["inventory-turnover-ratio"],
+    description = "Inventory Turnover Ratio",
+)
+def inventory_turnover_ratio(cost_of_goods_sold:float,beginnning_inventory:float,ending_inventory:float):
+    try:
+        ratio = functions.inventory_turnover_ratio(cost_of_goods_sold,beginnning_inventory,ending_inventory)
+        return{
+            "Tag" : "Inventory Turnover Ratio",
+            "Cost of Goods Sold" : cost_of_goods_sold,
+            "Inventory Turnover Ratio" : f"{ratio}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
