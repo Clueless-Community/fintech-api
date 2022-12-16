@@ -346,3 +346,8 @@ def current_ratio(total_current_assets:float,total_liabilities:float):
     ratio = total_current_assets / total_liabilities
     return round(ratio,3)
 
+#Function to calculate inventory turnover ratio
+def inventory_turnover_ratio(cost_of_goods_sold:float,beginning_inventory:float,ending_inventory:float):
+    avg_inventory = (beginning_inventory + ending_inventory) / 2 
+    ratio = cost_of_goods_sold / avg_inventory
+    return round(ratio,2)
