@@ -871,3 +871,20 @@ def current_ratio(total_current_assets:float,total_liabilities:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+ # Endpoint to calculate inventory turnover ratio
+@app.get(
+    "/inventory-turnover-ratio",
+    tags = ["inventory-turnover-ratio"],
+    description = "Inventory Turnover Ratio",
+)
+def inventory_turnover_ratio(cost_of_goods_sold:float,beginnning_inventory:float,ending_inventory:float):
+    try:
+        ratio = functions.inventory_turnover_ratio(cost_of_goods_sold,beginnning_inventory,ending_inventory)
+        return{
+            "Tag" : "Inventory Turnover Ratio",
+            "Cost of Goods Sold" : cost_of_goods_sold,
+            "Inventory Turnover Ratio" : f"{ratio}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
