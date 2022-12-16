@@ -862,7 +862,7 @@ def duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date
 )
 def current_ratio(total_current_assets:float,total_liabilities:float):
     try:
-        ratio = def current_ratio(total_current_assets,total_liabilities)
+        ratio = functions.current_ratio(total_current_assets,total_liabilities)
         return{
             "Tag" : "Current Ratio",
             "Total Current Assets" : total_current_assets,
