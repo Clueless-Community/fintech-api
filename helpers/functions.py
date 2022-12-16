@@ -341,5 +341,8 @@ def duration(rate:float,coupon_rate:float,frequency:float,face_value:float,settl
 
     return result
 
-
+# Function to calculate current ratio
+def current_ratio(total_current_assets:float,total_liabilities:float):
+    ratio = total_current_assets / total_liabilities
+    return round(ratio,3)
 
