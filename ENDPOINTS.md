@@ -477,6 +477,26 @@
 
 }
 ```
+**GET** `/current-ratio`
+- Required parameters : `total_current_assets:float` and `total_liabilities`
+- Sample output
+```py
+{
+    "Tag": "Current Ratio",
+    "Total Current Assets": 100000,
+    "Total Liabilities": 125000,
+    "Current Ratio": "0.8"
+}
+```
 
-
+**GET** `/inventory-turnover-ratio`
+- Required parameters : `cost_of_goods_sold`,`beginnning_inventory` and `ending_inventory`
+- Sample output
+```py
+{
+    "Tag": "Inventory Turnover Ratio",
+    "Cost of Goods Sold": 600000,
+    "Inventory Turnover Ratio": "5.0"
+}
+```
 
