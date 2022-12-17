@@ -390,3 +390,9 @@ def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
     dis_opex = a*b
     return dis_opex
 
+#function to calculate project efficiency
+def project_efficiency(annual_production:float,collector_surface:float,dni:float):
+    project_eff = annual_production//(collector_surface*dni)
+    return project_eff
+    
+
