@@ -223,14 +223,14 @@ def markup_percentage(price: float, cost: float):
 def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviation_of_portfolio: float):
     sharpe_ratio = (portfolio_return - risk_free_rate)/standard_deviation_of_portfolio
     return sharpe_ratio
-    
-    
+
+
 #Function to calculate Purchasing Power
 def purchasing_power(initial_amount:float,annual_inflation_rate:float,time:float):
     a= initial_amount* ((100/(100+annual_inflation_rate))**time)
     return a
 
-#Function to create Monthly EMI 
+#Function to create Monthly EMI
 def monthly_emi(loan_amt:float,interest_rate:float,number_of_installments:float):
     emi = loan_amt * interest_rate * ((1+interest_rate)**number_of_installments)/((1+interest_rate)**number_of_installments - 1)
     return emi
@@ -247,7 +247,7 @@ def weighted_average(ratio:list,rates:list):
     for i in range(len(ratio)):
         wa= wa+ ratio[i]*rates[i]
     # print("Weighted Average returns: ",wa)
-    return wa 
+    return wa
 
 
 # Function to calculate calculate Capital Asset Pricing Model
@@ -258,7 +258,7 @@ def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security
 #Function to calculate cost of equity:
 def cost_of_equity(risk_free_rate_of_return:float,Beta:float,market_rate_of_return:float):
     costOfEquity = risk_free_rate_of_return + Beta *(market_rate_of_return-risk_free_rate_of_return)
-    return costOfEquity    
+    return costOfEquity
 
 # Function to calculate cost of goods sold
 def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
@@ -282,10 +282,10 @@ def inflation_adjusted_return(
     ending_cpi__level:float
     ):
         stock_return = (ending_price-beginning_price+dividends) / beginning_price
-        
+
         inflation = (ending_cpi__level - beginning_cpi_level) / beginning_cpi_level
-        
-        inflation_adj = ((1+stock_return)/(1+inflation) -1)*100 
+
+        inflation_adj = ((1+stock_return)/(1+inflation) -1)*100
         return round(inflation_adj,2)
 # Function to calculate compound annual growth rate
 def compound_annual_growth_rate(beginning_value:float,ending_value:float,years:int):
@@ -303,7 +303,7 @@ def levered_beta(unlevered_beta:float,tax_rate:float,debt:float,equity:float):
     l_beta = unlevered_beta*(1+(1-tax_rate)*(debt//equity))
     return l_beta
 
-#Function to calculate monthly payment: 
+#Function to calculate monthly payment:
 def monthly_payment(principal:float,interest_rate:float,number_of_periods:float,payments_per_period:float):
     a = principal*(interest_rate//payments_per_period)
     b = 1 - (1+(interest_rate//payments_per_period))**(-payments_per_period*number_of_periods)
@@ -311,8 +311,8 @@ def monthly_payment(principal:float,interest_rate:float,number_of_periods:float,
     return monthly_pay
 #Function to calculate Duration With Convexity Adjustment
 def duration(rate:float,coupon_rate:float,frequency:float,face_value:float,settlement_date:float,maturity_date:float):
-    import numpy as np 
-    import pandas as pd 
+    import numpy as np
+    import pandas as pd
     try:
         settlement_date=pd.to_datetime(settlement_date,format="%d/%m/%Y")
 
@@ -330,7 +330,7 @@ def duration(rate:float,coupon_rate:float,frequency:float,face_value:float,settl
 
     n=pd.to_numeric(((pd.to_datetime(maturity_date)-pd.to_datetime(settlement_date))/365).days)
     total_payment=n*frequency
-    coupon_payment=coupon/frequency*face_value 
+    coupon_payment=coupon/frequency*face_value
     payment=[coupon_payment]*(total_payment-1)+[coupon_payment+face_value]
     data['period']=pd.DataFrame(np.arange(1,total_payment+1))
     data['payment']=pd.DataFrame(payment)
@@ -342,7 +342,7 @@ def duration(rate:float,coupon_rate:float,frequency:float,face_value:float,settl
     factor=1/(data['dcoupon'].sum()*(1+rate/frequency)**2)
     data['cf']=data['dcoupon']*(data['period']**2+data['period'])/(1+rate/frequency)**data['period']
     convexity=factor*data['cf'].sum()
-    
+
     result=round(duration,3)
 
     return result
@@ -354,6 +354,11 @@ def current_ratio(total_current_assets:float,total_liabilities:float):
 
 #Function to calculate inventory turnover ratio
 def inventory_turnover_ratio(cost_of_goods_sold:float,beginning_inventory:float,ending_inventory:float):
-    avg_inventory = (beginning_inventory + ending_inventory) / 2 
+    avg_inventory = (beginning_inventory + ending_inventory) / 2
     ratio = cost_of_goods_sold / avg_inventory
     return round(ratio,2)
+
+#Function to calculate Inflation Rate
+def inflation_rate(bigger_year:int, smaller_year:int, base_year:int):
+    inflation_rate = ((bigger_year-smaller_year)/base_year)*100
+    return inflation_rate
