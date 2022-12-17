@@ -358,6 +358,25 @@ def inventory_turnover_ratio(cost_of_goods_sold:float,beginning_inventory:float,
     ratio = cost_of_goods_sold / avg_inventory
     return round(ratio,2)
 
+# Function to calculate Herfindal index
+def herfindal_Index(Firms_market_shares: str):
+    market_share_list = []
+    i = 0
+    breaker = 0
+    while(i < len(Firms_market_shares)):
+        share = ""
+        if(Firms_market_shares[i] == " "):
+            for j in range(breaker, i):
+                share = share + Firms_market_shares[j]
+            market_share_list.append(int(share))
+            breaker = i+1
+        i = i+1
+    herfindal_Index = 0
+    for i in market_share_list:
+        herfindal_Index = herfindal_Index + i**2
+    herfindal_Index = herfindal_Index
+    return herfindal_Index
+
 
 #function to calculate discount opex
 def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
@@ -365,3 +384,4 @@ def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
     b = 1 - 1//((1+wacc)**project_lifetime)
     dis_opex = a*b
     return dis_opex
+

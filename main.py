@@ -852,6 +852,8 @@ def monthly_payment(principal:float,interest_rate:float,number_of_periods:float,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
     "/convexity_duration",
     tags=["convexity_duration"],
     description="Convexity Adjusted Duration",
@@ -871,6 +873,7 @@ def duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 # Endpoint to calculate current ratio
 @app.get(
     "/current-ratio",
@@ -903,6 +906,23 @@ def inventory_turnover_ratio(cost_of_goods_sold:float,beginnning_inventory:float
             "Cost of Goods Sold" : cost_of_goods_sold,
             "Inventory Turnover Ratio" : f"{ratio}",
         }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate Herfindal index
+@app.get(
+    "/herfindal_Index",
+    tags=["herfindal_Index"],
+    description="Calculating herfindal Index",
+)
+def herfindal_Index(Firms_market_shares: str):
+    try:
+        herfindal_Index = functions.herfindal_Index(Firms_market_shares)
+        return {
+            "Tag": "Herfindal Index",
+            "Firms market shares": Firms_market_shares,
+            "Herfindal Index": f"{herfindal_Index}"
+            }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
