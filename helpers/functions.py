@@ -376,3 +376,12 @@ def herfindal_Index(Firms_market_shares: str):
         herfindal_Index = herfindal_Index + i**2
     herfindal_Index = herfindal_Index
     return herfindal_Index
+
+
+#function to calculate discount opex
+def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
+    a = annual_opex//wacc
+    b = 1 - 1//((1+wacc)**project_lifetime)
+    dis_opex = a*b
+    return dis_opex
+

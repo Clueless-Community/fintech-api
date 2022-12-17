@@ -857,7 +857,7 @@ def monthly_payment(principal:float,interest_rate:float,number_of_periods:float,
     "/convexity_duration",
     tags=["convexity_duration"],
     description="Convexity Adjusted Duration",
-)
+
 def duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date):
     try:
         duration = functions.duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date)
@@ -923,5 +923,23 @@ def herfindal_Index(Firms_market_shares: str):
             "Firms market shares": Firms_market_shares,
             "Herfindal Index": f"{herfindal_Index}"
             }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/discount_opex",
+    tags=["discount_opex"],
+    description="Discount OPEX",
+)
+def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
+    try:
+        dis_opex = functions.discount_opex(annual_opex, wacc, project_lifetime)
+        return {
+            "Tag": "Discount OPEX",
+            "Annual OPEX": annual_opex,
+            "WACC": wacc,
+            "project lifetime": project_lifetime,
+            "Discount opex": f"{dis_opex}%"
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

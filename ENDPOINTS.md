@@ -532,6 +532,16 @@
 }
 ```
 
-
-
+**GET** `/discount_opex`
+- Required parameters : `annual_opex`,`wacc` and `project_lifetime`
+- Sample output
+```py
+{
+    "Tag": "Discount OPEX",
+    "Annual OPEX": 1000,
+    "WACC": 3,
+    "project lifetime": 3,
+    "Discount opex": 333%
+}
+```
 
