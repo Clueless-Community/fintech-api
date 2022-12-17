@@ -357,3 +357,22 @@ def inventory_turnover_ratio(cost_of_goods_sold:float,beginning_inventory:float,
     avg_inventory = (beginning_inventory + ending_inventory) / 2 
     ratio = cost_of_goods_sold / avg_inventory
     return round(ratio,2)
+
+# Function to calculate Herfindal index
+def herfindal_Index(Firms_market_shares: str):
+    market_share_list = []
+    i = 0
+    breaker = 0
+    while(i < len(Firms_market_shares)):
+        share = ""
+        if(Firms_market_shares[i] == " "):
+            for j in range(breaker, i):
+                share = share + Firms_market_shares[j]
+            market_share_list.append(int(share))
+            breaker = i+1
+        i = i+1
+    herfindal_Index = 0
+    for i in market_share_list:
+        herfindal_Index = herfindal_Index + i**2
+    herfindal_Index = herfindal_Index
+    return herfindal_Index

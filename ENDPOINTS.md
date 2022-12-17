@@ -318,9 +318,9 @@
 {
 
   "Tag": "Capital_Asset_Pricing_Model",
-  "risk_free_interest_rate": 2.5 + "%",
+  "risk_free_interest_rate": 2.5"%",
   "beta_of_security": 1.25,
-  "expected_market_return": 7.5 + "%",
+  "expected_market_return": 7.5"%",
   "Capital_Asset_Pricing_Model": "11.9%"
 
 }
@@ -513,4 +513,25 @@
     "Inventory Turnover Ratio": "5.0"
 }
 ```
+
+
+**GET** `/herfindal_Index`
+
+- Required parameters : `space seperated list of Firms_market_shares`
+- Sample Output
+```py
+{
+
+  "Tag": "herfindal_Index",
+  "Market shares of firm 1" : "40%",
+  "Market shares of firm 2" : "30%",
+  "Market shares of firm 3" : "15%",
+  "Market shares of firm 4" : "15%",
+  "Input should be ": "40 30 15 15",
+  "Herfindal Index" : 2950
+}
+```
+
+
+
 
