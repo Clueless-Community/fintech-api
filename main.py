@@ -855,7 +855,7 @@ def monthly_payment(principal:float,interest_rate:float,number_of_periods:float,
     "/convexity_duration",
     tags=["convexity_duration"],
     description="Convexity Adjusted Duration",
-)
+
 def duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date):
     try:
         duration = functions.duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date)
@@ -902,6 +902,24 @@ def inventory_turnover_ratio(cost_of_goods_sold:float,beginnning_inventory:float
             "Tag" : "Inventory Turnover Ratio",
             "Cost of Goods Sold" : cost_of_goods_sold,
             "Inventory Turnover Ratio" : f"{ratio}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/discount_opex",
+    tags=["discount_opex"],
+    description="Discount OPEX",
+)
+def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
+    try:
+        dis_opex = functions.discount_opex(annual_opex, wacc, project_lifetime)
+        return {
+            "Tag": "Discount OPEX",
+            "Annual OPEX": annual_opex,
+            "WACC": wacc,
+            "project lifetime": project_lifetime,
+            "Discount opex": f"{dis_opex}%"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

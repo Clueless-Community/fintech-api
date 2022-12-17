@@ -357,3 +357,11 @@ def inventory_turnover_ratio(cost_of_goods_sold:float,beginning_inventory:float,
     avg_inventory = (beginning_inventory + ending_inventory) / 2 
     ratio = cost_of_goods_sold / avg_inventory
     return round(ratio,2)
+
+
+#function to calculate discount opex
+def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
+    a = annual_opex//wacc
+    b = 1 - 1//((1+wacc)**project_lifetime)
+    dis_opex = a*b
+    return dis_opex
