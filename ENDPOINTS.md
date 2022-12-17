@@ -20,7 +20,7 @@
 - Sample output
 ```py
 {
-        "Tag": "Convexity Adjusted Duration",   
+        "Tag": "Convexity Adjusted Duration",
         "Market Rate": 6,
         "Coupon rate":10,
         'Frequency':2
@@ -473,7 +473,7 @@
     "Tax rate":0.5,
     "debt": 100.0,
     "Equity": 50.0,
-    "Levered Beta":20.0% 
+    "Levered Beta":20.0%
 
 }
 ```
@@ -514,6 +514,18 @@
 }
 ```
 
+**GET** `/inflation-rate`
+- Required parameters : `bigger_year`,`smaller_year` and `base_year`
+- Sample output
+```py
+{
+    "Tag": "Inflation Rate",
+    "Bigger Year": 2000,
+    "Smaller Year": 1000,
+    "Base Year": 1000,
+    "Inflation Rate": 100
+}
+```
 
 **GET** `/herfindal_Index`
 
@@ -544,4 +556,3 @@
     "Discount opex": 333%
 }
 ```
-

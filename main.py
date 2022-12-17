@@ -414,7 +414,7 @@ def free_cash_flow_to_firm(
         fcff = functions.free_cash_flow_to_firm(sales,operating_cost,depreciation,interest,tax_rate,fcInv,wcInv)
         return{
             "Tag" : "Free Cash Flow to Firm (FCFF)",
-            "Earnings before interest, taxes, depreciation and amortization" : f"{ebitda}", 
+            "Earnings before interest, taxes, depreciation and amortization" : f"{ebitda}",
             "Earnings before interest and taxes : " : f"{ebit}" ,
             "Net Income" : f"{eat}",
             "Free Cash Flow to Firm" : f"{fcff}",
@@ -588,7 +588,7 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float, standard_deviat
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-# Endpoint to calculate purchase power 
+# Endpoint to calculate purchase power
 @app.get(
     "/purchasing_power",
     tags=["purchasing_power"],
@@ -660,7 +660,7 @@ def weighted_average(ratio:list,rates:list):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
 # Endpoint to calculate Capital Asset Pricing Model
 @app.get(
     "/Capital_Asset_Pricing_Model",
@@ -753,7 +753,7 @@ def acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:fl
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint to calculate inflation adjusted return 
+#Endpoint to calculate inflation adjusted return
 @app.get(
     "/inflation-adjusted-return",
     tags = ["inflation-adjusted-return"],
@@ -773,7 +773,7 @@ def inflation_adjusted_return(
         return{
             "Tag" : "Inflation Adjusted Return",
             "Stock Return" : f"{stock_return}%",
-            "Inflation Rate" : f"{inflation}%", 
+            "Inflation Rate" : f"{inflation}%",
             "Inflation Adjusted Return" : f"{inflation_adj_return}%" ,
         }
     except:
@@ -781,7 +781,7 @@ def inflation_adjusted_return(
 # Endpoint to calculate compound annual growth rate
 @app.get(
     "/cogr",
-    tags = ["cogr"],   
+    tags = ["cogr"],
     description = "Calculate Compound Annual Growth Rate",
 )
 def compound_annual_growth_rate(beginning_value:float,ending_value:float,years:int):
@@ -909,6 +909,23 @@ def inventory_turnover_ratio(cost_of_goods_sold:float,beginnning_inventory:float
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+ # Endpoint to calculate inflation rate
+@app.get(
+    "/inflation_rate",
+    tags = ["inflation_rate"],
+    description = "Inflation Rate",
+)
+def inflation_rate(bigger_year:int, smaller_year:int, base_year:int):
+    try:
+        inflation_rate = functions.inflation_rate(bigger_year, smaller_year, base_year)
+        return{
+            "Tag" : "Inflation Rate",
+            "Bigger Year": bigger_year,
+            "Smaller Year": smaller_year,
+            "Base Year": base_year,
+            "Inflation Rate" : inflation_rate,
+            
 # Endpoint to calculate Herfindal index
 @app.get(
     "/herfindal_Index",
