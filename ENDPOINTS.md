@@ -518,7 +518,7 @@
 **GET** `/herfindal_Index`
 
 - Required parameters : `space seperated list of Firms_market_shares`
-- Inpush should be space seperated
+- Note: Input should be space seperated 
 - Sample Output
 ```py
 {
