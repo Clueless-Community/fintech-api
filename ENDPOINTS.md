@@ -518,6 +518,7 @@
 **GET** `/herfindal_Index`
 
 - Required parameters : `space seperated list of Firms_market_shares`
+- Inpush should be space seperated
 - Sample Output
 ```py
 {
@@ -527,7 +528,6 @@
   "Market shares of firm 2" : "30%",
   "Market shares of firm 3" : "15%",
   "Market shares of firm 4" : "15%",
-  "Input should be ": "40 30 15 15",
   "Herfindal Index" : 2950
 }
 ```
