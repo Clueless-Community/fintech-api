@@ -857,7 +857,7 @@ def monthly_payment(principal:float,interest_rate:float,number_of_periods:float,
     "/convexity_duration",
     tags=["convexity_duration"],
     description="Convexity Adjusted Duration",
-
+)
 def duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date):
     try:
         duration = functions.duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date)
@@ -925,6 +925,9 @@ def inflation_rate(bigger_year:int, smaller_year:int, base_year:int):
             "Smaller Year": smaller_year,
             "Base Year": base_year,
             "Inflation Rate" : inflation_rate,
+            }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
 # Endpoint to calculate Herfindal index
 @app.get(
@@ -957,6 +960,25 @@ def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
             "WACC": wacc,
             "project lifetime": project_lifetime,
             "Discount opex": f"{dis_opex}%"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@app.get(
+    "/project_efficiency",
+    tags=["project_efficiency"],
+    description="Project Efficiency",
+)
+def project_efficiency(annual_production:float,collector_surface:float,dni:float):
+    try:
+        project_eff = functions.project_efficiency(annual_production, collector_surface, dni)
+        return {
+            "Tag": "Project efficiency",
+            "Annual production": annual_production,
+            "collector surface": collector_surface,
+            "dni": dni,
+            "Discount opex": f"{project_eff}%"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

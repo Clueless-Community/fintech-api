@@ -556,3 +556,16 @@
     "Discount opex": 333%
 }
 ```
+
+**GET** `/project_efficiency`
+- Required parameters : `annual_production`, `collector_surface`, `dni`
+- Sample output
+```py
+{
+    "Tag": "Project efficiency",
+    "Annual production": 10000,
+    "collector surface": 10,
+    "dni": 5,
+    "Discount opex": 200% 
+}
+```
