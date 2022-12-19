@@ -530,7 +530,7 @@
 **GET** `/herfindal_Index`
 
 - Required parameters : `space seperated list of Firms_market_shares`
-- Note: Input should be space seperated 
+- Note: Input should be space seperated
 - Sample Output
 ```py
 {
@@ -566,6 +566,18 @@
     "Annual production": 10000,
     "collector surface": 10,
     "dni": 5,
-    "Discount opex": 200% 
+    "Discount opex": 200%
+}
+```
+
+**GET** `/real-gdp`
+- Required parameters : `nominal_gdp`, `gdp_deflator`
+- Sample output
+```py
+{
+  "Tag": "Real GDP",
+  "Nominal GDP": 2880,
+  "GDP Deflator": 2,
+  "Real GDP": 144000
 }
 ```
