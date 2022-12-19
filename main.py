@@ -928,7 +928,7 @@ def inflation_rate(bigger_year:int, smaller_year:int, base_year:int):
             }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            
+
 # Endpoint to calculate Herfindal index
 @app.get(
     "/herfindal_Index",
@@ -982,3 +982,21 @@ def project_efficiency(annual_production:float,collector_surface:float,dni:float
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/real-gdp",
+    tags=["real_gdp"],
+    description="Real GDP",
+)
+def real_gdp(nominal_gdp:float, gdp_deflator:float):
+    try:
+        real_gdp = functions.real_gdp(nominal_gdp, gdp_deflator)
+        return {
+            "Tag": "Real GDP",
+            "Nominal GDP": nominal_gdp,
+            "GDP Deflator": gdp_deflator,
+            "Real GDP": real_gdp,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
