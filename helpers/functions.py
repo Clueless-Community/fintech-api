@@ -404,3 +404,11 @@ def real_gdp(nominal_gdp:float, gdp_deflator:float):
 def excess_reserves(deposits:float, reserve_requirement:float):
     excess_reserves = deposits - deposits*reserve_requirement
     return excess_reserves
+
+#function to calculate discounted cash flow
+def discounted_cash_flow(real_feed_in_tariff:float,annual_production:float,wacc:float,project_lifetime:float):
+    a = (real_feed_in_tariff*annual_production)//wacc
+    b = (1-(1//(1+wacc)**project_lifetime))
+    d_cash_flow = a*b
+    return d_cash_flow
+
