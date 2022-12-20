@@ -581,3 +581,15 @@
   "Real GDP": 144000
 }
 ```
+
+**GET** `/excess-reserves`
+- Required parameters : `deposits`, `reserve_requirement`
+- Sample output
+```py
+{
+  "Tag": "Excess Reserves",
+  "Deposits": 280,
+  "Reserve Requirement": 0.3,
+  "Excess Reserves": 196
+}
+```
