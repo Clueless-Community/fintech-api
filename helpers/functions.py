@@ -400,3 +400,7 @@ def real_gdp(nominal_gdp:float, gdp_deflator:float):
     real_gdp = (nominal_gdp/gdp_deflator)*100
     return real_gdp
 
+#Function to calculate excess reserves
+def excess_reserves(deposits:float, reserve_requirement:float):
+    excess_reserves = deposits - deposits*reserve_requirement
+    return excess_reserves
