@@ -594,6 +594,18 @@
 }
 ```
 
+**GET** `/discounted_cash_flow`
+- Required parameters : `real_feed_in_teriff`, `annual_production`,`wacc`,`project_lifetime`
+- Sample output
+```py
+{
+  "Tag": "Discounted cash flow",
+  "Real feed in teriff": 1000,
+  "annual production": 200,
+  "wacc": 10,
+  "project lifetime" : 5,
+  "discounted cash flow": 20000%,
+}
 
 **GET** `/gdp-growth-rate`
 - Required parameters : `last_year_gdp`, `current_year_gdp`

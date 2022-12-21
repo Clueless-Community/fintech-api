@@ -1017,6 +1017,26 @@ def excess_reserves(deposits:float, reserve_requirement:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+@app.get(
+    "/discounted_cash_flow",
+    tags=["discounted_cash_flow"],
+    description="Discounted cash flow",
+)
+def discounted_cash_flow(real_feed_in_tariff:float,annual_production:float,wacc:float,project_lifetime:float):
+    try:
+        d_cash_flow = functions.discounted_cash_flow(real_feed_in_teriff,annual_production,wacc,project_lifetime)
+        return {
+            "Tag": "Discounted cash flow",
+            "Real feed in teriff": real_feed_in_teriff,
+            "annual production": annual_production,
+            "wacc": wacc,
+            "project lifetime" : project_lifetime,
+            "discounted cash flow": f"{d_cash_flow}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 @app.get(
     "/gdp-growth-rate",
     tags=["gdp_growth_rate"],
