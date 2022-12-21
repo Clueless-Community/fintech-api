@@ -593,3 +593,16 @@
   "Excess Reserves": 196
 }
 ```
+
+
+**GET** `/gdp-growth-rate`
+- Required parameters : `last_year_gdp`, `current_year_gdp`
+- Sample output
+```py
+{
+  "Tag": "GDP Growth Rate",
+  "Current Year GDP": 3386,
+  "Last Year GDP": 2800,
+  "GDP Growth Rate": 20.92857142857143
+}
+```
