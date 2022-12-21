@@ -404,3 +404,8 @@ def real_gdp(nominal_gdp:float, gdp_deflator:float):
 def excess_reserves(deposits:float, reserve_requirement:float):
     excess_reserves = deposits - deposits*reserve_requirement
     return excess_reserves
+
+#Function to calculate GDP growth rate
+def gdp_growth_rate(current_year_gdp:float, last_year_gdp:float):
+    gdp_growth_rate = ((current_year_gdp-last_year_gdp)/last_year_gdp)*100
+    return gdp_growth_rate
