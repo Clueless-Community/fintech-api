@@ -600,10 +600,21 @@
 ```py
 {
   "Tag": "Discounted cash flow",
-            "Real feed in teriff": 1000,
-            "annual production": 200,
-            "wacc": 10,
-            "project lifetime" : 5,
-            "discounted cash flow": 20000%,
+  "Real feed in teriff": 1000,
+  "annual production": 200,
+  "wacc": 10,
+  "project lifetime" : 5,
+  "discounted cash flow": 20000%,
+}
+
+**GET** `/gdp-growth-rate`
+- Required parameters : `last_year_gdp`, `current_year_gdp`
+- Sample output
+```py
+{
+  "Tag": "GDP Growth Rate",
+  "Current Year GDP": 3386,
+  "Last Year GDP": 2800,
+  "GDP Growth Rate": 20.92857142857143
 }
 ```
