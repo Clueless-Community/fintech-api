@@ -606,6 +606,7 @@
   "project lifetime" : 5,
   "discounted cash flow": 20000%,
 }
+```
 
 **GET** `/gdp-growth-rate`
 - Required parameters : `last_year_gdp`, `current_year_gdp`
@@ -616,5 +617,35 @@
   "Current Year GDP": 3386,
   "Last Year GDP": 2800,
   "GDP Growth Rate": 20.92857142857143
+}
+```
+
+**GET** `/future_value_of_ordinary_due`
+
+- Required parameters : `periodic_payment`, `number_of_periods`, `effective_interest_rate`
+- Sample Output
+```py
+{
+
+  "Tag": "future_value_of_ordinary_due",
+  "Periodic payment" : "$1000",
+  "Number of periods" : "50",
+  "Effective interest rate" : "0.6%",
+  "Herfindal Index" :  "$58108.22"
+}
+
+```
+**GET** `/future_value_of_annuity_due`
+
+- Required parameters : `periodic_payment`, `number_of_periods`, `effective_interest_rate`
+- Sample Output
+```py
+{
+
+  "Tag": "future_value_of_annuity_due",
+  "Periodic payment" : "$10000",
+  "Number of periods" : "10",
+  "Effective interest rate" : "5%",
+  "Herfindal Index" :  "$132,067.87"
 }
 ```

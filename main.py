@@ -1152,3 +1152,41 @@ def gdp_growth_rate(current_year_gdp: float, last_year_gdp: float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate future value of the ordinary annuity
+@app.get(
+    "/future_value_of_ordinary_due",
+    tags=["future_value_of_ordinary_due"],
+    description="Calculating future value of ordinary annuity",
+)
+def future_value_of_ordinary_due(periodic_payment: float, number_of_periods: int, effective_interest_rate: float):
+    try:
+        future_value_of_ordinary_due = functions.future_value_of_ordinary_due(periodic_payment, number_of_periods, effective_interest_rate)
+        return {
+            "Tag": "Future value of the ordinary annuity",
+            "Periodic payment": periodic_payment,
+            "Number of periods": number_of_periods,
+            "Effective interest rate": effective_interest_rate,
+            "Number of periods": f"{future_value_of_ordinary_due}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate future value of the annuity due
+@app.get(
+    "/future_value_of_annuity_due",
+    tags=["future_value_of_annuity_due"],
+    description="Calculating future value of annuity due",
+)
+def future_value_of_annuity_due(periodic_payment: float, number_of_periods: int, effective_interest_rate: float):
+    try:
+        future_value_of_annuity_due = functions.future_value_of_annuity_due(periodic_payment, number_of_periods, effective_interest_rate)
+        return {
+            "Tag": "Future value of the ordinary annuity",
+            "Periodic payment": periodic_payment,
+            "Number of periods": number_of_periods,
+            "Effective interest rate": effective_interest_rate,
+            "Number of periods": f"{future_value_of_annuity_due}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
