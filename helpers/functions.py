@@ -498,11 +498,11 @@ def discounted_cash_flow(
     d_cash_flow = a * b
     return d_cash_flow
 
-
 # Function to calculate GDP growth rate
 def gdp_growth_rate(current_year_gdp: float, last_year_gdp: float):
     gdp_growth_rate = ((current_year_gdp - last_year_gdp) / last_year_gdp) * 100
     return gdp_growth_rate
+
 
 #function to calculate credit card equation
 def credit_card_equation(balance:float,monthly_payment:float,daily_interest_rate:float):
@@ -510,3 +510,14 @@ def credit_card_equation(balance:float,monthly_payment:float,daily_interest_rate
     b = np.log(1+daily_interest_rate)
     N = -(1//30)*(a//b)
     return N
+
+# function to calculate future value of the ordinary annuity
+def future_value_of_ordinary_due(periodic_payment: float, number_of_periods: int, effective_interest_rate: float):
+    future_value_of_ordinary_due = periodic_payment*(((1+effective_interest_rate)**(number_of_periods))-1)/effective_interest_rate
+    return future_value_of_ordinary_due
+
+# Function to calculate future value of annuity due
+def future_value_of_annuity_due(periodic_payment: float, number_of_periods: int, effective_interest_rate: float):
+    future_value_of_annuity_due = periodic_payment*(((1+effective_interest_rate)**(number_of_periods))-1)*(1+effective_interest_rate)/effective_interest_rate
+    return future_value_of_annuity_due
+
