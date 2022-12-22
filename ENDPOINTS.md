@@ -606,6 +606,7 @@
   "project lifetime" : 5,
   "discounted cash flow": 20000%,
 }
+```
 
 **GET** `/gdp-growth-rate`
 - Required parameters : `last_year_gdp`, `current_year_gdp`
@@ -616,5 +617,18 @@
   "Current Year GDP": 3386,
   "Last Year GDP": 2800,
   "GDP Growth Rate": 20.92857142857143
+}
+```
+
+**GET** `/discounted_cash_flow`
+- Required parameters : `balance`,`monthly_payment`,`daily_interest_rate`
+- Sample output
+```py
+{
+   "Tag": "Credit card equation",
+    "Balance": 10000,
+    "Monthly Payment": 3000,
+    "daily interest rate": 2,
+    "credit card equation": 3.037283729
 }
 ```

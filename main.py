@@ -1152,3 +1152,22 @@ def gdp_growth_rate(current_year_gdp: float, last_year_gdp: float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/credit_card_equation",
+    tags=["credit_card_equation"],
+    description="Credit Card Equation",
+)
+def credit_card_equation(balance:float,monthly_payment:float,daily_interest_rate:float):
+    try:
+        N = functions.credit_card_equation(balance,monthly_payment,daily_interest_rate)
+        return {
+            "Tag": "Credit card equation",
+            "Balance": balance,
+            "Monthly Payment": monthly_payment,
+            "daily interest rate": daily_interest_rate,
+            "credit card equation": f"{N}%"
+        }   
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
