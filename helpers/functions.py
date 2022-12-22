@@ -1,4 +1,6 @@
 import math
+import numpy as np
+import pandas as pd
 
 # Function to Calculate Simmple Interest Rate
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
@@ -50,7 +52,7 @@ def compound_interest(
 
 # Function to Calculate Inflation
 def inflation(present_amount: float, inflation_rate: float, years: int):
-    future_amount = present_amount * (pow((1 + inflation_rate/100), years))
+    future_amount = present_amount * (pow((1 + inflation_rate / 100), years))
     return future_amount
 
 
@@ -73,7 +75,7 @@ def certificate_of_deposit(
 # Function to Calculate Return on Investment
 def return_on_investment(current_value_of_investment: float, cost_of_investment: float):
     roi = (current_value_of_investment - cost_of_investment) / cost_of_investment
-    roi*=100
+    roi *= 100
     return roi
 
 
@@ -174,7 +176,6 @@ def price_to_earning_ratio(share_price: float, earnings_per_share: float):
     return p_e_ratio
 
 
-
 # Function to calculate the Dividend yield ratio:
 def dividend_yield_ratio(dividend_per_share: float, share_price: float):
     dividend_yield = dividend_per_share // share_price
@@ -219,163 +220,239 @@ def markup_percentage(price: float, cost: float):
     markup_percentage = ((price - cost) / cost) * 100
     return markup_percentage
 
+
 # Function to calculate Sharpe Ratio
-def sharpe_ratio(portfolio_return: float, risk_free_rate: float,standard_deviation_of_portfolio: float):
-    sharpe_ratio = (portfolio_return - risk_free_rate)/standard_deviation_of_portfolio
+def sharpe_ratio(
+    portfolio_return: float,
+    risk_free_rate: float,
+    standard_deviation_of_portfolio: float,
+):
+    sharpe_ratio = (portfolio_return - risk_free_rate) / standard_deviation_of_portfolio
     return sharpe_ratio
 
 
-#Function to calculate Purchasing Power
-def purchasing_power(initial_amount:float,annual_inflation_rate:float,time:float):
-    a= initial_amount* ((100/(100+annual_inflation_rate))**time)
+# Function to calculate Purchasing Power
+def purchasing_power(initial_amount: float, annual_inflation_rate: float, time: float):
+    a = initial_amount * ((100 / (100 + annual_inflation_rate)) ** time)
     return a
 
-#Function to create Monthly EMI
-def monthly_emi(loan_amt:float,interest_rate:float,number_of_installments:float):
-    emi = loan_amt * interest_rate * ((1+interest_rate)**number_of_installments)/((1+interest_rate)**number_of_installments - 1)
+
+# Function to create Monthly EMI
+def monthly_emi(loan_amt: float, interest_rate: float, number_of_installments: float):
+    emi = (
+        loan_amt
+        * interest_rate
+        * ((1 + interest_rate) ** number_of_installments)
+        / ((1 + interest_rate) ** number_of_installments - 1)
+    )
     return emi
 
-#Function to calculate doubling time
-def doubling_time(r:float):
-    t= math.log(2)/math.log(1+ (r/100))
+
+# Function to calculate doubling time
+def doubling_time(r: float):
+    t = math.log(2) / math.log(1 + (r / 100))
     return t
 
 
-#Function to calculate Weighted Average
-def weighted_average(ratio:list,rates:list):
-    wa=0
+# Function to calculate Weighted Average
+def weighted_average(ratio: list, rates: list):
+    wa = 0
     for i in range(len(ratio)):
-        wa= wa+ ratio[i]*rates[i]
+        wa = wa + ratio[i] * rates[i]
     # print("Weighted Average returns: ",wa)
     return wa
 
 
 # Function to calculate calculate Capital Asset Pricing Model
-def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security: float, expected_market_return: float):
-    capital_asset_expected_return = risk_free_interest_rate + beta_of_security*(expected_market_return - risk_free_interest_rate)
+def Capital_Asset_Pricing_Model(
+    risk_free_interest_rate: float,
+    beta_of_security: float,
+    expected_market_return: float,
+):
+    capital_asset_expected_return = risk_free_interest_rate + beta_of_security * (
+        expected_market_return - risk_free_interest_rate
+    )
     return capital_asset_expected_return
 
-#Function to calculate cost of equity:
-def cost_of_equity(risk_free_rate_of_return:float,Beta:float,market_rate_of_return:float):
-    costOfEquity = risk_free_rate_of_return + Beta *(market_rate_of_return-risk_free_rate_of_return)
+
+# Function to calculate cost of equity:
+def cost_of_equity(
+    risk_free_rate_of_return: float, Beta: float, market_rate_of_return: float
+):
+    costOfEquity = risk_free_rate_of_return + Beta * (
+        market_rate_of_return - risk_free_rate_of_return
+    )
     return costOfEquity
 
+
 # Function to calculate cost of goods sold
-def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
+def cost_of_goods_sold(
+    beginning_inventory: float, purchases: float, ending_inventory: float
+):
     cogs = beginning_inventory + purchases - ending_inventory
     return cogs
+
+
 # Function to calculate Rule of 72
-def rule_of_72(rate_of_roi:float):
-    time_period = 72/rate_of_roi
+def rule_of_72(rate_of_roi: float):
+    time_period = 72 / rate_of_roi
     return time_period
 
+
 # Function to calculate Acid test ratio
-def acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:float,current_liabilities:float):
+def acid_test_ratio(
+    cash: float,
+    marketable_securitie: float,
+    accounts_receivable: float,
+    current_liabilities: float,
+):
     ratio = (cash + marketable_securitie + accounts_receivable) / current_liabilities
-    return round(ratio,2)
+    return round(ratio, 2)
+
+
 # Function to calculate inflation adjusted return
 def inflation_adjusted_return(
-    beginning_price:float,
-    ending_price:float,
-    dividends:float,
-    beginning_cpi_level:float,
-    ending_cpi__level:float
-    ):
-        stock_return = (ending_price-beginning_price+dividends) / beginning_price
+    beginning_price: float,
+    ending_price: float,
+    dividends: float,
+    beginning_cpi_level: float,
+    ending_cpi__level: float,
+):
+    stock_return = (ending_price - beginning_price + dividends) / beginning_price
 
-        inflation = (ending_cpi__level - beginning_cpi_level) / beginning_cpi_level
+    inflation = (ending_cpi__level - beginning_cpi_level) / beginning_cpi_level
 
-        inflation_adj = ((1+stock_return)/(1+inflation) -1)*100
-        return round(inflation_adj,2)
+    inflation_adj = ((1 + stock_return) / (1 + inflation) - 1) * 100
+    return round(inflation_adj, 2)
+
+
 # Function to calculate compound annual growth rate
-def compound_annual_growth_rate(beginning_value:float,ending_value:float,years:int):
-    rate = (pow((beginning_value/ending_value),1/years)-1) * 100
-    return round(rate,1)
+def compound_annual_growth_rate(
+    beginning_value: float, ending_value: float, years: int
+):
+    rate = (pow((beginning_value / ending_value), 1 / years) - 1) * 100
+    return round(rate, 1)
+
 
 # Function to calculate current liability coverage ratio
-def current_liability_coverage_ratio(net_cash_from_operating_activities: float, total_current_liabilities: float, number_of_liabilities: int):
-    average_current_liabilities = total_current_liabilities/number_of_liabilities
-    current_liability_coverage_ratio = net_cash_from_operating_activities/average_current_liabilities
+def current_liability_coverage_ratio(
+    net_cash_from_operating_activities: float,
+    total_current_liabilities: float,
+    number_of_liabilities: int,
+):
+    average_current_liabilities = total_current_liabilities / number_of_liabilities
+    current_liability_coverage_ratio = (
+        net_cash_from_operating_activities / average_current_liabilities
+    )
     return current_liability_coverage_ratio
 
-#Function to calculate Levered beta:
-def levered_beta(unlevered_beta:float,tax_rate:float,debt:float,equity:float):
-    l_beta = unlevered_beta*(1+(1-tax_rate)*(debt//equity))
+
+# Function to calculate Levered beta:
+def levered_beta(unlevered_beta: float, tax_rate: float, debt: float, equity: float):
+    l_beta = unlevered_beta * (1 + (1 - tax_rate) * (debt // equity))
     return l_beta
 
-#Function to calculate monthly payment:
-def monthly_payment(principal:float,interest_rate:float,number_of_periods:float,payments_per_period:float):
-    a = principal*(interest_rate//payments_per_period)
-    b = 1 - (1+(interest_rate//payments_per_period))**(-payments_per_period*number_of_periods)
-    monthly_pay = a//b
+
+# Function to calculate monthly payment:
+def monthly_payment(
+    principal: float,
+    interest_rate: float,
+    number_of_periods: float,
+    payments_per_period: float,
+):
+    a = principal * (interest_rate // payments_per_period)
+    b = 1 - (1 + (interest_rate // payments_per_period)) ** (
+        -payments_per_period * number_of_periods
+    )
+    monthly_pay = a // b
     return monthly_pay
-#Function to calculate Duration With Convexity Adjustment
-def duration(rate:float,coupon_rate:float,frequency:float,face_value:float,settlement_date:float,maturity_date:float):
-    import numpy as np
-    import pandas as pd
+
+
+# Function to calculate Duration With Convexity Adjustment
+def duration(
+    rate: float,
+    coupon_rate: float,
+    frequency: float,
+    face_value: float,
+    settlement_date: float,
+    maturity_date: float,
+):
+
     try:
-        settlement_date=pd.to_datetime(settlement_date,format="%d/%m/%Y")
+        settlement_date = pd.to_datetime(settlement_date, format="%d/%m/%Y")
 
     except:
-        settlement_date=pd.to_datetime(settlement_date,format="%d-%m-%Y")
+        settlement_date = pd.to_datetime(settlement_date, format="%d-%m-%Y")
 
     try:
-        maturity_date=pd.to_datetime(maturity_date,format="%d/%m/%Y")
+        maturity_date = pd.to_datetime(maturity_date, format="%d/%m/%Y")
     except:
-        maturity_date=pd.to_datetime(maturity_date,format="%d-%m-%Y")
+        maturity_date = pd.to_datetime(maturity_date, format="%d-%m-%Y")
 
-    data=pd.DataFrame()
-    rate=rate/100
-    coupon_rate=coupon_rate/100
+    data = pd.DataFrame()
+    rate = rate / 100
+    coupon_rate = coupon_rate / 100
 
-    n=pd.to_numeric(((pd.to_datetime(maturity_date)-pd.to_datetime(settlement_date))/365).days)
-    total_payment=n*frequency
-    coupon_payment=coupon/frequency*face_value
-    payment=[coupon_payment]*(total_payment-1)+[coupon_payment+face_value]
-    data['period']=pd.DataFrame(np.arange(1,total_payment+1))
-    data['payment']=pd.DataFrame(payment)
-    data['dcoupon']=data['payment']/((1+rate/frequency)**data['period'])
-    data['pv']=data['dcoupon']/frequency*data['period']/data['dcoupon'].sum()
-    duration=data['pv'].sum()
-    m_duration=duration/(1+rate/frequency)
+    n = pd.to_numeric(
+        ((pd.to_datetime(maturity_date) - pd.to_datetime(settlement_date)) / 365).days
+    )
+    total_payment = n * frequency
+    coupon_payment = coupon_rate / frequency * face_value
+    payment = [coupon_payment] * (total_payment - 1) + [coupon_payment + face_value]
+    data["period"] = pd.DataFrame(np.arange(1, total_payment + 1))
+    data["payment"] = pd.DataFrame(payment)
+    data["dcoupon"] = data["payment"] / ((1 + rate / frequency) ** data["period"])
+    data["pv"] = data["dcoupon"] / frequency * data["period"] / data["dcoupon"].sum()
+    duration = data["pv"].sum()
+    m_duration = duration / (1 + rate / frequency)
 
-    factor=1/(data['dcoupon'].sum()*(1+rate/frequency)**2)
-    data['cf']=data['dcoupon']*(data['period']**2+data['period'])/(1+rate/frequency)**data['period']
-    convexity=factor*data['cf'].sum()
+    factor = 1 / (data["dcoupon"].sum() * (1 + rate / frequency) ** 2)
+    data["cf"] = (
+        data["dcoupon"]
+        * (data["period"] ** 2 + data["period"])
+        / (1 + rate / frequency) ** data["period"]
+    )
+    convexity = factor * data["cf"].sum()
 
-    result=round(duration,3)
+    result = round(duration, 3)
 
     return result
 
-# Function to calculate current ratio
-def current_ratio(total_current_assets:float,total_liabilities:float):
-    ratio = total_current_assets / total_liabilities
-    return round(ratio,3)
 
-#Function to calculate inventory turnover ratio
-def inventory_turnover_ratio(cost_of_goods_sold:float,beginning_inventory:float,ending_inventory:float):
+# Function to calculate current ratio
+def current_ratio(total_current_assets: float, total_liabilities: float):
+    ratio = total_current_assets / total_liabilities
+    return round(ratio, 3)
+
+
+# Function to calculate inventory turnover ratio
+def inventory_turnover_ratio(
+    cost_of_goods_sold: float, beginning_inventory: float, ending_inventory: float
+):
     avg_inventory = (beginning_inventory + ending_inventory) / 2
     ratio = cost_of_goods_sold / avg_inventory
-    return round(ratio,2)
+    return round(ratio, 2)
 
-#Function to calculate Inflation Rate
-def inflation_rate(bigger_year:int, smaller_year:int, base_year:int):
-    inflation_rate = ((bigger_year-smaller_year)/base_year)*100
+
+# Function to calculate Inflation Rate
+def inflation_rate(bigger_year: int, smaller_year: int, base_year: int):
+    inflation_rate = ((bigger_year - smaller_year) / base_year) * 100
     return inflation_rate
+
 
 # Function to calculate Herfindal index
 def herfindal_Index(Firms_market_shares: str):
     market_share_list = []
     i = 0
     breaker = 0
-    while(i < len(Firms_market_shares)):
+    while i < len(Firms_market_shares):
         share = ""
-        if(Firms_market_shares[i] == " "):
+        if Firms_market_shares[i] == " ":
             for j in range(breaker, i):
                 share = share + Firms_market_shares[j]
             market_share_list.append(int(share))
-            breaker = i+1
-        i = i+1
+            breaker = i + 1
+        i = i + 1
     herfindal_Index = 0
     for i in market_share_list:
         herfindal_Index = herfindal_Index + i**2
@@ -383,39 +460,46 @@ def herfindal_Index(Firms_market_shares: str):
     return herfindal_Index
 
 
-#function to calculate discount opex
-def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
-    a = annual_opex//wacc
-    b = 1 - 1//((1+wacc)**project_lifetime)
-    dis_opex = a*b
+# function to calculate discount opex
+def discount_opex(annual_opex: float, wacc: float, project_lifetime: float):
+    a = annual_opex // wacc
+    b = 1 - 1 // ((1 + wacc) ** project_lifetime)
+    dis_opex = a * b
     return dis_opex
 
-#function to calculate project efficiency
-def project_efficiency(annual_production:float,collector_surface:float,dni:float):
-    project_eff = annual_production//(collector_surface*dni)
+
+# function to calculate project efficiency
+def project_efficiency(annual_production: float, collector_surface: float, dni: float):
+    project_eff = annual_production // (collector_surface * dni)
     return project_eff
 
-#Function to calculate Real GDP
-def real_gdp(nominal_gdp:float, gdp_deflator:float):
-    real_gdp = (nominal_gdp/gdp_deflator)*100
+
+# Function to calculate Real GDP
+def real_gdp(nominal_gdp: float, gdp_deflator: float):
+    real_gdp = (nominal_gdp / gdp_deflator) * 100
     return real_gdp
 
-#Function to calculate excess reserves
-def excess_reserves(deposits:float, reserve_requirement:float):
-    excess_reserves = deposits - deposits*reserve_requirement
+
+# Function to calculate excess reserves
+def excess_reserves(deposits: float, reserve_requirement: float):
+    excess_reserves = deposits - deposits * reserve_requirement
     return excess_reserves
 
 
-#function to calculate discounted cash flow
-def discounted_cash_flow(real_feed_in_tariff:float,annual_production:float,wacc:float,project_lifetime:float):
-    a = (real_feed_in_tariff*annual_production)//wacc
-    b = (1-(1//(1+wacc)**project_lifetime))
-    d_cash_flow = a*b
+# function to calculate discounted cash flow
+def discounted_cash_flow(
+    real_feed_in_tariff: float,
+    annual_production: float,
+    wacc: float,
+    project_lifetime: float,
+):
+    a = (real_feed_in_tariff * annual_production) // wacc
+    b = 1 - (1 // (1 + wacc) ** project_lifetime)
+    d_cash_flow = a * b
     return d_cash_flow
 
 
-#Function to calculate GDP growth rate
-def gdp_growth_rate(current_year_gdp:float, last_year_gdp:float):
-    gdp_growth_rate = ((current_year_gdp-last_year_gdp)/last_year_gdp)*100
+# Function to calculate GDP growth rate
+def gdp_growth_rate(current_year_gdp: float, last_year_gdp: float):
+    gdp_growth_rate = ((current_year_gdp - last_year_gdp) / last_year_gdp) * 100
     return gdp_growth_rate
-

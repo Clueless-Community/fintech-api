@@ -196,7 +196,9 @@ def inflation(annual_interest_rate: float, compounding_period: int):
 )
 def return_on_investment(current_value_of_investment: float, cost_of_investment: float):
     try:
-        roi = functions.return_on_investment(current_value_of_investment, cost_of_investment)
+        roi = functions.return_on_investment(
+            current_value_of_investment, cost_of_investment
+        )
 
         return {
             "Tag": "Return on Investment",
@@ -375,14 +377,14 @@ def put_call_parity(call_price: float, put_price: float, strike_price: float):
 def break_even_point(fixed_cost: float, selling_price: float, variable_cost: float):
     try:
 
-        bep = functions.break_even_point(fixed_cost,selling_price,variable_cost)
-        return{
-            "Tag" : "Break Even Point (BEP)",
-            "Fixed costs" : fixed_cost,
-            "Selling price per unit" : selling_price,
-            "Variable cost per unit" : variable_cost,
-            "Break Even Point in units" : f"{bep[0]}",
-            "Break Even Point in Rupees" : f"{bep[1]}",
+        bep = functions.break_even_point(fixed_cost, selling_price, variable_cost)
+        return {
+            "Tag": "Break Even Point (BEP)",
+            "Fixed costs": fixed_cost,
+            "Selling price per unit": selling_price,
+            "Variable cost per unit": variable_cost,
+            "Break Even Point in units": f"{bep[0]}",
+            "Break Even Point in Rupees": f"{bep[1]}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -390,11 +392,9 @@ def break_even_point(fixed_cost: float, selling_price: float, variable_cost: flo
 
 # Endpoint to calculate free cash flow to firm
 @app.get(
-
     "/fcff",
-    tags = ["fcff"],
-    description = "Calculate Free Cash Flow to Firm",
-
+    tags=["fcff"],
+    description="Calculate Free Cash Flow to Firm",
 )
 def free_cash_flow_to_firm(
     sales: float,
@@ -410,14 +410,16 @@ def free_cash_flow_to_firm(
         ebit = ebitda - depreciation
         ebt = ebit - interest
 
-        eat = ebt - ebt*(tax_rate*0.01)
-        fcff = functions.free_cash_flow_to_firm(sales,operating_cost,depreciation,interest,tax_rate,fcInv,wcInv)
-        return{
-            "Tag" : "Free Cash Flow to Firm (FCFF)",
-            "Earnings before interest, taxes, depreciation and amortization" : f"{ebitda}",
-            "Earnings before interest and taxes : " : f"{ebit}" ,
-            "Net Income" : f"{eat}",
-            "Free Cash Flow to Firm" : f"{fcff}",
+        eat = ebt - ebt * (tax_rate * 0.01)
+        fcff = functions.free_cash_flow_to_firm(
+            sales, operating_cost, depreciation, interest, tax_rate, fcInv, wcInv
+        )
+        return {
+            "Tag": "Free Cash Flow to Firm (FCFF)",
+            "Earnings before interest, taxes, depreciation and amortization": f"{ebitda}",
+            "Earnings before interest and taxes : ": f"{ebit}",
+            "Net Income": f"{eat}",
+            "Free Cash Flow to Firm": f"{fcff}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -569,24 +571,32 @@ def markup_percentage(price: float, cost: float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # Endpoint to calculate Sharpe ratio
 @app.get(
     "/sharpe_ratio",
     tags=["sharpe_ratio"],
     description="Calculate sharpe ratio",
 )
-def sharpe_ratio(portfolio_return: float, risk_free_rate: float, standard_deviation_of_portfolio: float):
+def sharpe_ratio(
+    portfolio_return: float,
+    risk_free_rate: float,
+    standard_deviation_of_portfolio: float,
+):
     try:
-        sharpe_ratio = functions.sharpe_ratio(portfolio_return,risk_free_rate,standard_deviation_of_portfolio)
+        sharpe_ratio = functions.sharpe_ratio(
+            portfolio_return, risk_free_rate, standard_deviation_of_portfolio
+        )
         return {
             "Tag": "Sharpe Ratio",
             "Portfolio Return": portfolio_return,
             "Risk Free Rate": risk_free_rate,
             "Standard Deviation of Portfolio": standard_deviation_of_portfolio,
-            "Sharpe Ratio": f"{sharpe_ratio}"
+            "Sharpe Ratio": f"{sharpe_ratio}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate purchase power
 @app.get(
@@ -594,18 +604,21 @@ def sharpe_ratio(portfolio_return: float, risk_free_rate: float, standard_deviat
     tags=["purchasing_power"],
     description="Calculate Purchasing Power",
 )
-def purchasing_power(initial_amount:float,annual_inflation_rate:float,time:float):
+def purchasing_power(initial_amount: float, annual_inflation_rate: float, time: float):
     try:
-        purchasing_power = functions.purchasing_power(initial_amount,annual_inflation_rate,time)
+        purchasing_power = functions.purchasing_power(
+            initial_amount, annual_inflation_rate, time
+        )
         return {
             "Tag": "Purchasing Power",
             "Initial Amount": initial_amount,
             "Annual Inflation Rate": annual_inflation_rate,
             "Time in years": time,
-            "Purchasing Power": f"{purchasing_power}"
+            "Purchasing Power": f"{purchasing_power}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate Monthly EMI
 @app.get(
@@ -613,18 +626,21 @@ def purchasing_power(initial_amount:float,annual_inflation_rate:float,time:float
     tags=["monthly_emi"],
     description="Monthly EMI",
 )
-def monthly_emi(loan_amt:float,interest_rate:float,number_of_installments:float):
+def monthly_emi(loan_amt: float, interest_rate: float, number_of_installments: float):
     try:
-        monthly_emi = functions.monthly_emi(loan_amt,interest_rate,number_of_installments)
+        monthly_emi = functions.monthly_emi(
+            loan_amt, interest_rate, number_of_installments
+        )
         return {
             "Tag": "Monthly EMI",
             "Loan Amount": loan_amt,
-            "Interest Rate":interest_rate,
+            "Interest Rate": interest_rate,
             "Number of Installments": number_of_installments,
-            "Total EMI": f"{monthly_emi}"
+            "Total EMI": f"{monthly_emi}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate doubling time
 @app.get(
@@ -632,16 +648,17 @@ def monthly_emi(loan_amt:float,interest_rate:float,number_of_installments:float)
     tags=["doubling_time"],
     description="Doubling Time",
 )
-def doubling_time(r:float):
+def doubling_time(r: float):
     try:
         doubling_time = functions.doubling_time(r)
         return {
             "Tag": "Doubling Time",
             "Rate of Interest": r,
-            "Time in years to double the money": f"{doubling_time}"
+            "Time in years to double the money": f"{doubling_time}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate weighted average
 @app.get(
@@ -649,17 +666,18 @@ def doubling_time(r:float):
     tags=["weighted_average"],
     description="Weighted Average",
 )
-def weighted_average(ratio:list,rates:list):
+def weighted_average(ratio: list, rates: list):
     try:
-        weighted_average = functions.weighted_average(ratio,rates)
+        weighted_average = functions.weighted_average(ratio, rates)
         return {
             "Tag": "Weighted Average",
             "Ratio of each investment principal": ratio,
             "Rates": rates,
-            "Weighted average : ":f'{weighted_average}'
+            "Weighted average : ": f"{weighted_average}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate Capital Asset Pricing Model
 @app.get(
@@ -667,18 +685,25 @@ def weighted_average(ratio:list,rates:list):
     tags=["Capital_Asset_Pricing_Model"],
     description="Calculating Capital Asset Pricing Model",
 )
-def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security: float, expected_market_return: float):
+def Capital_Asset_Pricing_Model(
+    risk_free_interest_rate: float,
+    beta_of_security: float,
+    expected_market_return: float,
+):
     try:
-        Capital_Asset_Pricing_Model = functions.Capital_Asset_Pricing_Model(risk_free_interest_rate,beta_of_security,expected_market_return)
+        Capital_Asset_Pricing_Model = functions.Capital_Asset_Pricing_Model(
+            risk_free_interest_rate, beta_of_security, expected_market_return
+        )
         return {
             "Tag": "Capital Asset Pricing Model",
             "Risk free interest rate": risk_free_interest_rate,
             "Beta of security": beta_of_security,
             "Expected market return": expected_market_return,
-            "Capital asset expected return": f"{Capital_Asset_Pricing_Model}"
-            }
+            "Capital asset expected return": f"{Capital_Asset_Pricing_Model}",
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate cost of equity
 @app.get(
@@ -686,115 +711,149 @@ def Capital_Asset_Pricing_Model(risk_free_interest_rate: float, beta_of_security
     tags=["cost_of_equity"],
     description="Calculate cost of equity",
 )
-def cost_of_equity(risk_free_rate_of_return:float,Beta:float,market_rate_of_return:float):
+def cost_of_equity(
+    risk_free_rate_of_return: float, Beta: float, market_rate_of_return: float
+):
     try:
-        costOfEquity = functions.cost_of_equity(risk_free_rate_of_return, Beta, market_rate_of_return)
+        costOfEquity = functions.cost_of_equity(
+            risk_free_rate_of_return, Beta, market_rate_of_return
+        )
         return {
             "Tag": "Cost of Equity",
             "Risk free rate of return": risk_free_rate_of_return,
             "Beta": Beta,
             "Market rate of return ": market_rate_of_return,
-            "Cost of equity": f"{costOfEquity}%"
-            }
+            "Cost of equity": f"{costOfEquity}%",
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate cost of goods sold
 @app.get(
     "/cogs",
-    tags = ["cogs"],
-    description = "Calculate Cost of Goods Sold",
+    tags=["cogs"],
+    description="Calculate Cost of Goods Sold",
 )
-def cost_of_goods_sold(beginning_inventory:float,purchases:float,ending_inventory:float):
+def cost_of_goods_sold(
+    beginning_inventory: float, purchases: float, ending_inventory: float
+):
     try:
-        cogs = functions.cost_of_goods_sold(beginning_inventory,purchases,ending_inventory)
-        return{
-            "Tag" : "Cost of Goods Sold",
-            "Beginning Inventory" : beginning_inventory,
-            "Purchases during the period" : purchases,
-            "Ending Inventory" : ending_inventory,
-            "Cost of Goods Sold(In Rupees)" : f"{cogs}"
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-# Endpoint to calculate rule of 72
-@app.get(
-    "/ruleof72",
-    tags = ["ruleof72"],
-    description = "Calculate Rule of 72",
-)
-def rule_of_72(rate_of_roi:float):
-    try:
-        time_period = functions.rule_of_72(rate_of_roi)
-        return{
-            "Tag" : "Rule of 72",
-            "Rate of ROI" : rate_of_roi,
-            "Time peroid in which investment get double(in years)" : f"{time_period}",
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-# Endpoint to calculate acid test ratio
-@app.get(
-    "/acid-test-ratio",
-    tags = ["acid-test-ratio"],
-    description = "Calculate Acid test ratio",
-)
-def acid_test_ratio(cash:float,marketable_securitie:float,accounts_receivable:float,current_liabilities:float):
-    try:
-        ratio = functions.acid_test_ratio(cash,marketable_securitie,accounts_receivable,current_liabilities)
-        return{
-            "Tag" : "Acid Test Ratio",
-            "Cash and Cash Equivalents" : cash,
-            "Marketable Securities" : marketable_securitie,
-            "Accounts Receivable" : accounts_receivable,
-            "Current Liabilities" : current_liabilities,
-            "Acid Test Ratio (Quick Ratio)" : f"{ratio}",
+        cogs = functions.cost_of_goods_sold(
+            beginning_inventory, purchases, ending_inventory
+        )
+        return {
+            "Tag": "Cost of Goods Sold",
+            "Beginning Inventory": beginning_inventory,
+            "Purchases during the period": purchases,
+            "Ending Inventory": ending_inventory,
+            "Cost of Goods Sold(In Rupees)": f"{cogs}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint to calculate inflation adjusted return
+
+# Endpoint to calculate rule of 72
 @app.get(
-    "/inflation-adjusted-return",
-    tags = ["inflation-adjusted-return"],
-    description = "Calculate Inflation Adjusted Return",
+    "/ruleof72",
+    tags=["ruleof72"],
+    description="Calculate Rule of 72",
 )
-def inflation_adjusted_return(
-    beginning_price:float,
-    ending_price:float,
-    dividends:float,
-    beginning_cpi_level:float,
-    ending_cpi__level:float
-    ):
+def rule_of_72(rate_of_roi: float):
     try:
-        stock_return = (ending_price-beginning_price+dividends) / beginning_price
-        inflation = (ending_cpi__level - beginning_cpi_level) / beginning_cpi_level
-        inflation_adj_return = functions.inflation_adjusted_return(beginning_price,ending_price,dividends,beginning_cpi_level,ending_cpi__level)
-        return{
-            "Tag" : "Inflation Adjusted Return",
-            "Stock Return" : f"{stock_return}%",
-            "Inflation Rate" : f"{inflation}%",
-            "Inflation Adjusted Return" : f"{inflation_adj_return}%" ,
+        time_period = functions.rule_of_72(rate_of_roi)
+        return {
+            "Tag": "Rule of 72",
+            "Rate of ROI": rate_of_roi,
+            "Time peroid in which investment get double(in years)": f"{time_period}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to calculate acid test ratio
+@app.get(
+    "/acid-test-ratio",
+    tags=["acid-test-ratio"],
+    description="Calculate Acid test ratio",
+)
+def acid_test_ratio(
+    cash: float,
+    marketable_securitie: float,
+    accounts_receivable: float,
+    current_liabilities: float,
+):
+    try:
+        ratio = functions.acid_test_ratio(
+            cash, marketable_securitie, accounts_receivable, current_liabilities
+        )
+        return {
+            "Tag": "Acid Test Ratio",
+            "Cash and Cash Equivalents": cash,
+            "Marketable Securities": marketable_securitie,
+            "Accounts Receivable": accounts_receivable,
+            "Current Liabilities": current_liabilities,
+            "Acid Test Ratio (Quick Ratio)": f"{ratio}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to calculate inflation adjusted return
+@app.get(
+    "/inflation-adjusted-return",
+    tags=["inflation-adjusted-return"],
+    description="Calculate Inflation Adjusted Return",
+)
+def inflation_adjusted_return(
+    beginning_price: float,
+    ending_price: float,
+    dividends: float,
+    beginning_cpi_level: float,
+    ending_cpi__level: float,
+):
+    try:
+        stock_return = (ending_price - beginning_price + dividends) / beginning_price
+        inflation = (ending_cpi__level - beginning_cpi_level) / beginning_cpi_level
+        inflation_adj_return = functions.inflation_adjusted_return(
+            beginning_price,
+            ending_price,
+            dividends,
+            beginning_cpi_level,
+            ending_cpi__level,
+        )
+        return {
+            "Tag": "Inflation Adjusted Return",
+            "Stock Return": f"{stock_return}%",
+            "Inflation Rate": f"{inflation}%",
+            "Inflation Adjusted Return": f"{inflation_adj_return}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 # Endpoint to calculate compound annual growth rate
 @app.get(
     "/cogr",
-    tags = ["cogr"],
-    description = "Calculate Compound Annual Growth Rate",
+    tags=["cogr"],
+    description="Calculate Compound Annual Growth Rate",
 )
-def compound_annual_growth_rate(beginning_value:float,ending_value:float,years:int):
+def compound_annual_growth_rate(
+    beginning_value: float, ending_value: float, years: int
+):
     try:
-        rate = functions.compound_annual_growth_rate(beginning_value,ending_value,years)
-        return{
-            "Tag" : "Coumpound Annual Growth Rate",
-            "Beginning Value" : beginning_value,
-            "Ending Value" : ending_value,
-            "Compound Annual Growth Rate" : f"{rate}%",
+        rate = functions.compound_annual_growth_rate(
+            beginning_value, ending_value, years
+        )
+        return {
+            "Tag": "Coumpound Annual Growth Rate",
+            "Beginning Value": beginning_value,
+            "Ending Value": ending_value,
+            "Compound Annual Growth Rate": f"{rate}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate current liability coverage ratio
 @app.get(
@@ -802,132 +861,159 @@ def compound_annual_growth_rate(beginning_value:float,ending_value:float,years:i
     tags=["current_liability_coverage_ratio"],
     description="Calculating current liability coverage ratio",
 )
-def current_liability_coverage_ratio(net_cash_from_operating_activities: float, total_current_liabilities: float, number_of_liabilities: int):
+def current_liability_coverage_ratio(
+    net_cash_from_operating_activities: float,
+    total_current_liabilities: float,
+    number_of_liabilities: int,
+):
     try:
-        current_liability_coverage_ratio = functions.current_liability_coverage_ratio(net_cash_from_operating_activities, total_current_liabilities, number_of_liabilities)
+        current_liability_coverage_ratio = functions.current_liability_coverage_ratio(
+            net_cash_from_operating_activities,
+            total_current_liabilities,
+            number_of_liabilities,
+        )
         return {
             "Tag": "current liability coverage ratio",
             "net cash from operating activities": net_cash_from_operating_activities,
             "total current liabilities": total_current_liabilities,
             "number of liabilities": number_of_liabilities,
-            "current liability coverage ratio": f"{current_liability_coverage_ratio}"
-            }
+            "current liability coverage ratio": f"{current_liability_coverage_ratio}",
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
     "/levered_beta",
     tags=["levered_beta"],
     description="Levered Beta",
 )
-def levered_beta(unlevered_beta:float,tax_rate:float,debt:float,equity:float):
+def levered_beta(unlevered_beta: float, tax_rate: float, debt: float, equity: float):
     try:
         l_beta = functions.levered_beta(unlevered_beta, tax_rate, debt, equity)
         return {
             "Tag": "Levered Beta",
             "Unlevered Beta": unlevered_beta,
-            "Tax rate":tax_rate,
+            "Tax rate": tax_rate,
             "debt": debt,
             "Equity": equity,
-            "Levered Beta": f"{l_beta}%"
+            "Levered Beta": f"{l_beta}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
     "/monthly_payment",
     tags=["monthly_payment"],
     description="Monthly payment",
 )
-def monthly_payment(principal:float,interest_rate:float,number_of_periods:float,payments_per_period:float):
+def monthly_payment(
+    principal: float,
+    interest_rate: float,
+    number_of_periods: float,
+    payments_per_period: float,
+):
     try:
-        monthly_pay = functions.monthly_payment(principal, interest_rate, number_of_periods, payments_per_period)
+        monthly_pay = functions.monthly_payment(
+            principal, interest_rate, number_of_periods, payments_per_period
+        )
         return {
             "Tag": "Monthly Payment",
             "Principal": principal,
             "Interest Rate": interest_rate,
-            "Number of Periods" : number_of_periods,
+            "Number of Periods": number_of_periods,
             "Payments per period": payments_per_period,
-            "Levered Beta": f"{monthly_pay}%"
+            "Levered Beta": f"{monthly_pay}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
     "/convexity_duration",
     tags=["convexity_duration"],
     description="Convexity Adjusted Duration",
 )
-def duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date):
+def duration(rate, coupon_rate, frequency, face_value, settlement_date, maturity_date):
     try:
-        duration = functions.duration(rate,coupon_rate,frequency,face_value,settlement_date,maturity_date)
+        duration = functions.duration(
+            rate, coupon_rate, frequency, face_value, settlement_date, maturity_date
+        )
         return {
             "Tag": "Convexity Adjusted Duration",
             "Market Rate": rate,
-            "Coupon rate":coupon_rate,
-            'Frequency':frequency,
+            "Coupon rate": coupon_rate,
+            "Frequency": frequency,
             "Face Value": face_value,
             "Settlement Date": settlement_date,
             "Maturity Date": maturity_date,
-            "Convexity Adjusted Duration":f'{duration}'
+            "Convexity Adjusted Duration": f"{duration}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate current ratio
 @app.get(
     "/current-ratio",
-    tags = ["current-ratio"],
-    description = "Current Ratio",
+    tags=["current-ratio"],
+    description="Current Ratio",
 )
-def current_ratio(total_current_assets:float,total_liabilities:float):
+def current_ratio(total_current_assets: float, total_liabilities: float):
     try:
-        ratio = functions.current_ratio(total_current_assets,total_liabilities)
-        return{
-            "Tag" : "Current Ratio",
-            "Total Current Assets" : total_current_assets,
-            "Total Liabilities" : total_liabilities,
-            "Current Ratio" : f"{ratio}",
+        ratio = functions.current_ratio(total_current_assets, total_liabilities)
+        return {
+            "Tag": "Current Ratio",
+            "Total Current Assets": total_current_assets,
+            "Total Liabilities": total_liabilities,
+            "Current Ratio": f"{ratio}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
- # Endpoint to calculate inventory turnover ratio
+
+# Endpoint to calculate inventory turnover ratio
 @app.get(
     "/inventory-turnover-ratio",
-    tags = ["inventory-turnover-ratio"],
-    description = "Inventory Turnover Ratio",
+    tags=["inventory-turnover-ratio"],
+    description="Inventory Turnover Ratio",
 )
-def inventory_turnover_ratio(cost_of_goods_sold:float,beginnning_inventory:float,ending_inventory:float):
+def inventory_turnover_ratio(
+    cost_of_goods_sold: float, beginnning_inventory: float, ending_inventory: float
+):
     try:
-        ratio = functions.inventory_turnover_ratio(cost_of_goods_sold,beginnning_inventory,ending_inventory)
-        return{
-            "Tag" : "Inventory Turnover Ratio",
-            "Cost of Goods Sold" : cost_of_goods_sold,
-            "Inventory Turnover Ratio" : f"{ratio}",
+        ratio = functions.inventory_turnover_ratio(
+            cost_of_goods_sold, beginnning_inventory, ending_inventory
+        )
+        return {
+            "Tag": "Inventory Turnover Ratio",
+            "Cost of Goods Sold": cost_of_goods_sold,
+            "Inventory Turnover Ratio": f"{ratio}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
- # Endpoint to calculate inflation rate
+# Endpoint to calculate inflation rate
 @app.get(
     "/inflation_rate",
-    tags = ["inflation_rate"],
-    description = "Inflation Rate",
+    tags=["inflation_rate"],
+    description="Inflation Rate",
 )
-def inflation_rate(bigger_year:int, smaller_year:int, base_year:int):
+def inflation_rate(bigger_year: int, smaller_year: int, base_year: int):
     try:
         inflation_rate = functions.inflation_rate(bigger_year, smaller_year, base_year)
-        return{
-            "Tag" : "Inflation Rate",
+        return {
+            "Tag": "Inflation Rate",
             "Bigger Year": bigger_year,
             "Smaller Year": smaller_year,
             "Base Year": base_year,
-            "Inflation Rate" : inflation_rate,
-            }
+            "Inflation Rate": inflation_rate,
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate Herfindal index
 @app.get(
@@ -941,17 +1027,18 @@ def herfindal_Index(Firms_market_shares: str):
         return {
             "Tag": "Herfindal Index",
             "Firms market shares": Firms_market_shares,
-            "Herfindal Index": f"{herfindal_Index}"
-            }
+            "Herfindal Index": f"{herfindal_Index}",
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
     "/discount_opex",
     tags=["discount_opex"],
     description="Discount OPEX",
 )
-def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
+def discount_opex(annual_opex: float, wacc: float, project_lifetime: float):
     try:
         dis_opex = functions.discount_opex(annual_opex, wacc, project_lifetime)
         return {
@@ -959,7 +1046,7 @@ def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
             "Annual OPEX": annual_opex,
             "WACC": wacc,
             "project lifetime": project_lifetime,
-            "Discount opex": f"{dis_opex}%"
+            "Discount opex": f"{dis_opex}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -970,25 +1057,28 @@ def discount_opex(annual_opex:float,wacc:float,project_lifetime:float):
     tags=["project_efficiency"],
     description="Project Efficiency",
 )
-def project_efficiency(annual_production:float,collector_surface:float,dni:float):
+def project_efficiency(annual_production: float, collector_surface: float, dni: float):
     try:
-        project_eff = functions.project_efficiency(annual_production, collector_surface, dni)
+        project_eff = functions.project_efficiency(
+            annual_production, collector_surface, dni
+        )
         return {
             "Tag": "Project efficiency",
             "Annual production": annual_production,
             "collector surface": collector_surface,
             "dni": dni,
-            "Discount opex": f"{project_eff}%"
+            "Discount opex": f"{project_eff}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
     "/real-gdp",
     tags=["real_gdp"],
     description="Real GDP",
 )
-def real_gdp(nominal_gdp:float, gdp_deflator:float):
+def real_gdp(nominal_gdp: float, gdp_deflator: float):
     try:
         real_gdp = functions.real_gdp(nominal_gdp, gdp_deflator)
         return {
@@ -1000,12 +1090,13 @@ def real_gdp(nominal_gdp:float, gdp_deflator:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 @app.get(
     "/excess_reserves",
     tags=["excess_reserves"],
     description="Excess Reserves",
 )
-def excess_reserves(deposits:float, reserve_requirement:float):
+def excess_reserves(deposits: float, reserve_requirement: float):
     try:
         excess_reserves = functions.excess_reserves(deposits, reserve_requirement)
         return {
@@ -1023,26 +1114,34 @@ def excess_reserves(deposits:float, reserve_requirement:float):
     tags=["discounted_cash_flow"],
     description="Discounted cash flow",
 )
-def discounted_cash_flow(real_feed_in_tariff:float,annual_production:float,wacc:float,project_lifetime:float):
+def discounted_cash_flow(
+    real_feed_in_tariff: float,
+    annual_production: float,
+    wacc: float,
+    project_lifetime: float,
+):
     try:
-        d_cash_flow = functions.discounted_cash_flow(real_feed_in_teriff,annual_production,wacc,project_lifetime)
+        d_cash_flow = functions.discounted_cash_flow(
+            real_feed_in_tariff, annual_production, wacc, project_lifetime
+        )
         return {
             "Tag": "Discounted cash flow",
-            "Real feed in teriff": real_feed_in_teriff,
+            "Real feed in teriff": real_feed_in_tariff,
             "annual production": annual_production,
             "wacc": wacc,
-            "project lifetime" : project_lifetime,
+            "project lifetime": project_lifetime,
             "discounted cash flow": f"{d_cash_flow}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
     "/gdp-growth-rate",
     tags=["gdp_growth_rate"],
     description="GDP Growth Rate",
 )
-def gdp_growth_rate(current_year_gdp:float, last_year_gdp:float):
+def gdp_growth_rate(current_year_gdp: float, last_year_gdp: float):
     try:
         gdp_growth_rate = functions.gdp_growth_rate(current_year_gdp, last_year_gdp)
         return {
@@ -1053,4 +1152,3 @@ def gdp_growth_rate(current_year_gdp:float, last_year_gdp:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
