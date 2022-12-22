@@ -620,8 +620,19 @@
 }
 ```
 
-**GET** `/future_value_of_ordinary_due`
+**GET** `/discounted_cash_flow`
+- Required parameters : `balance`,`monthly_payment`,`daily_interest_rate`
+- Sample output
+```py
+{
+   "Tag": "Credit card equation",
+    "Balance": 10000,
+    "Monthly Payment": 3000,
+    "daily interest rate": 2,
+    "credit card equation": 3.037283729
+}
 
+**GET** `/future_value_of_ordinary_due`
 - Required parameters : `periodic_payment`, `number_of_periods`, `effective_interest_rate`
 - Sample Output
 ```py
@@ -636,12 +647,10 @@
 
 ```
 **GET** `/future_value_of_annuity_due`
-
 - Required parameters : `periodic_payment`, `number_of_periods`, `effective_interest_rate`
 - Sample Output
 ```py
 {
-
   "Tag": "future_value_of_annuity_due",
   "Periodic payment" : "$10000",
   "Number of periods" : "10",
