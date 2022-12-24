@@ -521,3 +521,7 @@ def future_value_of_annuity_due(periodic_payment: float, number_of_periods: int,
     future_value_of_annuity_due = periodic_payment*(((1+effective_interest_rate)**(number_of_periods))-1)*(1+effective_interest_rate)/effective_interest_rate
     return future_value_of_annuity_due
 
+# Function to calculate present value of annuity due
+def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int, rate_per_period: float):
+    present_value_of_annuity_due = periodic_payment + periodic_payment*((1-(1+rate_per_period)**(-number_of_periods+1))/rate_per_period)
+    return present_value_of_annuity_due
