@@ -525,3 +525,10 @@ def future_value_of_annuity_due(periodic_payment: float, number_of_periods: int,
 def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int, rate_per_period: float):
     present_value_of_annuity_due = periodic_payment + periodic_payment*((1-(1+rate_per_period)**(-number_of_periods+1))/rate_per_period)
     return present_value_of_annuity_due
+
+#function to calculate compound annual growth rate
+def compound_annual_growth_rate_1(ending_value:float,beginning_value:float,number_of_periods:float):
+    a = (ending_value//beginning_value)**(1//number_of_periods)
+    cagr = a - 1
+    return cagr
+

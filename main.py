@@ -1229,3 +1229,24 @@ def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@app.get(
+    "/compound_annual_growth_rate",
+    tags=["compound_annual_growth_rate"],
+    description="Calculating compound annual growth rate",
+)
+def compound_annual_growth_rate_1(ending_value:float,beginning_value:float,number_of_periods:float):
+    try:
+        cagr = functions.compound_annual_growth_rate_1(ending_value,beginning_value,number_of_periods)
+        return {
+            "Tag": "compound annual growth rate 1",
+            "ending_value": ending_value,
+            "beginning value": beginning_value,
+            "Number of periods": number_of_periods,
+            "compound annual growth rate": f"{cagr}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
