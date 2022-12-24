@@ -1221,7 +1221,7 @@ def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int
     try:
         present_value_of_annuity_due = functions.present_value_of_annuity_due(periodic_payment, number_of_periods, rate_per_period)
         return {
-            "Tag": "Future value of the ordinary annuity",
+            "Tag": "Present value of annuity due",
             "Periodic payment": periodic_payment,
             "Number of periods": number_of_periods,
             "Rate Per Period": rate_per_period,

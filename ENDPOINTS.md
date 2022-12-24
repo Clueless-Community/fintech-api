@@ -646,6 +646,7 @@
 }
 
 ```
+
 **GET** `/future_value_of_annuity_due`
 - Required parameters : `periodic_payment`, `number_of_periods`, `effective_interest_rate`
 - Sample Output
@@ -656,5 +657,18 @@
   "Number of periods" : "10",
   "Effective interest rate" : "5%",
   "Herfindal Index" :  "$132,067.87"
+}
+```
+
+**GET** `/present_value_of_annuity_due`
+- Required parameters : `periodic_payment`, `number_of_periods`, `rate_per_period`
+- Sample Output
+```py
+{
+  "Tag": "Present value of annuity due",
+  "Periodic payment": 10000,
+  "Number of periods": 10,
+  "Rate Per Period": 5,
+  "PV of Annuity Due": "11999.99980154194"
 }
 ```
