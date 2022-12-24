@@ -1168,7 +1168,7 @@ def credit_card_equation(balance:float,monthly_payment:float,daily_interest_rate
             "Monthly Payment": monthly_payment,
             "daily interest rate": daily_interest_rate,
             "credit card equation": f"{N}%"
-        }   
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -1207,6 +1207,25 @@ def future_value_of_annuity_due(periodic_payment: float, number_of_periods: int,
             "Number of periods": number_of_periods,
             "Effective interest rate": effective_interest_rate,
             "Number of periods": f"{future_value_of_annuity_due}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate present value of the annuity due
+@app.get(
+    "/present_value_of_annuity_due",
+    tags=["present_value_of_annuity_due"],
+    description="Calculating present value of annuity due",
+)
+def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int, rate_per_period: float):
+    try:
+        present_value_of_annuity_due = functions.present_value_of_annuity_due(periodic_payment, number_of_periods, rate_per_period)
+        return {
+            "Tag": "Future value of the ordinary annuity",
+            "Periodic payment": periodic_payment,
+            "Number of periods": number_of_periods,
+            "Rate Per Period": rate_per_period,
+            "PV of Annuity Due": f"{present_value_of_annuity_due}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
