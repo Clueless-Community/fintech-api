@@ -672,3 +672,16 @@
   "PV of Annuity Due": "11999.99980154194"
 }
 ```
+
+**GET** `/compound_annual_growth_rate`
+- Required parameters : `ending_value`, `beginning_value`,`number_of_periods`
+- Sample Output
+```py
+{
+ "Tag": "compound annual growth rate 1",
+ "ending_value": 10000,
+ "beginning value": 100,
+ "Number of periods": 2,
+ "compound annual growth rate": 99%,
+}
+```
