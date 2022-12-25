@@ -536,3 +536,8 @@ def compound_annual_growth_rate_1(ending_value:float,beginning_value:float,numbe
 def loan_to_value(mortage_value:float,appraised_value: float):
     ratio = mortage_value / appraised_value
     return ratio*100
+
+#Function to calculate Retention Rate
+def retention_ratio(net_income:float,dividends:float):
+    retention_ratio = (net_income-dividends)/net_income
+    return retention_ratio
