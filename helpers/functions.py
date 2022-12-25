@@ -532,3 +532,7 @@ def compound_annual_growth_rate_1(ending_value:float,beginning_value:float,numbe
     cagr = a - 1
     return cagr
 
+# Function to calculate loan to value
+def loan_to_value(mortage_value:float,appraised_value: float):
+    ratio = mortage_value / appraised_value
+    return ratio*100
