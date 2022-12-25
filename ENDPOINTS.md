@@ -695,3 +695,16 @@
   "Appraised Property Value": 100000,
   "Loan to Value ratio": "90.0%"
 }
+```
+
+**GET** `/retention-ratio`
+- Required parameters : `net_income` and `dividends`
+- Sample Output
+```py
+{
+  "Tag": "Retention Ratio",
+  "Net Income": 580000,
+  "Dividends": 23000,
+  "Retention Ratio": 0.9603448275862069
+}
+```
