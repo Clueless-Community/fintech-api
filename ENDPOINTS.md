@@ -685,3 +685,13 @@
  "compound annual growth rate": 99%,
 }
 ```
+**GET** `/loan-to-value`
+- Required parameters : `mortage_value` and `appraised_value`
+- Sample Output
+```py
+{
+  "Tag": "Loan to Value (LTV) ratio",
+  "Mortage Value": 90000,
+  "Appraised Property Value": 100000,
+  "Loan to Value ratio": "90.0%"
+}
