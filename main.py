@@ -1249,4 +1249,21 @@ def compound_annual_growth_rate_1(ending_value:float,beginning_value:float,numbe
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
+# Endpoint to calculate loan to value
+@app.get(
+    "/loan-to-value",
+    tags = ["loan-to-value"],
+    description = "Calculating loan to value ratio",
+)
+def loan_to_value(mortage_value:float,appraised_value: float):
+    try:
+        ratio = functions.loan_to_value(mortage_value,appraised_value)
+        return{
+            "Tag" : "Loan to Value (LTV) ratio",
+            "Mortage Value" : mortage_value,
+            "Appraised Property Value" : appraised_value,
+            "Loan to Value ratio" : f"{ratio}%",
+            
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
