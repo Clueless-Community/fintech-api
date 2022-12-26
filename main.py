@@ -1315,7 +1315,7 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
         growth = functions.year_over_year(later_period_value,earlier_period_value)
         return{
             "Tag" : "Year to Year Growth",
-            "Year to Year growth" : f"{grwoth}%",
+            "Year to Year growth" : f"{growth}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
