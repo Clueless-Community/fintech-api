@@ -1263,7 +1263,27 @@ def loan_to_value(mortage_value:float,appraised_value: float):
             "Mortage Value" : mortage_value,
             "Appraised Property Value" : appraised_value,
             "Loan to Value ratio" : f"{ratio}%",
-            
+
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to calculate retention ratio
+@app.get(
+    "/retention-ratio",
+    tags = ["retention-ratio"],
+    description = "Calculating retention ratio",
+)
+def retention_ratio(net_income:float,dividends: float):
+    try:
+        retention_ratio = functions.retention_ratio(net_income,dividends)
+        return{
+            "Tag" : "Retention Ratio",
+            "Net Income" : net_income,
+            "Dividends" : dividends,
+            "Retention Ratio" : retention_ratio,
+
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
