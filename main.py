@@ -1306,3 +1306,21 @@ def tax_equivalent_yield(tax_free_yield:float,tax_rate:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+ 
+ 
+#endpoint to calculate year over year growth
+@app.get(
+    "/year-to-year",
+    tags = ["year-to-year"],
+    description = "Calculating Year to Year Growth",
+)
+def year_over_year(later_period_value:float,earlier_period_value:float):
+    try:
+        growth = functions.year_over_year(later_period_value,earlier_period_value)
+        return{
+            "Tag" : "Year to Year Growth",
+            "Year to Year growth" : f"{growth}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+

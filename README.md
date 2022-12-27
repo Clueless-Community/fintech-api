@@ -35,7 +35,7 @@ Do you know we are sponsering CodePeak 2022 :
 
 
 If you are willing to contibute to this project, you are warmly welcome.
-Do check the [Contribution](https://github.com/Clueless-Community/flutter-ui-components/blob/master/CONTRIBUTING.md) guidelines before contributing.
+Do check the [Contribution](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md) guidelines before contributing.
 
 ---
 

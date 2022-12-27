@@ -710,6 +710,7 @@
 ```
 
 
+
 **GET** `/tax_equivalent_yield`
 - Required parameters : `tax_free_yield` and `tax_rate`
 - Sample Output
@@ -721,3 +722,15 @@
   "Tax Equivalent Yield": 304347.8260869565
 }
 ```
+
+
+**GET** `/year-to-year`
+- Required parameters : `later_year_value` and `earlier_year_value`
+- Sample Output
+```py
+{
+  "Tag": "Year to Year Growth",
+  "Year to Year growth": "20.0%"
+}
+```
+
