@@ -708,3 +708,25 @@
   "Retention Ratio": 0.9603448275862069
 }
 ```
+
+**GET** `/tax-equi-yield`
+- Required parameters : `tax_free_yield` and `tax_rate`
+- Sample Output
+```py
+{
+  "Tag": "Tax Equivalent Yield",
+  "Tax free yield": 7,
+  "Tax Rate": 10,
+  "Tax Equivalent Ratio": "7.78%"
+}
+```
+
+**GET** `/year-to-year`
+- Required parameters : `later_year_value` and `earlier_year_value`
+- Sample Output
+```py
+{
+  "Tag": "Year to Year Growth",
+  "Year to Year growth": "20.0%"
+}
+```
