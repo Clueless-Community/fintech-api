@@ -541,3 +541,8 @@ def loan_to_value(mortage_value:float,appraised_value: float):
 def retention_ratio(net_income:float,dividends:float):
     retention_ratio = (net_income-dividends)/net_income
     return retention_ratio
+
+#Function to calculate Tax Equivalent Yield
+def tax_equivalent_yield(tax_free_yield:float,tax_rate:float):
+    tax_equivalent_yield = tax_free_yield/(1-tax_rate)
+    return tax_equivalent_yield
