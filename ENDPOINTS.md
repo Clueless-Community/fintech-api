@@ -730,3 +730,15 @@
   "Year to Year growth": "20.0%"
 }
 ```
+
+**GET**   `/periodic_lease_payment`
+- required parameters :  `Asset_value_to_be_financed`, `monthly_lease_interest_rate`, `Number_of_lease_payments_required`
+- sample output
+```py
+{
+  "Tag": "Periodic lease payment",
+  "Asset value to be financed": 20000,
+  "Monthly lease interest rate": 0.5"%",
+  "Number of lease payments required": 36,
+  "Pmt": 608.44
+}

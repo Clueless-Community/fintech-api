@@ -1304,6 +1304,7 @@ def tax_equivalent_yield(tax_free_yield:float,tax_rate:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 #endpoint to calculate year over year growth
 @app.get(
     "/year-to-year",
@@ -1316,6 +1317,22 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
         return{
             "Tag" : "Year to Year Growth",
             "Year to Year growth" : f"{growth}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate Periodic lease payment
+@app.get(
+    "/periodic_lease_payment",
+    tags = ["periodic_lease_payment"],
+    description = "Calculating Periodic lease payment",
+)
+def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: float, number_of_lease_payments: float):
+    try:
+        pmt = functions.periodic_lease_payment(Asset_value, monthly_lease_interest_rate, number_of_lease_payments)
+        return{
+            "Tag" : "Periodic Lease Payment",
+            "Periodic Lease Payment": f"{pmt}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
