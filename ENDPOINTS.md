@@ -732,8 +732,8 @@
 ```
 
 **GET**   `/periodic_lease_payment`
-- required parameters :  `Asset_value_to_be_financed`, `monthly_lease_interest_rate`, `Number_of_lease_payments_required`
-- sample output
+- Required parameters :  `Asset_value_to_be_financed` and `monthly_lease_interest_rate` and `Number_of_lease_payments_required`
+- Sample Output
 ```py
 {
   "Tag": "Periodic lease payment",
