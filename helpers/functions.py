@@ -552,3 +552,7 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
     growth = (later_period_value - earlier_period_value) / earlier_period_value
     return growth*100
 
+# Function to calculate Balloon Balance of a Loan
+def balloon_balance_of_loan(present_value:float, payment:float, rate_per_payment:float, number_of_payments:float):
+    balloon_balance_of_loan = present_value*((1+rate_per_payment)**number_of_payments) - payment*((((1+rate_per_payment)**number_of_payments)-1)/rate_per_payment)
+    return balloon_balance_of_loan
