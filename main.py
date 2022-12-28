@@ -1287,23 +1287,27 @@ def retention_ratio(net_income:float,dividends: float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-#endpoint to calculate tax equivalent yield
+
+
+# Endpoint to calculate tax equivalent yield
 @app.get(
-    "/tax-equi-yield",
-    tags = ["tax-equi-yield"],
-    description = "Calculating Tax Equivalent Yield",
+    "/tax_equivalent_yield",
+    tags = ["tax_equivalent_yield"],
+    description = "Calculating tax equivalent yield",
 )
 def tax_equivalent_yield(tax_free_yield:float,tax_rate:float):
     try:
-        result = functions.tax_equivalent_yield(tax_free_yield,tax_rate)
+        tax_equivalent_yield = functions.tax_equivalent_yield(tax_free_yield,tax_rate)
         return{
             "Tag" : "Tax Equivalent Yield",
-            "Tax free yield" : tax_free_yield,
+            "Tax Free Yield" : tax_free_yield,
             "Tax Rate" : tax_rate,
-            "Tax Equivalent Ratio" : f"{result}%",
+            "Tax Equivalent Yield" : tax_equivalent_yield,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+ 
+ 
 #endpoint to calculate year over year growth
 @app.get(
     "/year-to-year",
@@ -1319,3 +1323,4 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+

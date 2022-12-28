@@ -542,12 +542,13 @@ def retention_ratio(net_income:float,dividends:float):
     retention_ratio = (net_income-dividends)/net_income
     return retention_ratio
 
-# Function to calculate tax equivalent yield
+#Function to calculate Tax Equivalent Yield
 def tax_equivalent_yield(tax_free_yield:float,tax_rate:float):
-    result = tax_free_yield / (100-tax_rate)
-    return round(result*100, 2)
+    tax_equivalent_yield = tax_free_yield/(1-tax_rate)
+    return tax_equivalent_yield
 
 # Function to calculate year over year growth
 def year_over_year(later_period_value:float,earlier_period_value:float):
     growth = (later_period_value - earlier_period_value) / earlier_period_value
     return growth*100
+
