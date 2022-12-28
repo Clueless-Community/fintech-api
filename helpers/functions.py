@@ -552,3 +552,8 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
     growth = (later_period_value - earlier_period_value) / earlier_period_value
     return growth*100
 
+#function to calculate future value of the annuity
+def future_value_of_annuity(payments_per_period:float,interest_rate:float,number_of_periods:float):
+    a = (((interest_rate+1)**number_of_periods)-1)//interest_rate
+    fva = payments_per_period*a
+    return fva
