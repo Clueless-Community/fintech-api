@@ -1306,8 +1306,8 @@ def tax_equivalent_yield(tax_free_yield:float,tax_rate:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
- 
- 
+
+
 #endpoint to calculate year over year growth
 @app.get(
     "/year-to-year",
@@ -1324,3 +1324,22 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+#endpoint to calculate Balloon Balance of a Loan
+@app.get(
+    "/balloon-balance",
+    tags = ["balloon-balance"],
+    description = "Calculating Balloon Balance of a Loan",
+)
+def balloon_balance(present_value:float, payment:float, rate_per_payment:float, number_of_payments:float):
+    try:
+        balloon_balance = functions.balloon_balance_of_loan(present_value, payment, rate_per_payment, number_of_payments)
+        return{
+            "Tag" : "Balloon Balance of a Loan",
+            "Present Value (Original Balance)" : present_value,
+            "Payment": payment,
+            "Rate per Payment": rate_per_payment,
+            "Number of Payments": number_of_payments,
+            "Future Value (Balloon Balance)": balloon_balance
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
