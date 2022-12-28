@@ -738,7 +738,7 @@
 {
   "Tag": "Periodic lease payment",
   "Asset value to be financed": 20000,
-  "Monthly lease interest rate": 0.5"%",
+  "Monthly lease interest rate": 0.5%,
   "Number of lease payments required": 36,
   "Pmt": 608.44
 }
