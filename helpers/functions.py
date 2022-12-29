@@ -553,6 +553,13 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
     return growth*100
 
 
+#function to calculate future value of the annuity
+def future_value_of_annuity(payments_per_period:float,interest_rate:float,number_of_periods:float):
+    a = (((interest_rate+1)**number_of_periods)-1)//interest_rate
+    fva = payments_per_period*a
+    return fva
+
+
 # Function to calculate Balloon Balance of a Loan
 def balloon_balance_of_loan(present_value:float, payment:float, rate_per_payment:float, number_of_payments:float):
     balloon_balance_of_loan = present_value*((1+rate_per_payment)**number_of_payments) - payment*((((1+rate_per_payment)**number_of_payments)-1)/rate_per_payment)
@@ -562,5 +569,4 @@ def balloon_balance_of_loan(present_value:float, payment:float, rate_per_payment
 def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: float, number_of_lease_payments: float):
     periodic_lease_payment = (Asset_value*monthly_lease_interest_rate)/(1-(1/(1+monthly_lease_interest_rate)**number_of_lease_payments))
     return periodic_lease_payment   
-
 
