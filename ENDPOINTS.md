@@ -773,3 +773,16 @@
   "Pmt": 608.44
 }
 ```
+
+**GET** `/discounted_payback_period`
+- Required parameters : `overflow`,`rate`,`periodic_cash_flow`
+- Sample Output
+```py
+{
+  "Tag": "Discounted Payback Period",
+  "Initial Investment (Outflow)": 2800,
+  "Rate": 2,
+  "Periodic Cash Flow": 30000,
+  "Discounted Payback Period": 0.18806839455026092
+}
+```
