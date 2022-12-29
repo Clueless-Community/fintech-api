@@ -1343,3 +1343,23 @@ def balloon_balance(present_value:float, payment:float, rate_per_payment:float, 
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#endpoint to calculate discounted payback period
+@app.get(
+    "/discounted-payback-period",
+    tags = ["discounted-payback-period"],
+    description = "Calculating discounted payback period",
+)
+def discounted_payback_period(outflow:float,rate:float,periodic_cash_flow:float):
+    try:
+        discounted_payback_period = functions.discounted_payback_period(outflow,rate,periodic_cash_flow)
+        return{
+            "Tag" : "Discounted Payback Period",
+            "Initial Investment (Outflow)" : outflow,
+            "Rate": rate,
+            "Periodic Cash Flow": periodic_cash_flow,
+            "Discounted Payback Period": discounted_payback_period
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
