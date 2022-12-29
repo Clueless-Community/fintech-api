@@ -552,7 +552,15 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
     growth = (later_period_value - earlier_period_value) / earlier_period_value
     return growth*100
 
+
 # Function to calculate Balloon Balance of a Loan
 def balloon_balance_of_loan(present_value:float, payment:float, rate_per_payment:float, number_of_payments:float):
     balloon_balance_of_loan = present_value*((1+rate_per_payment)**number_of_payments) - payment*((((1+rate_per_payment)**number_of_payments)-1)/rate_per_payment)
     return balloon_balance_of_loan
+
+# Function to calculate periodic lease payment
+def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: float, number_of_lease_payments: float):
+    periodic_lease_payment = (Asset_value*monthly_lease_interest_rate)/(1-(1/(1+monthly_lease_interest_rate)**number_of_lease_payments))
+    return periodic_lease_payment   
+
+
