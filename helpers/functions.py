@@ -552,3 +552,9 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
     growth = (later_period_value - earlier_period_value) / earlier_period_value
     return growth*100
 
+
+# Function to calculate periodic lease payment
+def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: float, number_of_lease_payments: float):
+    periodic_lease_payment = (Asset_value*monthly_lease_interest_rate)/(1-(1/(1+monthly_lease_interest_rate)**number_of_lease_payments))
+    return periodic_lease_payment   
+

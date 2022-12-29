@@ -734,3 +734,15 @@
 }
 ```
 
+**GET**   `/periodic_lease_payment`
+- Required parameters :  `Asset_value_to_be_financed` and `monthly_lease_interest_rate` and `Number_of_lease_payments_required`
+- Sample Output
+```py
+{
+  "Tag": "Periodic lease payment",
+  "Asset value to be financed": 20000,
+  "Monthly lease interest rate": 0.5%,
+  "Number of lease payments required": 36,
+  "Pmt": 608.44
+}
+```
