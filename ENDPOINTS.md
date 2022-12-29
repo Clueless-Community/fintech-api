@@ -96,7 +96,7 @@
   "Return on Investment": "20.0%"
  }
  ```
- **GET** `/cagr`
+ **GET** `/compounded_annual_growth_rate`
  + Required parameters : `end_investment_value`, `initial_investment_value` and`years`
  + Sample output
  ```py
@@ -620,7 +620,7 @@
 }
 ```
 
-**GET** `/discounted_cash_flow`
+**GET** `/credit_card_equation`
 - Required parameters : `balance`,`monthly_payment`,`daily_interest_rate`
 - Sample output
 ```py
@@ -771,5 +771,45 @@
   "Monthly lease interest rate": 0.5%,
   "Number of lease payments required": 36,
   "Pmt": 608.44
+}
+```
+
+**GET**   `/future_sip`
+- Required parameters :  `interval_investment`,`rate_of_return`,`number_of_payments`
+- Sample Output
+```py
+{
+  "Tag": "Future Value of SIP",
+  "Investment at every Interval":500 ,
+  "Interest": 0.1,
+  "Number of Payments": 5,
+  "Future Value": 8052.55,
+}
+```
+
+**GET**   `/inflation`
+- Required parameters :  `present_amount`,`inflation_rate`,`years`
+- Sample Output
+```py
+{
+        "Tag": "Inflated Amount",
+        "Present Amount": 1000,
+        "Inflation Rate": 4,
+        "Time in Years": 5,
+        "Future Amount": 1276.28,
+}
+```
+
+**GET**   `/jensens_alpha`
+- Required parameters :  `return_from_investment`,`return_of_appropriate_market_index`,`risk_free_rate`,`beta`
+- Sample Output
+```py
+{
+            "Tag": "Jensen's Alpha",
+            "Total return from investment": 100,
+            "Return of appropriate market index": 15,
+            "Risk free rate": 10,
+            "Beta of the portfolio investment w.r.t chosen market index":5 ,
+            "Alpha of the return ": 65,
 }
 ```

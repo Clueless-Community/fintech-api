@@ -1338,6 +1338,9 @@ def future_value_of_annuity(payments_per_period:float,interest_rate:float,number
             "interest rate" : interest_rate,
             "number of periods" : numbers_of_periods,
             "future value of annuity" : f"{fva}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)    
 
 #endpoint to calculate Balloon Balance of a Loan
 @app.get(
