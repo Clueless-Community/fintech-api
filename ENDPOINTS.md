@@ -734,6 +734,20 @@
 }
 ```
 
+**GET** `/balloon-balance`
+- Required parameters : `present_value`, `payment`,`rate_per_payment`, `number_of_payments`
+- Sample Output
+```py
+{
+  "Tag": "Balloon Balance of a Loan",
+  "Present Value (Original Balance)": 28268,
+  "Payment": 10,
+  "Rate per Payment": 2,
+  "Number of Payments": 3,
+  "Future Value (Balloon Balance)": 763106
+}
+```
+
 **GET**   `/periodic_lease_payment`
 - Required parameters :  `Asset_value_to_be_financed` and `monthly_lease_interest_rate` and `Number_of_lease_payments_required`
 - Sample Output
