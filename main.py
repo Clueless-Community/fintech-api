@@ -1306,8 +1306,7 @@ def tax_equivalent_yield(tax_free_yield:float,tax_rate:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
- 
- 
+
 #endpoint to calculate year over year growth
 @app.get(
     "/year-to-year",
@@ -1324,6 +1323,7 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 @app.get(
     "/future_value_of_annuity",
     tags = ["future_value_of_annuity"],
@@ -1338,6 +1338,40 @@ def future_value_of_annuity(payments_per_period:float,interest_rate:float,number
             "interest rate" : interest_rate,
             "number of periods" : numbers_of_periods,
             "future value of annuity" : f"{fva}%",
+
+#endpoint to calculate Balloon Balance of a Loan
+@app.get(
+    "/balloon-balance",
+    tags = ["balloon-balance"],
+    description = "Calculating Balloon Balance of a Loan",
+)
+def balloon_balance(present_value:float, payment:float, rate_per_payment:float, number_of_payments:float):
+    try:
+        balloon_balance = functions.balloon_balance_of_loan(present_value, payment, rate_per_payment, number_of_payments)
+        return{
+            "Tag" : "Balloon Balance of a Loan",
+            "Present Value (Original Balance)" : present_value,
+            "Payment": payment,
+            "Rate per Payment": rate_per_payment,
+            "Number of Payments": number_of_payments,
+            "Future Value (Balloon Balance)": balloon_balance
+            }
+     except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+            
+# Endpoint to calculate Periodic lease payment
+@app.get(
+    "/periodic_lease_payment",
+    tags = ["periodic_lease_payment"],
+    description = "Calculating Periodic lease payment",
+)
+def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: float, number_of_lease_payments: float):
+    try:
+        pmt = functions.periodic_lease_payment(Asset_value, monthly_lease_interest_rate, number_of_lease_payments)
+        return{
+            "Tag" : "Periodic Lease Payment",
+            "Periodic Lease Payment": f"{pmt}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
