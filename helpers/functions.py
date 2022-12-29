@@ -556,3 +556,8 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
 def balloon_balance_of_loan(present_value:float, payment:float, rate_per_payment:float, number_of_payments:float):
     balloon_balance_of_loan = present_value*((1+rate_per_payment)**number_of_payments) - payment*((((1+rate_per_payment)**number_of_payments)-1)/rate_per_payment)
     return balloon_balance_of_loan
+
+#Function to calculate discounted payback period
+def discounted_payback_period(outflow:float,rate:float,periodic_cash_flow:float):
+    discounted_payback_period = np.log(1/(1-(outflow*rate/periodic_cash_flow)))/np.log(1+rate)
+    return discounted_payback_period
