@@ -709,17 +709,20 @@
 }
 ```
 
-**GET** `/tax-equi-yield`
+
+
+**GET** `/tax_equivalent_yield`
 - Required parameters : `tax_free_yield` and `tax_rate`
 - Sample Output
 ```py
 {
   "Tag": "Tax Equivalent Yield",
-  "Tax free yield": 7,
-  "Tax Rate": 10,
-  "Tax Equivalent Ratio": "7.78%"
+  "Tax Free Yield": 280000,
+  "Tax Rate": 0.08,
+  "Tax Equivalent Yield": 304347.8260869565
 }
 ```
+
 
 **GET** `/year-to-year`
 - Required parameters : `later_year_value` and `earlier_year_value`
