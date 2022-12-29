@@ -734,6 +734,19 @@
 }
 ```
 
+**GET** `/future_value_of_annuity`
+- Required parameters : `payment_per_periods`,`interest_rate`,`number_of_periods`
+- Sample Output
+```py
+{
+   "Tag" : "Future value of annuity",
+    "Payments per periods" : 300,
+    "interest rate" : 1,
+    "number of periods" : 1,
+    "future value of annuity" : 300%,
+}
+```
+
 **GET** `/balloon-balance`
 - Required parameters : `present_value`, `payment`,`rate_per_payment`, `number_of_payments`
 - Sample Output
