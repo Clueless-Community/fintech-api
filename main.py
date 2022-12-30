@@ -1336,8 +1336,11 @@ def future_value_of_annuity(payments_per_period:float,interest_rate:float,number
             "Tag" : "Future value of annuity",
             "Payments per periods" : payments_per_period,
             "interest rate" : interest_rate,
-            "number of periods" : numbers_of_periods,
+            "number of periods" : number_of_periods,
             "future value of annuity" : f"{fva}%",
+            }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 #endpoint to calculate Balloon Balance of a Loan
 @app.get(
@@ -1356,10 +1359,10 @@ def balloon_balance(present_value:float, payment:float, rate_per_payment:float, 
             "Number of Payments": number_of_payments,
             "Future Value (Balloon Balance)": balloon_balance
             }
-     except:
+    except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-            
+
 # Endpoint to calculate Periodic lease payment
 @app.get(
     "/periodic_lease_payment",
@@ -1372,6 +1375,26 @@ def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: floa
         return{
             "Tag" : "Periodic Lease Payment",
             "Periodic Lease Payment": f"{pmt}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#endpoint to calculate discounted payback period
+@app.get(
+    "/discounted-payback-period",
+    tags = ["discounted-payback-period"],
+    description = "Calculating discounted payback period",
+)
+def discounted_payback_period(outflow:float,rate:float,periodic_cash_flow:float):
+    try:
+        discounted_payback_period = functions.discounted_payback_period(outflow,rate,periodic_cash_flow)
+        return{
+            "Tag" : "Discounted Payback Period",
+            "Initial Investment (Outflow)" : outflow,
+            "Rate": rate,
+            "Periodic Cash Flow": periodic_cash_flow,
+            "Discounted Payback Period": discounted_payback_period
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
