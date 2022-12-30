@@ -631,6 +631,7 @@
     "daily interest rate": 2,
     "credit card equation": 3.037283729
 }
+```
 
 **GET** `/future_value_of_ordinary_due`
 - Required parameters : `periodic_payment`, `number_of_periods`, `effective_interest_rate`
@@ -771,5 +772,17 @@
   "Monthly lease interest rate": 0.5%,
   "Number of lease payments required": 36,
   "Pmt": 608.44
+}
+```
+
+**GET** `/weighted_average`
+- Required parameters : `Assigned_weight_values`,`data_point_values`
+- Sample Output
+```py
+{
+   "Tag" : "Weighted Average of given values",
+    "Assigned_weight_values" : [2, 5, 3],
+    "data_point_values" : [10, 50, 40],
+    "weighted_average" : 39
 }
 ```

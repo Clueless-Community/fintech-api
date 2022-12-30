@@ -1336,8 +1336,12 @@ def future_value_of_annuity(payments_per_period:float,interest_rate:float,number
             "Tag" : "Future value of annuity",
             "Payments per periods" : payments_per_period,
             "interest rate" : interest_rate,
-            "number of periods" : numbers_of_periods,
+            "number of periods" : number_of_periods,
             "future value of annuity" : f"{fva}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
 
 #endpoint to calculate Balloon Balance of a Loan
 @app.get(
@@ -1356,7 +1360,7 @@ def balloon_balance(present_value:float, payment:float, rate_per_payment:float, 
             "Number of Payments": number_of_payments,
             "Future Value (Balloon Balance)": balloon_balance
             }
-     except:
+    except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
             
@@ -1371,7 +1375,29 @@ def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: floa
         pmt = functions.periodic_lease_payment(Asset_value, monthly_lease_interest_rate, number_of_lease_payments)
         return{
             "Tag" : "Periodic Lease Payment",
+            "Asset value": Asset_value,
+            "Monthly lease interest rate": monthly_lease_interest_rate,
+            "Number of lease payments": number_of_lease_payments,
             "Periodic Lease Payment": f"{pmt}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to calculate Weighted average
+@app.get(
+    "/weighted_average",
+    tags=["weighted_average"],
+    description="Calculating weighted average",
+)
+def weighted_average(Assigned_weight_values: list, data_point_values: list):
+    try:
+        weighted_average = functions.weighted_average(Assigned_weight_values, data_point_values)
+        return {
+            "Tag": "weighted_average",
+            "Assigned weight values": Assigned_weight_values,
+            "Data point values": data_point_values,
+            "Weighted average": f"{weighted_average}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

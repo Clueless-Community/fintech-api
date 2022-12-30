@@ -570,3 +570,17 @@ def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: floa
     periodic_lease_payment = (Asset_value*monthly_lease_interest_rate)/(1-(1/(1+monthly_lease_interest_rate)**number_of_lease_payments))
     return periodic_lease_payment   
 
+# Function to calculate weighted average
+def weighted_average(Assigned_weight_values: list, data_point_values: list):
+    total_data_point_weighted_value = 0
+    sum_assigned_weight_values = 0
+    for i in Assigned_weight_values:
+        sum_assigned_weight_values = sum_assigned_weight_values + i
+    for i in range(len(Assigned_weight_values)):
+        total_data_point_weighted_value = total_data_point_weighted_value + (Assigned_weight_values[i]*data_point_values[i])
+    
+    weighted_average = total_data_point_weighted_value/sum_assigned_weight_values
+    return weighted_average
+    
+    
+        
