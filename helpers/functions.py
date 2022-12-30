@@ -574,4 +574,11 @@ def discounted_payback_period(outflow:float,rate:float,periodic_cash_flow:float)
 def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: float, number_of_lease_payments: float):
     periodic_lease_payment = (Asset_value*monthly_lease_interest_rate)/(1-(1/(1+monthly_lease_interest_rate)**number_of_lease_payments))
     return periodic_lease_payment
-
+# Function to calculate Yield to maturity
+def yield_to_maturity(bond_price:float,face_value:float,coupon_rate:float,years_to_maturity:float):
+    yield_cal = (coupon_rate * face_value/100 + (face_value - bond_price)/years_to_maturity) / ((face_value + bond_price) / 2)
+    return round(yield_cal*100,2)
+# Function to calculate perpetuity payment
+def perpetuity_payment(present_value:float,rate:float):
+    payment = present_value * (rate/100)
+    return payment
