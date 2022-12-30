@@ -1418,7 +1418,7 @@ def yield_to_maturity(bond_price:float,face_value:float,coupon_rate:float,years_
     
 #endpoint to calculate perpetuity payment
 @app.get(
-    "/perpetuity-payment,
+    "/perpetuity-payment",
     tags = ["perpetuity-payment"],
     description = "Calculating perpetuity payment",
 )
