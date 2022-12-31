@@ -1341,7 +1341,7 @@ def future_value_of_annuity(payments_per_period:float,interest_rate:float,number
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    }
+    
 
 
 #endpoint to calculate Balloon Balance of a Loan
@@ -1458,3 +1458,21 @@ def perpetuity_payment(present_value:float,rate:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+@app.get(
+    "/amortized_loan_payment",
+    tags = ["amortized_loan_payment"],
+    description = "Calculating amortized loan payment",
+)
+def amortized_loan_payment(amount_borrowed:float,interest_rate_per_period:float,number_of_payments:float):
+    try:
+        R = functions.amortized_loan_payment(amount_borrowed,interest_rate_per_periods,number_of_payments)
+        return{
+            "Tag" : "Amortized loan payments",
+            "amount borrowed" : amount_borrowd,
+            "interest rate per periods": interest_rate_per_periods,
+            "number of Payments " : number_of_payments,
+            "Amortized loan payment" : f"{R}%"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

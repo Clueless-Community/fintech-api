@@ -860,3 +860,16 @@
   "Perpetuity Payment": "100.0"
 }
 ```
+
+**GET** `/amortized_loan_payment`
+- Required parameters : `amount_borrowed`, `interest_rate_per_period`,`number_of_payments`
+- Sample output
+```py
+{
+  "Tag" : "Amortized loan payments",
+  "amount borrowed" : 500,
+  "interest rate per periods": 1,
+  "number of Payments " : 2,
+  "Amortized loan payment" : 666.66%,
+}
+```
