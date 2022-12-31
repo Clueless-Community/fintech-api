@@ -782,8 +782,8 @@
 ```py
 {
    "Tag" : "Weighted Average of given values",
-    "Assigned_weight_values" : "2 5 3",
-    "data_point_values" : "10 50 40",
+    "Assigned weight values" : "2 5 3",
+    "data point values" : "10 50 40",
     "weighted_average" : 39
 }
 ```
