@@ -565,10 +565,17 @@ def balloon_balance_of_loan(present_value:float, payment:float, rate_per_payment
     balloon_balance_of_loan = present_value*((1+rate_per_payment)**number_of_payments) - payment*((((1+rate_per_payment)**number_of_payments)-1)/rate_per_payment)
     return balloon_balance_of_loan
 
+#Function to calculate discounted payback period
+def discounted_payback_period(outflow:float,rate:float,periodic_cash_flow:float):
+    discounted_payback_period = np.log(1/(1-(outflow*rate/periodic_cash_flow)))/np.log(1+rate)
+    return discounted_payback_period
+    
+    
 # Function to calculate periodic lease payment
 def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: float, number_of_lease_payments: float):
     periodic_lease_payment = (Asset_value*monthly_lease_interest_rate)/(1-(1/(1+monthly_lease_interest_rate)**number_of_lease_payments))
     return periodic_lease_payment   
+
 
 # Function to calculate weighted average
 def weighted_average(Assigned_weight_values: list, data_point_values: list):
@@ -581,6 +588,16 @@ def weighted_average(Assigned_weight_values: list, data_point_values: list):
     
     weighted_average = total_data_point_weighted_value/sum_assigned_weight_values
     return weighted_average
+
+
+# Function to calculate Yield to maturity
+def yield_to_maturity(bond_price:float,face_value:float,coupon_rate:float,years_to_maturity:float):
+    yield_cal = (coupon_rate * face_value/100 + (face_value - bond_price)/years_to_maturity) / ((face_value + bond_price) / 2)
+    return round(yield_cal*100,2)
     
     
-        
+# Function to calculate perpetuity payment
+def perpetuity_payment(present_value:float,rate:float):
+    payment = present_value * (rate/100)
+    return payment
+

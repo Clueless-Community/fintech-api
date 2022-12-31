@@ -1341,7 +1341,7 @@ def future_value_of_annuity(payments_per_period:float,interest_rate:float,number
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+    }
 
 #endpoint to calculate Balloon Balance of a Loan
 @app.get(
@@ -1363,7 +1363,7 @@ def balloon_balance(present_value:float, payment:float, rate_per_payment:float, 
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-            
+
 # Endpoint to calculate Periodic lease payment
 @app.get(
     "/periodic_lease_payment",
@@ -1401,3 +1401,59 @@ def weighted_average(Assigned_weight_values: list, data_point_values: list):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+#endpoint to calculate discounted payback period
+@app.get(
+    "/discounted-payback-period",
+    tags = ["discounted-payback-period"],
+    description = "Calculating discounted payback period",
+)
+def discounted_payback_period(outflow:float,rate:float,periodic_cash_flow:float):
+    try:
+        discounted_payback_period = functions.discounted_payback_period(outflow,rate,periodic_cash_flow)
+        return{
+            "Tag" : "Discounted Payback Period",
+            "Initial Investment (Outflow)" : outflow,
+            "Rate": rate,
+            "Periodic Cash Flow": periodic_cash_flow,
+            "Discounted Payback Period": discounted_payback_period
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#endpoint to calculate yield to maturity
+@app.get(
+    "/yield-to-maturity",
+    tags = ["yield-to-maturity"],
+    description = "Calculating Yield to Maturity",
+)
+def yield_to_maturity(bond_price:float,face_value:float,coupon_rate:float,years_to_maturity:float):
+    try:
+        yield_cal = functions.yield_to_maturity(bond_price,face_value,coupon_rate,years_to_maturity)
+        return{
+            "Tag" : "Yield To Maturity",
+            "Face Value" : face_value,
+            "Years to maturity" : years_to_maturity,
+            "Yield to Maturity" : f"{yield_cal}%"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+#endpoint to calculate perpetuity payment
+@app.get(
+    "/perpetuity-payment",
+    tags = ["perpetuity-payment"],
+    description = "Calculating perpetuity payment",
+)
+def perpetuity_payment(present_value:float,rate:float):
+    try:
+        payment = functions.perpetuity_payment(present_value,rate)
+        return{
+            "Tag" : "Perpetuity Payment",
+            "Present Value" : present_value,
+            "Perpetuity Payment" : f"{payment}"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
