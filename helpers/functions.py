@@ -453,6 +453,7 @@ def herfindal_Index(Firms_market_shares: str):
             market_share_list.append(int(share))
             breaker = i + 1
         i = i + 1
+    market_share_list.append(int(Firms_market_shares[len(Firms_market_shares)-2:len(Firms_market_shares)]))
     herfindal_Index = 0
     for i in market_share_list:
         herfindal_Index = herfindal_Index + i**2
@@ -571,13 +572,39 @@ def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: floa
     return periodic_lease_payment   
 
 # Function to calculate weighted average
-def weighted_average(Assigned_weight_values: list, data_point_values: list):
+def weighted_average_of_values(Assigned_weight_values: str, data_point_values: str):
+    weights = []
+    data_values = []
+    i = 0
+    breaker = 0
+    while i < len(Assigned_weight_values):
+        w_val = ""
+        if Assigned_weight_values[i] == " ":
+            for j in range(breaker, i):
+                w_val = w_val + Assigned_weight_values[j]
+            weights.append(int(w_val))
+            breaker = i + 1
+        i = i + 1
+    weights.append(int(Assigned_weight_values[len(Assigned_weight_values)-2:len(Assigned_weight_values)]))
+
+    i = 0
+    breaker = 0
+    while i < len(data_point_values):
+        d_val = ""
+        if data_point_values[i] == " ":
+            for j in range(breaker, i):
+                d_val = d_val + data_point_values[j]
+            data_values.append(int(d_val))
+            breaker = i + 1
+        i = i + 1
+    data_values.append(int(data_point_values[len(data_point_values)-2:len(data_point_values)]))
+    
     total_data_point_weighted_value = 0
     sum_assigned_weight_values = 0
-    for i in Assigned_weight_values:
+    for i in weights:
         sum_assigned_weight_values = sum_assigned_weight_values + i
-    for i in range(len(Assigned_weight_values)):
-        total_data_point_weighted_value = total_data_point_weighted_value + (Assigned_weight_values[i]*data_point_values[i])
+    for i in range(len(weights)):
+        total_data_point_weighted_value = total_data_point_weighted_value + (weights[i]*data_values[i])
     
     weighted_average = total_data_point_weighted_value/sum_assigned_weight_values
     return weighted_average
