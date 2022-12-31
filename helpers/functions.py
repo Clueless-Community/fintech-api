@@ -584,8 +584,6 @@ def weighted_average_of_values(Assigned_weight_values: str, data_point_values: s
     
     weighted_average = total_data_point_weighted_value/sum_assigned_weight_values
     return weighted_average
-
-print(weighted_average_of_values("2 5 3", "10 50 40"))
     
     
         
