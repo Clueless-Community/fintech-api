@@ -786,3 +786,26 @@
   "Discounted Payback Period": 0.18806839455026092
 }
 ```
+
+**GET** `yield-to-maturity`
+- Required parameters : `bond_price`, `face_value`, `coupon_rate` and `years_to_maturity`
+- Sample output
+```py
+{
+  "Tag": "Yield To Maturity",
+  "Face Value": 1000,
+  "Years to maturity": 12,
+  "Yield to Maturity": "8.76%"
+}
+```
+
+**GET** `perpetuity-payment`
+- Required parameters : `present_value` and `rate`
+- Sample output
+```py
+{
+  "Tag": "Perpetuity Payment",
+  "Present Value": 1000,
+  "Perpetuity Payment": "100.0"
+}
+```
