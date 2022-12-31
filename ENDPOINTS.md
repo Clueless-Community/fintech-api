@@ -631,6 +631,7 @@
     "daily interest rate": 2,
     "credit card equation": 3.037283729
 }
+```
 
 **GET** `/future_value_of_ordinary_due`
 - Required parameters : `periodic_payment`, `number_of_periods`, `effective_interest_rate`
@@ -811,5 +812,51 @@
             "Risk free rate": 10,
             "Beta of the portfolio investment w.r.t chosen market index":5 ,
             "Alpha of the return ": 65,
+}
+
+**GET** `/weighted_average`
+- Required parameters : `Assigned_weight_values`,`data_point_values`
+- Sample Output
+```py
+{
+   "Tag" : "Weighted Average of given values",
+    "Assigned_weight_values" : [2, 5, 3],
+    "data_point_values" : [10, 50, 40],
+    "weighted_average" : 39
+}
+
+**GET** `/discounted_payback_period`
+- Required parameters : `overflow`,`rate`,`periodic_cash_flow`
+- Sample Output
+```py
+{
+  "Tag": "Discounted Payback Period",
+  "Initial Investment (Outflow)": 2800,
+  "Rate": 2,
+  "Periodic Cash Flow": 30000,
+  "Discounted Payback Period": 0.18806839455026092
+}
+```
+
+**GET** `yield-to-maturity`
+- Required parameters : `bond_price`, `face_value`, `coupon_rate` and `years_to_maturity`
+- Sample output
+```py
+{
+  "Tag": "Yield To Maturity",
+  "Face Value": 1000,
+  "Years to maturity": 12,
+  "Yield to Maturity": "8.76%"
+}
+```
+
+**GET** `perpetuity-payment`
+- Required parameters : `present_value` and `rate`
+- Sample output
+```py
+{
+  "Tag": "Perpetuity Payment",
+  "Present Value": 1000,
+  "Perpetuity Payment": "100.0"
 }
 ```
