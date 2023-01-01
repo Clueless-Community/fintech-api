@@ -868,9 +868,9 @@
 ```py
 {
   "Tag" : "Amortized loan payments",
-  "amount borrowed" : 500,
-  "interest rate per periods": 1,
-  "number of Payments " : 2,
-  "Amortized loan payment" : 666.66%,
+  "amount borrowed" : 5000,
+  "interest rate per periods": 12,
+  "number of Payments " : 24,
+  "Amortized loan payment" : 6666.66,
 }
 ```

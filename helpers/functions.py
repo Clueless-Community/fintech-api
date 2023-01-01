@@ -606,8 +606,8 @@ def perpetuity_payment(present_value:float,rate:float):
 
 #function to calculate amortized loan payment 
 def amortized_loan_payment(amount_borrowed:float,interest_rate_per_period:float,number_of_payments:float):
-    a = amount_borrowed*interest_rate_per_period
-    b = 1 - ((1+interest_rate_per_period)**(-number_of_payments))
+    a = amount_borrowed*(interest_rate_per_period//12)
+    b = 1 - ((1+(interest_rate_per_period//12))**(-number_of_payments//12))
     R = a//b
     return R
 

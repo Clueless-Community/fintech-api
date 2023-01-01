@@ -1472,7 +1472,7 @@ def amortized_loan_payment(amount_borrowed:float,interest_rate_per_period:float,
             "amount borrowed" : amount_borrowd,
             "interest rate per periods": interest_rate_per_periods,
             "number of Payments " : number_of_payments,
-            "Amortized loan payment" : f"{R}%"
+            "Amortized loan payment" : f"{R}"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
