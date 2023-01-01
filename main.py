@@ -1387,13 +1387,13 @@ def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: floa
 
 # Endpoint to calculate Weighted average
 @app.get(
-    "/weighted_average",
+    "/weighted_average_of_values",
     tags=["weighted_average"],
     description="Calculating weighted average",
 )
-def weighted_average(Assigned_weight_values: list, data_point_values: list):
+def weighted_average_of_values(Assigned_weight_values: str, data_point_values: str):
     try:
-        weighted_average = functions.weighted_average(Assigned_weight_values, data_point_values)
+        weighted_average = functions.weighted_average_of_values(Assigned_weight_values, data_point_values)
         return {
             "Tag": "weighted_average",
             "Assigned weight values": Assigned_weight_values,
