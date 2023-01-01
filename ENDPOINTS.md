@@ -96,7 +96,7 @@
   "Return on Investment": "20.0%"
  }
  ```
- **GET** `/cagr`
+ **GET** `/compounded_annual_growth_rate`
  + Required parameters : `end_investment_value`, `initial_investment_value` and`years`
  + Sample output
  ```py
@@ -620,7 +620,7 @@
 }
 ```
 
-**GET** `/discounted_cash_flow`
+**GET** `/credit_card_equation`
 - Required parameters : `balance`,`monthly_payment`,`daily_interest_rate`
 - Sample output
 ```py
@@ -775,7 +775,46 @@
 }
 ```
 
-**GET** `/weighted_average_of_values`
+**GET**   `/future_sip`
+- Required parameters :  `interval_investment`,`rate_of_return`,`number_of_payments`
+- Sample Output
+```py
+{
+  "Tag": "Future Value of SIP",
+  "Investment at every Interval":500 ,
+  "Interest": 0.1,
+  "Number of Payments": 5,
+  "Future Value": 8052.55,
+}
+```
+
+**GET**   `/inflation`
+- Required parameters :  `present_amount`,`inflation_rate`,`years`
+- Sample Output
+```py
+{
+        "Tag": "Inflated Amount",
+        "Present Amount": 1000,
+        "Inflation Rate": 4,
+        "Time in Years": 5,
+        "Future Amount": 1276.28,
+}
+```
+
+**GET**   `/jensens_alpha`
+- Required parameters :  `return_from_investment`,`return_of_appropriate_market_index`,`risk_free_rate`,`beta`
+- Sample Output
+```py
+{
+            "Tag": "Jensen's Alpha",
+            "Total return from investment": 100,
+            "Return of appropriate market index": 15,
+            "Risk free rate": 10,
+            "Beta of the portfolio investment w.r.t chosen market index":5 ,
+            "Alpha of the return ": 65,
+}
+
+**GET** `/weighted_average`
 - Required parameters : `Assigned_weight_values`,`data_point_values`
 - Note: Input should be space seperated
 - Sample Output
@@ -785,5 +824,40 @@
     "Assigned weight values" : "2 5 3",
     "data point values" : "10 50 40",
     "weighted_average" : 39
+}
+
+**GET** `/discounted_payback_period`
+- Required parameters : `overflow`,`rate`,`periodic_cash_flow`
+- Sample Output
+```py
+{
+  "Tag": "Discounted Payback Period",
+  "Initial Investment (Outflow)": 2800,
+  "Rate": 2,
+  "Periodic Cash Flow": 30000,
+  "Discounted Payback Period": 0.18806839455026092
+}
+```
+
+**GET** `yield-to-maturity`
+- Required parameters : `bond_price`, `face_value`, `coupon_rate` and `years_to_maturity`
+- Sample output
+```py
+{
+  "Tag": "Yield To Maturity",
+  "Face Value": 1000,
+  "Years to maturity": 12,
+  "Yield to Maturity": "8.76%"
+}
+```
+
+**GET** `perpetuity-payment`
+- Required parameters : `present_value` and `rate`
+- Sample output
+```py
+{
+  "Tag": "Perpetuity Payment",
+  "Present Value": 1000,
+  "Perpetuity Payment": "100.0"
 }
 ```
