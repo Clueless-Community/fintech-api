@@ -1489,7 +1489,7 @@ def zero_coupon_bond_yield(face_value:float, present_value:float, time_of_maturi
             "Tag" : "Zero Coupon Bond Effective Yield",
             "Face Value" : face_value,
             "Present Value" : present_value,
-            "Time to maturity" : time_to_maturity,
+            "Time to maturity" : time_of_maturity,
             "Zero Coupon Bond Effective Yield" : f"{zcby}%"
         }
     except:
