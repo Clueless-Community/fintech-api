@@ -453,6 +453,7 @@ def herfindal_Index(Firms_market_shares: str):
             market_share_list.append(int(share))
             breaker = i + 1
         i = i + 1
+    market_share_list.append(int(Firms_market_shares[len(Firms_market_shares)-2:len(Firms_market_shares)]))
     herfindal_Index = 0
     for i in market_share_list:
         herfindal_Index = herfindal_Index + i**2
@@ -578,13 +579,15 @@ def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: floa
 
 
 # Function to calculate weighted average
-def weighted_average(Assigned_weight_values: list, data_point_values: list):
+def weighted_average_of_values(Assigned_weight_values: str, data_point_values: str):
+    weights = list(map(int,Assigned_weight_values.split()))
+    data_values = list(map(int,data_point_values.split()))
     total_data_point_weighted_value = 0
     sum_assigned_weight_values = 0
-    for i in Assigned_weight_values:
+    for i in weights:
         sum_assigned_weight_values = sum_assigned_weight_values + i
-    for i in range(len(Assigned_weight_values)):
-        total_data_point_weighted_value = total_data_point_weighted_value + (Assigned_weight_values[i]*data_point_values[i])
+    for i in range(len(weights)):
+        total_data_point_weighted_value = total_data_point_weighted_value + (weights[i]*data_values[i])
     
     weighted_average = total_data_point_weighted_value/sum_assigned_weight_values
     return weighted_average
