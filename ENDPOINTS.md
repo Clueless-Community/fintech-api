@@ -861,3 +861,28 @@
   "Perpetuity Payment": "100.0"
 }
 ```
+
+**GET** `zero_coupoun_bond_value`
+- Required parameters : `face_value`, `rate_of_yield` and `time_of_maturity`
+- Sample output
+```py
+{
+  "Tag": "Zero Coupon Bond Value",
+  "Face Value": 1000,
+  "Rate of yield": "6.0%",
+  "Zero Coupon Bond Value": 747.26
+}
+```
+
+**GET** `zero_coupoun_bond_yield`
+- Required parameters : `face_value` , `present_value` and `time_of_maturity`
+- Sample output
+```py
+{
+  "Tag": "Zero Coupon Bond Effective Yield",
+  "Face Value": 1000,
+  "Present Value": 742.47,
+  "Time to maturity": 10,
+  "Zero Coupon Bond Effective Yield": "3.0%"
+}
+```
