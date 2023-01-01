@@ -604,3 +604,14 @@ def perpetuity_payment(present_value:float,rate:float):
     payment = present_value * (rate/100)
     return payment
 
+
+# Function to calculate Zero Coupon Bond value
+def zero_coupon_bond_value(face_value:float,rate_of_yield:float,time_of_maturity:float):
+    zcbv = face_value / pow((1+rate_of_yield/100), time_of_maturity)
+    return round(zcbv,2)
+
+    
+# function to calculate Zero Coupon Bond Effective Yield
+def zero_coupon_bond_yield(face_value:float, present_value:float, time_of_maturity:float):
+    zcby = pow((face_value / present_value),(1/time_of_maturity)) - 1
+    return round(zcby*100,1)

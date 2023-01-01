@@ -350,8 +350,8 @@ def asset_portfolio(
 
 # Endpoint to Calculate Future Price in Put-Call Parity
 @app.get(
-    "/put-call-parity",
-    tags=["/put-call-parity"],
+    "/put_call_parity",
+    tags=["/put_call_parity"],
     description="Calculate Future Price in Pull-Call Parity",
 )
 def put_call_parity(call_price: float, put_price: float, strike_price: float):
@@ -681,8 +681,8 @@ def weighted_average(ratio: list, rates: list):
 
 # Endpoint to calculate Capital Asset Pricing Model
 @app.get(
-    "/Capital_Asset_Pricing_Model",
-    tags=["Capital_Asset_Pricing_Model"],
+    "/capital_Asset_Pricing_Model",
+    tags=["capital_Asset_Pricing_Model"],
     description="Calculating Capital Asset Pricing Model",
 )
 def Capital_Asset_Pricing_Model(
@@ -773,8 +773,8 @@ def rule_of_72(rate_of_roi: float):
 
 # Endpoint to calculate acid test ratio
 @app.get(
-    "/acid-test-ratio",
-    tags=["acid-test-ratio"],
+    "/acid_test_ratio",
+    tags=["acid_test_ratio"],
     description="Calculate Acid test ratio",
 )
 def acid_test_ratio(
@@ -801,8 +801,8 @@ def acid_test_ratio(
 
 # Endpoint to calculate inflation adjusted return
 @app.get(
-    "/inflation-adjusted-return",
-    tags=["inflation-adjusted-return"],
+    "/inflation_adjusted_return",
+    tags=["inflation_adjusted_return"],
     description="Calculate Inflation Adjusted Return",
 )
 def inflation_adjusted_return(
@@ -956,8 +956,8 @@ def duration(rate, coupon_rate, frequency, face_value, settlement_date, maturity
 
 # Endpoint to calculate current ratio
 @app.get(
-    "/current-ratio",
-    tags=["current-ratio"],
+    "/current_ratio",
+    tags=["current_ratio"],
     description="Current Ratio",
 )
 def current_ratio(total_current_assets: float, total_liabilities: float):
@@ -975,8 +975,8 @@ def current_ratio(total_current_assets: float, total_liabilities: float):
 
 # Endpoint to calculate inventory turnover ratio
 @app.get(
-    "/inventory-turnover-ratio",
-    tags=["inventory-turnover-ratio"],
+    "/inventory_turnover_ratio",
+    tags=["inventory_turnover_ratio"],
     description="Inventory Turnover Ratio",
 )
 def inventory_turnover_ratio(
@@ -1074,7 +1074,7 @@ def project_efficiency(annual_production: float, collector_surface: float, dni: 
 
 
 @app.get(
-    "/real-gdp",
+    "/real_gdp",
     tags=["real_gdp"],
     description="Real GDP",
 )
@@ -1137,7 +1137,7 @@ def discounted_cash_flow(
 
 
 @app.get(
-    "/gdp-growth-rate",
+    "/gdp_growth_rate",
     tags=["gdp_growth_rate"],
     description="GDP Growth Rate",
 )
@@ -1251,8 +1251,8 @@ def compound_annual_growth_rate_1(ending_value:float,beginning_value:float,numbe
 
 # Endpoint to calculate loan to value
 @app.get(
-    "/loan-to-value",
-    tags = ["loan-to-value"],
+    "/loan_to_value",
+    tags = ["loan_to_value"],
     description = "Calculating loan to value ratio",
 )
 def loan_to_value(mortage_value:float,appraised_value: float):
@@ -1271,8 +1271,8 @@ def loan_to_value(mortage_value:float,appraised_value: float):
 
 # Endpoint to calculate retention ratio
 @app.get(
-    "/retention-ratio",
-    tags = ["retention-ratio"],
+    "/retention_ratio",
+    tags = ["retention_ratio"],
     description = "Calculating retention ratio",
 )
 def retention_ratio(net_income:float,dividends: float):
@@ -1309,8 +1309,8 @@ def tax_equivalent_yield(tax_free_yield:float,tax_rate:float):
 
 #endpoint to calculate year over year growth
 @app.get(
-    "/year-to-year",
-    tags = ["year-to-year"],
+    "/year_to_year",
+    tags = ["year_to_year"],
     description = "Calculating Year to Year Growth",
 )
 def year_over_year(later_period_value:float,earlier_period_value:float):
@@ -1341,13 +1341,13 @@ def future_value_of_annuity(payments_per_period:float,interest_rate:float,number
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    }
+    
 
 
 #endpoint to calculate Balloon Balance of a Loan
 @app.get(
-    "/balloon-balance",
-    tags = ["balloon-balance"],
+    "/balloon_balance",
+    tags = ["balloon_balance"],
     description = "Calculating Balloon Balance of a Loan",
 )
 def balloon_balance(present_value:float, payment:float, rate_per_payment:float, number_of_payments:float):
@@ -1405,8 +1405,8 @@ def weighted_average_of_values(Assigned_weight_values: str, data_point_values: s
 
 #endpoint to calculate discounted payback period
 @app.get(
-    "/discounted-payback-period",
-    tags = ["discounted-payback-period"],
+    "/discounted_payback_period",
+    tags = ["discounted_payback_period"],
     description = "Calculating discounted payback period",
 )
 def discounted_payback_period(outflow:float,rate:float,periodic_cash_flow:float):
@@ -1425,8 +1425,8 @@ def discounted_payback_period(outflow:float,rate:float,periodic_cash_flow:float)
 
 #endpoint to calculate yield to maturity
 @app.get(
-    "/yield-to-maturity",
-    tags = ["yield-to-maturity"],
+    "/yield_to_maturity",
+    tags = ["yield_to_maturity"],
     description = "Calculating Yield to Maturity",
 )
 def yield_to_maturity(bond_price:float,face_value:float,coupon_rate:float,years_to_maturity:float):
@@ -1443,8 +1443,8 @@ def yield_to_maturity(bond_price:float,face_value:float,coupon_rate:float,years_
     
 #endpoint to calculate perpetuity payment
 @app.get(
-    "/perpetuity-payment",
-    tags = ["perpetuity-payment"],
+    "/perpetuity_payment",
+    tags = ["perpetuity_payment"],
     description = "Calculating perpetuity payment",
 )
 def perpetuity_payment(present_value:float,rate:float):
@@ -1458,3 +1458,39 @@ def perpetuity_payment(present_value:float,rate:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+# endpoint to calculate Zero Coupon Bond value
+@app.get(
+    "/zero_coupoun_bond_value",
+    tags = ["zero_coupoun_bond_value"],
+    description = "Calculating zero coupoun bond value",
+)
+def zero_coupon_bond_value(face_value:float,rate_of_yield:float,time_of_maturity:float):
+    try :
+        zcbv = functions.zero_coupon_bond_value(face_value,rate_of_yield,time_of_maturity)
+        return{
+            "Tag" : "Zero Coupon Bond Value",
+            "Face Value" : face_value,
+            "Rate of yield" : f"{rate_of_yield}%",
+            "Zero Coupon Bond Value" : zcbv
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+#endpoint to calculate Zero Coupon Bond Effective Yield
+@app.get(
+    "/zero_coupoun_bond_yield",
+    tags = ["zero_coupoun_bond_yield"],
+    description = "Calculating Zero Coupon Bond Effective Yield",    
+)
+def zero_coupon_bond_yield(face_value:float, present_value:float, time_of_maturity:float):
+    try:
+        zcby = functions.zero_coupon_bond_yield(face_value, present_value, time_of_maturity)
+        return{
+            "Tag" : "Zero Coupon Bond Effective Yield",
+            "Face Value" : face_value,
+            "Present Value" : present_value,
+            "Time to maturity" : time_of_maturity,
+            "Zero Coupon Bond Effective Yield" : f"{zcby}%"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
