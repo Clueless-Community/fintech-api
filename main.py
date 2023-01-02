@@ -1341,7 +1341,7 @@ def future_value_of_annuity(payments_per_period:float,interest_rate:float,number
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+
 
 
 #endpoint to calculate Balloon Balance of a Loan
@@ -1440,7 +1440,7 @@ def yield_to_maturity(bond_price:float,face_value:float,coupon_rate:float,years_
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+
 #endpoint to calculate perpetuity payment
 @app.get(
     "/perpetuity_payment",
@@ -1475,12 +1475,12 @@ def zero_coupon_bond_value(face_value:float,rate_of_yield:float,time_of_maturity
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+
 #endpoint to calculate Zero Coupon Bond Effective Yield
 @app.get(
     "/zero_coupoun_bond_yield",
     tags = ["zero_coupoun_bond_yield"],
-    description = "Calculating Zero Coupon Bond Effective Yield",    
+    description = "Calculating Zero Coupon Bond Effective Yield",
 )
 def zero_coupon_bond_yield(face_value:float, present_value:float, time_of_maturity:float):
     try:
@@ -1491,6 +1491,25 @@ def zero_coupon_bond_yield(face_value:float, present_value:float, time_of_maturi
             "Present Value" : present_value,
             "Time to maturity" : time_of_maturity,
             "Zero Coupon Bond Effective Yield" : f"{zcby}%"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#Endpoint to calculate Profitability Index
+@app.get(
+    "/profitability_index",
+    tags = ["profitability_index"],
+    description = "Calculating profitability index",
+)
+def profitability_index(initial_investment:float, pv_of_future_cash_flows:float):
+    try:
+        profitability_index = functions.profitability_index(initial_investment, pv_of_future_cash_flows)
+        return{
+            "Tag" : "Profitability Index",
+            "Initial Investment" : initial_investment,
+            "PV of Future Cash Flows" : pv_of_future_cash_flows,
+            "Profitability Index" : profitability_index
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
