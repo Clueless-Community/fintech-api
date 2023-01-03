@@ -898,3 +898,15 @@
   "Perpetuity Payment": 1.0357142857142858
 }
 ```
+
+**GET** `receivables_turnover_ratio`
+- Required parameters : `sales_revenue`, `avg_accounts_receivable`
+- Sample output
+```py
+{
+  "Tag": "Receivables Turnover Ratio",
+  "Sales Revenue": 202300,
+  "Avg Accounts Receivables": 16800,
+  "Receivables Turnover Ratio": 12.041666666666666
+}
+```
