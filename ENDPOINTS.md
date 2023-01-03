@@ -886,3 +886,15 @@
   "Zero Coupon Bond Effective Yield": "3.0%"
 }
 ```
+
+**GET** `profitability_index`
+- Required parameters : `initial_investment`, `pv_of_future_cash_flows`
+- Sample output
+```py
+{
+  "Tag": "Profitability Index",
+  "Initial Investment": 28000,
+  "PV of Future Cash Flows": 29000,
+  "Perpetuity Payment": 1.0357142857142858
+}
+```
