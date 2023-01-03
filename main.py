@@ -1513,3 +1513,22 @@ def profitability_index(initial_investment:float, pv_of_future_cash_flows:float)
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate Profitability index using annual cash flows
+@app.get(
+    "/profitability_index2",
+    tags=["profitability_index"],
+    description="Calculating profitability index",
+)
+def profitability_index2(initial_inverstment: float, annual_cash_flows: str, discount_rate: float):
+    try:
+        profitability_index = functions.profitability_index2(initial_inverstment, annual_cash_flows, discount_rate)
+        return {
+            "Tag": "profitability_index",
+            "initial_inverstment": initial_inverstment,
+            "annual_cash_flows": annual_cash_flows,
+            "discount_rate": discount_rate,
+            "profitability index": f"{profitability_index}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

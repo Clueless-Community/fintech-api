@@ -898,3 +898,17 @@
   "Perpetuity Payment": 1.0357142857142858
 }
 ```
+
+**GET** `/profitability_index2`
+- Required parameters : `initial_inverstment`,`annual_cash_flows`, `discount_rate`
+- Note: annual_cash_flows should be space seperated
+- Sample Output
+```py
+{
+   "Tag" : "Profitability Index",
+    "Assigned initial_inverstment values" : "$10000",
+    "data point values" : "5000 4000 3000",
+    "discount_rate" : 10%,
+    "weighted_average" : "$1.003"
+}
+```
