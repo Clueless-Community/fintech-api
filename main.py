@@ -1514,11 +1514,12 @@ def profitability_index(initial_investment:float, pv_of_future_cash_flows:float)
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # Endpoint to calculate Profitability index using annual cash flows
 @app.get(
     "/profitability_index2",
     tags=["profitability_index"],
-    description="Calculating profitability index",
+    description="Calculating profitability index using annual cash flows",
 )
 def profitability_index2(initial_inverstment: float, annual_cash_flows: str, discount_rate: float):
     try:
@@ -1529,6 +1530,25 @@ def profitability_index2(initial_inverstment: float, annual_cash_flows: str, dis
             "annual_cash_flows": annual_cash_flows,
             "discount_rate": discount_rate,
             "profitability index": f"{profitability_index}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#Endpoint to calculate Receivables Turnover Ratio
+@app.get(
+    "/receivables_turnover_ratio",
+    tags = ["receivables_turnover_ratio"],
+    description = "Calculating receivables turnover ratio",
+)
+def receivables_turnover_ratio(sales_revenue:float, avg_accounts_receivable:float):
+    try:
+        receivables_turnover_ratio = functions.receivables_turnover_ratio(sales_revenue, avg_accounts_receivable)
+        return{
+            "Tag" : "Receivables Turnover Ratio",
+            "Sales Revenue" : sales_revenue,
+            "Avg Accounts Receivables" : avg_accounts_receivable,
+            "Receivables Turnover Ratio" : receivables_turnover_ratio
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

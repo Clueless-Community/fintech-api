@@ -900,15 +900,27 @@
 ```
 
 **GET** `/profitability_index2`
-- Required parameters : `initial_inverstment`,`annual_cash_flows`, `discount_rate`
+- Required parameters : `initial_investment`,`annual_cash_flows`, `discount_rate`
 - Note: annual_cash_flows should be space seperated
 - Sample Output
 ```py
 {
    "Tag" : "Profitability Index",
-    "Assigned initial_inverstment values" : "$10000",
-    "data point values" : "5000 4000 3000",
+    "initial_investment" : "$10000",
+    "annual_cash_flows" : "5000 4000 3000",
     "discount_rate" : 10%,
-    "weighted_average" : "$1.003"
+    "profitability_index" : "$1.003"
+}
+```
+
+**GET** `receivables_turnover_ratio`
+- Required parameters : `sales_revenue`, `avg_accounts_receivable`
+- Sample output
+```py
+{
+  "Tag": "Receivables Turnover Ratio",
+  "Sales Revenue": 202300,
+  "Avg Accounts Receivables": 16800,
+  "Receivables Turnover Ratio": 12.041666666666666
 }
 ```
