@@ -1513,3 +1513,22 @@ def profitability_index(initial_investment:float, pv_of_future_cash_flows:float)
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#Endpoint to calculate Receivables Turnover Ratio
+@app.get(
+    "/receivables_turnover_ratio",
+    tags = ["receivables_turnover_ratio"],
+    description = "Calculating receivables turnover ratio",
+)
+def receivables_turnover_ratio(sales_revenue:float, avg_accounts_receivable:float):
+    try:
+        receivables_turnover_ratio = functions.receivables_turnover_ratio(sales_revenue, avg_accounts_receivable)
+        return{
+            "Tag" : "Receivables Turnover Ratio",
+            "Sales Revenue" : sales_revenue,
+            "Avg Accounts Receivables" : avg_accounts_receivable,
+            "Receivables Turnover Ratio" : receivables_turnover_ratio
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

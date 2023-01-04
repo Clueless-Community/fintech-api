@@ -620,3 +620,8 @@ def zero_coupon_bond_yield(face_value:float, present_value:float, time_of_maturi
 def profitability_index(initial_investment:float, pv_of_future_cash_flows:float):
     profitability_index = pv_of_future_cash_flows/initial_investment
     return profitability_index
+
+# Function to calculate Receivables Turnover Ratio
+def receivables_turnover_ratio(sales_revenue:float, avg_accounts_receivable:float):
+    receivables_turnover_ratio = sales_revenue/avg_accounts_receivable
+    return receivables_turnover_ratio
