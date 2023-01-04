@@ -910,3 +910,17 @@
   "Receivables Turnover Ratio": 12.041666666666666
 }
 ```
+
+**GET** `remainig_balance`
+- Required parameters : `regular_payment`, `interest_rate_per_period`,`number_of_payments`,`number_of_payments_done`
+- Sample output
+```py
+{
+  "Tag" : "Remainig balance",
+  "regular_payment" : 500,
+  "interest rate per period" : 3,
+  "number of payments" : 36,
+  "number of payments done": 26,
+  "remaining balance" : 166.6665077
+}
+```

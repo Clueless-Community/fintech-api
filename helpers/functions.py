@@ -625,3 +625,9 @@ def profitability_index(initial_investment:float, pv_of_future_cash_flows:float)
 def receivables_turnover_ratio(sales_revenue:float, avg_accounts_receivable:float):
     receivables_turnover_ratio = sales_revenue/avg_accounts_receivable
     return receivables_turnover_ratio
+
+
+#Function to calculate Remaiing balance
+def remaining_balance(regular_payment:float,interest_rate_per_period:float,number_of_payments:float,number_of_payments_done:float):
+    B = regular_payment*((1-((1+interest_rate_per_period)**(-(number_of_payments-number_of_payments_done))))//interest_rate_per_period)
+    return B
