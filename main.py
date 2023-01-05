@@ -1552,3 +1552,23 @@ def receivables_turnover_ratio(sales_revenue:float, avg_accounts_receivable:floa
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@app.get(
+    "/remaining_balance",
+    tags = ["remainig_balance"],
+    description = "Calculating remainig balance",
+)
+def remaining_balance(regular_payment:float,interest_rate_per_period:float,number_of_payments:float,number_of_payments_done:float):
+    try:
+        B = functions.remaining_balance(regular_payment,interest_rate_per_period,number_of_payments,number_of_payments_done)
+        return{
+            "Tag" : "Remainig balance",
+            "regular_payment" : regular_payment,
+            "interest rate per period" : interest_rate_per_period,
+            "number of payments" : number_of_payments,
+            "number of payments done": number_of_payments_done,
+            "remaining balance" : B
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
