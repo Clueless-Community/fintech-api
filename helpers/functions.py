@@ -621,13 +621,25 @@ def profitability_index(initial_investment:float, pv_of_future_cash_flows:float)
     profitability_index = pv_of_future_cash_flows/initial_investment
     return profitability_index
 
+
+# Function to calculate Profitability index using annual cash flows
+def profitability_index2(initial_inverstment: float, annual_cash_flows: str, discount_rate: float):
+    annual_cash_flow_list = list(map(int,annual_cash_flows.split()))
+    pv_cash_flow_list = []
+    for i in range(len(annual_cash_flow_list)):
+        pv_cash_flow_list.append((annual_cash_flow_list[i])/((1+(discount_rate/100))**(i+1)))
+    total_pv_cash_flow = sum(pv_cash_flow_list)
+    profitability_index = total_pv_cash_flow/initial_inverstment
+    return profitability_index
+
 # Function to calculate Receivables Turnover Ratio
 def receivables_turnover_ratio(sales_revenue:float, avg_accounts_receivable:float):
     receivables_turnover_ratio = sales_revenue/avg_accounts_receivable
     return receivables_turnover_ratio
 
-
 #Function to calculate Remaiing balance
 def remaining_balance(regular_payment:float,interest_rate_per_period:float,number_of_payments:float,number_of_payments_done:float):
     B = regular_payment*((1-((1+interest_rate_per_period)**(-(number_of_payments-number_of_payments_done))))//interest_rate_per_period)
     return B
+
+
