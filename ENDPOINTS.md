@@ -906,10 +906,10 @@
 ```py
 {
    "Tag" : "Profitability Index",
-    "initial_investment" : "$10000",
+    "initial_investment" : 10000,
     "annual_cash_flows" : "5000 4000 3000",
-    "discount_rate" : 10%,
-    "profitability_index" : "$1.003"
+    "discount_rate" : "10%",
+    "profitability_index" : 1.003
 }
 ```
 
