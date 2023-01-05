@@ -899,6 +899,20 @@
 }
 ```
 
+**GET** `/profitability_index2`
+- Required parameters : `initial_investment`,`annual_cash_flows`, `discount_rate`
+- Note: annual_cash_flows should be space seperated
+- Sample Output
+```py
+{
+   "Tag" : "Profitability Index",
+    "initial_investment" : 10000,
+    "annual_cash_flows" : "5000 4000 3000",
+    "discount_rate" : "10%",
+    "profitability_index" : 1.003
+}
+```
+
 **GET** `receivables_turnover_ratio`
 - Required parameters : `sales_revenue`, `avg_accounts_receivable`
 - Sample output
