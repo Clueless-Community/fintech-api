@@ -642,4 +642,11 @@ def remaining_balance(regular_payment:float,interest_rate_per_period:float,numbe
     B = regular_payment*((1-((1+interest_rate_per_period)**(-(number_of_payments-number_of_payments_done))))//interest_rate_per_period)
     return B
 
+# Function to calculate Net present value
+def net_present_value(cash_flows: str, discount_rate: float, initial_investment: float):
+    cash_flow_list = list(map(int, cash_flows.split()))
+    net_present_value = -1*(initial_investment)
+    for i in range(len(cash_flow_list)):
+        net_present_value = net_present_value + (cash_flow_list[i]/((1+(discount_rate/100))**(i+1)))
+    return net_present_value
 
