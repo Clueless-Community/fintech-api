@@ -813,8 +813,9 @@
             "Beta of the portfolio investment w.r.t chosen market index":5 ,
             "Alpha of the return ": 65,
 }
+```
 
-**GET** `/weighted_average`
+**GET** `/weighted_average_of_values`
 - Required parameters : `Assigned_weight_values`,`data_point_values`
 - Note: Input should be space seperated
 - Sample Output
@@ -825,6 +826,7 @@
     "data point values" : "10 50 40",
     "weighted_average" : 39
 }
+```
 
 **GET** `/discounted_payback_period`
 - Required parameters : `overflow`,`rate`,`periodic_cash_flow`
@@ -938,4 +940,20 @@
   "remaining balance" : 166.6665077
 }
 ```
+
+**GET** `net_present_value`
+- Required parameters : `cash_flows`, `discount_rate`,`initial_investment`
+- Sample output
+```py
+{
+  "Tag" : "net present value",
+  "cash_flows" : "2 4 6 8 10",
+  "discount_rate" : 7,
+  "initial_investment" : 20,
+  "net present value": 3.493
+}
+```
+
+
+
 

@@ -1557,7 +1557,7 @@ def receivables_turnover_ratio(sales_revenue:float, avg_accounts_receivable:floa
 @app.get(
     "/remaining_balance",
     tags = ["remainig_balance"],
-    description = "Calculating remainig balance",
+    description = "Calculating remaining balance",
 )
 def remaining_balance(regular_payment:float,interest_rate_per_period:float,number_of_payments:float,number_of_payments_done:float):
     try:
@@ -1569,6 +1569,25 @@ def remaining_balance(regular_payment:float,interest_rate_per_period:float,numbe
             "number of payments" : number_of_payments,
             "number of payments done": number_of_payments_done,
             "remaining balance" : B
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate net present value
+@app.get(
+    "/net_present_value",
+    tags = ["net present value"],
+    description = "Calculating net present value",
+)
+def net_present_value(cash_flows: str, discount_rate: float, initial_investment: float):
+    try:
+        net_present_value = functions.net_present_value(cash_flows,discount_rate,initial_investment)
+        return{
+            "Tag" : "Net present value",
+            "cash flows" : cash_flows,
+            "discount rate" : discount_rate,
+            "initial investment" : initial_investment,
+            "Net present value": net_present_value
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
