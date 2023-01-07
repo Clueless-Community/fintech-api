@@ -96,7 +96,7 @@ Briefly explaining, this project is an API providing endpoints that makes your f
 
 + Or you can route to the `/docs` path, where you can easily access and visualize the endpoints through a dashboard provided by swagger UI.
 
-+ Here you can see, we are calling a function `sinple_interest_rate()` that is defined inside `./helpers/functions.py`.
++ Here you can see, we are calling a function `simple_interest_rate()` that is defined inside `./helpers/functions.py`.
 + This function is responsible for making some calculations based on the parameter passed and returns the required value.
 
 + So, to add an endpoint, raise an issue regarding adding an endpoint. Once you are assigned, go through the [project setup ]() and set up the project on the local machine.
