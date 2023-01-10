@@ -954,6 +954,29 @@
 }
 ```
 
+**GET** `leverage_ratio_income`
+- Required parameters : `debt_payments`, `income`,
+- Sample output
+```py
+{
+   "Tag": "Leverage Ratio By Income",
+   "Debt ": 25687,
+   "Income": 676,
+   "Leverage Ratio": 37.998520710059172,
+}
+```
+
+**GET** `leverage_ratio_equity`
+- Required parameters : `debt_payments`, `equity`,
+- Sample output
+```py
+{
+   "Tag": "Leverage Ratio By Equity",
+   "Debt ": 7873,
+   "Income": 3938,
+   "Leverage Ratio": 1.9992381919756229,
+}
+```
 
 
 
