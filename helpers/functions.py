@@ -650,3 +650,10 @@ def net_present_value(cash_flows: str, discount_rate: float, initial_investment:
         net_present_value = net_present_value + (cash_flow_list[i]/((1+(discount_rate/100))**(i+1)))
     return net_present_value
 
+# Function to calculate time period required for given growth
+def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
+    time_period_required_for_growth = math.log(growth_factor) / math.log(1 + interest_rate/100)
+    return time_period_required_for_growth
+
+
+
