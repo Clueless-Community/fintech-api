@@ -650,3 +650,9 @@ def net_present_value(cash_flows: str, discount_rate: float, initial_investment:
         net_present_value = net_present_value + (cash_flow_list[i]/((1+(discount_rate/100))**(i+1)))
     return net_present_value
 
+def leverage_income(debt_payments: int, income: int):
+    return float(debt_payments)/float(income)
+
+
+def leverage_equity(debt: int, equity: int):
+    return float(debt)/float(equity)

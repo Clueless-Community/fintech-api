@@ -1159,15 +1159,19 @@ def gdp_growth_rate(current_year_gdp: float, last_year_gdp: float):
     tags=["credit_card_equation"],
     description="Credit Card Equation",
 )
-def credit_card_equation(balance:float,monthly_payment:float,daily_interest_rate:float):
+def credit_card_equation(
+    balance: float, monthly_payment: float, daily_interest_rate: float
+):
     try:
-        N = functions.credit_card_equation(balance,monthly_payment,daily_interest_rate)
+        N = functions.credit_card_equation(
+            balance, monthly_payment, daily_interest_rate
+        )
         return {
             "Tag": "Credit card equation",
             "Balance": balance,
             "Monthly Payment": monthly_payment,
             "daily interest rate": daily_interest_rate,
-            "credit card equation": f"{N}%"
+            "credit card equation": f"{N}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -1179,9 +1183,13 @@ def credit_card_equation(balance:float,monthly_payment:float,daily_interest_rate
     tags=["future_value_of_ordinary_due"],
     description="Calculating future value of ordinary annuity",
 )
-def future_value_of_ordinary_due(periodic_payment: float, number_of_periods: int, effective_interest_rate: float):
+def future_value_of_ordinary_due(
+    periodic_payment: float, number_of_periods: int, effective_interest_rate: float
+):
     try:
-        future_value_of_ordinary_due = functions.future_value_of_ordinary_due(periodic_payment, number_of_periods, effective_interest_rate)
+        future_value_of_ordinary_due = functions.future_value_of_ordinary_due(
+            periodic_payment, number_of_periods, effective_interest_rate
+        )
         return {
             "Tag": "Future value of the ordinary annuity",
             "Periodic payment": periodic_payment,
@@ -1192,15 +1200,20 @@ def future_value_of_ordinary_due(periodic_payment: float, number_of_periods: int
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # Endpoint to calculate future value of the annuity due
 @app.get(
     "/future_value_of_annuity_due",
     tags=["future_value_of_annuity_due"],
     description="Calculating future value of annuity due",
 )
-def future_value_of_annuity_due(periodic_payment: float, number_of_periods: int, effective_interest_rate: float):
+def future_value_of_annuity_due(
+    periodic_payment: float, number_of_periods: int, effective_interest_rate: float
+):
     try:
-        future_value_of_annuity_due = functions.future_value_of_annuity_due(periodic_payment, number_of_periods, effective_interest_rate)
+        future_value_of_annuity_due = functions.future_value_of_annuity_due(
+            periodic_payment, number_of_periods, effective_interest_rate
+        )
         return {
             "Tag": "Future value of the ordinary annuity",
             "Periodic payment": periodic_payment,
@@ -1211,15 +1224,20 @@ def future_value_of_annuity_due(periodic_payment: float, number_of_periods: int,
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # Endpoint to calculate present value of the annuity due
 @app.get(
     "/present_value_of_annuity_due",
     tags=["present_value_of_annuity_due"],
     description="Calculating present value of annuity due",
 )
-def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int, rate_per_period: float):
+def present_value_of_annuity_due(
+    periodic_payment: float, number_of_periods: int, rate_per_period: float
+):
     try:
-        present_value_of_annuity_due = functions.present_value_of_annuity_due(periodic_payment, number_of_periods, rate_per_period)
+        present_value_of_annuity_due = functions.present_value_of_annuity_due(
+            periodic_payment, number_of_periods, rate_per_period
+        )
         return {
             "Tag": "Present value of annuity due",
             "Periodic payment": periodic_payment,
@@ -1236,9 +1254,13 @@ def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int
     tags=["compound_annual_growth_rate"],
     description="Calculating compound annual growth rate",
 )
-def compound_annual_growth_rate_1(ending_value:float,beginning_value:float,number_of_periods:float):
+def compound_annual_growth_rate_1(
+    ending_value: float, beginning_value: float, number_of_periods: float
+):
     try:
-        cagr = functions.compound_annual_growth_rate_1(ending_value,beginning_value,number_of_periods)
+        cagr = functions.compound_annual_growth_rate_1(
+            ending_value, beginning_value, number_of_periods
+        )
         return {
             "Tag": "compound annual growth rate 1",
             "ending_value": ending_value,
@@ -1249,21 +1271,21 @@ def compound_annual_growth_rate_1(ending_value:float,beginning_value:float,numbe
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # Endpoint to calculate loan to value
 @app.get(
     "/loan_to_value",
-    tags = ["loan_to_value"],
-    description = "Calculating loan to value ratio",
+    tags=["loan_to_value"],
+    description="Calculating loan to value ratio",
 )
-def loan_to_value(mortage_value:float,appraised_value: float):
+def loan_to_value(mortage_value: float, appraised_value: float):
     try:
-        ratio = functions.loan_to_value(mortage_value,appraised_value)
-        return{
-            "Tag" : "Loan to Value (LTV) ratio",
-            "Mortage Value" : mortage_value,
-            "Appraised Property Value" : appraised_value,
-            "Loan to Value ratio" : f"{ratio}%",
-
+        ratio = functions.loan_to_value(mortage_value, appraised_value)
+        return {
+            "Tag": "Loan to Value (LTV) ratio",
+            "Mortage Value": mortage_value,
+            "Appraised Property Value": appraised_value,
+            "Loan to Value ratio": f"{ratio}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -1272,18 +1294,17 @@ def loan_to_value(mortage_value:float,appraised_value: float):
 # Endpoint to calculate retention ratio
 @app.get(
     "/retention_ratio",
-    tags = ["retention_ratio"],
-    description = "Calculating retention ratio",
+    tags=["retention_ratio"],
+    description="Calculating retention ratio",
 )
-def retention_ratio(net_income:float,dividends: float):
+def retention_ratio(net_income: float, dividends: float):
     try:
-        retention_ratio = functions.retention_ratio(net_income,dividends)
-        return{
-            "Tag" : "Retention Ratio",
-            "Net Income" : net_income,
-            "Dividends" : dividends,
-            "Retention Ratio" : retention_ratio,
-
+        retention_ratio = functions.retention_ratio(net_income, dividends)
+        return {
+            "Tag": "Retention Ratio",
+            "Net Income": net_income,
+            "Dividends": dividends,
+            "Retention Ratio": retention_ratio,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -1292,33 +1313,34 @@ def retention_ratio(net_income:float,dividends: float):
 # Endpoint to calculate tax equivalent yield
 @app.get(
     "/tax_equivalent_yield",
-    tags = ["tax_equivalent_yield"],
-    description = "Calculating tax equivalent yield",
+    tags=["tax_equivalent_yield"],
+    description="Calculating tax equivalent yield",
 )
-def tax_equivalent_yield(tax_free_yield:float,tax_rate:float):
+def tax_equivalent_yield(tax_free_yield: float, tax_rate: float):
     try:
-        tax_equivalent_yield = functions.tax_equivalent_yield(tax_free_yield,tax_rate)
-        return{
-            "Tag" : "Tax Equivalent Yield",
-            "Tax Free Yield" : tax_free_yield,
-            "Tax Rate" : tax_rate,
-            "Tax Equivalent Yield" : tax_equivalent_yield,
+        tax_equivalent_yield = functions.tax_equivalent_yield(tax_free_yield, tax_rate)
+        return {
+            "Tag": "Tax Equivalent Yield",
+            "Tax Free Yield": tax_free_yield,
+            "Tax Rate": tax_rate,
+            "Tax Equivalent Yield": tax_equivalent_yield,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#endpoint to calculate year over year growth
+
+# endpoint to calculate year over year growth
 @app.get(
     "/year_to_year",
-    tags = ["year_to_year"],
-    description = "Calculating Year to Year Growth",
+    tags=["year_to_year"],
+    description="Calculating Year to Year Growth",
 )
-def year_over_year(later_period_value:float,earlier_period_value:float):
+def year_over_year(later_period_value: float, earlier_period_value: float):
     try:
-        growth = functions.year_over_year(later_period_value,earlier_period_value)
-        return{
-            "Tag" : "Year to Year Growth",
-            "Year to Year growth" : f"{growth}%",
+        growth = functions.year_over_year(later_period_value, earlier_period_value)
+        return {
+            "Tag": "Year to Year Growth",
+            "Year to Year growth": f"{growth}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -1326,41 +1348,51 @@ def year_over_year(later_period_value:float,earlier_period_value:float):
 
 @app.get(
     "/future_value_of_annuity",
-    tags = ["future_value_of_annuity"],
-    description = "Calculating future worth of annuity",
+    tags=["future_value_of_annuity"],
+    description="Calculating future worth of annuity",
 )
-def future_value_of_annuity(payments_per_period:float,interest_rate:float,number_of_periods:float):
+def future_value_of_annuity(
+    payments_per_period: float, interest_rate: float, number_of_periods: float
+):
     try:
-        fva = functions.future_value_of_annuity(payments_per_period,interest_rate,number_of_periods)
-        return{
-            "Tag" : "Future value of annuity",
-            "Payments per periods" : payments_per_period,
-            "interest rate" : interest_rate,
-            "number of periods" : number_of_periods,
-            "future value of annuity" : f"{fva}%",
+        fva = functions.future_value_of_annuity(
+            payments_per_period, interest_rate, number_of_periods
+        )
+        return {
+            "Tag": "Future value of annuity",
+            "Payments per periods": payments_per_period,
+            "interest rate": interest_rate,
+            "number of periods": number_of_periods,
+            "future value of annuity": f"{fva}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-
-#endpoint to calculate Balloon Balance of a Loan
+# endpoint to calculate Balloon Balance of a Loan
 @app.get(
     "/balloon_balance",
-    tags = ["balloon_balance"],
-    description = "Calculating Balloon Balance of a Loan",
+    tags=["balloon_balance"],
+    description="Calculating Balloon Balance of a Loan",
 )
-def balloon_balance(present_value:float, payment:float, rate_per_payment:float, number_of_payments:float):
+def balloon_balance(
+    present_value: float,
+    payment: float,
+    rate_per_payment: float,
+    number_of_payments: float,
+):
     try:
-        balloon_balance = functions.balloon_balance_of_loan(present_value, payment, rate_per_payment, number_of_payments)
-        return{
-            "Tag" : "Balloon Balance of a Loan",
-            "Present Value (Original Balance)" : present_value,
+        balloon_balance = functions.balloon_balance_of_loan(
+            present_value, payment, rate_per_payment, number_of_payments
+        )
+        return {
+            "Tag": "Balloon Balance of a Loan",
+            "Present Value (Original Balance)": present_value,
             "Payment": payment,
             "Rate per Payment": rate_per_payment,
             "Number of Payments": number_of_payments,
-            "Future Value (Balloon Balance)": balloon_balance
-            }
+            "Future Value (Balloon Balance)": balloon_balance,
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -1368,14 +1400,20 @@ def balloon_balance(present_value:float, payment:float, rate_per_payment:float, 
 # Endpoint to calculate Periodic lease payment
 @app.get(
     "/periodic_lease_payment",
-    tags = ["periodic_lease_payment"],
-    description = "Calculating Periodic lease payment",
+    tags=["periodic_lease_payment"],
+    description="Calculating Periodic lease payment",
 )
-def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: float, number_of_lease_payments: float):
+def periodic_lease_payment(
+    Asset_value: float,
+    monthly_lease_interest_rate: float,
+    number_of_lease_payments: float,
+):
     try:
-        pmt = functions.periodic_lease_payment(Asset_value, monthly_lease_interest_rate, number_of_lease_payments)
-        return{
-            "Tag" : "Periodic Lease Payment",
+        pmt = functions.periodic_lease_payment(
+            Asset_value, monthly_lease_interest_rate, number_of_lease_payments
+        )
+        return {
+            "Tag": "Periodic Lease Payment",
             "Asset value": Asset_value,
             "Monthly lease interest rate": monthly_lease_interest_rate,
             "Number of lease payments": number_of_lease_payments,
@@ -1393,7 +1431,9 @@ def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: floa
 )
 def weighted_average_of_values(Assigned_weight_values: str, data_point_values: str):
     try:
-        weighted_average = functions.weighted_average_of_values(Assigned_weight_values, data_point_values)
+        weighted_average = functions.weighted_average_of_values(
+            Assigned_weight_values, data_point_values
+        )
         return {
             "Tag": "weighted_average",
             "Assigned weight values": Assigned_weight_values,
@@ -1403,113 +1443,133 @@ def weighted_average_of_values(Assigned_weight_values: str, data_point_values: s
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#endpoint to calculate discounted payback period
+
+# endpoint to calculate discounted payback period
 @app.get(
     "/discounted_payback_period",
-    tags = ["discounted_payback_period"],
-    description = "Calculating discounted payback period",
+    tags=["discounted_payback_period"],
+    description="Calculating discounted payback period",
 )
-def discounted_payback_period(outflow:float,rate:float,periodic_cash_flow:float):
+def discounted_payback_period(outflow: float, rate: float, periodic_cash_flow: float):
     try:
-        discounted_payback_period = functions.discounted_payback_period(outflow,rate,periodic_cash_flow)
-        return{
-            "Tag" : "Discounted Payback Period",
-            "Initial Investment (Outflow)" : outflow,
+        discounted_payback_period = functions.discounted_payback_period(
+            outflow, rate, periodic_cash_flow
+        )
+        return {
+            "Tag": "Discounted Payback Period",
+            "Initial Investment (Outflow)": outflow,
             "Rate": rate,
             "Periodic Cash Flow": periodic_cash_flow,
-            "Discounted Payback Period": discounted_payback_period
+            "Discounted Payback Period": discounted_payback_period,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-#endpoint to calculate yield to maturity
+# endpoint to calculate yield to maturity
 @app.get(
     "/yield_to_maturity",
-    tags = ["yield_to_maturity"],
-    description = "Calculating Yield to Maturity",
+    tags=["yield_to_maturity"],
+    description="Calculating Yield to Maturity",
 )
-def yield_to_maturity(bond_price:float,face_value:float,coupon_rate:float,years_to_maturity:float):
+def yield_to_maturity(
+    bond_price: float, face_value: float, coupon_rate: float, years_to_maturity: float
+):
     try:
-        yield_cal = functions.yield_to_maturity(bond_price,face_value,coupon_rate,years_to_maturity)
-        return{
-            "Tag" : "Yield To Maturity",
-            "Face Value" : face_value,
-            "Years to maturity" : years_to_maturity,
-            "Yield to Maturity" : f"{yield_cal}%"
+        yield_cal = functions.yield_to_maturity(
+            bond_price, face_value, coupon_rate, years_to_maturity
+        )
+        return {
+            "Tag": "Yield To Maturity",
+            "Face Value": face_value,
+            "Years to maturity": years_to_maturity,
+            "Yield to Maturity": f"{yield_cal}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#endpoint to calculate perpetuity payment
+
+# endpoint to calculate perpetuity payment
 @app.get(
     "/perpetuity_payment",
-    tags = ["perpetuity_payment"],
-    description = "Calculating perpetuity payment",
+    tags=["perpetuity_payment"],
+    description="Calculating perpetuity payment",
 )
-def perpetuity_payment(present_value:float,rate:float):
+def perpetuity_payment(present_value: float, rate: float):
     try:
-        payment = functions.perpetuity_payment(present_value,rate)
-        return{
-            "Tag" : "Perpetuity Payment",
-            "Present Value" : present_value,
-            "Perpetuity Payment" : f"{payment}"
+        payment = functions.perpetuity_payment(present_value, rate)
+        return {
+            "Tag": "Perpetuity Payment",
+            "Present Value": present_value,
+            "Perpetuity Payment": f"{payment}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # endpoint to calculate Zero Coupon Bond value
 @app.get(
     "/zero_coupoun_bond_value",
-    tags = ["zero_coupoun_bond_value"],
-    description = "Calculating zero coupoun bond value",
+    tags=["zero_coupoun_bond_value"],
+    description="Calculating zero coupoun bond value",
 )
-def zero_coupon_bond_value(face_value:float,rate_of_yield:float,time_of_maturity:float):
-    try :
-        zcbv = functions.zero_coupon_bond_value(face_value,rate_of_yield,time_of_maturity)
-        return{
-            "Tag" : "Zero Coupon Bond Value",
-            "Face Value" : face_value,
-            "Rate of yield" : f"{rate_of_yield}%",
-            "Zero Coupon Bond Value" : zcbv
+def zero_coupon_bond_value(
+    face_value: float, rate_of_yield: float, time_of_maturity: float
+):
+    try:
+        zcbv = functions.zero_coupon_bond_value(
+            face_value, rate_of_yield, time_of_maturity
+        )
+        return {
+            "Tag": "Zero Coupon Bond Value",
+            "Face Value": face_value,
+            "Rate of yield": f"{rate_of_yield}%",
+            "Zero Coupon Bond Value": zcbv,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#endpoint to calculate Zero Coupon Bond Effective Yield
+
+# endpoint to calculate Zero Coupon Bond Effective Yield
 @app.get(
     "/zero_coupoun_bond_yield",
-    tags = ["zero_coupoun_bond_yield"],
-    description = "Calculating Zero Coupon Bond Effective Yield",
+    tags=["zero_coupoun_bond_yield"],
+    description="Calculating Zero Coupon Bond Effective Yield",
 )
-def zero_coupon_bond_yield(face_value:float, present_value:float, time_of_maturity:float):
+def zero_coupon_bond_yield(
+    face_value: float, present_value: float, time_of_maturity: float
+):
     try:
-        zcby = functions.zero_coupon_bond_yield(face_value, present_value, time_of_maturity)
-        return{
-            "Tag" : "Zero Coupon Bond Effective Yield",
-            "Face Value" : face_value,
-            "Present Value" : present_value,
-            "Time to maturity" : time_of_maturity,
-            "Zero Coupon Bond Effective Yield" : f"{zcby}%"
+        zcby = functions.zero_coupon_bond_yield(
+            face_value, present_value, time_of_maturity
+        )
+        return {
+            "Tag": "Zero Coupon Bond Effective Yield",
+            "Face Value": face_value,
+            "Present Value": present_value,
+            "Time to maturity": time_of_maturity,
+            "Zero Coupon Bond Effective Yield": f"{zcby}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-#Endpoint to calculate Profitability Index
+# Endpoint to calculate Profitability Index
 @app.get(
     "/profitability_index",
-    tags = ["profitability_index"],
-    description = "Calculating profitability index",
+    tags=["profitability_index"],
+    description="Calculating profitability index",
 )
-def profitability_index(initial_investment:float, pv_of_future_cash_flows:float):
+def profitability_index(initial_investment: float, pv_of_future_cash_flows: float):
     try:
-        profitability_index = functions.profitability_index(initial_investment, pv_of_future_cash_flows)
-        return{
-            "Tag" : "Profitability Index",
-            "Initial Investment" : initial_investment,
-            "PV of Future Cash Flows" : pv_of_future_cash_flows,
-            "Profitability Index" : profitability_index
+        profitability_index = functions.profitability_index(
+            initial_investment, pv_of_future_cash_flows
+        )
+        return {
+            "Tag": "Profitability Index",
+            "Initial Investment": initial_investment,
+            "PV of Future Cash Flows": pv_of_future_cash_flows,
+            "Profitability Index": profitability_index,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -1521,9 +1581,13 @@ def profitability_index(initial_investment:float, pv_of_future_cash_flows:float)
     tags=["profitability_index"],
     description="Calculating profitability index using annual cash flows",
 )
-def profitability_index2(initial_inverstment: float, annual_cash_flows: str, discount_rate: float):
+def profitability_index2(
+    initial_inverstment: float, annual_cash_flows: str, discount_rate: float
+):
     try:
-        profitability_index = functions.profitability_index2(initial_inverstment, annual_cash_flows, discount_rate)
+        profitability_index = functions.profitability_index2(
+            initial_inverstment, annual_cash_flows, discount_rate
+        )
         return {
             "Tag": "profitability_index",
             "initial_inverstment": initial_inverstment,
@@ -1535,20 +1599,22 @@ def profitability_index2(initial_inverstment: float, annual_cash_flows: str, dis
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-#Endpoint to calculate Receivables Turnover Ratio
+# Endpoint to calculate Receivables Turnover Ratio
 @app.get(
     "/receivables_turnover_ratio",
-    tags = ["receivables_turnover_ratio"],
-    description = "Calculating receivables turnover ratio",
+    tags=["receivables_turnover_ratio"],
+    description="Calculating receivables turnover ratio",
 )
-def receivables_turnover_ratio(sales_revenue:float, avg_accounts_receivable:float):
+def receivables_turnover_ratio(sales_revenue: float, avg_accounts_receivable: float):
     try:
-        receivables_turnover_ratio = functions.receivables_turnover_ratio(sales_revenue, avg_accounts_receivable)
-        return{
-            "Tag" : "Receivables Turnover Ratio",
-            "Sales Revenue" : sales_revenue,
-            "Avg Accounts Receivables" : avg_accounts_receivable,
-            "Receivables Turnover Ratio" : receivables_turnover_ratio
+        receivables_turnover_ratio = functions.receivables_turnover_ratio(
+            sales_revenue, avg_accounts_receivable
+        )
+        return {
+            "Tag": "Receivables Turnover Ratio",
+            "Sales Revenue": sales_revenue,
+            "Avg Accounts Receivables": avg_accounts_receivable,
+            "Receivables Turnover Ratio": receivables_turnover_ratio,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -1556,38 +1622,91 @@ def receivables_turnover_ratio(sales_revenue:float, avg_accounts_receivable:floa
 
 @app.get(
     "/remaining_balance",
-    tags = ["remainig_balance"],
-    description = "Calculating remaining balance",
+    tags=["remainig_balance"],
+    description="Calculating remaining balance",
 )
-def remaining_balance(regular_payment:float,interest_rate_per_period:float,number_of_payments:float,number_of_payments_done:float):
+def remaining_balance(
+    regular_payment: float,
+    interest_rate_per_period: float,
+    number_of_payments: float,
+    number_of_payments_done: float,
+):
     try:
-        B = functions.remaining_balance(regular_payment,interest_rate_per_period,number_of_payments,number_of_payments_done)
-        return{
-            "Tag" : "Remainig balance",
-            "regular_payment" : regular_payment,
-            "interest rate per period" : interest_rate_per_period,
-            "number of payments" : number_of_payments,
+        B = functions.remaining_balance(
+            regular_payment,
+            interest_rate_per_period,
+            number_of_payments,
+            number_of_payments_done,
+        )
+        return {
+            "Tag": "Remainig balance",
+            "regular_payment": regular_payment,
+            "interest rate per period": interest_rate_per_period,
+            "number of payments": number_of_payments,
             "number of payments done": number_of_payments_done,
-            "remaining balance" : B
+            "remaining balance": B,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # Endpoint to calculate net present value
 @app.get(
     "/net_present_value",
-    tags = ["net present value"],
-    description = "Calculating net present value",
+    tags=["net present value"],
+    description="Calculating net present value",
 )
 def net_present_value(cash_flows: str, discount_rate: float, initial_investment: float):
     try:
-        net_present_value = functions.net_present_value(cash_flows,discount_rate,initial_investment)
-        return{
-            "Tag" : "Net present value",
-            "cash flows" : cash_flows,
-            "discount rate" : discount_rate,
-            "initial investment" : initial_investment,
-            "Net present value": net_present_value
+        net_present_value = functions.net_present_value(
+            cash_flows, discount_rate, initial_investment
+        )
+        return {
+            "Tag": "Net present value",
+            "cash flows": cash_flows,
+            "discount rate": discount_rate,
+            "initial investment": initial_investment,
+            "Net present value": net_present_value,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to Calculate Leverage Ratio By Income
+@app.get(
+    "/leverage_ratio_income",
+    tags=["Leverage Ratio By Income"],
+    description="Calculate Leverage Ratio",
+)
+def leverage_income(debt_payments: int, income: int):
+    try:
+        leverage_ratio = functions.leverage_income(debt_payments, income)
+
+        return {
+            "Tag": "Leverage Ratio By Income",
+            "Debt ": debt_payments,
+            "Income": income,
+            "Leverage Ratio": f"{leverage_ratio}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to Calculate Leverage Ratio By equity
+@app.get(
+    "/leverage_ratio_equity",
+    tags=["Leverage Ratio By Equity"],
+    description="Calculate Leverage Ratio",
+)
+def leverage_equity(debt_payments: int, equity: int):
+    try:
+        leverage_ratio = functions.leverage_equity(debt_payments, equity)
+
+        return {
+            "Tag": "Leverage Ratio By Equity",
+            "Debt ": debt_payments,
+            "Equity": equity,
+            "Leverage Ratio": f"{leverage_ratio}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
