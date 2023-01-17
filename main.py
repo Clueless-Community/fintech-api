@@ -1710,3 +1710,20 @@ def leverage_equity(debt_payments: int, equity: int):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate the time period required for exponential growth
+@app.get(
+    "/time_period_required_for_growth",
+    tags = ["time_period_required_for_growth"],
+    description = "Calculating the time period required for exponential growth",
+)
+def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
+    try:
+        time_period_required_for_growth = functions.time_period_required_for_growth(interest_rate,growth_factor)
+        return{
+            "Tag" :"Time period required for exponential growth",
+            "interest rate" : interest_rate,
+            "growth factor" : growth_factor
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

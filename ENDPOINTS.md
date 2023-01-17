@@ -978,5 +978,19 @@
 }
 ```
 
+**GET** `time_period_required_for_growth`
+- Required Parameters : `interest_rate`, `growth_factor`
+- Sample output 
+```py
+{
+ "Tag" : "time period for exponential growth",
+ "interest_rate" : 7,
+ "growth_factor": 3,
+ "time period" : 16.23
+}
+```
+
+
+
 
 
