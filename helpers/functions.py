@@ -661,3 +661,9 @@ def leverage_equity(debt: int, equity: int):
 def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
     time_period_required_for_growth = math.log(growth_factor) / math.log(1 + interest_rate/100)
     return time_period_required_for_growth
+
+
+# Function to calculate present value of annuity due
+def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int, rate_per_period: float):
+    present_value_of_annuity_due = periodic_payment*((1-(1/(1+rate_per_period)**(number_of_periods)))/rate_per_period)*(1+rate_per_period)
+    return present_value_of_annuity_due
