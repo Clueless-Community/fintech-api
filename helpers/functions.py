@@ -661,3 +661,8 @@ def leverage_equity(debt: int, equity: int):
 def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
     time_period_required_for_growth = math.log(growth_factor) / math.log(1 + interest_rate/100)
     return time_period_required_for_growth
+
+# Function to calculate preferred stock value
+def preferred_stock_value(dividend:float, discount_rate:float):
+     preferred_stock_value = dividend/discount_rate
+     return preferred_stock_value
