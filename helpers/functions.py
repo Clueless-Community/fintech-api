@@ -673,3 +673,10 @@ def preferred_stock_value(dividend:float, discount_rate:float):
 def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int, rate_per_period: float):
     present_value_of_annuity_due = periodic_payment*((1-(1/(1+rate_per_period)**(number_of_periods)))/rate_per_period)*(1+rate_per_period)
     return present_value_of_annuity_due
+
+
+# Function to Calculate Asset Turnover Ratio
+def asset_turnover_ratio(net_sales:float, total_asset_beginning:float, total_asset_ending:float):
+    avg_total_asset = (total_asset_beginning + total_asset_ending)/2;
+    asset_turnover_ratio = net_sales/avg_total_asset
+    return asset_turnover_ratio
