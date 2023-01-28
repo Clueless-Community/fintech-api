@@ -990,6 +990,7 @@
 }
 ```
 
+
 **GET** `preferred-stock-value`
 - Required Parameters : `dividend`, `discount_rate`
 - Sample output
@@ -1002,6 +1003,17 @@
 }
 ```
 
+**GET** `/present_value_of_annuity_due`
 
+- Required parameters : `periodic_payment`, `number_of_periods` and `rate_per_period`
+- Sample output
 
+```py
+{
+    "Tag": "Present Value of Annuity Due",
+    "Periodic Payment": 5000.0,
+    "Number of Periods": 3,
+    "Rate Per Period": 10.0,
+    "Present Value of Annuity Due": "5495.8677685950415"
+}
 
