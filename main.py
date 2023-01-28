@@ -1753,6 +1753,7 @@ def asset_turnover_ratio(net_sales:float, total_asset_beginning:float, total_ass
         asset_turnover_ratio = functions.asset_turnover_ratio(net_sales,total_asset_beginning, total_asset_ending)
         return {
             "Tag": "Asset Turnover Ratio",
+            "Net Sales": net_sales,
             "Total beginning asset": total_asset_beginning,
             "Total ending asset": total_asset_ending,
             "Total average asset": (total_asset_beginning + total_asset_ending)/2,
