@@ -1741,3 +1741,22 @@ def preferred_stock_value(dividend:float, discount_rate:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    #Endpoint to calculate asset turnover ratio
+    @app.get(
+    "/asset_turnover_ratio",
+    tags=["asset_turnover_ratio"],
+    description="Calculate asset turnover ratio",
+)
+def asset_turnover_ratio(net_sales:float, total_asset_beginning:float, total_asset_ending:float):
+    try:
+        asset_turnover_ratio = functions.asset_turnover_ratio(net_sales,total_asset_beginning, total_asset_ending)
+        return {
+            "Tag": "Asset Turnover Ratio",
+            "Total beginning asset": total_asset_beginning,
+            "Total ending asset": total_asset_ending,
+            "Total average asset": (total_asset_beginning + total_asset_ending)/2,
+            "Interest Rate": f"{asset_turnover_ratio}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
