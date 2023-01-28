@@ -1757,7 +1757,7 @@ def asset_turnover_ratio(net_sales:float, total_asset_beginning:float, total_ass
             "Total beginning asset": total_asset_beginning,
             "Total ending asset": total_asset_ending,
             "Total average asset": (total_asset_beginning + total_asset_ending)/2,
-            "Interest Rate": f"{asset_turnover_ratio}",
+            "Asset Turnover Ratio": f"{asset_turnover_ratio}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
