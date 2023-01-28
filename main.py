@@ -1231,13 +1231,9 @@ def future_value_of_annuity_due(
     tags=["present_value_of_annuity_due"],
     description="Calculating present value of annuity due",
 )
-def present_value_of_annuity_due(
-    periodic_payment: float, number_of_periods: int, rate_per_period: float
-):
+def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int, rate_per_period: float):
     try:
-        present_value_of_annuity_due = functions.present_value_of_annuity_due(
-            periodic_payment, number_of_periods, rate_per_period
-        )
+        present_value_of_annuity_due = functions.present_value_of_annuity_due(periodic_payment, number_of_periods, rate_per_period)
         return {
             "Tag": "Present value of annuity due",
             "Periodic payment": periodic_payment,
@@ -1248,7 +1244,7 @@ def present_value_of_annuity_due(
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
+    
 @app.get(
     "/compound_annual_growth_rate",
     tags=["compound_annual_growth_rate"],
