@@ -980,13 +980,26 @@
 
 **GET** `time_period_required_for_growth`
 - Required Parameters : `interest_rate`, `growth_factor`
-- Sample output 
+- Sample output
 ```py
 {
  "Tag" : "time period for exponential growth",
  "interest_rate" : 7,
  "growth_factor": 3,
  "time period" : 16.23
+}
+```
+
+
+**GET** `preferred-stock-value`
+- Required Parameters : `dividend`, `discount_rate`
+- Sample output
+```py
+{
+  "Tag": "Preferred stock value",
+  "Dividend": 0.25,
+  "Discount Rate": 0.005,
+  "Preferred Stock Value": 50
 }
 ```
 
@@ -1003,8 +1016,4 @@
     "Rate Per Period": 10.0,
     "Present Value of Annuity Due": "5495.8677685950415"
 }
-
-
-
-
 

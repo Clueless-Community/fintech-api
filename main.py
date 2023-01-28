@@ -1723,3 +1723,21 @@ def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate preferred stock value
+@app.get(
+    "/preferred-stock-value",
+    tags = ["preferred_stock_value"],
+    description = "Calculating the preferred stock value",
+)
+def preferred_stock_value(dividend:float, discount_rate:float):
+    try:
+        preferred_stock_value = functions.preferred_stock_value(dividend, discount_rate)
+        return{
+            "Tag" :"Preferred stock value",
+            "Dividend" : dividend,
+            "Discount Rate" : discount_rate,
+            "Preferred Stock Value": preferred_stock_value
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
