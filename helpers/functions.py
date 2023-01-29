@@ -676,6 +676,6 @@ def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int
 
 
 # Function to calculate Bid Ask Spread
-def bid_ask_spread(ask_price:float, bid_price):
+def bid_ask_spread(ask_price:float, bid_price:float):
     bid_ask_spread = ask_price - bid_price
     return bid_ask_spread
