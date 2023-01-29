@@ -1016,4 +1016,18 @@
     "Rate Per Period": 10.0,
     "Present Value of Annuity Due": "5495.8677685950415"
 }
+```
 
+**GET** `/bid-ask-spread`
+
+- Required parameters : `ask_price`, `bid_price`
+- Sample output
+
+```py
+{
+  "Tag": "Bid Ask Spread",
+  "Ask Price": 28700,
+  "Bid Price": 26200,
+  "Bid Ask Spread": 2500
+}
+```
