@@ -1244,7 +1244,7 @@ def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    
+
 @app.get(
     "/compound_annual_growth_rate",
     tags=["compound_annual_growth_rate"],
@@ -1738,6 +1738,25 @@ def preferred_stock_value(dividend:float, discount_rate:float):
             "Dividend" : dividend,
             "Discount Rate" : discount_rate,
             "Preferred Stock Value": preferred_stock_value
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to calculate Bid Ask Spread
+@app.get(
+    "/bid-ask-spread",
+    tags = ["bid_ask_spread"],
+    description = "Calculating the Bid Ask Spread",
+)
+def bid_ask_spread(ask_price:float, bid_price:float):
+    try:
+        bid_ask_spread = functions.bid_ask_spread(ask_price, bid_price)
+        return{
+            "Tag" :"Bid Ask Spread",
+            "Ask Price" : ask_price,
+            "Bid Price" : bid_price,
+            "Bid Ask Spread": bid_ask_spread
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
