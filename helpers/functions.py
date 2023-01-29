@@ -673,3 +673,9 @@ def preferred_stock_value(dividend:float, discount_rate:float):
 def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int, rate_per_period: float):
     present_value_of_annuity_due = periodic_payment*((1-(1/(1+rate_per_period)**(number_of_periods)))/rate_per_period)*(1+rate_per_period)
     return present_value_of_annuity_due
+
+
+# Function to calculate Bid Ask Spread
+def bid_ask_spread(ask_price:float, bid_price):
+    bid_ask_spread = ask_price - bid_price
+    return bid_ask_spread
