@@ -680,3 +680,10 @@ def asset_turnover_ratio(net_sales:float, total_asset_beginning:float, total_ass
     avg_total_asset = (total_asset_beginning + total_asset_ending)/2;
     asset_turnover_ratio = net_sales/avg_total_asset
     return asset_turnover_ratio
+
+
+
+# Function to calculate Bid Ask Spread
+def bid_ask_spread(ask_price:float, bid_price:float):
+    bid_ask_spread = ask_price - bid_price
+    return bid_ask_spread

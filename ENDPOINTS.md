@@ -1034,3 +1034,16 @@
 }
 ```
 
+**GET** `/bid-ask-spread`
+
+- Required parameters : `ask_price`, `bid_price`
+- Sample output
+
+```py
+{
+  "Tag": "Bid Ask Spread",
+  "Ask Price": 28700,
+  "Bid Price": 26200,
+  "Bid Ask Spread": 2500
+}
+```
