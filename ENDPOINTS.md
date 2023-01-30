@@ -1018,6 +1018,22 @@
 }
 ```
 
+**GET** `/asset_turnover_ratio`
+
+- Required parameters : `net_sales`, `total_asset_beginning` and `total_asset_ending`
+- Sample output
+
+```py
+{
+    "Tag": "Asset Turnover Ratio",
+    "Net Sales": 100000.0,
+    "Total beginning asset": 20000.0,
+    "Total ending asset": 30000.0,
+    "Total average asset": 25000.0,
+    "Asset Turnover Ratio": "4.0",
+}
+```
+
 **GET** `/bid-ask-spread`
 
 - Required parameters : `ask_price`, `bid_price`
