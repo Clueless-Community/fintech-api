@@ -1231,9 +1231,13 @@ def future_value_of_annuity_due(
     tags=["present_value_of_annuity_due"],
     description="Calculating present value of annuity due",
 )
-def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int, rate_per_period: float):
+def present_value_of_annuity_due(
+    periodic_payment: float, number_of_periods: int, rate_per_period: float
+):
     try:
-        present_value_of_annuity_due = functions.present_value_of_annuity_due(periodic_payment, number_of_periods, rate_per_period)
+        present_value_of_annuity_due = functions.present_value_of_annuity_due(
+            periodic_payment, number_of_periods, rate_per_period
+        )
         return {
             "Tag": "Present value of annuity due",
             "Periodic payment": periodic_payment,
@@ -1707,57 +1711,67 @@ def leverage_equity(debt_payments: int, equity: int):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # Endpoint to calculate the time period required for exponential growth
 @app.get(
     "/time_period_required_for_growth",
-    tags = ["time_period_required_for_growth"],
-    description = "Calculating the time period required for exponential growth",
+    tags=["time_period_required_for_growth"],
+    description="Calculating the time period required for exponential growth",
 )
-def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
+def time_period_required_for_growth(interest_rate: float, growth_factor: int):
     try:
-        time_period_required_for_growth = functions.time_period_required_for_growth(interest_rate,growth_factor)
-        return{
-            "Tag" :"Time period required for exponential growth",
-            "interest rate" : interest_rate,
-            "growth factor" : growth_factor
+        time_period_required_for_growth = functions.time_period_required_for_growth(
+            interest_rate, growth_factor
+        )
+        return {
+            "Tag": "Time period required for exponential growth",
+            "interest rate": interest_rate,
+            "growth factor": growth_factor,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # Endpoint to calculate preferred stock value
 @app.get(
     "/preferred-stock-value",
-    tags = ["preferred_stock_value"],
-    description = "Calculating the preferred stock value",
+    tags=["preferred_stock_value"],
+    description="Calculating the preferred stock value",
 )
-def preferred_stock_value(dividend:float, discount_rate:float):
+def preferred_stock_value(dividend: float, discount_rate: float):
     try:
         preferred_stock_value = functions.preferred_stock_value(dividend, discount_rate)
-        return{
-            "Tag" :"Preferred stock value",
-            "Dividend" : dividend,
-            "Discount Rate" : discount_rate,
-            "Preferred Stock Value": preferred_stock_value
+        return {
+            "Tag": "Preferred stock value",
+            "Dividend": dividend,
+            "Discount Rate": discount_rate,
+            "Preferred Stock Value": preferred_stock_value,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-    
-    #Endpoint to calculate asset turnover ratio
-    @app.get(
+
+    # Endpoint to calculate asset turnover ratio
+
+
+# Identation error corrected
+@app.get(
     "/asset_turnover_ratio",
     tags=["asset_turnover_ratio"],
     description="Calculate asset turnover ratio",
 )
-def asset_turnover_ratio(net_sales:float, total_asset_beginning:float, total_asset_ending:float):
+def asset_turnover_ratio(
+    net_sales: float, total_asset_beginning: float, total_asset_ending: float
+):
     try:
-        asset_turnover_ratio = functions.asset_turnover_ratio(net_sales,total_asset_beginning, total_asset_ending)
+        asset_turnover_ratio = functions.asset_turnover_ratio(
+            net_sales, total_asset_beginning, total_asset_ending
+        )
         return {
             "Tag": "Asset Turnover Ratio",
             "Net Sales": net_sales,
             "Total beginning asset": total_asset_beginning,
             "Total ending asset": total_asset_ending,
-            "Total average asset": (total_asset_beginning + total_asset_ending)/2,
+            "Total average asset": (total_asset_beginning + total_asset_ending) / 2,
             "Asset Turnover Ratio": f"{asset_turnover_ratio}",
         }
     except:
@@ -1767,17 +1781,17 @@ def asset_turnover_ratio(net_sales:float, total_asset_beginning:float, total_ass
 # Endpoint to calculate Bid Ask Spread
 @app.get(
     "/bid-ask-spread",
-    tags = ["bid_ask_spread"],
-    description = "Calculating the Bid Ask Spread",
+    tags=["bid_ask_spread"],
+    description="Calculating the Bid Ask Spread",
 )
-def bid_ask_spread(ask_price:float, bid_price:float):
+def bid_ask_spread(ask_price: float, bid_price: float):
     try:
         bid_ask_spread = functions.bid_ask_spread(ask_price, bid_price)
-        return{
-            "Tag" :"Bid Ask Spread",
-            "Ask Price" : ask_price,
-            "Bid Price" : bid_price,
-            "Bid Ask Spread": bid_ask_spread
+        return {
+            "Tag": "Bid Ask Spread",
+            "Ask Price": ask_price,
+            "Bid Price": bid_price,
+            "Bid Ask Spread": bid_ask_spread,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
