@@ -791,7 +791,28 @@ def bid_ask_spread(ask_price: float, bid_price: float):
 
 # Function To calculate No of Periods(Time in years) with respect to Present value(PV) and Future value(FV)
 def CalculatePeriods(present_val: float, future_val: float, rate: float):
-    rate=rate/100
+    rate = rate / 100
     n = math.log(future_val / present_val) / math.log(1 + rate)
     print(n)
     return n
+
+
+# Function to calculate payments on a loan that has balance remaining after all periodic payments
+# are made
+def balloon_loan_payment(
+    principal: float,
+    interest_rate: float,
+    term_years: float,
+    balloon_payment_year: float,
+):
+    monthly_interest_rate = interest_rate / 1200
+    months_paid = balloon_payment_year * 12
+    rs = (1 + monthly_interest_rate) ** months_paid
+    term_months = term_years * 12
+    monthly_payment = (principal * monthly_interest_rate) / (
+        1 - 1 / (1 + monthly_interest_rate) ** term_months
+    )
+    balloon_payment = principal * rs - monthly_payment * (
+        (rs - 1) / monthly_interest_rate
+    )
+    return balloon_payment
