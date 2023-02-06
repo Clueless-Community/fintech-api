@@ -1047,3 +1047,17 @@
   "Bid Ask Spread": 2500
 }
 ```
+
+**GET** `/calculate-period-FV-PV-rate`
+
+- Required parameters : `present_val`, `future_val`,`rate`
+- Sample output
+
+```py
+{
+  "Tag": "Period in years ",
+  "Present Value": 5000,
+  "Future Vlaue": 6500,
+  "Periods": 3.87776389841767
+}
+```
