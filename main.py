@@ -1795,3 +1795,20 @@ def bid_ask_spread(ask_price: float, bid_price: float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/calculate-period-FV-PV-rate",
+    tags=["calculate-period-FV-PV-rate"],
+    description="Calculating No of Periods(Time in years) with respect to Present value(PV) and Future value(FV)",
+)
+def CalculatePeriods(present_val: float, future_val: float, rate: float):
+    try:
+        period=functions.CalculatePeriods(present_val, future_val, rate)
+        return{
+            "Tag": "Period in years ",
+            "Present Value":present_val,
+            "Future Vlaue":future_val,
+            "Periods":period
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
