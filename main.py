@@ -1796,6 +1796,7 @@ def bid_ask_spread(ask_price: float, bid_price: float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 @app.get(
     "/calculate-period-FV-PV-rate",
     tags=["calculate-period-FV-PV-rate"],
@@ -1803,12 +1804,39 @@ def bid_ask_spread(ask_price: float, bid_price: float):
 )
 def CalculatePeriods(present_val: float, future_val: float, rate: float):
     try:
-        period=functions.CalculatePeriods(present_val, future_val, rate)
-        return{
+        period = functions.CalculatePeriods(present_val, future_val, rate)
+        return {
             "Tag": "Period in years ",
-            "Present Value":present_val,
-            "Future Vlaue":future_val,
-            "Periods":period
+            "Present Value": present_val,
+            "Future Vlaue": future_val,
+            "Periods": period,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@app.get(
+    "/balloon-loan-payment",
+    tags=["Balloon-loan-payment"],
+    description="Calculating the payments on a loan that has a balance remaining after all periodic payments are mad using balloon laon payment formula",
+)
+def balloon_loan_payment(
+    principal: float,
+    interest_rate: float,
+    term_years: float,
+    balloon_payment_year: float,
+):
+    try:
+        balloon_loan_payment = functions.balloon_loan_payment(
+            principal, interest_rate, term_years, balloon_payment_year
+        )
+        return {
+            "Tag": "Balloon Loan Payment",
+            "Principal": principal,
+            "Interest Rate": interest_rate,
+            "Term Years": term_years,
+            "Balloon Payment Year": balloon_payment_year,
+            "Balloon Loan Payment": balloon_loan_payment,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
