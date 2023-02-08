@@ -827,3 +827,20 @@ def monthly_lease_payment(
     periodic_payment = periodic_lease_payment(Asset_value, monthly_lease_interest_rate, number_of_lease_payments)
     monthly_payment = periodic_payment / number_of_lease_payments
     return monthly_payment
+
+# Function to calculate 401k
+def calculate_401k(
+    income:float,
+    contribution_percentage:float,
+    current_age:int,
+    age_at_retirement:int,
+    rate_of_return:float,
+    salary_increase_rate:float
+):
+    contribution_amount = income*contribution_percentage/100
+    number_of_years = age_at_retirement - current_age
+    amount = 0 
+    for _ in range(number_of_years):
+        amount = (amount + contribution_amount)*(1+(rate_of_return/100))
+        contribution_amount = (contribution_amount)*(1+(salary_increase_rate/100))
+    return round(amount,3)

@@ -1866,3 +1866,36 @@ def monthly_lease_payment(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# End point to calculate 401k
+@app.get(
+    "/401k",
+    tags=["401k"],
+    description="Calculating an estimate of the 401(k) balance at retirement",
+)
+def estimate_401k(
+    income:float,
+    contribution_percentage:float,
+    current_age:int,
+    age_at_retirement:int,
+    rate_of_return:float,
+    salary_increase_rate:float,
+    withdraw_tax_rate:float
+):
+    try:
+        estimated_401k = functions.calculate_401k(
+            income,contribution_percentage,current_age,age_at_retirement,rate_of_return,salary_increase_rate
+        )
+        return {
+            "Tag": "Estimated 401(k)",
+            "income": income,
+            "contribution_percentage": contribution_percentage,
+            "current_age": current_age,
+            "age_at_retirement": age_at_retirement,
+            "rate_of_return": rate_of_return,
+            "withdraw_tax_rate":withdraw_tax_rate,
+            "estimated_401k" :estimated_401k,
+            "annual_withdraw_amount":round((withdraw_tax_rate/100)*estimated_401k,3)
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
