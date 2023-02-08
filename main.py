@@ -1840,3 +1840,29 @@ def balloon_loan_payment(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to calculate monthly lease payment
+@app.get(
+    "/monthly_lease_payment",
+    tags=["monthly_lease_payment"],
+    description="Calculating Monthly lease payment",
+)
+def monthly_lease_payment(
+    Asset_value: float,
+    monthly_lease_interest_rate: float,
+    number_of_lease_payments: float,
+):
+    try:
+        pmt = functions.monthly_lease_payment(
+            Asset_value, monthly_lease_interest_rate, number_of_lease_payments
+        )
+        return {
+            "Tag": "Monthly Lease Payment",
+            "Asset value": Asset_value,
+            "Monthly lease interest rate": monthly_lease_interest_rate,
+            "Number of lease payments": number_of_lease_payments,
+            "Monthly Lease Payment": f"{pmt}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

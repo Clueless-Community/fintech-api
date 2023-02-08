@@ -816,3 +816,14 @@ def balloon_loan_payment(
         (rs - 1) / monthly_interest_rate
     )
     return balloon_payment
+
+
+# Function to calculate Monthly lease payment
+def monthly_lease_payment(
+    Asset_value: float,
+    monthly_lease_interest_rate: float,
+    number_of_lease_payments: float,
+):
+    periodic_payment = periodic_lease_payment(Asset_value, monthly_lease_interest_rate, number_of_lease_payments)
+    monthly_payment = periodic_payment / number_of_lease_payments
+    return monthly_payment
