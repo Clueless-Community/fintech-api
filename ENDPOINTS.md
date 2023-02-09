@@ -1218,3 +1218,21 @@
   "Pmt": 16.89
 }
 ```
+**GET** `/401k`
+
+- Required parameters : `income`, `contribution_percentage`,`current_age`,`age_at_retirement`,`rate_of_return`,`salary_increase_rate`,`withdraw_tax_rate`          
+- Sample output
+
+```py
+{
+  "Tag": "Estimated 401(k)",
+  "income": 100000.0,
+  "contribution_percentage": 10.0,
+  "current_age": 30,
+  "age_at_retirement": 60,
+  "rate_of_return": 8.0,
+  "withdraw_tax_rate": 4.0,
+  "estimated_401k": 1841200.032,
+  "annual_withdraw_amount": 73648.001
+}
+```
