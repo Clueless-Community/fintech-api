@@ -1917,7 +1917,7 @@ def estimate_401k(
 def roth_ira(
     principal: float,
     interest_rate: float,
-    years: float,
+    years: int,
     tax_rate: float,
     annual_contribution: float,
 ):

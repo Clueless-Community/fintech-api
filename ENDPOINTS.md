@@ -1248,10 +1248,10 @@
 {
   "Tag": "Roth IRA",
   "Principal":10000.0,
-  "Interest Rate": 7,
+  "Interest Rate": 7.0,
   "Years": 30,
-  "Tax Rates": 25,
-  "Annual Contributions": 5000,
+  "Tax Rates": 25.0,
+  "Annual Contributions": 5000.0,
   "Roth Ira Balance": 581488,
   "Taxable_saving_balance": 411438,
 }
