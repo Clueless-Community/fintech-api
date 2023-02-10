@@ -1236,3 +1236,19 @@
   "annual_withdraw_amount": 73648.001
 }
 ```
+**GET** `/mortgage_amortization`
+
+- Required parameters : `mortgage_amount`, `mortgage_deposit`,`annual_interest_rate`,`loan_term`        
+- Sample output
+
+```py
+{
+    "TAG": "Mortgage monthly payments",
+    "mortgage_amount": 250000.0,
+    "mortgage_deposit": 25.0,
+    "annual_interest_rate": 5.0,
+    "loan_term": 25,
+    "monthly_payment": 1108.632,
+    "Annual_payments": 13303.586
+}
+```

@@ -844,3 +844,18 @@ def calculate_401k(
         amount = (amount + contribution_amount)*(1+(rate_of_return/100))
         contribution_amount = (contribution_amount)*(1+(salary_increase_rate/100))
     return round(amount,3)
+
+# Function to calculate Mortgage Amortization
+
+def calculate_mortgage_interest(
+    mortgage_amount:float,
+    mortgage_deposit:float,
+    annual_interest_rate:float,
+    loan_term:int,
+):
+    annual_interest_rate = annual_interest_rate/100
+    loan_amount = mortgage_amount*(100-mortgage_deposit)/100
+    power = (1 + annual_interest_rate)**loan_term
+    mortgage_annual_payment = loan_amount*(annual_interest_rate*power) /(power - 1)
+    return round(mortgage_annual_payment,3)
+
