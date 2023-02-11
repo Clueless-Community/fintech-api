@@ -1867,6 +1867,7 @@ def monthly_lease_payment(
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # End point to calculate 401k
 @app.get(
     "/401k",
@@ -1874,17 +1875,22 @@ def monthly_lease_payment(
     description="Calculating an estimate of the 401(k) balance at retirement",
 )
 def estimate_401k(
-    income:float,
-    contribution_percentage:float,
-    current_age:int,
-    age_at_retirement:int,
-    rate_of_return:float,
-    salary_increase_rate:float,
-    withdraw_tax_rate:float
+    income: float,
+    contribution_percentage: float,
+    current_age: int,
+    age_at_retirement: int,
+    rate_of_return: float,
+    salary_increase_rate: float,
+    withdraw_tax_rate: float,
 ):
     try:
         estimated_401k = functions.calculate_401k(
-            income,contribution_percentage,current_age,age_at_retirement,rate_of_return,salary_increase_rate
+            income,
+            contribution_percentage,
+            current_age,
+            age_at_retirement,
+            rate_of_return,
+            salary_increase_rate,
         )
         return {
             "Tag": "Estimated 401(k)",
@@ -1893,9 +1899,41 @@ def estimate_401k(
             "current_age": current_age,
             "age_at_retirement": age_at_retirement,
             "rate_of_return": rate_of_return,
-            "withdraw_tax_rate":withdraw_tax_rate,
-            "estimated_401k" :estimated_401k,
-            "annual_withdraw_amount":round((withdraw_tax_rate/100)*estimated_401k,3)
+            "withdraw_tax_rate": withdraw_tax_rate,
+            "estimated_401k": estimated_401k,
+            "annual_withdraw_amount": round(
+                (withdraw_tax_rate / 100) * estimated_401k, 3
+            ),
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@app.get(
+    "/roth-ira",
+    tags=["Roth-IRA"],
+    description="This calculator estimates the balances of Roth IRA savings and regular taxable savings.",
+)
+def roth_ira(
+    principal: float,
+    interest_rate: float,
+    years: int,
+    tax_rate: float,
+    annual_contribution: float,
+):
+    try:
+        roth_ira_balance, taxable_saving_balance = functions.roth_ira(
+            principal, interest_rate, years, tax_rate, annual_contribution
+        )
+        return {
+            "Tag": "Roth-IRA",
+            "Principal": principal,
+            "Interest Rate": interest_rate,
+            "Years": years,
+            "Tax Rates": tax_rate,
+            "Annual Contributions": annual_contribution,
+            "Roth Ira Balance": roth_ira_balance,
+            "Taxable saving Balance": taxable_saving_balance,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
