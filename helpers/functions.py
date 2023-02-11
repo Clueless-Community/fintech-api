@@ -824,22 +824,25 @@ def monthly_lease_payment(
     monthly_lease_interest_rate: float,
     number_of_lease_payments: float,
 ):
-    periodic_payment = periodic_lease_payment(Asset_value, monthly_lease_interest_rate, number_of_lease_payments)
+    periodic_payment = periodic_lease_payment(
+        Asset_value, monthly_lease_interest_rate, number_of_lease_payments
+    )
     monthly_payment = periodic_payment / number_of_lease_payments
     return monthly_payment
 
+
 # Function to calculate 401k
 def calculate_401k(
-    income:float,
-    contribution_percentage:float,
-    current_age:int,
-    age_at_retirement:int,
-    rate_of_return:float,
-    salary_increase_rate:float
+    income: float,
+    contribution_percentage: float,
+    current_age: int,
+    age_at_retirement: int,
+    rate_of_return: float,
+    salary_increase_rate: float,
 ):
-    contribution_amount = income*contribution_percentage/100
+    contribution_amount = income * contribution_percentage / 100
     number_of_years = age_at_retirement - current_age
-    amount = 0 
+    amount = 0
     for _ in range(number_of_years):
         amount = (amount + contribution_amount)*(1+(rate_of_return/100))
         contribution_amount = (contribution_amount)*(1+(salary_increase_rate/100))
@@ -859,3 +862,20 @@ def calculate_mortgage_interest(
     mortgage_annual_payment = loan_amount*(annual_interest_rate*power) /(power - 1)
     return round(mortgage_annual_payment,3)
 
+def roth_ira(
+    principal: float,
+    interest_rate: float,
+    years: int,
+    tax_rate: float,
+    annual_contribution: float,
+):
+    roth_ira_balance = principal
+    taxable_balance = principal
+    for _ in range(years):
+        roth_ira_balance = (roth_ira_balance + annual_contribution) * (
+            1 + interest_rate / 100
+        )
+        taxable_balance = (taxable_balance + annual_contribution) * (
+            1 + interest_rate / 100 * (1 - tax_rate / 100)
+        )
+    return math.ceil(roth_ira_balance), math.ceil(taxable_balance)

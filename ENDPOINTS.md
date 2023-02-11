@@ -1204,6 +1204,7 @@
   "Balloon Loan Payment": 94131.5898577919,
 }
 ```
+
 **GET** `/periodic_lease_payment`
 
 - Required parameters : `Asset_value_to_be_financed` and `monthly_lease_interest_rate` and `Number_of_lease_payments_required`
@@ -1218,9 +1219,10 @@
   "Pmt": 16.89
 }
 ```
+
 **GET** `/401k`
 
-- Required parameters : `income`, `contribution_percentage`,`current_age`,`age_at_retirement`,`rate_of_return`,`salary_increase_rate`,`withdraw_tax_rate`          
+- Required parameters : `income`, `contribution_percentage`,`current_age`,`age_at_retirement`,`rate_of_return`,`salary_increase_rate`,`withdraw_tax_rate`
 - Sample output
 
 ```py
@@ -1250,5 +1252,23 @@
     "loan_term": 25,
     "monthly_payment": 1108.632,
     "Annual_payments": 13303.586
+}
+```
+
+**GET** `Roth-IRA`
+
+- Required parameters : `principal`,`interest_rate`,`years`,`tax_rate`,`annual_contribution`
+- sample output
+
+```py
+{
+  "Tag": "Roth IRA",
+  "Principal":10000.0,
+  "Interest Rate": 7.0,
+  "Years": 30,
+  "Tax Rates": 25.0,
+  "Annual Contributions": 5000.0,
+  "Roth Ira Balance": 581488,
+  "Taxable_saving_balance": 411438,
 }
 ```
