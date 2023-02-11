@@ -1937,3 +1937,30 @@ def roth_ira(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+#Endpoint to calculate Mortgage Amortization
+@app.get(
+    "/mortgage-amortization",
+    tags=["mortgage-amortization"],
+    description="Calculating annual or monthly amortization schedule for a mortgage loan.",
+)
+def mortgage_amortization(
+    mortgage_amount:float,
+    mortgage_deposit:float,
+    annual_interest_rate:float,
+    loan_term:int,
+):
+    try:
+        annual_payment = functions.calculate_mortgage_interest(mortgage_amount,mortgage_deposit,annual_interest_rate,loan_term)
+        return {
+            "TAG":"Mortgage monthly payments",
+            "mortgage_amount":mortgage_amount,
+            "mortgage_deposit":mortgage_deposit,
+            "annual_interst_rate":annual_interest_rate,
+            "loan_term":loan_term,
+            "monthly_payment":round(annual_payment/12,3),
+            "annual_payment":round(annual_payment,3)
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
