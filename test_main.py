@@ -61,4 +61,16 @@ def test_roi_main():
             "Return on Investment":f"49.0%"
     }
 
+def test_calculate_enterprise_value_main():
+    response = client.get("/enterprise-value/?share_price=10.00&fully_diluted_shares_outstanding=100&total_debt=500.00&preferred_stock=500.00&non_controlling_interest=1000.00&cash_and_cash_equivalents=1000.00")
+    assert response.status_code == 200
 
+    assert response.json() == {
+        "Tag": "Enterprise Value",
+        "Equity Value": 1000,
+        "Total Debt": 500,
+        "Preferred Stock": 500,
+        "Non-Controlling Interest": 1000,
+        "Cash & Cash Equivalents": 1000,
+        "Enterprise Value": 2000
+    }
