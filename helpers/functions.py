@@ -879,3 +879,91 @@ def roth_ira(
             1 + interest_rate / 100 * (1 - tax_rate / 100)
         )
     return math.ceil(roth_ira_balance), math.ceil(taxable_balance)
+
+
+# Function to convert salary_amount amounts to their corresponding values based on payment frequency.
+def salary_calculate(
+    salary_amount: float, 
+    payment_frequency: str,
+    hours_per_day: int,
+    days_per_week: int
+):
+    # Get the total salary of the corresponding frequency 
+    salaries = {
+        "hourly": {
+        # Assuming there are 4.333333 weeks in a month (in real-time), 13 week quarters in a year & 52 weeks in a year
+            "hourly": salary_amount,
+            "daily": salary_amount * hours_per_day,
+            "weekly": salary_amount * hours_per_day * days_per_week,
+            "bi-weekly": salary_amount * hours_per_day * days_per_week * 2,
+            "monthly": salary_amount * hours_per_day * days_per_week * 4.333333, 
+            "quarterly": salary_amount * hours_per_day * days_per_week * 13, 
+            "yearly": salary_amount * hours_per_day * (days_per_week * 52)
+        },
+        "daily": {
+        # Assuming there are 4.333333 weeks in a month, and 3 months in a quarter & 52 working weeks
+            "hourly": salary_amount / hours_per_day,
+            "daily": salary_amount,
+            "weekly": salary_amount * days_per_week,
+            "bi-weekly": salary_amount * days_per_week * 2,
+            "monthly": salary_amount * (days_per_week * 4.333333), 
+            "quarterly": salary_amount * days_per_week * (4.333333 * 3), 
+            "yearly": salary_amount * days_per_week * 52 
+        },
+        "weekly": {
+        # Assuming there are 4.333333 weeks in a month, 13 weeks in a quarter & 2 weeks make up a bi-week
+            "hourly": salary_amount / (hours_per_day * days_per_week),
+            "daily": salary_amount / days_per_week,
+            "weekly": salary_amount,
+            "bi-weekly": salary_amount * 2,
+            "monthly": salary_amount * 4.333333, 
+            "quarterly": salary_amount * 13,
+            "yearly": salary_amount * 52
+        },
+        "bi-weekly": {
+        # Assuming there are 2 bi-weekly periods in a month & round(6.5223214,1) bi-weekly periods in a quarter
+            "hourly": salary_amount / (hours_per_day * days_per_week * 2),
+            "daily": salary_amount / (days_per_week * 2),
+            "weekly": salary_amount / 2,
+            "bi-weekly": salary_amount,
+            "monthly": salary_amount * 2, 
+            "quarterly": salary_amount * 6.5, 
+            "yearly": salary_amount * 26
+        },
+        "monthly": {
+        # Assuming there are 2 bi-weekly periods, 4.333333 weeks in a month & 3 months in a quarter
+            "hourly": salary_amount / (hours_per_day * days_per_week * 4.333333), 
+            "daily": salary_amount / (days_per_week * 4.333333), 
+            "weekly": salary_amount / 4.333333,
+            "bi-weekly": salary_amount / (4.333333 / 2), 
+            "monthly": salary_amount,
+            "quarterly": salary_amount * 3,
+            "yearly": salary_amount * 12
+        },
+        "quarterly": {
+        # Assuming there are 3 months, 13 weeks in a quarter, and 4 quarters in a year
+            "hourly": salary_amount / ((13 * days_per_week) * hours_per_day),
+            "daily": salary_amount / (13 * days_per_week),
+            "weekly": salary_amount / 13,
+            "bi-weekly": salary_amount / 13 * 2, 
+            "monthly": salary_amount / 3, 
+            "quarterly": salary_amount,
+            "yearly": salary_amount * 4
+        },
+        "yearly": {
+        # Assuming there are 4 quarters, 12 months, 26 bi-weeks & 52 weeks in a year. 
+            "hourly": salary_amount / (hours_per_day * days_per_week * 52),
+            "daily": salary_amount / (52 * days_per_week),
+            "weekly": salary_amount / 52, 
+            "bi-weekly": salary_amount / 26,
+            "monthly": salary_amount / 12,
+            "quarterly": salary_amount / 4, 
+            "yearly": salary_amount
+        }
+    }
+
+    if payment_frequency not in salaries.keys():
+        return {"error": "Invalid payment frequency."}
+    
+    # Get the rounded off values for the salaries (to 2 decimal places)
+    return {k: round(v,2) for k, v in salaries[payment_frequency].items()}  

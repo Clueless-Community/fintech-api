@@ -1272,3 +1272,24 @@
   "Taxable_saving_balance": 411438,
 }
 ```
+
+**GET** `/salary-calculate`
+
+- Required parameters : `salary_amount`, `hours_worked`, `days_worked` and `payment_frequency`
+- Sample output
+
+```py
+{
+  "Tag": "Calculate Salary",
+  "Salary Amount": 400000,
+  "Payment frequency": "yearly",
+  "Salary": {
+    "hourly": 192,
+    "daily": 1538,
+    "weekly": 7692,
+    "bi-weekly": 15385,
+    "monthly": 33333,
+    "quarterly": 100000,
+    "yearly": 400000
+  }
+}
