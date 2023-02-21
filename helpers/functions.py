@@ -880,6 +880,19 @@ def roth_ira(
         )
     return math.ceil(roth_ira_balance), math.ceil(taxable_balance)
 
+=======
+# Function to calculate Enterprise Value
+def calculate_enterprise_value(
+    share_price: float,
+    fully_diluted_shares_outstanding: int,
+    total_debt: float,
+    preferred_stock: float,
+    non_controlling_interest: float,
+    cash_and_cash_equivalents: float,
+    ):
+    equity_value = share_price * fully_diluted_shares_outstanding
+    enterprise_value = equity_value + total_debt + preferred_stock + non_controlling_interest - cash_and_cash_equivalents
+    return round(enterprise_value, 2)
 
 # Function to convert salary_amount amounts to their corresponding values based on payment frequency.
 def salary_calculate(
