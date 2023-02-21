@@ -1272,3 +1272,21 @@
   "Taxable_saving_balance": 411438,
 }
 ```
+
+
+**GET** `/enterprise-value`
+
+- Required parameters : `share_price`, `fully_diluted_shares_outstanding`, `total_debt`, `preferred_stock`, `non_controlling_interest`, `cash_and_cash_equivalents`
+- sample output
+
+```py
+{
+    "Tag": "Enterprise Value",
+    "Equity Value": 1000.00,
+    "Total Debt": 500.00,
+    "Preferred Stock": 500.00,
+    "Non-Controlling Interest": 1000.00,
+    "Cash & Cash Equivalents": 1000.00,
+    "Enterprise Value": 2000.00
+}
+```
