@@ -3,11 +3,11 @@
 ### Haven't made your first-contribution yet? 😢
 Do check our [First Contribution](https://github.com/Clueless-Community/first-contribution) repository, where we have provided the guidelines to set up Git and how to make a pull request !
 
-# Project setup 
+# Project setup
 ## Fork and clone the repository
 Copy the URL of the forked repository and clone it.
 ```bash
-git clone https://github.com/nikhil25803/fintech-api
+git clone https://github.com/<github_username>/fintech-api
 ```
 
 ## Change the directory
@@ -18,9 +18,9 @@ cd fintech-api
 > Folder Structure
 ```
 fintect-api
-│   
+│
 └───📂helpers
-│   │   { Python functions for different calculations }       
+│   │   { Python functions for different calculations }
 
 📄.gitignore
 📄CONTRIBUTING.md
@@ -42,7 +42,7 @@ env\Scripts\Activate.ps1
 ```
 > For Linux
 ```bash
-source env/scripts/activate
+source env/bin/activate
 ```
 
 ## Install the dependencies
@@ -56,15 +56,15 @@ uvicorn main:app --reload
 ```
 
 ## Run pytest
-from root directory (FINTECH-API) where test_main.py is located 
+from root directory (FINTECH-API) where test_main.py is located
 ```powershell
 pip install pytest # install pytest, only need to do once
 pip install httpx
 pytest #run the test
 ```
 
-What to contribute?👀 
-Check the [project workflow](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-worflow) section below.
+What to contribute?👀
+Check the [project workflow](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-workflow) section below.
 
 Once you are done with the changes you wanted to add. Follow the steps to make the pull request.
 ## Create and checkout to the new branch.
@@ -87,10 +87,10 @@ git push origin <branch_name>
 ```
 ---
 
-# Project worflow
+# Project workflow
 Briefly explaining, this project is an API providing endpoints that makes your financial calculation easy. This API can be easily integrated into websites, mobile applications, chrome extensions, etc. So how it works?
 
-+ Once you run the server, and route to a path. For now, be it `/simple_interest_rate` (mentioned in **main.py**). You'll need to pass some query parameters. 
++ Once you run the server, and route to a path. For now, be it `/simple_interest_rate` (mentioned in **main.py**). You'll need to pass some query parameters.
 
 + As it is described, this endpoint returns the simple interest based on some input provided by the user.
 

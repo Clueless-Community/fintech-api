@@ -1711,22 +1711,337 @@ def leverage_equity(debt_payments: int, equity: int):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # Endpoint to calculate the time period required for exponential growth
 @app.get(
     "/time_period_required_for_growth",
-    tags = ["time_period_required_for_growth"],
-    description = "Calculating the time period required for exponential growth",
+    tags=["time_period_required_for_growth"],
+    description="Calculating the time period required for exponential growth",
 )
-def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
+def time_period_required_for_growth(interest_rate: float, growth_factor: int):
     try:
-        time_period_required_for_growth = functions.time_period_required_for_growth(interest_rate,growth_factor)
-        return{
-            "Tag" :"Time period required for exponential growth",
-            "interest rate" : interest_rate,
-            "growth factor" : growth_factor
+        time_period_required_for_growth = functions.time_period_required_for_growth(
+            interest_rate, growth_factor
+        )
+        return {
+            "Tag": "Time period required for exponential growth",
+            "interest rate": interest_rate,
+            "growth factor": growth_factor,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to calculate preferred stock value
+@app.get(
+    "/preferred-stock-value",
+    tags=["preferred_stock_value"],
+    description="Calculating the preferred stock value",
+)
+def preferred_stock_value(dividend: float, discount_rate: float):
+    try:
+        preferred_stock_value = functions.preferred_stock_value(dividend, discount_rate)
+        return {
+            "Tag": "Preferred stock value",
+            "Dividend": dividend,
+            "Discount Rate": discount_rate,
+            "Preferred Stock Value": preferred_stock_value,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    # Endpoint to calculate asset turnover ratio
+
+
+# Identation error corrected
+@app.get(
+    "/asset_turnover_ratio",
+    tags=["asset_turnover_ratio"],
+    description="Calculate asset turnover ratio",
+)
+def asset_turnover_ratio(
+    net_sales: float, total_asset_beginning: float, total_asset_ending: float
+):
+    try:
+        asset_turnover_ratio = functions.asset_turnover_ratio(
+            net_sales, total_asset_beginning, total_asset_ending
+        )
+        return {
+            "Tag": "Asset Turnover Ratio",
+            "Net Sales": net_sales,
+            "Total beginning asset": total_asset_beginning,
+            "Total ending asset": total_asset_ending,
+            "Total average asset": (total_asset_beginning + total_asset_ending) / 2,
+            "Asset Turnover Ratio": f"{asset_turnover_ratio}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to calculate Bid Ask Spread
+@app.get(
+    "/bid-ask-spread",
+    tags=["bid_ask_spread"],
+    description="Calculating the Bid Ask Spread",
+)
+def bid_ask_spread(ask_price: float, bid_price: float):
+    try:
+        bid_ask_spread = functions.bid_ask_spread(ask_price, bid_price)
+        return {
+            "Tag": "Bid Ask Spread",
+            "Ask Price": ask_price,
+            "Bid Price": bid_price,
+            "Bid Ask Spread": bid_ask_spread,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@app.get(
+    "/calculate-period-FV-PV-rate",
+    tags=["calculate-period-FV-PV-rate"],
+    description="Calculating No of Periods(Time in years) with respect to Present value(PV) and Future value(FV)",
+)
+def CalculatePeriods(present_val: float, future_val: float, rate: float):
+    try:
+        period = functions.CalculatePeriods(present_val, future_val, rate)
+        return {
+            "Tag": "Period in years ",
+            "Present Value": present_val,
+            "Future Vlaue": future_val,
+            "Periods": period,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+@app.get(
+    "/balloon-loan-payment",
+    tags=["Balloon-loan-payment"],
+    description="Calculating the payments on a loan that has a balance remaining after all periodic payments are mad using balloon laon payment formula",
+)
+def balloon_loan_payment(
+    principal: float,
+    interest_rate: float,
+    term_years: float,
+    balloon_payment_year: float,
+):
+    try:
+        balloon_loan_payment = functions.balloon_loan_payment(
+            principal, interest_rate, term_years, balloon_payment_year
+        )
+        return {
+            "Tag": "Balloon Loan Payment",
+            "Principal": principal,
+            "Interest Rate": interest_rate,
+            "Term Years": term_years,
+            "Balloon Payment Year": balloon_payment_year,
+            "Balloon Loan Payment": balloon_loan_payment,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to calculate monthly lease payment
+@app.get(
+    "/monthly_lease_payment",
+    tags=["monthly_lease_payment"],
+    description="Calculating Monthly lease payment",
+)
+def monthly_lease_payment(
+    Asset_value: float,
+    monthly_lease_interest_rate: float,
+    number_of_lease_payments: float,
+):
+    try:
+        pmt = functions.monthly_lease_payment(
+            Asset_value, monthly_lease_interest_rate, number_of_lease_payments
+        )
+        return {
+            "Tag": "Monthly Lease Payment",
+            "Asset value": Asset_value,
+            "Monthly lease interest rate": monthly_lease_interest_rate,
+            "Number of lease payments": number_of_lease_payments,
+            "Monthly Lease Payment": f"{pmt}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# End point to calculate 401k
+@app.get(
+    "/401k",
+    tags=["401k"],
+    description="Calculating an estimate of the 401(k) balance at retirement",
+)
+def estimate_401k(
+    income: float,
+    contribution_percentage: float,
+    current_age: int,
+    age_at_retirement: int,
+    rate_of_return: float,
+    salary_increase_rate: float,
+    withdraw_tax_rate: float,
+):
+    try:
+        estimated_401k = functions.calculate_401k(
+            income,
+            contribution_percentage,
+            current_age,
+            age_at_retirement,
+            rate_of_return,
+            salary_increase_rate,
+        )
+        return {
+            "Tag": "Estimated 401(k)",
+            "income": income,
+            "contribution_percentage": contribution_percentage,
+            "current_age": current_age,
+            "age_at_retirement": age_at_retirement,
+            "rate_of_return": rate_of_return,
+            "withdraw_tax_rate": withdraw_tax_rate,
+            "estimated_401k": estimated_401k,
+            "annual_withdraw_amount": round(
+                (withdraw_tax_rate / 100) * estimated_401k, 3
+            ),
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@app.get(
+    "/roth-ira",
+    tags=["Roth-IRA"],
+    description="This calculator estimates the balances of Roth IRA savings and regular taxable savings.",
+)
+def roth_ira(
+    principal: float,
+    interest_rate: float,
+    years: int,
+    tax_rate: float,
+    annual_contribution: float,
+):
+    try:
+        roth_ira_balance, taxable_saving_balance = functions.roth_ira(
+            principal, interest_rate, years, tax_rate, annual_contribution
+        )
+        return {
+            "Tag": "Roth-IRA",
+            "Principal": principal,
+            "Interest Rate": interest_rate,
+            "Years": years,
+            "Tax Rates": tax_rate,
+            "Annual Contributions": annual_contribution,
+            "Roth Ira Balance": roth_ira_balance,
+            "Taxable saving Balance": taxable_saving_balance,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+#Endpoint to calculate Mortgage Amortization
+@app.get(
+    "/mortgage-amortization",
+    tags=["mortgage-amortization"],
+    description="Calculating annual or monthly amortization schedule for a mortgage loan.",
+)
+def mortgage_amortization(
+    mortgage_amount:float,
+    mortgage_deposit:float,
+    annual_interest_rate:float,
+    loan_term:int,
+):
+    try:
+        annual_payment = functions.calculate_mortgage_interest(mortgage_amount,mortgage_deposit,annual_interest_rate,loan_term)
+        return {
+            "TAG":"Mortgage monthly payments",
+            "mortgage_amount":mortgage_amount,
+            "mortgage_deposit":mortgage_deposit,
+            "annual_interst_rate":annual_interest_rate,
+            "loan_term":loan_term,
+            "monthly_payment":round(annual_payment/12,3),
+            "annual_payment":round(annual_payment,3)
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# Endpoint to calculate Enterprise Value
+@app.get(
+    "/enterprise-value",
+    tags=["Enterprise Value"],
+    description="Calculating Enterprise Value for a publicly listed company.",
+)
+def calculate_enterprise_value(
+    share_price: float,
+    fully_diluted_shares_outstanding: int,
+    total_debt: float,
+    preferred_stock: float,
+    non_controlling_interest: float,
+    cash_and_cash_equivalents: float,
+    ):
+    try:
+        enterprise_value = functions.calculate_enterprise_value(share_price, fully_diluted_shares_outstanding, total_debt, preferred_stock, non_controlling_interest, cash_and_cash_equivalents)
+        return {
+            "Tag": "Enterprise Value",
+            "Equity Value": share_price * fully_diluted_shares_outstanding,
+            "Total Debt": total_debt,
+            "Preferred Stock": preferred_stock,
+            "Non-Controlling Interest": non_controlling_interest,
+            "Cash & Cash Equivalents": cash_and_cash_equivalents,
+            "Enterprise Value": enterprise_value
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate Salary
+@app.get(
+    "/salary-calculate",
+    tags=["salary-calculate"],
+    description="Converts salary amounts to their corresponding values based on payment frequency.",
+)    
+def salary_calculate(
+    salary_amount: float, 
+    payment_frequency: str,
+    hours_worked_per_day: int,
+    days_worked_per_week: int
+):
+    try:
+        salary = functions.salary_calculate(
+            salary_amount, 
+            payment_frequency, 
+            hours_worked_per_day,
+            days_worked_per_week
+        )
+
+        return {
+            "Tag" : "Calculate Salary",
+            "Salary Amount" : salary_amount,
+            "Payment frequency" : payment_frequency,
+            "Salary" : salary
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/personal_loan",
+    tags=["personal_loan"],
+    description="Calculate personal loan",
+)
+def personal_loan(loan_amount: float, interest_rate: float, loan_term_years: int, loan_start_date: str):
+    try:
+        result = functions.personal_loan(loan_amount, interest_rate, loan_term_years, loan_start_date)
+        return {
+            "Tag": "Personal Loan",
+            "Loan amount": loan_amount,
+            "Monthly payment": round(result['Monthly payment'], 2),
+            "Total interest paid": round(result['Total interest paid'], 2),
+            "Total cost loan": round(result['Total cost loan'], 2),
+            "Schedule": result['Schedule']
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate lump-sum mutual fund investment
 @app.get("/lumpsum")
@@ -1739,3 +2054,4 @@ async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
         return {"total_amount": round(total_amount, 2), "interest_earned": round(interest_earned, 2)}
     except :
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+=======

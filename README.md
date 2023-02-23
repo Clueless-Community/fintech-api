@@ -17,17 +17,15 @@
 ## Want to contribute? 🎯
 
 
-<h1 align='center'>SWoC 2023</h1>
+<h1 align='center'>Diversion 2K23</h1>
 
-[![swoc-banner](https://www.linkpicture.com/q/swoc_banner.jpg)](https://www.linkpicture.com/view.php?img=LPic63b83f84ef97a1940128285)
+![banner](https://user-images.githubusercontent.com/93156825/216752982-25ca40d7-2b8c-424b-990e-06c56a06712e.png)
 
-
-
-## About SWoC 
-Social Winter Of Code is the 3 month long open source program by Social India , with the aim to introduce more and more people to the world of Open source. In this program all the selected participants will get a chance to work on various exciting projects under the guidance of experienced Mentors. Check SWoC official [website](https://swoc.getsocialnow.co/) to know more about the program.
+## About Diversion 2K33
+Diversion is an open-source event organized by IEM-ACM Student Chapter, Department of Computer Science & Engineering, Department of Computer Science & Engineering (AI) and Controller of Examination Department of Institute of Engineering & Management, Kolkata, West Bengal, India in collaboration with different other communities like GDSC-IEM, MSC-IEM, CSI-IEM, IEM CODING club.
 
 
-Contribute to this project under SWoC 2023.
+Contribute to this project under Diversion 2023.
 Do check the [Contribution](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md) guidelines before contributing.
 
 ---

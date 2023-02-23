@@ -1,6 +1,9 @@
 import math
 import numpy as np
 import pandas as pd
+import math
+import datetime
+from dateutil.relativedelta import relativedelta
 
 # Function to Calculate Simmple Interest Rate
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
@@ -453,7 +456,11 @@ def herfindal_Index(Firms_market_shares: str):
             market_share_list.append(int(share))
             breaker = i + 1
         i = i + 1
-    market_share_list.append(int(Firms_market_shares[len(Firms_market_shares)-2:len(Firms_market_shares)]))
+    market_share_list.append(
+        int(
+            Firms_market_shares[len(Firms_market_shares) - 2 : len(Firms_market_shares)]
+        )
+    )
     herfindal_Index = 0
     for i in market_share_list:
         herfindal_Index = herfindal_Index + i**2
@@ -499,169 +506,519 @@ def discounted_cash_flow(
     d_cash_flow = a * b
     return d_cash_flow
 
+
 # Function to calculate GDP growth rate
 def gdp_growth_rate(current_year_gdp: float, last_year_gdp: float):
     gdp_growth_rate = ((current_year_gdp - last_year_gdp) / last_year_gdp) * 100
     return gdp_growth_rate
 
 
-#function to calculate credit card equation
-def credit_card_equation(balance:float,monthly_payment:float,daily_interest_rate:float):
-    a = np.log(1+(balance//monthly_payment)*(1-(daily_interest_rate)**30))
-    b = np.log(1+daily_interest_rate)
-    N = -(1//30)*(a//b)
+# function to calculate credit card equation
+def credit_card_equation(
+    balance: float, monthly_payment: float, daily_interest_rate: float
+):
+    a = np.log(1 + (balance // monthly_payment) * (1 - (daily_interest_rate) ** 30))
+    b = np.log(1 + daily_interest_rate)
+    N = -(1 // 30) * (a // b)
     return N
 
+
 # function to calculate future value of the ordinary annuity
-def future_value_of_ordinary_due(periodic_payment: float, number_of_periods: int, effective_interest_rate: float):
-    future_value_of_ordinary_due = periodic_payment*(((1+effective_interest_rate)**(number_of_periods))-1)/effective_interest_rate
+def future_value_of_ordinary_due(
+    periodic_payment: float, number_of_periods: int, effective_interest_rate: float
+):
+    future_value_of_ordinary_due = (
+        periodic_payment
+        * (((1 + effective_interest_rate) ** (number_of_periods)) - 1)
+        / effective_interest_rate
+    )
     return future_value_of_ordinary_due
 
+
 # Function to calculate future value of annuity due
-def future_value_of_annuity_due(periodic_payment: float, number_of_periods: int, effective_interest_rate: float):
-    future_value_of_annuity_due = periodic_payment*(((1+effective_interest_rate)**(number_of_periods))-1)*(1+effective_interest_rate)/effective_interest_rate
+def future_value_of_annuity_due(
+    periodic_payment: float, number_of_periods: int, effective_interest_rate: float
+):
+    future_value_of_annuity_due = (
+        periodic_payment
+        * (((1 + effective_interest_rate) ** (number_of_periods)) - 1)
+        * (1 + effective_interest_rate)
+        / effective_interest_rate
+    )
     return future_value_of_annuity_due
 
+
 # Function to calculate present value of annuity due
-def present_value_of_annuity_due(periodic_payment: float, number_of_periods: int, rate_per_period: float):
-    present_value_of_annuity_due = periodic_payment + periodic_payment*((1-(1+rate_per_period)**(-number_of_periods+1))/rate_per_period)
+def present_value_of_annuity_due(
+    periodic_payment: float, number_of_periods: int, rate_per_period: float
+):
+    present_value_of_annuity_due = periodic_payment + periodic_payment * (
+        (1 - (1 + rate_per_period) ** (-number_of_periods + 1)) / rate_per_period
+    )
     return present_value_of_annuity_due
 
-#function to calculate compound annual growth rate
-def compound_annual_growth_rate_1(ending_value:float,beginning_value:float,number_of_periods:float):
-    a = (ending_value//beginning_value)**(1//number_of_periods)
+
+# function to calculate compound annual growth rate
+def compound_annual_growth_rate_1(
+    ending_value: float, beginning_value: float, number_of_periods: float
+):
+    a = (ending_value // beginning_value) ** (1 // number_of_periods)
     cagr = a - 1
     return cagr
 
-# Function to calculate loan to value
-def loan_to_value(mortage_value:float,appraised_value: float):
-    ratio = mortage_value / appraised_value
-    return ratio*100
 
-#Function to calculate Retention Rate
-def retention_ratio(net_income:float,dividends:float):
-    retention_ratio = (net_income-dividends)/net_income
+# Function to calculate loan to value
+def loan_to_value(mortage_value: float, appraised_value: float):
+    ratio = mortage_value / appraised_value
+    return ratio * 100
+
+
+# Function to calculate Retention Rate
+def retention_ratio(net_income: float, dividends: float):
+    retention_ratio = (net_income - dividends) / net_income
     return retention_ratio
 
-#Function to calculate Tax Equivalent Yield
-def tax_equivalent_yield(tax_free_yield:float,tax_rate:float):
-    tax_equivalent_yield = tax_free_yield/(1-tax_rate)
+
+# Function to calculate Tax Equivalent Yield
+def tax_equivalent_yield(tax_free_yield: float, tax_rate: float):
+    tax_equivalent_yield = tax_free_yield / (1 - tax_rate)
     return tax_equivalent_yield
 
+
 # Function to calculate year over year growth
-def year_over_year(later_period_value:float,earlier_period_value:float):
+def year_over_year(later_period_value: float, earlier_period_value: float):
     growth = (later_period_value - earlier_period_value) / earlier_period_value
-    return growth*100
+    return growth * 100
 
 
-#function to calculate future value of the annuity
-def future_value_of_annuity(payments_per_period:float,interest_rate:float,number_of_periods:float):
-    a = (((interest_rate+1)**number_of_periods)-1)//interest_rate
-    fva = payments_per_period*a
+# function to calculate future value of the annuity
+def future_value_of_annuity(
+    payments_per_period: float, interest_rate: float, number_of_periods: float
+):
+    a = (((interest_rate + 1) ** number_of_periods) - 1) // interest_rate
+    fva = payments_per_period * a
     return fva
 
 
 # Function to calculate Balloon Balance of a Loan
-def balloon_balance_of_loan(present_value:float, payment:float, rate_per_payment:float, number_of_payments:float):
-    balloon_balance_of_loan = present_value*((1+rate_per_payment)**number_of_payments) - payment*((((1+rate_per_payment)**number_of_payments)-1)/rate_per_payment)
+def balloon_balance_of_loan(
+    present_value: float,
+    payment: float,
+    rate_per_payment: float,
+    number_of_payments: float,
+):
+    balloon_balance_of_loan = present_value * (
+        (1 + rate_per_payment) ** number_of_payments
+    ) - payment * (
+        (((1 + rate_per_payment) ** number_of_payments) - 1) / rate_per_payment
+    )
     return balloon_balance_of_loan
 
-#Function to calculate discounted payback period
-def discounted_payback_period(outflow:float,rate:float,periodic_cash_flow:float):
-    discounted_payback_period = np.log(1/(1-(outflow*rate/periodic_cash_flow)))/np.log(1+rate)
+
+# Function to calculate discounted payback period
+def discounted_payback_period(outflow: float, rate: float, periodic_cash_flow: float):
+    discounted_payback_period = np.log(
+        1 / (1 - (outflow * rate / periodic_cash_flow))
+    ) / np.log(1 + rate)
     return discounted_payback_period
 
 
 # Function to calculate periodic lease payment
-def periodic_lease_payment(Asset_value: float, monthly_lease_interest_rate: float, number_of_lease_payments: float):
-    periodic_lease_payment = (Asset_value*monthly_lease_interest_rate)/(1-(1/(1+monthly_lease_interest_rate)**number_of_lease_payments))
+def periodic_lease_payment(
+    Asset_value: float,
+    monthly_lease_interest_rate: float,
+    number_of_lease_payments: float,
+):
+    periodic_lease_payment = (Asset_value * monthly_lease_interest_rate) / (
+        1 - (1 / (1 + monthly_lease_interest_rate) ** number_of_lease_payments)
+    )
     return periodic_lease_payment
 
 
 # Function to calculate weighted average
 def weighted_average_of_values(Assigned_weight_values: str, data_point_values: str):
-    weights = list(map(int,Assigned_weight_values.split()))
-    data_values = list(map(int,data_point_values.split()))
+    weights = list(map(int, Assigned_weight_values.split()))
+    data_values = list(map(int, data_point_values.split()))
     total_data_point_weighted_value = 0
     sum_assigned_weight_values = 0
     for i in weights:
         sum_assigned_weight_values = sum_assigned_weight_values + i
     for i in range(len(weights)):
-        total_data_point_weighted_value = total_data_point_weighted_value + (weights[i]*data_values[i])
+        total_data_point_weighted_value = total_data_point_weighted_value + (
+            weights[i] * data_values[i]
+        )
 
-    weighted_average = total_data_point_weighted_value/sum_assigned_weight_values
+    weighted_average = total_data_point_weighted_value / sum_assigned_weight_values
     return weighted_average
 
 
 # Function to calculate Yield to maturity
-def yield_to_maturity(bond_price:float,face_value:float,coupon_rate:float,years_to_maturity:float):
-    yield_cal = (coupon_rate * face_value/100 + (face_value - bond_price)/years_to_maturity) / ((face_value + bond_price) / 2)
-    return round(yield_cal*100,2)
+def yield_to_maturity(
+    bond_price: float, face_value: float, coupon_rate: float, years_to_maturity: float
+):
+    yield_cal = (
+        coupon_rate * face_value / 100 + (face_value - bond_price) / years_to_maturity
+    ) / ((face_value + bond_price) / 2)
+    return round(yield_cal * 100, 2)
 
 
 # Function to calculate perpetuity payment
-def perpetuity_payment(present_value:float,rate:float):
-    payment = present_value * (rate/100)
+def perpetuity_payment(present_value: float, rate: float):
+    payment = present_value * (rate / 100)
     return payment
 
 
 # Function to calculate Zero Coupon Bond value
-def zero_coupon_bond_value(face_value:float,rate_of_yield:float,time_of_maturity:float):
-    zcbv = face_value / pow((1+rate_of_yield/100), time_of_maturity)
-    return round(zcbv,2)
+def zero_coupon_bond_value(
+    face_value: float, rate_of_yield: float, time_of_maturity: float
+):
+    zcbv = face_value / pow((1 + rate_of_yield / 100), time_of_maturity)
+    return round(zcbv, 2)
 
 
 # function to calculate Zero Coupon Bond Effective Yield
-def zero_coupon_bond_yield(face_value:float, present_value:float, time_of_maturity:float):
-    zcby = pow((face_value / present_value),(1/time_of_maturity)) - 1
-    return round(zcby*100,1)
+def zero_coupon_bond_yield(
+    face_value: float, present_value: float, time_of_maturity: float
+):
+    zcby = pow((face_value / present_value), (1 / time_of_maturity)) - 1
+    return round(zcby * 100, 1)
+
 
 # Function to calculate Profitability Index
-def profitability_index(initial_investment:float, pv_of_future_cash_flows:float):
-    profitability_index = pv_of_future_cash_flows/initial_investment
+def profitability_index(initial_investment: float, pv_of_future_cash_flows: float):
+    profitability_index = pv_of_future_cash_flows / initial_investment
     return profitability_index
 
 
 # Function to calculate Profitability index using annual cash flows
-def profitability_index2(initial_inverstment: float, annual_cash_flows: str, discount_rate: float):
-    annual_cash_flow_list = list(map(int,annual_cash_flows.split()))
+def profitability_index2(
+    initial_inverstment: float, annual_cash_flows: str, discount_rate: float
+):
+    annual_cash_flow_list = list(map(int, annual_cash_flows.split()))
     pv_cash_flow_list = []
     for i in range(len(annual_cash_flow_list)):
-        pv_cash_flow_list.append((annual_cash_flow_list[i])/((1+(discount_rate/100))**(i+1)))
+        pv_cash_flow_list.append(
+            (annual_cash_flow_list[i]) / ((1 + (discount_rate / 100)) ** (i + 1))
+        )
     total_pv_cash_flow = sum(pv_cash_flow_list)
-    profitability_index = total_pv_cash_flow/initial_inverstment
+    profitability_index = total_pv_cash_flow / initial_inverstment
     return profitability_index
 
+
 # Function to calculate Receivables Turnover Ratio
-def receivables_turnover_ratio(sales_revenue:float, avg_accounts_receivable:float):
-    receivables_turnover_ratio = sales_revenue/avg_accounts_receivable
+def receivables_turnover_ratio(sales_revenue: float, avg_accounts_receivable: float):
+    receivables_turnover_ratio = sales_revenue / avg_accounts_receivable
     return receivables_turnover_ratio
 
-#Function to calculate Remaiing balance
-def remaining_balance(regular_payment:float,interest_rate_per_period:float,number_of_payments:float,number_of_payments_done:float):
-    B = regular_payment*((1-((1+interest_rate_per_period)**(-(number_of_payments-number_of_payments_done))))//interest_rate_per_period)
+
+# Function to calculate Remaiing balance
+def remaining_balance(
+    regular_payment: float,
+    interest_rate_per_period: float,
+    number_of_payments: float,
+    number_of_payments_done: float,
+):
+    B = regular_payment * (
+        (
+            1
+            - (
+                (1 + interest_rate_per_period)
+                ** (-(number_of_payments - number_of_payments_done))
+            )
+        )
+        // interest_rate_per_period
+    )
     return B
+
 
 # Function to calculate Net present value
 def net_present_value(cash_flows: str, discount_rate: float, initial_investment: float):
     cash_flow_list = list(map(int, cash_flows.split()))
-    net_present_value = -1*(initial_investment)
+    net_present_value = -1 * (initial_investment)
     for i in range(len(cash_flow_list)):
-        net_present_value = net_present_value + (cash_flow_list[i]/((1+(discount_rate/100))**(i+1)))
+        net_present_value = net_present_value + (
+            cash_flow_list[i] / ((1 + (discount_rate / 100)) ** (i + 1))
+        )
     return net_present_value
 
+
 def leverage_income(debt_payments: int, income: int):
-    return float(debt_payments)/float(income)
+    return float(debt_payments) / float(income)
 
 
 def leverage_equity(debt: int, equity: int):
-    return float(debt)/float(equity)
+    return float(debt) / float(equity)
+
 
 # Function to calculate time period required for given growth
-def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
-    time_period_required_for_growth = math.log(growth_factor) / math.log(1 + interest_rate/100)
+def time_period_required_for_growth(interest_rate: float, growth_factor: int):
+    time_period_required_for_growth = math.log(growth_factor) / math.log(
+        1 + interest_rate / 100
+    )
     return time_period_required_for_growth
 
+
+
+=======
+# Function to calculate preferred stock value
+def preferred_stock_value(dividend: float, discount_rate: float):
+    preferred_stock_value = dividend / discount_rate
+    return preferred_stock_value
+
+
+# Function to calculate present value of annuity due
+def present_value_of_annuity_due(
+    periodic_payment: float, number_of_periods: int, rate_per_period: float
+):
+    present_value_of_annuity_due = (
+        periodic_payment
+        * ((1 - (1 / (1 + rate_per_period) ** (number_of_periods))) / rate_per_period)
+        * (1 + rate_per_period)
+    )
+    return present_value_of_annuity_due
+
+
+# Function to Calculate Asset Turnover Ratio
+def asset_turnover_ratio(
+    net_sales: float, total_asset_beginning: float, total_asset_ending: float
+):
+    avg_total_asset = (total_asset_beginning + total_asset_ending) / 2
+    asset_turnover_ratio = net_sales / avg_total_asset
+    return asset_turnover_ratio
+
+
+# Function to calculate Bid Ask Spread
+def bid_ask_spread(ask_price: float, bid_price: float):
+    bid_ask_spread = ask_price - bid_price
+    return bid_ask_spread
+
+
+# Function To calculate No of Periods(Time in years) with respect to Present value(PV) and Future value(FV)
+def CalculatePeriods(present_val: float, future_val: float, rate: float):
+    rate = rate / 100
+    n = math.log(future_val / present_val) / math.log(1 + rate)
+    print(n)
+    return n
+
+
+# Function to calculate payments on a loan that has balance remaining after all periodic payments
+# are made
+def balloon_loan_payment(
+    principal: float,
+    interest_rate: float,
+    term_years: float,
+    balloon_payment_year: float,
+):
+    monthly_interest_rate = interest_rate / 1200
+    months_paid = balloon_payment_year * 12
+    rs = (1 + monthly_interest_rate) ** months_paid
+    term_months = term_years * 12
+    monthly_payment = (principal * monthly_interest_rate) / (
+        1 - 1 / (1 + monthly_interest_rate) ** term_months
+    )
+    balloon_payment = principal * rs - monthly_payment * (
+        (rs - 1) / monthly_interest_rate
+    )
+    return balloon_payment
+
+
+# Function to calculate Monthly lease payment
+def monthly_lease_payment(
+    Asset_value: float,
+    monthly_lease_interest_rate: float,
+    number_of_lease_payments: float,
+):
+    periodic_payment = periodic_lease_payment(
+        Asset_value, monthly_lease_interest_rate, number_of_lease_payments
+    )
+    monthly_payment = periodic_payment / number_of_lease_payments
+    return monthly_payment
+
+
+# Function to calculate 401k
+def calculate_401k(
+    income: float,
+    contribution_percentage: float,
+    current_age: int,
+    age_at_retirement: int,
+    rate_of_return: float,
+    salary_increase_rate: float,
+):
+    contribution_amount = income * contribution_percentage / 100
+    number_of_years = age_at_retirement - current_age
+    amount = 0
+    for _ in range(number_of_years):
+        amount = (amount + contribution_amount)*(1+(rate_of_return/100))
+        contribution_amount = (contribution_amount)*(1+(salary_increase_rate/100))
+    return round(amount,3)
+
+# Function to calculate Mortgage Amortization
+
+def calculate_mortgage_interest(
+    mortgage_amount:float,
+    mortgage_deposit:float,
+    annual_interest_rate:float,
+    loan_term:int,
+):
+    annual_interest_rate = annual_interest_rate/100
+    loan_amount = mortgage_amount*(100-mortgage_deposit)/100
+    power = (1 + annual_interest_rate)**loan_term
+    mortgage_annual_payment = loan_amount*(annual_interest_rate*power) /(power - 1)
+    return round(mortgage_annual_payment,3)
+
+def roth_ira(
+    principal: float,
+    interest_rate: float,
+    years: int,
+    tax_rate: float,
+    annual_contribution: float,
+):
+    roth_ira_balance = principal
+    taxable_balance = principal
+    for _ in range(years):
+        roth_ira_balance = (roth_ira_balance + annual_contribution) * (
+            1 + interest_rate / 100
+        )
+        taxable_balance = (taxable_balance + annual_contribution) * (
+            1 + interest_rate / 100 * (1 - tax_rate / 100)
+        )
+    return math.ceil(roth_ira_balance), math.ceil(taxable_balance)
+
+
+# Function to calculate Enterprise Value
+def calculate_enterprise_value(
+    share_price: float,
+    fully_diluted_shares_outstanding: int,
+    total_debt: float,
+    preferred_stock: float,
+    non_controlling_interest: float,
+    cash_and_cash_equivalents: float,
+    ):
+    equity_value = share_price * fully_diluted_shares_outstanding
+    enterprise_value = equity_value + total_debt + preferred_stock + non_controlling_interest - cash_and_cash_equivalents
+    return round(enterprise_value, 2)
+
+# Function to convert salary_amount amounts to their corresponding values based on payment frequency.
+def salary_calculate(
+    salary_amount: float,
+    payment_frequency: str,
+    hours_per_day: int,
+    days_per_week: int
+):
+    # Get the total salary of the corresponding frequency 
+    salaries = {
+        "hourly": {
+        # Assuming there are 4.333333 weeks in a month (in real-time), 13 week quarters in a year & 52 weeks in a year
+            "hourly": salary_amount,
+            "daily": salary_amount * hours_per_day,
+            "weekly": salary_amount * hours_per_day * days_per_week,
+            "bi-weekly": salary_amount * hours_per_day * days_per_week * 2,
+            "monthly": salary_amount * hours_per_day * days_per_week * 4.333333,
+            "quarterly": salary_amount * hours_per_day * days_per_week * 13,
+            "yearly": salary_amount * hours_per_day * (days_per_week * 52)
+        },
+        "daily": {
+        # Assuming there are 4.333333 weeks in a month, and 3 months in a quarter & 52 working weeks
+            "hourly": salary_amount / hours_per_day,
+            "daily": salary_amount,
+            "weekly": salary_amount * days_per_week,
+            "bi-weekly": salary_amount * days_per_week * 2,
+            "monthly": salary_amount * (days_per_week * 4.333333),
+            "quarterly": salary_amount * days_per_week * (4.333333 * 3),
+            "yearly": salary_amount * days_per_week * 52
+        },
+        "weekly": {
+        # Assuming there are 4.333333 weeks in a month, 13 weeks in a quarter & 2 weeks make up a bi-week
+            "hourly": salary_amount / (hours_per_day * days_per_week),
+            "daily": salary_amount / days_per_week,
+            "weekly": salary_amount,
+            "bi-weekly": salary_amount * 2,
+            "monthly": salary_amount * 4.333333,
+            "quarterly": salary_amount * 13,
+            "yearly": salary_amount * 52
+        },
+        "bi-weekly": {
+        # Assuming there are 2 bi-weekly periods in a month & round(6.5223214,1) bi-weekly periods in a quarter
+            "hourly": salary_amount / (hours_per_day * days_per_week * 2),
+            "daily": salary_amount / (days_per_week * 2),
+            "weekly": salary_amount / 2,
+            "bi-weekly": salary_amount,
+            "monthly": salary_amount * 2,
+            "quarterly": salary_amount * 6.5,
+            "yearly": salary_amount * 26
+        },
+        "monthly": {
+        # Assuming there are 2 bi-weekly periods, 4.333333 weeks in a month & 3 months in a quarter
+            "hourly": salary_amount / (hours_per_day * days_per_week * 4.333333),
+            "daily": salary_amount / (days_per_week * 4.333333),
+            "weekly": salary_amount / 4.333333,
+            "bi-weekly": salary_amount / (4.333333 / 2),
+            "monthly": salary_amount,
+            "quarterly": salary_amount * 3,
+            "yearly": salary_amount * 12
+        },
+        "quarterly": {
+        # Assuming there are 3 months, 13 weeks in a quarter, and 4 quarters in a year
+            "hourly": salary_amount / ((13 * days_per_week) * hours_per_day),
+            "daily": salary_amount / (13 * days_per_week),
+            "weekly": salary_amount / 13,
+            "bi-weekly": salary_amount / 13 * 2,
+            "monthly": salary_amount / 3,
+            "quarterly": salary_amount,
+            "yearly": salary_amount * 4
+        },
+        "yearly": {
+        # Assuming there are 4 quarters, 12 months, 26 bi-weeks & 52 weeks in a year.
+            "hourly": salary_amount / (hours_per_day * days_per_week * 52),
+            "daily": salary_amount / (52 * days_per_week),
+            "weekly": salary_amount / 52,
+            "bi-weekly": salary_amount / 26,
+            "monthly": salary_amount / 12,
+            "quarterly": salary_amount / 4,
+            "yearly": salary_amount
+        }
+    }
+
+    if payment_frequency not in salaries.keys():
+        return {"error": "Invalid payment frequency."}
+
+    # Get the rounded off values for the salaries (to 2 decimal places)
+    return {k: round(v,2) for k, v in salaries[payment_frequency].items()}
+
+
+# Function to Calculate Personal Loan and visualization monthly payments (schedule)
+# interest_rate - % per year; loan_term - years; loan_start_date - format %B %Y (February 2023)
+def personal_loan(
+        loan_amount: float,
+        interest_rate: float,
+        loan_term_years: int,
+        loan_start_date: str
+):
+    loan_term_month = loan_term_years * 12
+    interest_rate_month = interest_rate / (12 * 100)
+    monthly_payment = loan_amount * interest_rate_month / (1 - (1 + interest_rate_month) ** (-loan_term_month))
+    total_cost_loan = monthly_payment * loan_term_month
+    total_interest_paid = total_cost_loan - loan_amount
+
+    dframe = pd.DataFrame(
+        columns=['Date', 'Principal', 'Interest', 'Remaining balance', 'Principal Total', 'Interest Total'])
+    date = datetime.datetime.strptime(loan_start_date, '%B %Y')
+    principal_total = interest_total = 0
+    remain_balance = loan_amount
+    for i in range(loan_term_years * 12):
+        date = date + relativedelta(months=1)
+        interest = remain_balance * interest_rate / (12 * 100)
+        interest_total = interest_total + interest
+        principal = monthly_payment - interest
+        principal_total = principal_total + principal
+        remain_balance = remain_balance - principal
+        dframe.loc[i, :] = date.strftime("%B %Y"), round(principal, 2), round(interest, 2), round(remain_balance,
+                                                                                                  2), round(
+            principal_total, 2), round(interest_total, 2)
+
+    return {"Monthly payment": monthly_payment, "Total interest paid": total_interest_paid,
+            "Total cost loan": total_cost_loan, "Schedule": dframe.to_json()}
+            
 
 # Function to calculate lump-sum mutual fund investment
 def calculate_lumpsum(principal, interest_rate, years):

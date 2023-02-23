@@ -16,8 +16,10 @@
 ```
 
 **GET** `/convexity_duration`
+
 - Required parameters : `rate`,`coupon_rate`,`frequency`,`face_value`,`settlement_date`,`maturity_date`
 - Sample output
+
 ```py
 {
         "Tag": "Convexity Adjusted Duration",
@@ -48,8 +50,10 @@
 ```
 
 **GET** `/compound_interest`
-+ Required parameters : `principal_amount`, `intrest_rate`  , `years` and `compounding_period`
-+ Sample output
+
+- Required parameters : `principal_amount`, `intrest_rate` , `years` and `compounding_period`
+- Sample output
+
 ```py
 {
     "Tag": "Compound Intrest Amount",
@@ -62,9 +66,11 @@
 ```
 
 **GET** `/effective_annual_rate`
-+ Required parameters : `annual_interest_rate`and `compounding_period`
-+ Sample output
-```py
+
+- Required parameters : `annual_interest_rate`and `compounding_period`
+- Sample output
+
+````py
 {
   "Tag": "Effective Annual Rate",
   "Annual Intrest Rate": 0.05,
@@ -83,11 +89,13 @@
     "Number of Compounding per Year": 1,
     "Certificate of Deposit (CD)": 5788.13,
 }
-```
+````
 
 **GET** `/roi`
-+ Required parameters : `current_value_of_investment` and`cost_of_investment`
-+ Sample output
+
+- Required parameters : `current_value_of_investment` and`cost_of_investment`
+- Sample output
+
 ```py
 {
     "Tag": "Return on Investment",
@@ -95,19 +103,23 @@
   "Cost of Investment": 100,
   "Return on Investment": "20.0%"
  }
- ```
- **GET** `/compounded_annual_growth_rate`
- + Required parameters : `end_investment_value`, `initial_investment_value` and`years`
- + Sample output
- ```py
- {
-    "Tag":"Compounded Annual Growth Rate",
-    "End investment value":100000,
-    "Initial investment value":70000,
-    "Years":3,
-    "Compunded Annual Growth Rate":0.12624788
- }
- ```
+```
+
+**GET** `/compounded_annual_growth_rate`
+
+- Required parameters : `end_investment_value`, `initial_investment_value` and`years`
+- Sample output
+
+```py
+{
+   "Tag":"Compounded Annual Growth Rate",
+   "End investment value":100000,
+   "Initial investment value":70000,
+   "Years":3,
+   "Compunded Annual Growth Rate":0.12624788
+}
+```
+
 **GET** `/asset_portfolio`
 
 - Required parameters : `price_A`, `price_B`, `return_A`, `return_B`, `standard_dev_A`, `standard_dev_B` and `correlation` where A and B refer to the 2 stocks.
@@ -125,6 +137,7 @@
 
 - Required parameters : `firm_equity`, `firm_debt`, `cost_of_equity`, `cost_of_debt`, `corporate_tax_rate`
 - Sample output
+
 ```py
 {
     "Tag": "Weighted Average Cost of Capital(WACC)",
@@ -186,8 +199,10 @@
 ```
 
 **GET** `\fcff`
+
 - Required parameters : `sales`,`operating_cost`,`depreciation`, `interest`,`tax_rate`,`fcInv` and `wcInv`
 - Sample Output (for sales = 200, operating_cost = 20, depreciation = 20, interest = 30, tax_rate = 40%, wcInv = -40 and fcInv = 0
+
 ```py
 {
     "Tag" : "Free Cash Flow to Firm (FCFF)",
@@ -226,7 +241,6 @@
 }
 ```
 
-
 **GET** `/dividend_payout_ratio`
 
 - Required parameters : `dividend_per_share`, `earnings_per_share`
@@ -241,10 +255,11 @@
 }
 ```
 
-
 **GET** `/debt_to_income_ratio`
+
 - Required parameters : `annual_income`, `total_debt_per_month`
 - Sample Output
+
 ```py
 {
   "Tag": "Debt to income ratio",
@@ -255,8 +270,10 @@
 ```
 
 **GET** `/fixed_charge_coverage_ratio`
+
 - Required parameters : `earnings_before_interest_taxes`, `fixed_charge_before_tax`,`interest`
 - Sample Output
+
 ```py
 {
 
@@ -269,8 +286,10 @@
 ```
 
 **GET** `/inventory_shrinkage rate`
+
 - Required parameters : `recorded_inventory`, `actual_inventory`
 - Sample Output
+
 ```py
 {
     "Tag":"Inventory shrinkage rate",
@@ -285,6 +304,7 @@
 
 - Required parameters : `price`, `cost`
 - Sample Output
+
 ```py
 {
     "Tag": "Markup Percentage",
@@ -298,6 +318,7 @@
 
 - Required parameters : `portfolio_return`, `risk_free_rate`,`standard_deviation_of_portfolio`
 - Sample Output
+
 ```py
 {
 
@@ -314,6 +335,7 @@
 
 - Required parameters : `risk_free_interest_rate`, `beta_of_security`,`expected_market_return`
 - Sample Output
+
 ```py
 {
 
@@ -327,8 +349,10 @@
 ```
 
 **GET** `/cost_of_equity`
+
 - Required parameters : `risk_free_rate_of_return`, `Beta`, `market_rate_of_return`
 - Sample Output
+
 ```py
 {
     "Tag": "Cost of Equity",
@@ -341,8 +365,10 @@
 ```
 
 **GET** `/cogs`
+
 - Required parameters : `beginning_inventory`,`purchases` and `ending_inventory`
 - Sample Output
+
 ```py
 {
    "Tag": "Cost of Goods Sold",
@@ -354,8 +380,10 @@
 ```
 
 **GET** `/purchasing_power`
-+ Required parameters : `initial_amount`, `annual_inflation_rate`  , `time`
-+ Sample output
+
+- Required parameters : `initial_amount`, `annual_inflation_rate` , `time`
+- Sample output
+
 ```py
 {
      "Tag": "Purchasing Power",
@@ -365,9 +393,12 @@
      "Purchasing Power": 6139.13253540759
 }
 ```
+
 **GET** `/monthly_emi`
-+ Required parameters : `loan_amt`,`interest_rate`,`number_of_installments`
-+ Sample output
+
+- Required parameters : `loan_amt`,`interest_rate`,`number_of_installments`
+- Sample output
+
 ```py
 {
     "Tag": "Monthly EMI",
@@ -379,8 +410,10 @@
 ```
 
 **GET** `/doubling_time`
-+ Required parameters : `r`
-+ Sample output
+
+- Required parameters : `r`
+- Sample output
+
 ```py
 {
     "Tag": "Doubling Time",
@@ -390,8 +423,10 @@
 ```
 
 **GET** `/weighted_average`
-+ Required parameters : `ratio`,`rates`
-+ Sample output
+
+- Required parameters : `ratio`,`rates`
+- Sample output
+
 ```py
 {
     "Tag": "Weighted Average",
@@ -401,10 +436,11 @@
 }
 ```
 
-
 **GET** `/ruleof72`
+
 - Required parameters : `rate_of_roi` it should be in percentage only
 - Sample output
+
 ```py
 {
     "Tag": "Rule of 72",
@@ -412,9 +448,12 @@
     "Time peroid in which investment get double(in years)": "14.4"
 }
 ```
+
 **GET** `/acid-test-ratio`
+
 - Required parameters : `cash`,`marketable_securities`,`accounts_receivable` and `current_liabilities` Note : cash = cash + cash equivalents
 - Sample Outuputs
+
 ```py
 {
     "Tag": "Acid Test Ratio",
@@ -425,9 +464,12 @@
     "Acid Test Ratio (Quick Ratio)": "1.17"
 }
 ```
+
 **GET** `/inflation-adjusted-return`
+
 - Required parameters : `beginning_price`, `ending_price`, `dividends`, `beginning_cpi_level` and `ending_cpi_level`
 - Sample output
+
 ```py
 {
     "Tag": "Inflation Adjusted Return",
@@ -436,9 +478,12 @@
     "Inflation Adjusted Return": "19.74%"
 }
 ```
+
 **GET** `/cogr`
+
 - Required parameters : `beginning_value`, `ending_value` and `years`
 - Sample output
+
 ```py
 {
     "Tag": "Coumpound Annual Growth Rate",
@@ -452,6 +497,7 @@
 
 - Required parameters : `net_cash_from_operating_activities`, `total_current_liabilities`, `number_of_liabilities`
 - Sample Output
+
 ```py
 {
 
@@ -464,8 +510,10 @@
 ```
 
 **GET** `/levered_beta`
+
 - Required parameters : `unlevered_beta`, `tax_rate`, `debt`,`equity`
 - Sample output
+
 ```py
 {
     "Tag": "Levered Beta",
@@ -477,9 +525,12 @@
 
 }
 ```
+
 **GET** `/current-ratio`
+
 - Required parameters : `total_current_assets:float` and `total_liabilities`
 - Sample output
+
 ```py
 {
     "Tag": "Current Ratio",
@@ -490,8 +541,10 @@
 ```
 
 **GET** `/monthly_payment`
+
 - Required parameters : `principal`, `interest_rate`, `number_of_periods`,`payments_per_period`
 - Sample output
+
 ```py
 {
     "Tag": "Monthly Payment",
@@ -504,8 +557,10 @@
 ```
 
 **GET** `/inventory-turnover-ratio`
+
 - Required parameters : `cost_of_goods_sold`,`beginnning_inventory` and `ending_inventory`
 - Sample output
+
 ```py
 {
     "Tag": "Inventory Turnover Ratio",
@@ -515,8 +570,10 @@
 ```
 
 **GET** `/inflation-rate`
+
 - Required parameters : `bigger_year`,`smaller_year` and `base_year`
 - Sample output
+
 ```py
 {
     "Tag": "Inflation Rate",
@@ -532,6 +589,7 @@
 - Required parameters : `space seperated list of Firms_market_shares`
 - Note: Input should be space seperated
 - Sample Output
+
 ```py
 {
 
@@ -545,8 +603,10 @@
 ```
 
 **GET** `/discount_opex`
+
 - Required parameters : `annual_opex`,`wacc` and `project_lifetime`
 - Sample output
+
 ```py
 {
     "Tag": "Discount OPEX",
@@ -558,8 +618,10 @@
 ```
 
 **GET** `/project_efficiency`
+
 - Required parameters : `annual_production`, `collector_surface`, `dni`
 - Sample output
+
 ```py
 {
     "Tag": "Project efficiency",
@@ -571,8 +633,10 @@
 ```
 
 **GET** `/real-gdp`
+
 - Required parameters : `nominal_gdp`, `gdp_deflator`
 - Sample output
+
 ```py
 {
   "Tag": "Real GDP",
@@ -583,8 +647,10 @@
 ```
 
 **GET** `/excess-reserves`
+
 - Required parameters : `deposits`, `reserve_requirement`
 - Sample output
+
 ```py
 {
   "Tag": "Excess Reserves",
@@ -595,8 +661,10 @@
 ```
 
 **GET** `/discounted_cash_flow`
+
 - Required parameters : `real_feed_in_teriff`, `annual_production`,`wacc`,`project_lifetime`
 - Sample output
+
 ```py
 {
   "Tag": "Discounted cash flow",
@@ -609,8 +677,10 @@
 ```
 
 **GET** `/gdp-growth-rate`
+
 - Required parameters : `last_year_gdp`, `current_year_gdp`
 - Sample output
+
 ```py
 {
   "Tag": "GDP Growth Rate",
@@ -621,8 +691,10 @@
 ```
 
 **GET** `/credit_card_equation`
+
 - Required parameters : `balance`,`monthly_payment`,`daily_interest_rate`
 - Sample output
+
 ```py
 {
    "Tag": "Credit card equation",
@@ -634,8 +706,10 @@
 ```
 
 **GET** `/future_value_of_ordinary_due`
+
 - Required parameters : `periodic_payment`, `number_of_periods`, `effective_interest_rate`
 - Sample Output
+
 ```py
 {
 
@@ -649,8 +723,10 @@
 ```
 
 **GET** `/future_value_of_annuity_due`
+
 - Required parameters : `periodic_payment`, `number_of_periods`, `effective_interest_rate`
 - Sample Output
+
 ```py
 {
   "Tag": "future_value_of_annuity_due",
@@ -662,8 +738,10 @@
 ```
 
 **GET** `/present_value_of_annuity_due`
+
 - Required parameters : `periodic_payment`, `number_of_periods`, `rate_per_period`
 - Sample Output
+
 ```py
 {
   "Tag": "Present value of annuity due",
@@ -675,8 +753,10 @@
 ```
 
 **GET** `/compound_annual_growth_rate`
+
 - Required parameters : `ending_value`, `beginning_value`,`number_of_periods`
 - Sample Output
+
 ```py
 {
  "Tag": "compound annual growth rate 1",
@@ -686,9 +766,12 @@
  "compound annual growth rate": 99%,
 }
 ```
+
 **GET** `/loan-to-value`
+
 - Required parameters : `mortage_value` and `appraised_value`
 - Sample Output
+
 ```py
 {
   "Tag": "Loan to Value (LTV) ratio",
@@ -699,8 +782,10 @@
 ```
 
 **GET** `/retention-ratio`
+
 - Required parameters : `net_income` and `dividends`
 - Sample Output
+
 ```py
 {
   "Tag": "Retention Ratio",
@@ -710,11 +795,11 @@
 }
 ```
 
-
-
 **GET** `/tax_equivalent_yield`
+
 - Required parameters : `tax_free_yield` and `tax_rate`
 - Sample Output
+
 ```py
 {
   "Tag": "Tax Equivalent Yield",
@@ -724,10 +809,11 @@
 }
 ```
 
-
 **GET** `/year-to-year`
+
 - Required parameters : `later_year_value` and `earlier_year_value`
 - Sample Output
+
 ```py
 {
   "Tag": "Year to Year Growth",
@@ -736,8 +822,10 @@
 ```
 
 **GET** `/future_value_of_annuity`
+
 - Required parameters : `payment_per_periods`,`interest_rate`,`number_of_periods`
 - Sample Output
+
 ```py
 {
    "Tag" : "Future value of annuity",
@@ -749,8 +837,10 @@
 ```
 
 **GET** `/balloon-balance`
+
 - Required parameters : `present_value`, `payment`,`rate_per_payment`, `number_of_payments`
 - Sample Output
+
 ```py
 {
   "Tag": "Balloon Balance of a Loan",
@@ -762,9 +852,11 @@
 }
 ```
 
-**GET**   `/periodic_lease_payment`
-- Required parameters :  `Asset_value_to_be_financed` and `monthly_lease_interest_rate` and `Number_of_lease_payments_required`
+**GET** `/periodic_lease_payment`
+
+- Required parameters : `Asset_value_to_be_financed` and `monthly_lease_interest_rate` and `Number_of_lease_payments_required`
 - Sample Output
+
 ```py
 {
   "Tag": "Periodic lease payment",
@@ -775,9 +867,11 @@
 }
 ```
 
-**GET**   `/future_sip`
-- Required parameters :  `interval_investment`,`rate_of_return`,`number_of_payments`
+**GET** `/future_sip`
+
+- Required parameters : `interval_investment`,`rate_of_return`,`number_of_payments`
 - Sample Output
+
 ```py
 {
   "Tag": "Future Value of SIP",
@@ -788,9 +882,11 @@
 }
 ```
 
-**GET**   `/inflation`
-- Required parameters :  `present_amount`,`inflation_rate`,`years`
+**GET** `/inflation`
+
+- Required parameters : `present_amount`,`inflation_rate`,`years`
 - Sample Output
+
 ```py
 {
         "Tag": "Inflated Amount",
@@ -801,9 +897,11 @@
 }
 ```
 
-**GET**   `/jensens_alpha`
-- Required parameters :  `return_from_investment`,`return_of_appropriate_market_index`,`risk_free_rate`,`beta`
+**GET** `/jensens_alpha`
+
+- Required parameters : `return_from_investment`,`return_of_appropriate_market_index`,`risk_free_rate`,`beta`
 - Sample Output
+
 ```py
 {
             "Tag": "Jensen's Alpha",
@@ -816,9 +914,11 @@
 ```
 
 **GET** `/weighted_average_of_values`
+
 - Required parameters : `Assigned_weight_values`,`data_point_values`
 - Note: Input should be space seperated
 - Sample Output
+
 ```py
 {
    "Tag" : "Weighted Average of given values",
@@ -829,8 +929,10 @@
 ```
 
 **GET** `/discounted_payback_period`
+
 - Required parameters : `overflow`,`rate`,`periodic_cash_flow`
 - Sample Output
+
 ```py
 {
   "Tag": "Discounted Payback Period",
@@ -842,8 +944,10 @@
 ```
 
 **GET** `yield-to-maturity`
+
 - Required parameters : `bond_price`, `face_value`, `coupon_rate` and `years_to_maturity`
 - Sample output
+
 ```py
 {
   "Tag": "Yield To Maturity",
@@ -854,8 +958,10 @@
 ```
 
 **GET** `perpetuity-payment`
+
 - Required parameters : `present_value` and `rate`
 - Sample output
+
 ```py
 {
   "Tag": "Perpetuity Payment",
@@ -865,8 +971,10 @@
 ```
 
 **GET** `zero_coupoun_bond_value`
+
 - Required parameters : `face_value`, `rate_of_yield` and `time_of_maturity`
 - Sample output
+
 ```py
 {
   "Tag": "Zero Coupon Bond Value",
@@ -877,8 +985,10 @@
 ```
 
 **GET** `zero_coupoun_bond_yield`
+
 - Required parameters : `face_value` , `present_value` and `time_of_maturity`
 - Sample output
+
 ```py
 {
   "Tag": "Zero Coupon Bond Effective Yield",
@@ -890,8 +1000,10 @@
 ```
 
 **GET** `profitability_index`
+
 - Required parameters : `initial_investment`, `pv_of_future_cash_flows`
 - Sample output
+
 ```py
 {
   "Tag": "Profitability Index",
@@ -902,9 +1014,11 @@
 ```
 
 **GET** `/profitability_index2`
+
 - Required parameters : `initial_investment`,`annual_cash_flows`, `discount_rate`
 - Note: annual_cash_flows should be space seperated
 - Sample Output
+
 ```py
 {
    "Tag" : "Profitability Index",
@@ -916,8 +1030,10 @@
 ```
 
 **GET** `receivables_turnover_ratio`
+
 - Required parameters : `sales_revenue`, `avg_accounts_receivable`
 - Sample output
+
 ```py
 {
   "Tag": "Receivables Turnover Ratio",
@@ -928,8 +1044,10 @@
 ```
 
 **GET** `remainig_balance`
+
 - Required parameters : `regular_payment`, `interest_rate_per_period`,`number_of_payments`,`number_of_payments_done`
 - Sample output
+
 ```py
 {
   "Tag" : "Remainig balance",
@@ -942,8 +1060,10 @@
 ```
 
 **GET** `net_present_value`
+
 - Required parameters : `cash_flows`, `discount_rate`,`initial_investment`
 - Sample output
+
 ```py
 {
   "Tag" : "net present value",
@@ -955,8 +1075,10 @@
 ```
 
 **GET** `leverage_ratio_income`
+
 - Required parameters : `debt_payments`, `income`,
 - Sample output
+
 ```py
 {
    "Tag": "Leverage Ratio By Income",
@@ -967,8 +1089,10 @@
 ```
 
 **GET** `leverage_ratio_equity`
+
 - Required parameters : `debt_payments`, `equity`,
 - Sample output
+
 ```py
 {
    "Tag": "Leverage Ratio By Equity",
@@ -979,8 +1103,10 @@
 ```
 
 **GET** `time_period_required_for_growth`
+
 - Required Parameters : `interest_rate`, `growth_factor`
-- Sample output 
+- Sample output
+
 ```py
 {
  "Tag" : "time period for exponential growth",
@@ -990,9 +1116,221 @@
 }
 ```
 
+**GET** `preferred-stock-value`
+
+- Required Parameters : `dividend`, `discount_rate`
+- Sample output
+
+```py
+{
+  "Tag": "Preferred stock value",
+  "Dividend": 0.25,
+  "Discount Rate": 0.005,
+  "Preferred Stock Value": 50
+}
+```
+
+**GET** `/present_value_of_annuity_due`
+
+- Required parameters : `periodic_payment`, `number_of_periods` and `rate_per_period`
+- Sample output
+
+```py
+{
+    "Tag": "Present Value of Annuity Due",
+    "Periodic Payment": 5000.0,
+    "Number of Periods": 3,
+    "Rate Per Period": 10.0,
+    "Present Value of Annuity Due": "5495.8677685950415"
+}
+```
+
+**GET** `/asset_turnover_ratio`
+
+- Required parameters : `net_sales`, `total_asset_beginning` and `total_asset_ending`
+- Sample output
 
 
+=======
+```py
+{
+    "Tag": "Asset Turnover Ratio",
+    "Net Sales": 100000.0,
+    "Total beginning asset": 20000.0,
+    "Total ending asset": 30000.0,
+    "Total average asset": 25000.0,
+    "Asset Turnover Ratio": "4.0",
+}
+```
 
+**GET** `/bid-ask-spread`
+
+- Required parameters : `ask_price`, `bid_price`
+- Sample output
+
+```py
+{
+  "Tag": "Bid Ask Spread",
+  "Ask Price": 28700,
+  "Bid Price": 26200,
+  "Bid Ask Spread": 2500
+}
+```
+
+**GET** `/calculate-period-FV-PV-rate`
+
+- Required parameters : `present_val`, `future_val`,`rate`
+- Sample output
+
+```py
+{
+  "Tag": "Period in years ",
+  "Present Value": 5000,
+  "Future Vlaue": 6500,
+  "Periods": 3.87776389841767
+}
+```
+
+**GET** `/balloon-loan-payment`
+
+- Required parameters : `principal`, `interest_rate`, `term_years` and `balloon_payment_year`
+- Sample output
+
+```py
+{
+  "Tag": "Balloon loan Payment",
+  "Principal": 100000,
+  "Interest Rate": 7,
+  "Term Years": 30,
+  "Balloon Payment Year": 5,
+  "Balloon Loan Payment": 94131.5898577919,
+}
+```
+
+**GET** `/periodic_lease_payment`
+
+- Required parameters : `Asset_value_to_be_financed` and `monthly_lease_interest_rate` and `Number_of_lease_payments_required`
+- Sample Output
+
+```py
+{
+  "Tag": "Monthly lease payment",
+  "Asset value to be financed": 20000,
+  "Monthly lease interest rate": 0.5%,
+  "Number of lease payments required": 36,
+  "Pmt": 16.89
+}
+```
+
+**GET** `/401k`
+
+- Required parameters : `income`, `contribution_percentage`,`current_age`,`age_at_retirement`,`rate_of_return`,`salary_increase_rate`,`withdraw_tax_rate`
+- Sample output
+
+```py
+{
+  "Tag": "Estimated 401(k)",
+  "income": 100000.0,
+  "contribution_percentage": 10.0,
+  "current_age": 30,
+  "age_at_retirement": 60,
+  "rate_of_return": 8.0,
+  "withdraw_tax_rate": 4.0,
+  "estimated_401k": 1841200.032,
+  "annual_withdraw_amount": 73648.001
+}
+```
+**GET** `/mortgage_amortization`
+
+- Required parameters : `mortgage_amount`, `mortgage_deposit`,`annual_interest_rate`,`loan_term`        
+- Sample output
+
+```py
+{
+    "TAG": "Mortgage monthly payments",
+    "mortgage_amount": 250000.0,
+    "mortgage_deposit": 25.0,
+    "annual_interest_rate": 5.0,
+    "loan_term": 25,
+    "monthly_payment": 1108.632,
+    "Annual_payments": 13303.586
+}
+```
+
+**GET** `Roth-IRA`
+
+- Required parameters : `principal`,`interest_rate`,`years`,`tax_rate`,`annual_contribution`
+- sample output
+
+```py
+{
+  "Tag": "Roth IRA",
+  "Principal":10000.0,
+  "Interest Rate": 7.0,
+  "Years": 30,
+  "Tax Rates": 25.0,
+  "Annual Contributions": 5000.0,
+  "Roth Ira Balance": 581488,
+  "Taxable_saving_balance": 411438,
+}
+```
+
+=======
+
+**GET** `/enterprise-value`
+
+- Required parameters : `share_price`, `fully_diluted_shares_outstanding`, `total_debt`, `preferred_stock`, `non_controlling_interest`, `cash_and_cash_equivalents`
+- sample output
+
+```py
+{
+    "Tag": "Enterprise Value",
+    "Equity Value": 1000.00,
+    "Total Debt": 500.00,
+    "Preferred Stock": 500.00,
+    "Non-Controlling Interest": 1000.00,
+    "Cash & Cash Equivalents": 1000.00,
+    "Enterprise Value": 2000.00
+}
+```
+
+**GET** `/salary-calculate`
+
+- Required parameters : `salary_amount`, `hours_worked`, `days_worked` and `payment_frequency`
+- Sample output
+
+```py
+{
+  "Tag": "Calculate Salary",
+  "Salary Amount": 400000,
+  "Payment frequency": "yearly",
+  "Salary": {
+    "hourly": 192,
+    "daily": 1538,
+    "weekly": 7692,
+    "bi-weekly": 15385,
+    "monthly": 33333,
+    "quarterly": 100000,
+    "yearly": 400000
+  }
+}
+```
+
+**GET** `/personal_loan`
+
+- Required parameters : `loan_amount`, `interest_rate`, `loan_term_years`, `loan_start_date`
+- Sample output
+
+```py
+{
+    "Tag": "Personal Loan",
+    "Loan amount": 20000.0,
+    "Monthly payment": 1720.87,
+    "Total interest paid": 650.43,
+    "Total cost loan": 20650.43,
+    "Schedule": "{\"Date\":{\"0\":\"March 2023\",\"1\":\"April 2023\",\"2\":\"May 2023\",\"3\":\"June 2023\",\"4\":\"July 2023\",\"5\":\"August 2023\",\"6\":\"September 2023\",\"7\":\"October 2023\",\"8\":\"November 2023\",\"9\":\"December 2023\",\"10\":\"January 2024\",\"11\":\"February 2024\"},\"Principal\":{\"0\":1621.7,\"1\":1629.74,\"2\":1637.82,\"3\":1645.94,\"4\":1654.11,\"5\":1662.31,\"6\":1670.55,\"7\":1678.83,\"8\":1687.16,\"9\":1695.52,\"10\":1703.93,\"11\":1712.38},\"Interest\":{\"0\":99.17,\"1\":91.13,\"2\":83.04,\"3\":74.92,\"4\":66.76,\"5\":58.56,\"6\":50.32,\"7\":42.04,\"8\":33.71,\"9\":25.35,\"10\":16.94,\"11\":8.49},\"Remaining balance\":{\"0\":18378.3,\"1\":16748.55,\"2\":15110.73,\"3\":13464.79,\"4\":11810.68,\"5\":10148.37,\"6\":8477.82,\"7\":6798.99,\"8\":5111.83,\"9\":3416.31,\"10\":1712.38,\"11\":0.0},\"Principal Total\":{\"0\":1621.7,\"1\":3251.45,\"2\":4889.27,\"3\":6535.21,\"4\":8189.32,\"5\":9851.63,\"6\":11522.18,\"7\":13201.01,\"8\":14888.17,\"9\":16583.69,\"10\":18287.62,\"11\":20000.0},\"Interest Total\":{\"0\":99.17,\"1\":190.29,\"2\":273.34,\"3\":348.26,\"4\":415.02,\"5\":473.59,\"6\":523.9,\"7\":565.94,\"8\":599.65,\"9\":625.0,\"10\":641.94,\"11\":650.43}}"
+}
+```
 
 
 
