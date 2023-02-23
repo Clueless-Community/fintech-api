@@ -994,3 +994,16 @@
 
 
 
+
+
+**GET* `calculate_lumpsum`
+-Required Parameters: `principal`, `interest_rate `, `years`
+-sample output
+```py
+{
+    "principal"=10000,
+    "interest_rate"=8,
+    "years"=5,
+     "total_amount": 14693.28,
+    "interest_earned": 4693.28
+}

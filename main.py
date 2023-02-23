@@ -1727,3 +1727,15 @@ def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate lump-sum mutual fund investment
+@app.get("/lumpsum")
+async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
+   
+    try:
+        interest_rate /= 100 # Convert percentage to decimal
+        total_amount = principal * ((1 + interest_rate) ** years)
+        interest_earned = total_amount - principal
+        return {"total_amount": round(total_amount, 2), "interest_earned": round(interest_earned, 2)}
+    except :
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

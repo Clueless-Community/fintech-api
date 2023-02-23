@@ -661,3 +661,22 @@ def leverage_equity(debt: int, equity: int):
 def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
     time_period_required_for_growth = math.log(growth_factor) / math.log(1 + interest_rate/100)
     return time_period_required_for_growth
+
+
+# Function to calculate lump-sum mutual fund investment
+def calculate_lumpsum(principal, interest_rate, years):
+    interest_rate /= 100 # Convert percentage to decimal
+    total_amount = principal * ((1 + interest_rate) ** years)
+    interest_earned = total_amount - principal
+    return (total_amount, interest_earned)
+
+def main():
+    principal = float(input("Enter the principal amount: "))
+    interest_rate = float(input("Enter the interest rate (%): "))
+    years = int(input("Enter the number of years: "))
+    total_amount, interest_earned = calculate_lumpsum(principal, interest_rate, years)
+    print(f"Total Amount: Rs.{total_amount:.2f}")
+    print(f"Interest Earned: Rs.{interest_earned:.2f}")
+
+if __name__ == '__main__':
+    main()
