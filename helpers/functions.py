@@ -1017,3 +1017,47 @@ def personal_loan(
     return {"Monthly payment": monthly_payment, "Total interest paid": total_interest_paid,
             "Total cost loan": total_cost_loan, "Schedule": dframe.to_json()}
 
+
+# Function to calculate FHA loan
+def calculate_fha_loan():
+
+    # Get user input for home price, down payment percentage, loan term, interest rate, and FHA annual MIP
+    home_price = float(input("Enter home price: "))
+    down_payment_percentage = float(input("Enter down payment percentage: "))
+    loan_term_years = float(input("Enter loan term (years): "))
+    interest_rate = float(input("Enter interest rate (%): "))
+    fha_annual_mip_percentage = float(input("Enter FHA annual MIP percentage (%): "))
+
+    # Calculate down payment and base loan amount
+    down_payment = home_price * down_payment_percentage / 100
+    base_loan_amount = home_price - down_payment
+
+    # Calculate upfront MIP and monthly MIP
+    upfront_mip_percentage = 1.75
+    upfront_mip = base_loan_amount * upfront_mip_percentage / 100
+    monthly_mip_percentage = fha_annual_mip_percentage / 12 / 100
+    monthly_mip = base_loan_amount * monthly_mip_percentage
+
+    # Calculate monthly mortgage payment
+    loan_term_months = loan_term_years * 12
+    monthly_interest_rate = interest_rate / 12 / 100
+    monthly_payment = (base_loan_amount * monthly_interest_rate * (1 + monthly_interest_rate) ** loan_term_months) / ((1 + monthly_interest_rate) ** loan_term_months - 1)
+
+    # Calculate total FHA loan amount and total monthly payment
+    total_fha_loan_amount = base_loan_amount + upfront_mip
+    total_monthly_payment = monthly_payment + monthly_mip
+
+    # Calculate total cost of loan
+    total_cost_of_loan = total_monthly_payment * loan_term_months + upfront_mip
+
+    # Print output
+    print(f"\nDown payment: ${down_payment:.2f}")
+    print(f"FHA base loan amount: ${base_loan_amount:.2f}")
+    print(f"FHA upfront MIP: ${upfront_mip:.2f}")
+    print(f"Monthly mortgage payment: ${monthly_payment:.2f}")
+    print(f"Monthly MIP: ${monthly_mip:.2f}")
+    print(f"Total FHA loan amount: ${total_fha_loan_amount:.2f}")
+    print(f"Total monthly payment: ${total_monthly_payment:.2f}")
+    print(f"Total cost of loan: ${total_cost_of_loan:.2f}")
+
+calculate_fha_loan()
