@@ -844,23 +844,63 @@ def calculate_401k(
     number_of_years = age_at_retirement - current_age
     amount = 0
     for _ in range(number_of_years):
-        amount = (amount + contribution_amount)*(1+(rate_of_return/100))
-        contribution_amount = (contribution_amount)*(1+(salary_increase_rate/100))
-    return round(amount,3)
+        amount = (amount + contribution_amount) * (1 + (rate_of_return / 100))
+        contribution_amount = (contribution_amount) * (1 + (salary_increase_rate / 100))
+    return round(amount, 3)
+
 
 # Function to calculate Mortgage Amortization
-
 def calculate_mortgage_interest(
-    mortgage_amount:float,
-    mortgage_deposit:float,
-    annual_interest_rate:float,
-    loan_term:int,
+    mortgage_amount: float,
+    mortgage_deposit: float,
+    annual_interest_rate: float,
+    loan_term: int,
 ):
-    annual_interest_rate = annual_interest_rate/100
-    loan_amount = mortgage_amount*(100-mortgage_deposit)/100
-    power = (1 + annual_interest_rate)**loan_term
-    mortgage_annual_payment = loan_amount*(annual_interest_rate*power) /(power - 1)
-    return round(mortgage_annual_payment,3)
+    annual_interest_rate = annual_interest_rate / 100
+    loan_amount = mortgage_amount * (100 - mortgage_deposit) / 100
+    power = (1 + annual_interest_rate) ** loan_term
+    mortgage_annual_payment = loan_amount * (annual_interest_rate * power) / (power - 1)
+    return round(mortgage_annual_payment, 3)
+
+
+# Function to calculate the FHA mortgage
+def calculate_fha_mortgage_interest(
+    mortgage_amount: float,
+    mortgage_deposit_percentage: float,
+    annual_interest_rate: float,
+    fha_annual_interest_rate: float,
+    loan_term: int,
+):
+    mortgage_amount = mortgage_amount - (
+        mortgage_amount * mortgage_deposit_percentage * 0.001
+    )
+
+    # Calculate upfront MIP and monthly <MIP> interest rates
+    upfront_mip_percentage = 1.75
+    upfront_mip = mortgage_amount * upfront_mip_percentage / 100
+    monthly_mip_percentage = fha_annual_interest_rate / 1200
+    monthly_mip = mortgage_amount * monthly_mip_percentage
+
+    # Calculate monthly mortage payment
+    loan_term_months = loan_term * 12
+    monthly_interest_rate = annual_interest_rate / 1200
+    power = (1 + monthly_interest_rate) ** loan_term_months
+    monthly_payment = mortgage_amount * (monthly_interest_rate * power) / (power - 1)
+
+    # Calculate total FHA loan amount and total monthly payment
+    total_fha_loan_amount = mortgage_amount + upfront_mip
+    total_monthly_payment = monthly_payment + monthly_mip
+
+    total_loan_cost = total_monthly_payment * loan_term_months + upfront_mip
+    return (
+        upfront_mip,
+        monthly_payment,
+        monthly_mip,
+        total_fha_loan_amount,
+        total_monthly_payment,
+        total_loan_cost,
+    )
+
 
 def roth_ira(
     principal: float,
