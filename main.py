@@ -2011,3 +2011,79 @@ def fha_loan(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate Enterprise Value
+@app.get(
+    "/enterprise-value",
+    tags=["Enterprise Value"],
+    description="Calculating Enterprise Value for a publicly listed company.",
+)
+def calculate_enterprise_value(
+    share_price: float,
+    fully_diluted_shares_outstanding: int,
+    total_debt: float,
+    preferred_stock: float,
+    non_controlling_interest: float,
+    cash_and_cash_equivalents: float,
+    ):
+    try:
+        enterprise_value = functions.calculate_enterprise_value(share_price, fully_diluted_shares_outstanding, total_debt, preferred_stock, non_controlling_interest, cash_and_cash_equivalents)
+        return {
+            "Tag": "Enterprise Value",
+            "Equity Value": share_price * fully_diluted_shares_outstanding,
+            "Total Debt": total_debt,
+            "Preferred Stock": preferred_stock,
+            "Non-Controlling Interest": non_controlling_interest,
+            "Cash & Cash Equivalents": cash_and_cash_equivalents,
+            "Enterprise Value": enterprise_value
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate Salary
+@app.get(
+    "/salary-calculate",
+    tags=["salary-calculate"],
+    description="Converts salary amounts to their corresponding values based on payment frequency.",
+)    
+def salary_calculate(
+    salary_amount: float, 
+    payment_frequency: str,
+    hours_worked_per_day: int,
+    days_worked_per_week: int
+):
+    try:
+        salary = functions.salary_calculate(
+            salary_amount, 
+            payment_frequency, 
+            hours_worked_per_day,
+            days_worked_per_week
+        )
+
+        return {
+            "Tag" : "Calculate Salary",
+            "Salary Amount" : salary_amount,
+            "Payment frequency" : payment_frequency,
+            "Salary" : salary
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/personal_loan",
+    tags=["personal_loan"],
+    description="Calculate personal loan",
+)
+def personal_loan(loan_amount: float, interest_rate: float, loan_term_years: int, loan_start_date: str):
+    try:
+        result = functions.personal_loan(loan_amount, interest_rate, loan_term_years, loan_start_date)
+        return {
+            "Tag": "Personal Loan",
+            "Loan amount": loan_amount,
+            "Monthly payment": round(result['Monthly payment'], 2),
+            "Total interest paid": round(result['Total interest paid'], 2),
+            "Total cost loan": round(result['Total cost loan'], 2),
+            "Schedule": result['Schedule']
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

@@ -2,6 +2,8 @@ import math
 import numpy as np
 import pandas as pd
 import math
+import datetime
+from dateutil.relativedelta import relativedelta
 
 # Function to Calculate Simmple Interest Rate
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
@@ -919,3 +921,139 @@ def roth_ira(
             1 + interest_rate / 100 * (1 - tax_rate / 100)
         )
     return math.ceil(roth_ira_balance), math.ceil(taxable_balance)
+
+
+# Function to calculate Enterprise Value
+def calculate_enterprise_value(
+    share_price: float,
+    fully_diluted_shares_outstanding: int,
+    total_debt: float,
+    preferred_stock: float,
+    non_controlling_interest: float,
+    cash_and_cash_equivalents: float,
+    ):
+    equity_value = share_price * fully_diluted_shares_outstanding
+    enterprise_value = equity_value + total_debt + preferred_stock + non_controlling_interest - cash_and_cash_equivalents
+    return round(enterprise_value, 2)
+
+# Function to convert salary_amount amounts to their corresponding values based on payment frequency.
+def salary_calculate(
+    salary_amount: float,
+    payment_frequency: str,
+    hours_per_day: int,
+    days_per_week: int
+):
+    # Get the total salary of the corresponding frequency 
+    salaries = {
+        "hourly": {
+        # Assuming there are 4.333333 weeks in a month (in real-time), 13 week quarters in a year & 52 weeks in a year
+            "hourly": salary_amount,
+            "daily": salary_amount * hours_per_day,
+            "weekly": salary_amount * hours_per_day * days_per_week,
+            "bi-weekly": salary_amount * hours_per_day * days_per_week * 2,
+            "monthly": salary_amount * hours_per_day * days_per_week * 4.333333,
+            "quarterly": salary_amount * hours_per_day * days_per_week * 13,
+            "yearly": salary_amount * hours_per_day * (days_per_week * 52)
+        },
+        "daily": {
+        # Assuming there are 4.333333 weeks in a month, and 3 months in a quarter & 52 working weeks
+            "hourly": salary_amount / hours_per_day,
+            "daily": salary_amount,
+            "weekly": salary_amount * days_per_week,
+            "bi-weekly": salary_amount * days_per_week * 2,
+            "monthly": salary_amount * (days_per_week * 4.333333),
+            "quarterly": salary_amount * days_per_week * (4.333333 * 3),
+            "yearly": salary_amount * days_per_week * 52
+        },
+        "weekly": {
+        # Assuming there are 4.333333 weeks in a month, 13 weeks in a quarter & 2 weeks make up a bi-week
+            "hourly": salary_amount / (hours_per_day * days_per_week),
+            "daily": salary_amount / days_per_week,
+            "weekly": salary_amount,
+            "bi-weekly": salary_amount * 2,
+            "monthly": salary_amount * 4.333333,
+            "quarterly": salary_amount * 13,
+            "yearly": salary_amount * 52
+        },
+        "bi-weekly": {
+        # Assuming there are 2 bi-weekly periods in a month & round(6.5223214,1) bi-weekly periods in a quarter
+            "hourly": salary_amount / (hours_per_day * days_per_week * 2),
+            "daily": salary_amount / (days_per_week * 2),
+            "weekly": salary_amount / 2,
+            "bi-weekly": salary_amount,
+            "monthly": salary_amount * 2,
+            "quarterly": salary_amount * 6.5,
+            "yearly": salary_amount * 26
+        },
+        "monthly": {
+        # Assuming there are 2 bi-weekly periods, 4.333333 weeks in a month & 3 months in a quarter
+            "hourly": salary_amount / (hours_per_day * days_per_week * 4.333333),
+            "daily": salary_amount / (days_per_week * 4.333333),
+            "weekly": salary_amount / 4.333333,
+            "bi-weekly": salary_amount / (4.333333 / 2),
+            "monthly": salary_amount,
+            "quarterly": salary_amount * 3,
+            "yearly": salary_amount * 12
+        },
+        "quarterly": {
+        # Assuming there are 3 months, 13 weeks in a quarter, and 4 quarters in a year
+            "hourly": salary_amount / ((13 * days_per_week) * hours_per_day),
+            "daily": salary_amount / (13 * days_per_week),
+            "weekly": salary_amount / 13,
+            "bi-weekly": salary_amount / 13 * 2,
+            "monthly": salary_amount / 3,
+            "quarterly": salary_amount,
+            "yearly": salary_amount * 4
+        },
+        "yearly": {
+        # Assuming there are 4 quarters, 12 months, 26 bi-weeks & 52 weeks in a year.
+            "hourly": salary_amount / (hours_per_day * days_per_week * 52),
+            "daily": salary_amount / (52 * days_per_week),
+            "weekly": salary_amount / 52,
+            "bi-weekly": salary_amount / 26,
+            "monthly": salary_amount / 12,
+            "quarterly": salary_amount / 4,
+            "yearly": salary_amount
+        }
+    }
+
+    if payment_frequency not in salaries.keys():
+        return {"error": "Invalid payment frequency."}
+
+    # Get the rounded off values for the salaries (to 2 decimal places)
+    return {k: round(v,2) for k, v in salaries[payment_frequency].items()}
+
+
+# Function to Calculate Personal Loan and visualization monthly payments (schedule)
+# interest_rate - % per year; loan_term - years; loan_start_date - format %B %Y (February 2023)
+def personal_loan(
+        loan_amount: float,
+        interest_rate: float,
+        loan_term_years: int,
+        loan_start_date: str
+):
+    loan_term_month = loan_term_years * 12
+    interest_rate_month = interest_rate / (12 * 100)
+    monthly_payment = loan_amount * interest_rate_month / (1 - (1 + interest_rate_month) ** (-loan_term_month))
+    total_cost_loan = monthly_payment * loan_term_month
+    total_interest_paid = total_cost_loan - loan_amount
+
+    dframe = pd.DataFrame(
+        columns=['Date', 'Principal', 'Interest', 'Remaining balance', 'Principal Total', 'Interest Total'])
+    date = datetime.datetime.strptime(loan_start_date, '%B %Y')
+    principal_total = interest_total = 0
+    remain_balance = loan_amount
+    for i in range(loan_term_years * 12):
+        date = date + relativedelta(months=1)
+        interest = remain_balance * interest_rate / (12 * 100)
+        interest_total = interest_total + interest
+        principal = monthly_payment - interest
+        principal_total = principal_total + principal
+        remain_balance = remain_balance - principal
+        dframe.loc[i, :] = date.strftime("%B %Y"), round(principal, 2), round(interest, 2), round(remain_balance,
+                                                                                                  2), round(
+            principal_total, 2), round(interest_total, 2)
+
+    return {"Monthly payment": monthly_payment, "Total interest paid": total_interest_paid,
+            "Total cost loan": total_cost_loan, "Schedule": dframe.to_json()}
+
