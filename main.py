@@ -1939,32 +1939,79 @@ def roth_ira(
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint to calculate Mortgage Amortization
+
+# Endpoint to calculate Mortgage Amortization
 @app.get(
     "/mortgage-amortization",
     tags=["mortgage-amortization"],
     description="Calculating annual or monthly amortization schedule for a mortgage loan.",
 )
 def mortgage_amortization(
-    mortgage_amount:float,
-    mortgage_deposit:float,
-    annual_interest_rate:float,
-    loan_term:int,
+    mortgage_amount: float,
+    mortgage_deposit: float,
+    annual_interest_rate: float,
+    loan_term: int,
 ):
     try:
-        annual_payment = functions.calculate_mortgage_interest(mortgage_amount,mortgage_deposit,annual_interest_rate,loan_term)
+        annual_payment = functions.calculate_mortgage_interest(
+            mortgage_amount, mortgage_deposit, annual_interest_rate, loan_term
+        )
         return {
-            "TAG":"Mortgage monthly payments",
-            "mortgage_amount":mortgage_amount,
-            "mortgage_deposit":mortgage_deposit,
-            "annual_interst_rate":annual_interest_rate,
-            "loan_term":loan_term,
-            "monthly_payment":round(annual_payment/12,3),
-            "annual_payment":round(annual_payment,3)
+            "TAG": "Mortgage monthly payments",
+            "mortgage_amount": mortgage_amount,
+            "mortgage_deposit": mortgage_deposit,
+            "annual_interst_rate": annual_interest_rate,
+            "loan_term": loan_term,
+            "monthly_payment": round(annual_payment / 12, 3),
+            "annual_payment": round(annual_payment, 3),
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+# Endpoint to calculate FHA loans
+@app.get(
+    "/fha-loan",
+    tags=["Federal Housing Administration Loans"],
+    description="FHA loans are mortgages insured by the Federal Housing Administration, the largest mortgage insurer in the world.",
+)
+def fha_loan(
+    mortgage_amount: float,
+    mortgage_deposit_percentage: float,
+    annual_interest_rate: float,
+    fha_annual_interest_rate: float,
+    loan_term: int,
+):
+    try:
+        (
+            upfront_mip,
+            monthly_payment,
+            monthly_mip,
+            total_fha_loan_payment,
+            total_monthly_payment,
+            total_loan_cost,
+        ) = function.calculate_fha_mortgage_interest(
+            mortgage_amount,
+            mortgage_deposit_percentage,
+            annual_interest_rate,
+            fha_annual_interest_rate,
+            loan_term,
+        )
+        return {
+            "TAG": "FHA Mortgage monthly payments",
+            "mortgage_amount": mortgage_amount,
+            "mortgage_deposit": mortgage_deposit_percentage * mortgage_amount * 0.001,
+            "FHA base loan amount": mortgage_amount
+            - (mortgage_deposit_percentage * mortgage_amount * 0.001),
+            "FHA upfront MIP": upfront_mip,
+            "FHA monthly mortgage payments": monthly_payment,
+            "FHA Monthly MIP": monthly_mip,
+            "Total FHA loan amount": total_fha_loan_payment,
+            "Total monthly payments": total_monthly_payment,
+            "Total loan costs": total_loan_cost,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Endpoint to calculate Enterprise Value
 @app.get(
@@ -2054,4 +2101,23 @@ async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
         return {"total_amount": round(total_amount, 2), "interest_earned": round(interest_earned, 2)}
     except :
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-=======
+        
+        
+        # Endpoint to calculate FHA loan
+    @app.get("/fha-loan")
+async def fha_loan(home_price: float, down_payment_percentage: float, loan_term_years: float, interest_rate: float, fha_annual_mip_percentage: float):
+    try:
+        result = calculate_fha_loan(home_price, down_payment_percentage, loan_term_years, interest_rate, fha_annual_mip_percentage)
+        return {
+            "down_payment": result["down_payment"],
+            "fha_base_loan_amount": result["fha_base_loan_amount"],
+            "fha_upfront_mip": result["fha_upfront_mip"],
+            "monthly_mortgage_payment": result["monthly_mortgage_payment"],
+            "monthly_mip": result["monthly_mip"],
+            "total_fha_loan_amount": result["total_fha_loan_amount"],
+            "total_monthly_payment": result["total_monthly_payment"],
+            "total_cost_of_loan": result["total_cost_of_loan"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        

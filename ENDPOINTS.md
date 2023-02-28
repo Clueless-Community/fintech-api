@@ -1333,7 +1333,6 @@
 ```
 
 
-
 **GET* `calculate_lumpsum`
 -Required Parameters: `principal`, `interest_rate `, `years`
 -sample output
@@ -1344,4 +1343,30 @@
     "years"=5,
      "total_amount": 14693.28,
     "interest_earned": 4693.28
+}
+=======
+
+Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
+
+
+**GET** `/FHA_loan`
+
+-Required parameters:  `home_price`, `down_payment_percentage`,`loan_term_years`,`interest_rate`,`fha_annual_mip_percentage`
+-saample output
+
+```py
+{
+   "home_price": 200000
+ "down_payment_percentage": 10
+ "loan_term" (years): 30
+ "interest_rate" (%): 3
+ "FHA_annual_MIP_percentage" (%): 0.85
+"Down_payment": $20000.00
+"FHA_base_loan_amount": $180000.00
+"FHA_upfront_MIP": $3150.00
+"Monthly_mortgage_payment": $758.89
+"Monthly_MIP": $127.50
+"Total_FHA_loan_amount": $183150.00
+"Total_monthly_payment": $886.39
+"Total_cost_of_loan": $322249.41
 }
