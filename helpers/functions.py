@@ -809,6 +809,8 @@ def time_period_required_for_growth(interest_rate: float, growth_factor: int):
     return time_period_required_for_growth
 
 
+
+=======
 # Function to calculate preferred stock value
 def preferred_stock_value(dividend: float, discount_rate: float):
     preferred_stock_value = dividend / discount_rate
@@ -1107,9 +1109,29 @@ def personal_loan(
 
     return {"Monthly payment": monthly_payment, "Total interest paid": total_interest_paid,
             "Total cost loan": total_cost_loan, "Schedule": dframe.to_json()}
+            
+            
 
+# Function to calculate lump-sum mutual fund investment
+def calculate_lumpsum(principal, interest_rate, years):
+    interest_rate /= 100 # Convert percentage to decimal
+    total_amount = principal * ((1 + interest_rate) ** years)
+    interest_earned = total_amount - principal
+    return (total_amount, interest_earned)
 
-# Function to calculate FHA loan
+def main():
+    principal = float(input("Enter the principal amount: "))
+    interest_rate = float(input("Enter the interest rate (%): "))
+    years = int(input("Enter the number of years: "))
+    total_amount, interest_earned = calculate_lumpsum(principal, interest_rate, years)
+    print(f"Total Amount: Rs.{total_amount:.2f}")
+    print(f"Interest Earned: Rs.{interest_earned:.2f}")
+
+if __name__ == '__main__':
+    main()
+    
+    
+    # Function to calculate FHA loan
 def calculate_fha_loan():
 
     # Get user input for home price, down payment percentage, loan term, interest rate, and FHA annual MIP
