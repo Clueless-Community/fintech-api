@@ -1815,6 +1815,7 @@ def CalculatePeriods(present_val: float, future_val: float, rate: float):
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+
 @app.get(
     "/balloon-loan-payment",
     tags=["Balloon-loan-payment"],
@@ -2088,9 +2089,21 @@ def personal_loan(loan_amount: float, interest_rate: float, loan_term_years: int
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    
+
+# Endpoint to calculate lump-sum mutual fund investment
+@app.get("/lumpsum")
+async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
    
- # Endpoint to calculate FHA loan
+    try:
+        interest_rate /= 100 # Convert percentage to decimal
+        total_amount = principal * ((1 + interest_rate) ** years)
+        interest_earned = total_amount - principal
+        return {"total_amount": round(total_amount, 2), "interest_earned": round(interest_earned, 2)}
+    except :
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        
+        # Endpoint to calculate FHA loan
     @app.get("/fha-loan")
 async def fha_loan(home_price: float, down_payment_percentage: float, loan_term_years: float, interest_rate: float, fha_annual_mip_percentage: float):
     try:
@@ -2107,5 +2120,4 @@ async def fha_loan(home_price: float, down_payment_percentage: float, loan_term_
         }
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
+        
