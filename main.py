@@ -1177,6 +1177,33 @@ def credit_card_equation(
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+@app.get(
+    "/credit_card_payoff",
+    tags=["credit_card_payoff"],
+    description="Credit Card Payoff using Debt Avalanche method",
+)
+def credit_card_payoff(
+    debts:list,interest_rates:list,minimum_payments:list,monthly_payment:int
+):
+    try:
+        result = functions.credit_card_payoff(
+            debts, interest_rates, minimum_payments,monthly_payment
+        )
+        return {
+            "Tag": "Credit card payoff",
+            "debts":debts,
+            "interest rates": interest_rates,
+            "minimum payments":minimum_payments,
+            "Monthly payment":monthly_payment,
+            "Months":[r['month'] for r in result ],
+            'Interest paid':[r['interest_paid'] for r in result],
+            "Total Payment":[r['total_payment'] for r in result]
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
 # Endpoint to calculate future value of the ordinary annuity
 @app.get(
     "/future_value_of_ordinary_due",
