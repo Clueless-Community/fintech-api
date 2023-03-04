@@ -705,6 +705,24 @@
 }
 ```
 
+**GET** `/credit_card_payoff`
+
+- Required parameters : `debts`,`monthly_payment`,`interest_rate`,`minimum_payments`
+- Sample output
+
+```py
+{
+   "Tag": "Credit card payoff",
+    "debts": [5000,6000,3000],
+    "interest rates": [10,15,9],
+    "minimum payments":[500,400,300],
+    "Monthly payment": 2000,
+    "Months":[7,5,8],
+    "Interest paid": [194.17,225.0,117.0],
+    "Total Payment":[5194.17,6225.0,3117.0]
+}
+```
+
 **GET** `/future_value_of_ordinary_due`
 
 - Required parameters : `periodic_payment`, `number_of_periods`, `effective_interest_rate`
@@ -1240,9 +1258,10 @@
   "annual_withdraw_amount": 73648.001
 }
 ```
+
 **GET** `/mortgage_amortization`
 
-- Required parameters : `mortgage_amount`, `mortgage_deposit`,`annual_interest_rate`,`loan_term`        
+- Required parameters : `mortgage_amount`, `mortgage_deposit`,`annual_interest_rate`,`loan_term`
 - Sample output
 
 ```py
@@ -1351,7 +1370,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 **GET** `/FHA_loan`
 
--Required parameters:  `home_price`, `down_payment_percentage`,`loan_term_years`,`interest_rate`,`fha_annual_mip_percentage`
+-Required parameters: `home_price`, `down_payment_percentage`,`loan_term_years`,`interest_rate`,`fha_annual_mip_percentage`
 -saample output
 
 ```py
@@ -1370,3 +1389,4 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 "Total_monthly_payment": $886.39
 "Total_cost_of_loan": $322249.41
 }
+```

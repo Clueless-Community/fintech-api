@@ -522,6 +522,57 @@ def credit_card_equation(
     N = -(1 // 30) * (a // b)
     return N
 
+#function to calculate the payoff of multiple credit cards using Debt Avalanche method 
+def credit_card_payoff(debts:list,interest_rates:list,minimum_payments:list,monthly_payment:int):
+     
+      cards =[]
+      
+      for i in range (len (debts)):
+        cards.append (
+      		 {
+      'index': i,
+      'debt': debts[i], 
+      'minimum_payment': minimum_payments[i],
+      'interest_rate': interest_rates[i],
+      'interest_paid':0,
+      'month':0,
+      'total_payment':0
+      		 }
+      
+      )
+      #Sort the list of dictionaries by interest rate, in descending order
+      cards.sort (key = lambda x:x['interest_rate'], reverse = True)
+      
+      extra=0
+      while sum(d['debt']  for d in cards) > 0:
+           highest_interest_index=cards.index(max((d for d in cards if d['debt'] > 0), key=lambda x: x['interest_rate']))#highest index of the interest rate
+           total_minimum_payment=sum(c['minimum_payment'] for c in cards if c['debt']>0)
+           extra_payment=monthly_payment- total_minimum_payment +extra
+           extra =0
+           for i in range(len(cards)):
+               if cards[i]['debt']>0:
+                   
+                  interest = round((cards[i]['debt'] * cards[i]['interest_rate']) / (12.00 * 100.00),2)
+                  payment=cards[i]['minimum_payment']
+                  cards[i]['interest_paid']+=interest
+                  cards[i]['month']+=1
+                  if i==highest_interest_index:
+                      payment+=extra_payment
+                  if payment>cards[i]['debt']:
+                      extra=payment-cards[i]['debt']
+                      cards[i]['total_payment']+=cards[i]['debt']
+                      cards[i]['debt']=0
+                  else:
+                      cards[i]['debt']-=payment
+                      cards[i]['total_payment']+=payment
+                  if cards[i]['debt']==0:
+                      cards[i]['total_payment']+=cards[i]['interest_paid']
+      
+      cards.sort (key = lambda x:x['index'])
+      
+    
+      return cards 
+
 
 # function to calculate future value of the ordinary annuity
 def future_value_of_ordinary_due(
