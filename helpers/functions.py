@@ -810,7 +810,7 @@ def time_period_required_for_growth(interest_rate: float, growth_factor: int):
 
 
 
-=======
+
 # Function to calculate preferred stock value
 def preferred_stock_value(dividend: float, discount_rate: float):
     preferred_stock_value = dividend / discount_rate
@@ -1131,7 +1131,7 @@ if __name__ == '__main__':
     main()
     
     
-    # Function to calculate FHA loan
+# Function to calculate FHA loan
 def calculate_fha_loan():
 
     # Get user input for home price, down payment percentage, loan term, interest rate, and FHA annual MIP
@@ -1173,4 +1173,17 @@ def calculate_fha_loan():
     print(f"Total monthly payment: ${total_monthly_payment:.2f}")
     print(f"Total cost of loan: ${total_cost_of_loan:.2f}")
 
-calculate_fha_loan()
+#calculate_fha_loan()
+
+#Function to compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission for a simple percentage commission structure.
+
+def commission_calc(sales_price: float = None, commission_rate: float = None, commission: float = None):
+    if sales_price == None and commission_rate != None and commission != None:
+        output = 100*commission/commission_rate
+    elif sales_price != None and commission_rate == None and commission != None: 
+        output = 100*commission/sales_price
+    elif sales_price != None and commission_rate != None and commission == None:
+        output = (sales_price*commission_rate)/100
+    
+    return output
+
