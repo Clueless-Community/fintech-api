@@ -1375,18 +1375,32 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 ```py
 {
-   "home_price": 200000
- "down_payment_percentage": 10
- "loan_term" (years): 30
- "interest_rate" (%): 3
- "FHA_annual_MIP_percentage" (%): 0.85
-"Down_payment": $20000.00
-"FHA_base_loan_amount": $180000.00
-"FHA_upfront_MIP": $3150.00
-"Monthly_mortgage_payment": $758.89
-"Monthly_MIP": $127.50
-"Total_FHA_loan_amount": $183150.00
-"Total_monthly_payment": $886.39
-"Total_cost_of_loan": $322249.41
+  "home_price": 200000
+  "down_payment_percentage": 10
+  "loan_term" (years): 30
+  "interest_rate" (%): 3
+  "FHA_annual_MIP_percentage" (%): 0.85
+  "Down_payment": $20000.00
+  "FHA_base_loan_amount": $180000.00
+  "FHA_upfront_MIP": $3150.00
+  "Monthly_mortgage_payment": $758.89
+  "Monthly_MIP": $127.50
+  "Total_FHA_loan_amount": $183150.00
+  "Total_monthly_payment": $886.39
+  "Total_cost_of_loan": $322249.41
+}
+```
+
+**GET** `/commission_calc`
+
+- Required parameters : Any two of the following as keyword arguements: `amount_paid`, `principle_amount` and `months`
+- Sample output
+
+```py
+{
+  'Tag': 'Commission',
+  'Sales Price': 500,
+  'Commission Rate': '10%',
+  'Commission': 50.0
 }
 ```
