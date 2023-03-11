@@ -2130,8 +2130,8 @@ async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         
-        # Endpoint to calculate FHA loan
 
+# Endpoint to calculate FHA loan
 @app.get("/fha-loan")
 async def fha_loan(home_price: float, down_payment_percentage: float, loan_term_years: float, interest_rate: float, fha_annual_mip_percentage: float):
     try:
@@ -2148,7 +2148,7 @@ async def fha_loan(home_price: float, down_payment_percentage: float, loan_term_
         }
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+        
 # Endpoint to calculate refinance
 @app.get(
     "/refinance",
@@ -2180,5 +2180,37 @@ def refinance(
             "New total cost loan": round(result['New total cost loan'], 2),
             "Total cost saving": round(result['Total cost saving'], 2)
         }
+        
+# Endpoint to compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.
+@app.get(
+    "/commission_calc",
+    tags=["commission_calc"],
+    description="compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.",
+)
+def commission_calc(sales_price: float = None, commission_rate: float = None, commission: float = None):
+    try:
+        output = functions.commission_calc(sales_price, commission_rate, commission)
+
+        if sales_price == None and commission_rate != None and commission != None:
+            return {
+                "Tag": "Sales Price",
+                "Sales Price": output,
+                "Commission Rate": f"{commission_rate}%",
+                "Commission": commission,
+            }
+        elif sales_price != None and commission_rate == None and commission != None: 
+            return {
+                "Tag": "Commission Rate",
+                "Sales Price": sales_price,
+                "Commission Rate": f"{output}%",
+                "Commission": commission,
+            }
+        elif sales_price != None and commission_rate != None and commission == None:
+            return {
+                "Tag": "Commission",
+                "Sales Price": sales_price,
+                "Commission Rate": f"{commission_rate}%",
+                "Commission": output,
+            }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
