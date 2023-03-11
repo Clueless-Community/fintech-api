@@ -1187,3 +1187,19 @@ def commission_calc(sales_price: float = None, commission_rate: float = None, co
     
     return output
 
+# Function to Calculate Diluted EPS
+def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
+    diluted_eps = net_income / (weighted_avg_shares + dilutive_securities)
+    return diluted_eps
+
+def future_sip(
+    interval_investment: float, rate_of_return: float, number_of_payments: int
+):
+    interest = (rate_of_return / 100) / 12
+    value = (
+        interval_investment
+        * ((1 + interest) ** number_of_payments - 1)
+        * (1 + interest)
+        / interest
+    )
+    return value

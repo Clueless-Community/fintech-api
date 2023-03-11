@@ -1404,3 +1404,18 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
   'Commission': 50.0
 }
 ```
+
+**GET** `/diluted-earnings-per-share`
+
+- Required parameters : `net_income`, `weighted_avg_shares`, `dilutive_securities`
+- Sample output
+
+```py
+{
+"Tag":"Diluted Earnings Per Share (Diluted EPS)",
+"Net Income":1000000.0,
+"Weighted Average Shares Outstanding":500000.0,
+"Number of Dilutive Securities":100000.0,
+"Diluted EPS":"1.6666666666666667"
+}
+```
