@@ -1187,3 +1187,17 @@ def commission_calc(sales_price: float = None, commission_rate: float = None, co
     
     return output
 
+#Function to calculate total college fee of one year assuming full tuition fee is being paid.
+def college_cost(book_cost:float,
+                 college_tuition:float,
+                 Devices:float,
+                 travel_expenses:float,
+                 hostel_charges:float,
+                 mess_fee:float,
+                 miscellaneous:float):
+    Total_cost_ofOneYear=book_cost+college_tuition+Devices+(travel_expenses*12)+(hostel_charges*12)+(mess_fee*12)+(miscellaneous*12)
+    return Total_cost_ofOneYear
+
+
+
+
