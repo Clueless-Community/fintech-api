@@ -1405,11 +1405,34 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-**GET** `/college_cost`
+**GET** `/refinance`
 
-- Required parameters : 'book_cost','college_tuition,Devices', 'travel_expenses', 'hostel_charges,mess_fee','miscellaneous'
+- Required parameters : `current_loan_amount`, `current_interest_rate`, `current_loan_term_years`, `time_remaining_years`, `new_interest_rate`, `new_loan_term_years`, `cash_out_amount`
 - Sample output
 
+```py
+{
+    "Tag": "Refinance",
+    "Current loan amount": 330000.0,
+    "Balance left on loan": 170067.93,
+    "New loan amount": 169067.93,
+    "Current monthly payment": 1826.36,
+    "New monthly payment": 1711.73,
+    "Monthly savings": 114.63,
+    "Current interest paid left": 49095.54,
+    "New total interest paid": 36339.74,
+    "Total interest saving": 12755.79,
+    "Current total cost left": 219163.47,
+    "New total cost loan": 205407.68,
+    "Total cost saving": 13755.79
+}
+```
+
+
+**GET** `/college_cost`
+
+- Required parameters : `book_cost`,`college_tuition`,`Devices`, `travel_expenses`, `hostel_charges`,`mess_fee`,`miscellaneous`
+- Sample output
 ```py
 {
             "Tag": "College Cost",
@@ -1421,5 +1444,8 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
             "Monthly mess fee":5000,
             "monthly miscellaneous expenses":3000,
             "Total cost of one year": 529000
+
 }
 ```
+
+

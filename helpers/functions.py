@@ -808,9 +808,6 @@ def time_period_required_for_growth(interest_rate: float, growth_factor: int):
     )
     return time_period_required_for_growth
 
-
-
-
 # Function to calculate preferred stock value
 def preferred_stock_value(dividend: float, discount_rate: float):
     preferred_stock_value = dividend / discount_rate
@@ -1173,6 +1170,34 @@ def calculate_fha_loan():
     print(f"Total monthly payment: ${total_monthly_payment:.2f}")
     print(f"Total cost of loan: ${total_cost_of_loan:.2f}")
 
+
+#Function to Calculate Refinance and side-by-side comparison with existing loan
+# interest_rate - % per year; loan_term - years
+def refinance_calculator(
+        current_loan_amount: float,
+        current_interest_rate: float,
+        current_loan_term_years: int,
+        time_remaining_years: int,
+        new_interest_rate: float,
+        new_loan_term_years: int,
+        cash_out_amount: float
+    ):
+    loan_term_month = current_loan_term_years * 12
+    interest_rate_month = current_interest_rate / (12 * 100)
+    current_monthly_payment = current_loan_amount * interest_rate_month / (1 - (1 + interest_rate_month) ** (-loan_term_month))
+    term_years_pass = loan_term_month-12*time_remaining_years
+    balance_left_loan = (current_loan_amount*(1+interest_rate_month)**(term_years_pass))-(current_monthly_payment*((1+interest_rate_month)**term_years_pass-1)/interest_rate_month)
+    new_loan_amount = balance_left_loan - cash_out_amount
+    current_total_cost_left = current_monthly_payment * 12*time_remaining_years
+    current_total_interest_paid = current_total_cost_left - balance_left_loan
+
+    new_credit = personal_loan(new_loan_amount, new_interest_rate, new_loan_term_years, datetime.datetime.now().strftime('%B %Y'))
+
+    return {"Balance left on loan": balance_left_loan, "New loan amount": new_loan_amount,
+            "Current monthly payment": current_monthly_payment, "New monthly payment": new_credit['Monthly payment'], "Monthly savings": current_monthly_payment - new_credit['Monthly payment'],
+            "Current left interest paid":current_total_interest_paid, "New total interest paid":new_credit['Total interest paid'], "Total interest saving":current_total_interest_paid-new_credit['Total interest paid'],
+            "Current total cost left":current_total_cost_left, "New total cost loan": new_credit['Total cost loan'], "Total cost saving":current_total_cost_left-new_credit['Total cost loan']}
+
 #calculate_fha_loan()
 
 #Function to compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission for a simple percentage commission structure.
@@ -1197,7 +1222,3 @@ def college_cost(book_cost:float,
                  miscellaneous:float):
     Total_cost_ofOneYear=book_cost+college_tuition+Devices+(travel_expenses*12)+(hostel_charges*12)+(mess_fee*12)+(miscellaneous*12)
     return Total_cost_ofOneYear
-
-
-
-
