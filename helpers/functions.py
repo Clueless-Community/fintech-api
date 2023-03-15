@@ -1222,3 +1222,20 @@ def college_cost(book_cost:float,
                  miscellaneous:float):
     Total_cost_ofOneYear=book_cost+college_tuition+Devices+(travel_expenses*12)+(hostel_charges*12)+(mess_fee*12)+(miscellaneous*12)
     return Total_cost_ofOneYear
+    
+def future_sip(
+    interval_investment: float, rate_of_return: float, number_of_payments: int
+):
+    interest = (rate_of_return / 100) / 12
+    value = (
+        interval_investment
+        * ((1 + interest) ** number_of_payments - 1)
+        * (1 + interest)
+        / interest
+    )
+    return value
+
+# Function to Calculate Diluted EPS
+def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
+    diluted_eps = net_income / (weighted_avg_shares + dilutive_securities)
+    return diluted_eps
