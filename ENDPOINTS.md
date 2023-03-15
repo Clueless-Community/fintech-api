@@ -1442,3 +1442,25 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
     "Total cost saving": 13755.79
 }
 ```
+
+
+**GET** `/college_cost`
+
+- Required parameters : `book_cost`,`college_tuition`,`Devices`, `travel_expenses`, `hostel_charges`,`mess_fee`,`miscellaneous`
+- Sample output
+```py
+{
+            "Tag": "College Cost",
+            "Books cost of one year": 5000,
+            "College tuition fee per year": 200000,
+            "Electronic devices cost":60000,
+            "Monthly Travel expenses":4000,
+            "Monthly Hostel charges":10000,
+            "Monthly mess fee":5000,
+            "monthly miscellaneous expenses":3000,
+            "Total cost of one year": 529000
+
+}
+```
+
+
