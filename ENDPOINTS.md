@@ -905,7 +905,7 @@
 - Required parameters : `monthty_investment_amount`,`no_of_years`,`annuity_rates`,`annuity_purchased`,`yearly_interest_rates`
 - Sample output
 
-````py
+```py
 {
     "Tag": "Calculate Pension",
     "Monthly Investment amount":2000,
@@ -917,6 +917,7 @@
     "Lump sum pension":4055468.874,
     "Monthly Pension":15771.27
 }
+```
 
 **GET** `/inflation`
 
@@ -931,7 +932,7 @@
         "Time in Years": 5,
         "Future Amount": 1276.28,
 }
-````
+```
 
 **GET** `/jensens_alpha`
 
@@ -1369,11 +1370,11 @@
 }
 ```
 
-\*_GET_ `calculate_lumpsum`
+**GET* `calculate_lumpsum`
 -Required Parameters: `principal`, `interest_rate `, `years`
 -sample output
 
-````py
+```py
 {
     "principal"=10000,
     "interest_rate"=8,
@@ -1381,6 +1382,7 @@
      "total_amount": 14693.28,
     "interest_earned": 4693.28
 }
+```
 =======
 
 Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
@@ -1407,7 +1409,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
   "Total_monthly_payment": $886.39
   "Total_cost_of_loan": $322249.41
 }
-````
+```
 
 **GET** `/commission_calc`
 
