@@ -1235,6 +1235,30 @@ def future_sip(
     )
     return value
 
+def calculate_pension(
+monthty_investment_amount:float,
+no_of_years:float,
+annuity_rates:float,
+annuity_purchased:float,
+yearly_interest_rates:float
+):
+    total_corpus=0
+    yearly_pension_amount=12*monthty_investment_amount
+    for i in range(0,no_of_years+1):
+        yearly_pension_amount+=yearly_pension_amount*(yearly_interest_rates/100)
+        total_corpus+=yearly_pension_amount
+    total_corpus=round(total_corpus,2)
+    annuity_pension=total_corpus*(annuity_purchased/100)
+    lump_sum_pension=total_corpus-annuity_pension
+    monthly_pension=round((annuity_pension*annuity_rates)/100*12.00,2)    
+    return (
+        total_corpus,
+        lump_sum_pension,
+        monthly_pension
+    )
+    
+    
+
 # Function to Calculate Diluted EPS
 def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
     diluted_eps = net_income / (weighted_avg_shares + dilutive_securities)

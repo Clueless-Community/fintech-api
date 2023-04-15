@@ -79,6 +79,37 @@ def future_sip(
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+
+@app.get(
+    "/calculate_pension",
+    tags=["calculate_pension"],
+    description="Calculate pension",
+)
+
+def calculate_pension(
+monthty_investment_amount,
+no_of_years,
+annuity_rates,
+annuity_purchased,
+yearly_interest_rates    
+):
+    try:
+        (
+        total_corpus,
+        lump_sum_pension,
+        monthly_pension
+        ) = functions.calculate_pension(
+            monthty_investment_amount,no_of_years,annuity_rates,annuity_purchased,yearly_interest_rates)
+        return{
+            "Tag":"Calculate pension",
+            "Total Corpus":total_corpus,
+            "Lump sum pension":lump_sum_pension,
+            "Monthly pension":monthly_pension
+         }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+            
 # endpoint for payback period
 @app.get(
     "/payback_period",
