@@ -900,6 +900,25 @@
 }
 ```
 
+**GET** `/calculate_pension`
+
+- Required parameters : `monthty_investment_amount`,`no_of_years`,`annuity_rates`,`annuity_purchased`,`yearly_interest_rates`
+- Sample output
+
+```py
+{
+    "Tag": "Calculate Pension",
+    "Monthly Investment amount":2000,
+    "No. of years": 36,
+    "Annuity Purchased":40
+    "Annuity Rates": 7,
+    "Interest Rate":9,
+    "Total Corpus":6759114.79,
+    "Lump sum pension":4055468.874,
+    "Monthly Pension":15771.27
+}
+```
+
 **GET** `/inflation`
 
 - Required parameters : `present_amount`,`inflation_rate`,`years`
@@ -1168,8 +1187,8 @@
 - Required parameters : `net_sales`, `total_asset_beginning` and `total_asset_ending`
 - Sample output
 
-
 =======
+
 ```py
 {
     "Tag": "Asset Turnover Ratio",
@@ -1351,10 +1370,10 @@
 }
 ```
 
-
 **GET* `calculate_lumpsum`
 -Required Parameters: `principal`, `interest_rate `, `years`
 -sample output
+
 ```py
 {
     "principal"=10000,
@@ -1363,6 +1382,7 @@
      "total_amount": 14693.28,
     "interest_earned": 4693.28
 }
+```
 =======
 
 Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
@@ -1419,6 +1439,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 "Diluted EPS":"1.6666666666666667"
 }
 ```
+
 =======
 **GET** `/refinance`
 
@@ -1443,11 +1464,11 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-
 **GET** `/college_cost`
 
 - Required parameters : `book_cost`,`college_tuition`,`Devices`, `travel_expenses`, `hostel_charges`,`mess_fee`,`miscellaneous`
 - Sample output
+
 ```py
 {
             "Tag": "College Cost",
@@ -1462,5 +1483,3 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
-
-
