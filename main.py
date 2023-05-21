@@ -2211,6 +2211,8 @@ def refinance(
             "New total cost loan": round(result['New total cost loan'], 2),
             "Total cost saving": round(result['Total cost saving'], 2)
         }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 # Endpoint to compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.
 @app.get(
@@ -2263,7 +2265,7 @@ def college_cost(book_cost:float,
     try:
         cost = functions.college_cost(book_cost,college_tuition,Devices,travel_expenses,hostel_charges,mess_fee,miscellaneous)
         return {
-            "Tag": "College Cost"
+            "Tag": "College Cost",
             "Books cost of one year":book_cost,
             "College tuition fee per year":college_tuition,
             "Electronic devices cost":Devices,
@@ -2295,6 +2297,49 @@ def calculate_diluted_eps(
             "Weighted Average Shares Outstanding": weighted_avg_shares,
             "Number of Dilutive Securities": dilutive_securities,
             "Diluted EPS": f"{result}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+# Endpoint to calculate maturity value for fixed deposit with intrest compounded.
+@app.get(
+    "/fixed_deposit_maturity",
+    tags=["fixed_deposit_maturity"],
+    description="Calculate fixed deposit maturity amount",
+)
+def fixed_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
+    try:
+        maturity_amount = functions.fixed_deposit_maturity(principle_amount, years, compounding, roi)
+        return {
+            "Tag": "Fixed deposit maturity Amount",
+            "Total Value": maturity_amount,
+            "Principle amount": principle_amount,
+            "Interest anount": round(maturity_amount - principle_amount,2),
+            "Duration in year" : years ,
+            "Interest Rate": f"{roi}%",
+            "compounding rate": compounding
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate maturity value for recurring deposit with intrest compounded.
+@app.get(
+    "/recurring_deposit_maturity",
+    tags=["recurring_deposit_maturity"],
+    description="Calculate recurring deposit maturity amount",
+)
+def recurring_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
+    try:
+        maturity_amount = functions.recurring_deposit_maturity(principle_amount, years, compounding, roi)
+        return {
+            "Tag": "Recurring deposit maturity Amount",
+            "Total Value": maturity_amount,
+            "Investment": principle_amount,
+            "Duration in year" : years ,
+            "Principle amount": principle_amount * years * 12,
+            "Interest Value": round((maturity_amount - (principle_amount * years * 12)),2),
+            "Interest Rate": f"{roi}%",
+            "compounding rate": compounding
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
