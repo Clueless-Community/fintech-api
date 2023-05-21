@@ -1263,3 +1263,14 @@ yearly_interest_rates:float
 def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
     diluted_eps = net_income / (weighted_avg_shares + dilutive_securities)
     return diluted_eps
+
+
+# Function to Calculate Return of Investment on some equity funds
+def calculate_roi_equity_funds(amount_invested,
+    amount_returned, tenure):
+    roi_equity_funds = (amount_returned - amount_invested) / amount_invested
+    annualized_roi = (1 + (amount_returned/amount_invested))**(1/tenure) - 1
+    return (
+        roi_equity_funds*100,
+        annualized_roi*100
+    )
