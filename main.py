@@ -2048,7 +2048,7 @@ def fha_loan(
             total_fha_loan_payment,
             total_monthly_payment,
             total_loan_cost,
-        ) = function.calculate_fha_mortgage_interest(
+        ) = functions.calculate_fha_mortgage_interest(
             mortgage_amount,
             mortgage_deposit_percentage,
             annual_interest_rate,
@@ -2166,7 +2166,7 @@ async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
 @app.get("/fha-loan")
 async def fha_loan(home_price: float, down_payment_percentage: float, loan_term_years: float, interest_rate: float, fha_annual_mip_percentage: float):
     try:
-        result = calculate_fha_loan(home_price, down_payment_percentage, loan_term_years, interest_rate, fha_annual_mip_percentage)
+        result = functions.calculate_fha_loan(home_price, down_payment_percentage, loan_term_years, interest_rate, fha_annual_mip_percentage)
         return {
             "down_payment": result["down_payment"],
             "fha_base_loan_amount": result["fha_base_loan_amount"],
@@ -2211,6 +2211,8 @@ def refinance(
             "New total cost loan": round(result['New total cost loan'], 2),
             "Total cost saving": round(result['Total cost saving'], 2)
         }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 # Endpoint to compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.
 @app.get(
@@ -2263,7 +2265,7 @@ def college_cost(book_cost:float,
     try:
         cost = functions.college_cost(book_cost,college_tuition,Devices,travel_expenses,hostel_charges,mess_fee,miscellaneous)
         return {
-            "Tag": "College Cost"
+            "Tag": "College Cost",
             "Books cost of one year":book_cost,
             "College tuition fee per year":college_tuition,
             "Electronic devices cost":Devices,
