@@ -48,3 +48,10 @@ The ambition of this project is to help user to deal with some simple financial 
 Before start contributing, we recommend you go through the [CONTRIBUTING.md](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md) file, where all the guidelines have been mentioned that will guide you to make your contribution.
 
 ---
+
+## Contributors
+<p align=center>
+<a href="https://github.com/Clueless-Community/fintech-api/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Clueless-Community/fintech-api" />
+</a></p>
+

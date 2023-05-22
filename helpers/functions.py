@@ -5,7 +5,7 @@ import math
 import datetime
 from dateutil.relativedelta import relativedelta
 
-# Function to Calculate Simmple Interest Rate
+# Function to Calculate Simple Interest Rate
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
     term = months / 12
     interest_paid = amount_paid - principle_amount
@@ -1264,6 +1264,25 @@ def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
     diluted_eps = net_income / (weighted_avg_shares + dilutive_securities)
     return diluted_eps
 
+# Function to calculate maturity value of a Fixed deposit.
+def fixed_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
+    types_of_componding =  {'yearly': 1 , 'halfyearly': 2 ,'quaterly': 4 ,'monthly': 12}
+    if compounding in types_of_componding.keys():
+        n = types_of_componding[compounding]
+        A = principle_amount * (1 + ((roi/100)/n)) ** (n*years)
+        return round(A,2)
+    
+# Function to calculate maturity value of a Recurring deposit.
+def recurring_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
+    types_of_componding =  {'yearly': 1 , 'halfyearly': 2 ,'quaterly': 4 ,'monthly': 12}
+    if compounding in types_of_componding.keys():
+        months = years * 12
+        n = types_of_componding[compounding]
+        res = 0.0
+        for i in range(1, months + 1):
+            res += principle_amount * (1 + ((roi/100)/n)) ** (n*(i/12))            
+        return round(res,2)
+    
 
 # Function to Calculate Return of Investment on some equity funds
 def calculate_roi_equity_funds(amount_invested,

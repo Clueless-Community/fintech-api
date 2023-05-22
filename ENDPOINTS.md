@@ -1483,3 +1483,60 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
+**GET** `/fixed_deposit_maturity`
+
+- Required parameters : `principle_amount`, `years`, `roi`, `compounding` <i>(calculated in monthly ,quaterly ,halfyearly, yearly)</i>
+- Sample output
+
+```py
+{
+        
+            "Tag": "Fixed deposit maturity Amount",
+            "Total Value": 138041.98,
+            "Principle amount": 100000,
+            "Interest anount": 38041.98,
+            "Duration in year": 5,
+            "Interest Rate": "6.5%",
+            "compounding rate": "quaterly"
+
+
+}
+```
+**GET** `/recurring_deposit_maturity`
+
+- Required parameters : `principle_amount`, `years`, `roi`, `compounding` <i>(calculated in monthly ,quaterly ,halfyearly, yearly)</i>
+- Sample output
+
+```py
+{
+        
+            "Tag": "Recurring deposit maturity Amount",
+            "Total Value": 62494.24,
+            "Investment": 5000,
+            "Duration in year": 1,
+            "Principle amount": 60000,
+            "Interest Value": 2494.24,
+            "Interest Rate": "7.5%",
+            "compounding rate": "monthly"
+
+}
+```
+**GET** `/roi_equity_funds`
+
+- Required parameters : `amount_invested`,
+    `amount_returned`,
+    `tenure`,
+- Sample output
+
+```py
+{
+        
+            "Tag": "Calculate return of investments on equity funds",
+            "Amount Invested": 1000,
+            "Amount Returned": 2000,
+            "Duration of investment": 2,
+            "Return of Investment": "100%",
+            "Annualized Return": "43.88%"
+
+}
+```
