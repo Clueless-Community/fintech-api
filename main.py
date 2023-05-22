@@ -2301,6 +2301,8 @@ def calculate_diluted_eps(
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+
 # End Point to Calculate Retirement Goals
 @app.get("/calculate-retirement-goals",
          tag=["calculate_retirement_goals"],
@@ -2312,7 +2314,7 @@ def calculate_retirement_goals(
     annual_retirement_expenses:int,
     inflation_rate:float,
     annual_retirement_income:int,
-    current_age:int
+    current_age:int,
 ):
     try:
         amount = functions.calculate_retirement_goals(retirement_age,annual_retirement_expenses,inflation_rate,annual_retirement_income,current_age)

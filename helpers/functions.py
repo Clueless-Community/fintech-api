@@ -6,6 +6,8 @@ import datetime
 from dateutil.relativedelta import relativedelta
 
 # Function to Calculate Simmple Interest Rate
+
+
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
     term = months / 12
     interest_paid = amount_paid - principle_amount
@@ -1263,6 +1265,8 @@ yearly_interest_rates:float
 def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
     diluted_eps = net_income / (weighted_avg_shares + dilutive_securities)
     return diluted_eps
+
+
 
 
 #Function to calculate annual income needed during retirement years(retirement goals)

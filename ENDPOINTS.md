@@ -1187,7 +1187,7 @@
 - Required parameters : `net_sales`, `total_asset_beginning` and `total_asset_ending`
 - Sample output
 
-=======
+
 
 ```py
 {
@@ -1313,7 +1313,7 @@
 }
 ```
 
-=======
+
 
 **GET** `/enterprise-value`
 
@@ -1370,7 +1370,7 @@
 }
 ```
 
-**GET* `calculate_lumpsum`
+**GET** `calculate_lumpsum`
 -Required Parameters: `principal`, `interest_rate `, `years`
 -sample output
 
@@ -1383,7 +1383,7 @@
     "interest_earned": 4693.28
 }
 ```
-=======
+
 
 Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
@@ -1440,7 +1440,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-=======
+
 **GET** `/refinance`
 
 - Required parameters : `current_loan_amount`, `current_interest_rate`, `current_loan_term_years`, `time_remaining_years`, `new_interest_rate`, `new_loan_term_years`, `cash_out_amount`
