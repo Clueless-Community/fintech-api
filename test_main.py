@@ -4,10 +4,6 @@ from fastapi.testclient import TestClient
 import json
 
 
-app = FastAPI()
-
-
-
 @app.get("/")
 async def read_main():
     return {"msg": "Hello World"}
@@ -51,14 +47,14 @@ def test_simple_interest_rate_main():
     }
 
 def test_roi_main():
-    response = client.get("/roi/?gain_from_investment=100&cost_of_investment=2")
+    response = client.get("/roi/?current_value_of_investment=100&cost_of_investment=80")
     assert response.status_code == 200
 
     assert response.json() == {
             "Tag":"Return on Investment",
-            "Gain from Investment":100,
-            "Cost of Investment":2,
-            "Return on Investment":f"49.0%"
+            "Current Value of Investment": 100,
+            "Cost of Investment":80,
+            "Return on Investment":f"25.0%"
     }
 
 def test_calculate_enterprise_value_main():

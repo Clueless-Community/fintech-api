@@ -87,7 +87,7 @@ def future_sip(
 )
 
 def calculate_pension(
-monthty_investment_amount,
+monthly_investment_amount,
 no_of_years,
 annuity_rates,
 annuity_purchased,
@@ -99,7 +99,7 @@ yearly_interest_rates
         lump_sum_pension,
         monthly_pension
         ) = functions.calculate_pension(
-            monthty_investment_amount,no_of_years,annuity_rates,annuity_purchased,yearly_interest_rates)
+            monthly_investment_amount,no_of_years,annuity_rates,annuity_purchased,yearly_interest_rates)
         return{
             "Tag":"Calculate pension",
             "Total Corpus":total_corpus,
@@ -134,26 +134,26 @@ def payback_period(
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-# Endpoints to calculate Compound Intrest.
+# Endpoints to calculate Compound Interest.
 @app.get(
     "/compound_interest",
     tags=["compound_interest_amount"],
     description="Calculate compound interest amount",
 )
-def compound_intrest(
-    principal_amount: float, intrest_rate: float, years: int, compounding_period: int
+def compound_interest(
+    principal_amount: float, interest_rate: float, years: int, compounding_period: int
 ):
     try:
         amount = functions.compound_interest(
-            principal_amount, intrest_rate, years, compounding_period
+            principal_amount, interest_rate, years, compounding_period
         )
         return {
-            "Tag": "Compound Intrest Amount",
+            "Tag": "Compound Interest Amount",
             "Principle amount": principal_amount,
-            "Intrest Rate": intrest_rate,
+            "Intrest Rate": interest_rate,
             "Time in Years": years,
             "Compounding Period": compounding_period,
-            "Amount after intrest": f"{amount}",
+            "Amount after interest": f"{amount}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -333,7 +333,7 @@ def loan_emi(principle_amount: float, annual_rate: float, months: int):
         emi = functions.loan_emi(principle_amount, annual_rate, months)
         return {
             "Tag": "Loan Emi",
-            "Princiapl amount borrowed": principle_amount,
+            "Principal amount borrowed": principle_amount,
             "Annual Rate of interest": annual_rate,
             "Total number of monthly payments": months,
             "EMI": f"{round(emi,3)}",
@@ -577,8 +577,8 @@ def inventory_shrinkage_rate(recorded_inventory: float, actual_inventory: float)
             "Tag": "Inventory shrinkage rate",
             "Recorded Inventory": recorded_inventory,
             "Actual Inventory": actual_inventory,
-            "Invenory Shrinkage Rate": inventory_shrinkage_rate,
-            "Invenory Shrinkage Rate (%)": inventory_shrinkage_rate * 100,
+            "Inventory Shrinkage Rate": inventory_shrinkage_rate,
+            "Inventory Shrinkage Rate (%)": inventory_shrinkage_rate * 100,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -796,7 +796,7 @@ def rule_of_72(rate_of_roi: float):
         return {
             "Tag": "Rule of 72",
             "Rate of ROI": rate_of_roi,
-            "Time peroid in which investment get double(in years)": f"{time_period}",
+            "Time period in which investment get double(in years)": f"{time_period}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -810,18 +810,18 @@ def rule_of_72(rate_of_roi: float):
 )
 def acid_test_ratio(
     cash: float,
-    marketable_securitie: float,
+    marketable_securities: float,
     accounts_receivable: float,
     current_liabilities: float,
 ):
     try:
         ratio = functions.acid_test_ratio(
-            cash, marketable_securitie, accounts_receivable, current_liabilities
+            cash, marketable_securities, accounts_receivable, current_liabilities
         )
         return {
             "Tag": "Acid Test Ratio",
             "Cash and Cash Equivalents": cash,
-            "Marketable Securities": marketable_securitie,
+            "Marketable Securities": marketable_securities,
             "Accounts Receivable": accounts_receivable,
             "Current Liabilities": current_liabilities,
             "Acid Test Ratio (Quick Ratio)": f"{ratio}",
@@ -877,7 +877,7 @@ def compound_annual_growth_rate(
             beginning_value, ending_value, years
         )
         return {
-            "Tag": "Coumpound Annual Growth Rate",
+            "Tag": "Compound Annual Growth Rate",
             "Beginning Value": beginning_value,
             "Ending Value": ending_value,
             "Compound Annual Growth Rate": f"{rate}%",
@@ -1011,11 +1011,11 @@ def current_ratio(total_current_assets: float, total_liabilities: float):
     description="Inventory Turnover Ratio",
 )
 def inventory_turnover_ratio(
-    cost_of_goods_sold: float, beginnning_inventory: float, ending_inventory: float
+    cost_of_goods_sold: float, beginning_inventory: float, ending_inventory: float
 ):
     try:
         ratio = functions.inventory_turnover_ratio(
-            cost_of_goods_sold, beginnning_inventory, ending_inventory
+            cost_of_goods_sold, beginning_inventory, ending_inventory
         )
         return {
             "Tag": "Inventory Turnover Ratio",
@@ -1046,19 +1046,19 @@ def inflation_rate(bigger_year: int, smaller_year: int, base_year: int):
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-# Endpoint to calculate Herfindal index
+# Endpoint to calculate Herfindahl index
 @app.get(
-    "/herfindal_Index",
-    tags=["herfindal_Index"],
-    description="Calculating herfindal Index",
+    "/herfindahl_Index",
+    tags=["herfindahl_Index"],
+    description="Calculating herfindahl Index",
 )
-def herfindal_Index(Firms_market_shares: str):
+def herfindahl_Index(Firms_market_shares: str):
     try:
-        herfindal_Index = functions.herfindal_Index(Firms_market_shares)
+        herfindahl_Index = functions.herfindal_Index(Firms_market_shares)
         return {
-            "Tag": "Herfindal Index",
+            "Tag": "Herfindahl Index",
             "Firms market shares": Firms_market_shares,
-            "Herfindal Index": f"{herfindal_Index}",
+            "Herfindahl Index": f"{herfindahl_Index}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -1336,12 +1336,12 @@ def compound_annual_growth_rate_1(
     tags=["loan_to_value"],
     description="Calculating loan to value ratio",
 )
-def loan_to_value(mortage_value: float, appraised_value: float):
+def loan_to_value(mortgage_value: float, appraised_value: float):
     try:
-        ratio = functions.loan_to_value(mortage_value, appraised_value)
+        ratio = functions.loan_to_value(mortgage_value, appraised_value)
         return {
             "Tag": "Loan to Value (LTV) ratio",
-            "Mortage Value": mortage_value,
+            "Mortgage Value": mortgage_value,
             "Appraised Property Value": appraised_value,
             "Loan to Value ratio": f"{ratio}%",
         }
@@ -1567,9 +1567,9 @@ def perpetuity_payment(present_value: float, rate: float):
 
 # endpoint to calculate Zero Coupon Bond value
 @app.get(
-    "/zero_coupoun_bond_value",
-    tags=["zero_coupoun_bond_value"],
-    description="Calculating zero coupoun bond value",
+    "/zero_coupon_bond_value",
+    tags=["zero_coupon_bond_value"],
+    description="Calculating zero coupon bond value",
 )
 def zero_coupon_bond_value(
     face_value: float, rate_of_yield: float, time_of_maturity: float
@@ -1590,8 +1590,8 @@ def zero_coupon_bond_value(
 
 # endpoint to calculate Zero Coupon Bond Effective Yield
 @app.get(
-    "/zero_coupoun_bond_yield",
-    tags=["zero_coupoun_bond_yield"],
+    "/zero_coupon_bond_yield",
+    tags=["zero_coupon_bond_yield"],
     description="Calculating Zero Coupon Bond Effective Yield",
 )
 def zero_coupon_bond_yield(
@@ -1640,15 +1640,15 @@ def profitability_index(initial_investment: float, pv_of_future_cash_flows: floa
     description="Calculating profitability index using annual cash flows",
 )
 def profitability_index2(
-    initial_inverstment: float, annual_cash_flows: str, discount_rate: float
+    initial_investment: float, annual_cash_flows: str, discount_rate: float
 ):
     try:
         profitability_index = functions.profitability_index2(
-            initial_inverstment, annual_cash_flows, discount_rate
+            initial_investment, annual_cash_flows, discount_rate
         )
         return {
             "Tag": "profitability_index",
-            "initial_inverstment": initial_inverstment,
+            "initial_investment": initial_investment,
             "annual_cash_flows": annual_cash_flows,
             "discount_rate": discount_rate,
             "profitability index": f"{profitability_index}",
@@ -1680,7 +1680,7 @@ def receivables_turnover_ratio(sales_revenue: float, avg_accounts_receivable: fl
 
 @app.get(
     "/remaining_balance",
-    tags=["remainig_balance"],
+    tags=["remaining_balance"],
     description="Calculating remaining balance",
 )
 def remaining_balance(
@@ -1697,7 +1697,7 @@ def remaining_balance(
             number_of_payments_done,
         )
         return {
-            "Tag": "Remainig balance",
+            "Tag": "Remaining balance",
             "regular_payment": regular_payment,
             "interest rate per period": interest_rate_per_period,
             "number of payments": number_of_payments,
@@ -1811,7 +1811,7 @@ def preferred_stock_value(dividend: float, discount_rate: float):
     # Endpoint to calculate asset turnover ratio
 
 
-# Identation error corrected
+# Indentation error corrected
 @app.get(
     "/asset_turnover_ratio",
     tags=["asset_turnover_ratio"],
@@ -1866,7 +1866,7 @@ def CalculatePeriods(present_val: float, future_val: float, rate: float):
         return {
             "Tag": "Period in years ",
             "Present Value": present_val,
-            "Future Vlaue": future_val,
+            "Future Value": future_val,
             "Periods": period,
         }
     except:
@@ -1877,7 +1877,7 @@ def CalculatePeriods(present_val: float, future_val: float, rate: float):
 @app.get(
     "/balloon-loan-payment",
     tags=["Balloon-loan-payment"],
-    description="Calculating the payments on a loan that has a balance remaining after all periodic payments are mad using balloon laon payment formula",
+    description="Calculating the payments on a loan that has a balance remaining after all periodic payments are mad using balloon loan payment formula",
 )
 def balloon_loan_payment(
     principal: float,
@@ -2018,7 +2018,7 @@ def mortgage_amortization(
             "TAG": "Mortgage monthly payments",
             "mortgage_amount": mortgage_amount,
             "mortgage_deposit": mortgage_deposit,
-            "annual_interst_rate": annual_interest_rate,
+            "annual_interest_rate": annual_interest_rate,
             "loan_term": loan_term,
             "monthly_payment": round(annual_payment / 12, 3),
             "annual_payment": round(annual_payment, 3),
