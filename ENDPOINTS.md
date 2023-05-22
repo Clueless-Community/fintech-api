@@ -1483,3 +1483,19 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
+**GET** `/calculate-retirement-goals`
+
+- Required parameters : `retirement_age,annual_retirement_expenses,inflation_rate,annual_retirement_income,current_age`
+- Sample output
+
+```py
+{
+            "Tag":"Retirement Goals",
+            "Retirement age":65000,
+            "Annual retirement expenses":50000,
+            "inflation rate":0.03,
+            "Annual Retirement Income":20000,
+            "Current Age":40,
+            "Retirement Goals":95010.80947570129
+}
+```

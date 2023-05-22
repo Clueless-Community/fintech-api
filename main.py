@@ -91,7 +91,7 @@ monthty_investment_amount,
 no_of_years,
 annuity_rates,
 annuity_purchased,
-yearly_interest_rates    
+yearly_interest_rates
 ):
     try:
         (
@@ -108,8 +108,8 @@ yearly_interest_rates
          }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-            
+
+
 # endpoint for payback period
 @app.get(
     "/payback_period",
@@ -2104,17 +2104,17 @@ def calculate_enterprise_value(
     "/salary-calculate",
     tags=["salary-calculate"],
     description="Converts salary amounts to their corresponding values based on payment frequency.",
-)    
+)
 def salary_calculate(
-    salary_amount: float, 
+    salary_amount: float,
     payment_frequency: str,
     hours_worked_per_day: int,
     days_worked_per_week: int
 ):
     try:
         salary = functions.salary_calculate(
-            salary_amount, 
-            payment_frequency, 
+            salary_amount,
+            payment_frequency,
             hours_worked_per_day,
             days_worked_per_week
         )
@@ -2151,7 +2151,7 @@ def personal_loan(loan_amount: float, interest_rate: float, loan_term_years: int
 # Endpoint to calculate lump-sum mutual fund investment
 @app.get("/lumpsum")
 async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
-   
+
     try:
         interest_rate /= 100 # Convert percentage to decimal
         total_amount = principal * ((1 + interest_rate) ** years)
@@ -2159,8 +2159,8 @@ async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
         return {"total_amount": round(total_amount, 2), "interest_earned": round(interest_earned, 2)}
     except :
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-        
+
+
 
 # Endpoint to calculate FHA loan
 @app.get("/fha-loan")
@@ -2179,7 +2179,7 @@ async def fha_loan(home_price: float, down_payment_percentage: float, loan_term_
         }
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
 # Endpoint to calculate refinance
 @app.get(
     "/refinance",
@@ -2213,7 +2213,7 @@ def refinance(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
 # Endpoint to compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.
 @app.get(
     "/commission_calc",
@@ -2231,7 +2231,7 @@ def commission_calc(sales_price: float = None, commission_rate: float = None, co
                 "Commission Rate": f"{commission_rate}%",
                 "Commission": commission,
             }
-        elif sales_price != None and commission_rate == None and commission != None: 
+        elif sales_price != None and commission_rate == None and commission != None:
             return {
                 "Tag": "Commission Rate",
                 "Sales Price": sales_price,
@@ -2247,7 +2247,7 @@ def commission_calc(sales_price: float = None, commission_rate: float = None, co
             }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+
 #Endpoint to compute Total college expenses
 
 @app.get(
@@ -2300,3 +2300,30 @@ def calculate_diluted_eps(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# End Point to Calculate Retirement Goals
+@app.get("/calculate-retirement-goals",
+         tag=["calculate_retirement_goals"],
+         description='Calculate amount annually needed during retirement years.',
+
+)
+def calculate_retirement_goals(
+     retirement_age:int,
+    annual_retirement_expenses:int,
+    inflation_rate:float,
+    annual_retirement_income:int,
+    current_age:int
+):
+    try:
+        amount = functions.calculate_retirement_goals(retirement_age,annual_retirement_expenses,inflation_rate,annual_retirement_income,current_age)
+        return{
+            "Tag":"Retirement Goals",
+            "Retirement age":retirement_age,
+            "Annual retirement expenses":annual_retirement_expenses,
+            "inflation rate":inflation_rate,
+            "Annual Retirement Income":annual_retirement_income,
+            "Current Age":current_age,
+            "Retirement Goals":f"{amount}",
+        }
+    except:
+         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

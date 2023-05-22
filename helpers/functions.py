@@ -522,27 +522,27 @@ def credit_card_equation(
     N = -(1 // 30) * (a // b)
     return N
 
-#function to calculate the payoff of multiple credit cards using Debt Avalanche method 
+#function to calculate the payoff of multiple credit cards using Debt Avalanche method
 def credit_card_payoff(debts:list,interest_rates:list,minimum_payments:list,monthly_payment:int):
-     
+
       cards =[]
-      
+
       for i in range (len (debts)):
         cards.append (
       		 {
       'index': i,
-      'debt': debts[i], 
+      'debt': debts[i],
       'minimum_payment': minimum_payments[i],
       'interest_rate': interest_rates[i],
       'interest_paid':0,
       'month':0,
       'total_payment':0
       		 }
-      
+
       )
       #Sort the list of dictionaries by interest rate, in descending order
       cards.sort (key = lambda x:x['interest_rate'], reverse = True)
-      
+
       extra=0
       while sum(d['debt']  for d in cards) > 0:
            highest_interest_index=cards.index(max((d for d in cards if d['debt'] > 0), key=lambda x: x['interest_rate']))#highest index of the interest rate
@@ -551,7 +551,7 @@ def credit_card_payoff(debts:list,interest_rates:list,minimum_payments:list,mont
            extra =0
            for i in range(len(cards)):
                if cards[i]['debt']>0:
-                   
+
                   interest = round((cards[i]['debt'] * cards[i]['interest_rate']) / (12.00 * 100.00),2)
                   payment=cards[i]['minimum_payment']
                   cards[i]['interest_paid']+=interest
@@ -567,11 +567,11 @@ def credit_card_payoff(debts:list,interest_rates:list,minimum_payments:list,mont
                       cards[i]['total_payment']+=payment
                   if cards[i]['debt']==0:
                       cards[i]['total_payment']+=cards[i]['interest_paid']
-      
+
       cards.sort (key = lambda x:x['index'])
-      
-    
-      return cards 
+
+
+      return cards
 
 
 # function to calculate future value of the ordinary annuity
@@ -993,7 +993,7 @@ def salary_calculate(
     hours_per_day: int,
     days_per_week: int
 ):
-    # Get the total salary of the corresponding frequency 
+    # Get the total salary of the corresponding frequency
     salaries = {
         "hourly": {
         # Assuming there are 4.333333 weeks in a month (in real-time), 13 week quarters in a year & 52 weeks in a year
@@ -1106,8 +1106,8 @@ def personal_loan(
 
     return {"Monthly payment": monthly_payment, "Total interest paid": total_interest_paid,
             "Total cost loan": total_cost_loan, "Schedule": dframe.to_json()}
-            
-            
+
+
 
 # Function to calculate lump-sum mutual fund investment
 def calculate_lumpsum(principal, interest_rate, years):
@@ -1126,8 +1126,8 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-    
+
+
 # Function to calculate FHA loan
 def calculate_fha_loan():
 
@@ -1205,11 +1205,11 @@ def refinance_calculator(
 def commission_calc(sales_price: float = None, commission_rate: float = None, commission: float = None):
     if sales_price == None and commission_rate != None and commission != None:
         output = 100*commission/commission_rate
-    elif sales_price != None and commission_rate == None and commission != None: 
+    elif sales_price != None and commission_rate == None and commission != None:
         output = 100*commission/sales_price
     elif sales_price != None and commission_rate != None and commission == None:
         output = (sales_price*commission_rate)/100
-    
+
     return output
 
 #Function to calculate total college fee of one year assuming full tuition fee is being paid.
@@ -1222,7 +1222,7 @@ def college_cost(book_cost:float,
                  miscellaneous:float):
     Total_cost_ofOneYear=book_cost+college_tuition+Devices+(travel_expenses*12)+(hostel_charges*12)+(mess_fee*12)+(miscellaneous*12)
     return Total_cost_ofOneYear
-    
+
 def future_sip(
     interval_investment: float, rate_of_return: float, number_of_payments: int
 ):
@@ -1250,16 +1250,33 @@ yearly_interest_rates:float
     total_corpus=round(total_corpus,2)
     annuity_pension=total_corpus*(annuity_purchased/100)
     lump_sum_pension=total_corpus-annuity_pension
-    monthly_pension=round((annuity_pension*annuity_rates)/100*12.00,2)    
+    monthly_pension=round((annuity_pension*annuity_rates)/100*12.00,2)
     return (
         total_corpus,
         lump_sum_pension,
         monthly_pension
     )
-    
-    
+
+
 
 # Function to Calculate Diluted EPS
 def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
     diluted_eps = net_income / (weighted_avg_shares + dilutive_securities)
     return diluted_eps
+
+
+#Function to calculate annual income needed during retirement years(retirement goals)
+# End Point to Calculate Retirement Goals
+def calculate_retirement_goals(
+    retirement_age: int,
+    annual_retirement_expenses: int,
+    inflation_rate: float,
+    annual_retirement_income: int,
+    current_age: int
+):
+    retirement_duration = retirement_age-current_age
+    amount = (
+        (annual_retirement_expenses-annual_retirement_income) *
+        (1+inflation_rate)**retirement_duration
+    )
+    return amount
