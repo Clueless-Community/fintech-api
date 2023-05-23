@@ -1283,6 +1283,7 @@ def recurring_deposit_maturity(principle_amount: float, years: int, compounding:
             res += principle_amount * (1 + ((roi/100)/n)) ** (n*(i/12))
         return round(res,2)
 
+
 #Function for calculating annual income neended during retiremnet period
 def calculate_retirement_goals(
     retirement_age: int,
@@ -1297,3 +1298,28 @@ def calculate_retirement_goals(
         (1+inflation_rate)**retirement_duration
     )
     return amount
+
+     
+#Function to calculate Student loan and monthly emi for the same
+def student_loan(principal:int,
+                 tenure:int,
+                 interest_rate:float):
+    monthly_interest_rate=interest_rate/1200
+    total_months=tenure*12
+    n= principal*monthly_interest_rate * pow(1 + monthly_interest_rate,total_months)
+    d = pow(1+monthly_interest_rate, total_months)-1
+    emi = n/d
+    total_amount = emi*total_months
+    return int(emi),int(total_amount)
+    
+
+# Function to Calculate Return of Investment on some equity funds
+def calculate_roi_equity_funds(amount_invested,
+    amount_returned, tenure):
+    roi_equity_funds = (amount_returned - amount_invested) / amount_invested
+    annualized_roi = (1 + (amount_returned/amount_invested))**(1/tenure) - 1
+    return (
+        roi_equity_funds*100,
+        annualized_roi*100
+    )
+
