@@ -2181,3 +2181,27 @@ def commission_calc(sales_price: float = None, commission_rate: float = None, co
             }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+#Endpoint to compute Student loan and monthly emi for the same
+@app.get(
+    "/student_loan",
+    tags=["student_loan"],
+    description="Calculate Student loan",
+    )
+def student_loan(principal:int,
+                 tenure:int,
+                 interest_rate:float):
+    try:
+        student_loan = functions.student_loan(principal,tenure,interest_rate)
+        return {
+            
+            "Tag": "Student Loan",
+            "Total amount to borrow":principal,
+            "total number of years to pay loan":tenure,
+            "interest rate percentage annual":interest_rate,
+            "total monthly cost":f"{student_loan[0]}",
+            "Total Amount of loan": f"{student_loan[1]}"
+            }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

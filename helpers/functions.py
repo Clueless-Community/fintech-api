@@ -1187,3 +1187,15 @@ def commission_calc(sales_price: float = None, commission_rate: float = None, co
     
     return output
 
+#Function to calculate Student loan and monthly emi for the same
+def student_loan(principal:int,
+                 tenure:int,
+                 interest_rate:float):
+    monthly_interest_rate=interest_rate/1200
+    total_months=tenure*12
+    n= principal*monthly_interest_rate * pow(1 + monthly_interest_rate,total_months)
+    d = pow(1+monthly_interest_rate, total_months)-1
+    emi = n/d
+    total_amount = emi*total_months
+    return int(emi),int(total_amount)
+
