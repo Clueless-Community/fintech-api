@@ -2343,3 +2343,24 @@ def recurring_deposit_maturity(principle_amount: float, years: int, compounding:
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate Annual Debt Service Coverage Ratio (ADSCR)
+@app.get(
+    "/asdcr",
+    tags=["annual_debt_service_coverage_ratio"],
+    description="Calculate Annual Debt Service Coverage Ratio",
+)
+def asdcr(net_operating_cost: float, depreciation: float, non_cash_expenses: float, annual_debt_service: float):
+    try:
+        asdcr_debt = functions.annual_debt_service_coverage_ratio(net_operating_cost, depreciation, non_cash_expenses, annual_debt_service)
+        return {
+            "Tag": "Annual Debt Service Coverage Ratio",
+            "Annual Debt Ratio": asdcr_debt,
+            "Net Operating Income": net_operating_cost,
+            "Depreciation" : depreciation ,
+            "Non Cash Expenses": non_cash_expenses,
+            "Annual Debt":annual_debt_service
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+

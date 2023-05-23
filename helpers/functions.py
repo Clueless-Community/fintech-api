@@ -1283,3 +1283,8 @@ def recurring_deposit_maturity(principle_amount: float, years: int, compounding:
             res += principle_amount * (1 + ((roi/100)/n)) ** (n*(i/12))            
         return round(res,2)
     
+
+#Calculate Annual Debt Service Coverage Ratio (ADSCR)
+def annual_debt_service_coverage_ratio(net_operating_cost: float, depreciation: float, non_cash_expenses: float, annual_debt_service: float):
+    adscr_ratio = (net_operating_cost + depreciation + non_cash_expenses) / annual_debt_service
+    return adscr_ratio
