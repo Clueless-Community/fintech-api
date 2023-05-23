@@ -1283,3 +1283,13 @@ def recurring_deposit_maturity(principle_amount: float, years: int, compounding:
             res += principle_amount * (1 + ((roi/100)/n)) ** (n*(i/12))            
         return round(res,2)
     
+
+# Function to Calculate Return of Investment on some equity funds
+def calculate_roi_equity_funds(amount_invested,
+    amount_returned, tenure):
+    roi_equity_funds = (amount_returned - amount_invested) / amount_invested
+    annualized_roi = (1 + (amount_returned/amount_invested))**(1/tenure) - 1
+    return (
+        roi_equity_funds*100,
+        annualized_roi*100
+    )
