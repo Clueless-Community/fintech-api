@@ -1522,7 +1522,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-GET* `/calculate_retirement_goals`
+**GET** `/calculate_retirement_goals`
 
 - Required parameters : `retirement_age`,`annual_retirement_expenses`,`inflation_rate`,`annual_retirement_income`,`current_age`
 - Sample output
