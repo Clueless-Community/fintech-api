@@ -2247,7 +2247,7 @@ def commission_calc(sales_price: float = None, commission_rate: float = None, co
             }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+
 #Endpoint to compute Total college expenses
 
 @app.get(
@@ -2300,47 +2300,52 @@ def calculate_diluted_eps(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-# Endpoint to calculate maturity value for fixed deposit with intrest compounded.
+
+# Endpoint to calculate Return of Investment on equity funds
 @app.get(
-    "/fixed_deposit_maturity",
-    tags=["fixed_deposit_maturity"],
-    description="Calculate fixed deposit maturity amount",
+    "/roi_equity_funds",
+    tags=["roi_equity_funds"],
+    description="Calculating return of investment on equity funds.",
 )
-def fixed_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
+def calculate_roi_equity_funds(
+    amount_invested: float,
+    amount_returned: float,
+    tenure: float,
+):
     try:
-        maturity_amount = functions.fixed_deposit_maturity(principle_amount, years, compounding, roi)
+        roi, annualized_roi = functions.calculate_roi_equity_funds(amount_invested, amount_returned, tenure)
         return {
-            "Tag": "Fixed deposit maturity Amount",
-            "Total Value": maturity_amount,
-            "Principle amount": principle_amount,
-            "Interest anount": round(maturity_amount - principle_amount,2),
-            "Duration in year" : years ,
-            "Interest Rate": f"{roi}%",
-            "compounding rate": compounding
+            "Tag": "Calculate return of investments on equity funds",
+            "Amount Invested": amount_invested,
+            "Amount Returned": amount_returned,
+            "Duration of investment": tenure,
+            "Return of Investment": f"{roi}%",
+            "Annualized Return": f"{annualized_roi}%"
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+#Endpoint to compute Student loan and monthly emi for the same
 
-# Endpoint to calculate maturity value for recurring deposit with intrest compounded.
 @app.get(
-    "/recurring_deposit_maturity",
-    tags=["recurring_deposit_maturity"],
-    description="Calculate recurring deposit maturity amount",
-)
-def recurring_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
+    "/student_loan",
+    tags=["student_loan"],
+    description="Calculate Student loan",
+    )
+def student_loan(principal:int,
+                 tenure:int,
+                 interest_rate:float):
     try:
-        maturity_amount = functions.recurring_deposit_maturity(principle_amount, years, compounding, roi)
+        student_loan = functions.student_loan(principal,tenure,interest_rate)
         return {
-            "Tag": "Recurring deposit maturity Amount",
-            "Total Value": maturity_amount,
-            "Investment": principle_amount,
-            "Duration in year" : years ,
-            "Principle amount": principle_amount * years * 12,
-            "Interest Value": round((maturity_amount - (principle_amount * years * 12)),2),
-            "Interest Rate": f"{roi}%",
-            "compounding rate": compounding
-        }
+            
+            "Tag": "Student Loan",
+            "Total amount to borrow":principal,
+            "total number of years to pay loan":tenure,
+            "interest rate percentage annual":interest_rate,
+            "total monthly cost":f"{student_loan[0]}",
+            "Total Amount of loan": f"{student_loan[1]}"
+            }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -2363,4 +2368,3 @@ def asdcr(net_operating_cost: float, depreciation: float, non_cash_expenses: flo
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
