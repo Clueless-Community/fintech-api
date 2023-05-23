@@ -1490,7 +1490,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 ```py
 {
-        
+
             "Tag": "Fixed deposit maturity Amount",
             "Total Value": 138041.98,
             "Principle amount": 100000,
@@ -1509,7 +1509,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 ```py
 {
-        
+
             "Tag": "Recurring deposit maturity Amount",
             "Total Value": 62494.24,
             "Investment": 5000,
@@ -1519,5 +1519,23 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
             "Interest Rate": "7.5%",
             "compounding rate": "monthly"
 
+}
+```
+
+GET* `/calculate_retirement_goals`
+
+- Required parameters : `retirement_age`,`annual_retirement_expenses`,`inflation_rate`,`annual_retirement_income`,`current_age`
+- Sample output
+
+
+```py
+{
+            "Tag":"Retirement Goals",
+            "Retirement age":65000,
+            "Annual retirement expenses":50000,
+            "inflation rate":0.03,
+            "Annual Retirement Income":20000,
+            "Current Age":40,
+            "Retirement Goals":95010.80947570129
 }
 ```
