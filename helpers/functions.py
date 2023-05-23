@@ -1282,6 +1282,18 @@ def recurring_deposit_maturity(principle_amount: float, years: int, compounding:
         for i in range(1, months + 1):
             res += principle_amount * (1 + ((roi/100)/n)) ** (n*(i/12))            
         return round(res,2)
+     
+#Function to calculate Student loan and monthly emi for the same
+def student_loan(principal:int,
+                 tenure:int,
+                 interest_rate:float):
+    monthly_interest_rate=interest_rate/1200
+    total_months=tenure*12
+    n= principal*monthly_interest_rate * pow(1 + monthly_interest_rate,total_months)
+    d = pow(1+monthly_interest_rate, total_months)-1
+    emi = n/d
+    total_amount = emi*total_months
+    return int(emi),int(total_amount)
     
 
 # Function to Calculate Return of Investment on some equity funds

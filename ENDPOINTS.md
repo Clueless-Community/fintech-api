@@ -1425,6 +1425,8 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
+```
+=======
 **GET** `/diluted-earnings-per-share`
 
 - Required parameters : `net_income`, `weighted_avg_shares`, `dilutive_securities`
@@ -1521,6 +1523,20 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
+**GET** `/student_loan`
+- Required parameters : 'principal','tenure', 'interest_rate'
+- Sample output
+```py
+{
+            "Tag": "Student Loan",
+            "Total amount to borrow":300000,
+            "total number of years to pay loan":10,
+            "interest rate percentage annual":9.2,
+            "total monthly cost":3832,
+            "Total Amount of loan":459938
+}
+```
+
 **GET** `/roi_equity_funds`
 
 - Required parameters : `amount_invested`,
