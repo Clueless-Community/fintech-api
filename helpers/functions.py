@@ -5,7 +5,7 @@ import math
 import datetime
 from dateutil.relativedelta import relativedelta
 
-# Function to Calculate Simmple Interest Rate
+# Function to Calculate Simple Interest Rate
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
     term = months / 12
     interest_paid = amount_paid - principle_amount
@@ -808,9 +808,6 @@ def time_period_required_for_growth(interest_rate: float, growth_factor: int):
     )
     return time_period_required_for_growth
 
-
-
-
 # Function to calculate preferred stock value
 def preferred_stock_value(dividend: float, discount_rate: float):
     preferred_stock_value = dividend / discount_rate
@@ -1173,6 +1170,34 @@ def calculate_fha_loan():
     print(f"Total monthly payment: ${total_monthly_payment:.2f}")
     print(f"Total cost of loan: ${total_cost_of_loan:.2f}")
 
+
+#Function to Calculate Refinance and side-by-side comparison with existing loan
+# interest_rate - % per year; loan_term - years
+def refinance_calculator(
+        current_loan_amount: float,
+        current_interest_rate: float,
+        current_loan_term_years: int,
+        time_remaining_years: int,
+        new_interest_rate: float,
+        new_loan_term_years: int,
+        cash_out_amount: float
+    ):
+    loan_term_month = current_loan_term_years * 12
+    interest_rate_month = current_interest_rate / (12 * 100)
+    current_monthly_payment = current_loan_amount * interest_rate_month / (1 - (1 + interest_rate_month) ** (-loan_term_month))
+    term_years_pass = loan_term_month-12*time_remaining_years
+    balance_left_loan = (current_loan_amount*(1+interest_rate_month)**(term_years_pass))-(current_monthly_payment*((1+interest_rate_month)**term_years_pass-1)/interest_rate_month)
+    new_loan_amount = balance_left_loan - cash_out_amount
+    current_total_cost_left = current_monthly_payment * 12*time_remaining_years
+    current_total_interest_paid = current_total_cost_left - balance_left_loan
+
+    new_credit = personal_loan(new_loan_amount, new_interest_rate, new_loan_term_years, datetime.datetime.now().strftime('%B %Y'))
+
+    return {"Balance left on loan": balance_left_loan, "New loan amount": new_loan_amount,
+            "Current monthly payment": current_monthly_payment, "New monthly payment": new_credit['Monthly payment'], "Monthly savings": current_monthly_payment - new_credit['Monthly payment'],
+            "Current left interest paid":current_total_interest_paid, "New total interest paid":new_credit['Total interest paid'], "Total interest saving":current_total_interest_paid-new_credit['Total interest paid'],
+            "Current total cost left":current_total_cost_left, "New total cost loan": new_credit['Total cost loan'], "Total cost saving":current_total_cost_left-new_credit['Total cost loan']}
+
 #calculate_fha_loan()
 
 #Function to compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission for a simple percentage commission structure.
@@ -1187,6 +1212,77 @@ def commission_calc(sales_price: float = None, commission_rate: float = None, co
     
     return output
 
+#Function to calculate total college fee of one year assuming full tuition fee is being paid.
+def college_cost(book_cost:float,
+                 college_tuition:float,
+                 Devices:float,
+                 travel_expenses:float,
+                 hostel_charges:float,
+                 mess_fee:float,
+                 miscellaneous:float):
+    Total_cost_ofOneYear=book_cost+college_tuition+Devices+(travel_expenses*12)+(hostel_charges*12)+(mess_fee*12)+(miscellaneous*12)
+    return Total_cost_ofOneYear
+    
+def future_sip(
+    interval_investment: float, rate_of_return: float, number_of_payments: int
+):
+    interest = (rate_of_return / 100) / 12
+    value = (
+        interval_investment
+        * ((1 + interest) ** number_of_payments - 1)
+        * (1 + interest)
+        / interest
+    )
+    return value
+
+def calculate_pension(
+monthty_investment_amount:float,
+no_of_years:float,
+annuity_rates:float,
+annuity_purchased:float,
+yearly_interest_rates:float
+):
+    total_corpus=0
+    yearly_pension_amount=12*monthty_investment_amount
+    for i in range(0,no_of_years+1):
+        yearly_pension_amount+=yearly_pension_amount*(yearly_interest_rates/100)
+        total_corpus+=yearly_pension_amount
+    total_corpus=round(total_corpus,2)
+    annuity_pension=total_corpus*(annuity_purchased/100)
+    lump_sum_pension=total_corpus-annuity_pension
+    monthly_pension=round((annuity_pension*annuity_rates)/100*12.00,2)    
+    return (
+        total_corpus,
+        lump_sum_pension,
+        monthly_pension
+    )
+    
+    
+
+# Function to Calculate Diluted EPS
+def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
+    diluted_eps = net_income / (weighted_avg_shares + dilutive_securities)
+    return diluted_eps
+
+# Function to calculate maturity value of a Fixed deposit.
+def fixed_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
+    types_of_componding =  {'yearly': 1 , 'halfyearly': 2 ,'quaterly': 4 ,'monthly': 12}
+    if compounding in types_of_componding.keys():
+        n = types_of_componding[compounding]
+        A = principle_amount * (1 + ((roi/100)/n)) ** (n*years)
+        return round(A,2)
+    
+# Function to calculate maturity value of a Recurring deposit.
+def recurring_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
+    types_of_componding =  {'yearly': 1 , 'halfyearly': 2 ,'quaterly': 4 ,'monthly': 12}
+    if compounding in types_of_componding.keys():
+        months = years * 12
+        n = types_of_componding[compounding]
+        res = 0.0
+        for i in range(1, months + 1):
+            res += principle_amount * (1 + ((roi/100)/n)) ** (n*(i/12))            
+        return round(res,2)
+     
 #Function to calculate Student loan and monthly emi for the same
 def student_loan(principal:int,
                  tenure:int,

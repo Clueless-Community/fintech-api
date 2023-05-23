@@ -900,6 +900,25 @@
 }
 ```
 
+**GET** `/calculate_pension`
+
+- Required parameters : `monthty_investment_amount`,`no_of_years`,`annuity_rates`,`annuity_purchased`,`yearly_interest_rates`
+- Sample output
+
+```py
+{
+    "Tag": "Calculate Pension",
+    "Monthly Investment amount":2000,
+    "No. of years": 36,
+    "Annuity Purchased":40
+    "Annuity Rates": 7,
+    "Interest Rate":9,
+    "Total Corpus":6759114.79,
+    "Lump sum pension":4055468.874,
+    "Monthly Pension":15771.27
+}
+```
+
 **GET** `/inflation`
 
 - Required parameters : `present_amount`,`inflation_rate`,`years`
@@ -1168,8 +1187,8 @@
 - Required parameters : `net_sales`, `total_asset_beginning` and `total_asset_ending`
 - Sample output
 
-
 =======
+
 ```py
 {
     "Tag": "Asset Turnover Ratio",
@@ -1351,10 +1370,10 @@
 }
 ```
 
-
 **GET* `calculate_lumpsum`
 -Required Parameters: `principal`, `interest_rate `, `years`
 -sample output
+
 ```py
 {
     "principal"=10000,
@@ -1363,6 +1382,7 @@
      "total_amount": 14693.28,
     "interest_earned": 4693.28
 }
+```
 =======
 
 Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
@@ -1405,6 +1425,104 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
+```
+=======
+**GET** `/diluted-earnings-per-share`
+
+- Required parameters : `net_income`, `weighted_avg_shares`, `dilutive_securities`
+- Sample output
+
+```py
+{
+"Tag":"Diluted Earnings Per Share (Diluted EPS)",
+"Net Income":1000000.0,
+"Weighted Average Shares Outstanding":500000.0,
+"Number of Dilutive Securities":100000.0,
+"Diluted EPS":"1.6666666666666667"
+}
+```
+
+=======
+**GET** `/refinance`
+
+- Required parameters : `current_loan_amount`, `current_interest_rate`, `current_loan_term_years`, `time_remaining_years`, `new_interest_rate`, `new_loan_term_years`, `cash_out_amount`
+- Sample output
+
+```py
+{
+    "Tag": "Refinance",
+    "Current loan amount": 330000.0,
+    "Balance left on loan": 170067.93,
+    "New loan amount": 169067.93,
+    "Current monthly payment": 1826.36,
+    "New monthly payment": 1711.73,
+    "Monthly savings": 114.63,
+    "Current interest paid left": 49095.54,
+    "New total interest paid": 36339.74,
+    "Total interest saving": 12755.79,
+    "Current total cost left": 219163.47,
+    "New total cost loan": 205407.68,
+    "Total cost saving": 13755.79
+}
+```
+
+**GET** `/college_cost`
+
+- Required parameters : `book_cost`,`college_tuition`,`Devices`, `travel_expenses`, `hostel_charges`,`mess_fee`,`miscellaneous`
+- Sample output
+
+```py
+{
+            "Tag": "College Cost",
+            "Books cost of one year": 5000,
+            "College tuition fee per year": 200000,
+            "Electronic devices cost":60000,
+            "Monthly Travel expenses":4000,
+            "Monthly Hostel charges":10000,
+            "Monthly mess fee":5000,
+            "monthly miscellaneous expenses":3000,
+            "Total cost of one year": 529000
+
+}
+```
+**GET** `/fixed_deposit_maturity`
+
+- Required parameters : `principle_amount`, `years`, `roi`, `compounding` <i>(calculated in monthly ,quaterly ,halfyearly, yearly)</i>
+- Sample output
+
+```py
+{
+        
+            "Tag": "Fixed deposit maturity Amount",
+            "Total Value": 138041.98,
+            "Principle amount": 100000,
+            "Interest anount": 38041.98,
+            "Duration in year": 5,
+            "Interest Rate": "6.5%",
+            "compounding rate": "quaterly"
+
+
+}
+```
+**GET** `/recurring_deposit_maturity`
+
+- Required parameters : `principle_amount`, `years`, `roi`, `compounding` <i>(calculated in monthly ,quaterly ,halfyearly, yearly)</i>
+- Sample output
+
+```py
+{
+        
+            "Tag": "Recurring deposit maturity Amount",
+            "Total Value": 62494.24,
+            "Investment": 5000,
+            "Duration in year": 1,
+            "Principle amount": 60000,
+            "Interest Value": 2494.24,
+            "Interest Rate": "7.5%",
+            "compounding rate": "monthly"
+
+}
+```
 **GET** `/student_loan`
 - Required parameters : 'principal','tenure', 'interest_rate'
 - Sample output
