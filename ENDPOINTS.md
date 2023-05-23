@@ -1536,3 +1536,23 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
             "Total Amount of loan":459938
 }
 ```
+
+**GET** `/roi_equity_funds`
+
+- Required parameters : `amount_invested`,
+    `amount_returned`,
+    `tenure`,
+- Sample output
+
+```py
+{
+        
+            "Tag": "Calculate return of investments on equity funds",
+            "Amount Invested": 1000,
+            "Amount Returned": 2000,
+            "Duration of investment": 2,
+            "Return of Investment": "100%",
+            "Annualized Return": "43.88%"
+
+}
+```
