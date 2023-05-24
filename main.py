@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, status
 from helpers import functions
 
+
 app = FastAPI(
     title="FinTech API",
     description="An API that helps you to deal with your financial calculations.",
@@ -2267,3 +2268,27 @@ def calculate_diluted_eps(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+# Endpoint to calculate Value Added Tax (VAT)
+@app.get(
+    "/calculate_vat",
+    tags=["VAT"],
+    description="Calculate VAT for both excluding and including amounts",
+)
+async def calculate_vat(price: float, vat_rate: float):
+    try:
+        excluding_vat = price / (1 + vat_rate / 100)
+        including_vat = price
+        vat_amount = price - excluding_vat
+
+        return {
+            "Price (excluding VAT)": excluding_vat,
+            "Price (including VAT)": including_vat,
+            "VAT Amount": vat_amount,
+        }
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred during VAT calculation",
+        )

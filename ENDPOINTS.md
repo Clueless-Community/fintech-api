@@ -1464,3 +1464,14 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 ```
 
 
+**GET** `/calculate_vat`
+- required parameters : `price`, `vat_rate`
+- Sample Request: GET /calculate_vat?price=100&vat_rate=20
+- Sample output
+```py
+{
+  "Price (excluding VAT)": 83.33,
+  "Price (including VAT)": 100.0,
+  "VAT Amount": 16.67
+
+} 
