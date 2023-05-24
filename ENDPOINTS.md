@@ -900,6 +900,25 @@
 }
 ```
 
+**GET** `/calculate_pension`
+
+- Required parameters : `monthty_investment_amount`,`no_of_years`,`annuity_rates`,`annuity_purchased`,`yearly_interest_rates`
+- Sample output
+
+```py
+{
+    "Tag": "Calculate Pension",
+    "Monthly Investment amount":2000,
+    "No. of years": 36,
+    "Annuity Purchased":40
+    "Annuity Rates": 7,
+    "Interest Rate":9,
+    "Total Corpus":6759114.79,
+    "Lump sum pension":4055468.874,
+    "Monthly Pension":15771.27
+}
+```
+
 **GET** `/inflation`
 
 - Required parameters : `present_amount`,`inflation_rate`,`years`
@@ -1168,8 +1187,8 @@
 - Required parameters : `net_sales`, `total_asset_beginning` and `total_asset_ending`
 - Sample output
 
-
 =======
+
 ```py
 {
     "Tag": "Asset Turnover Ratio",
@@ -1351,10 +1370,10 @@
 }
 ```
 
-
 **GET* `calculate_lumpsum`
 -Required Parameters: `principal`, `interest_rate `, `years`
 -sample output
+
 ```py
 {
     "principal"=10000,
@@ -1363,6 +1382,7 @@
      "total_amount": 14693.28,
     "interest_earned": 4693.28
 }
+```
 =======
 
 Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
@@ -1405,6 +1425,8 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
+```
+=======
 **GET** `/diluted-earnings-per-share`
 
 - Required parameters : `net_income`, `weighted_avg_shares`, `dilutive_securities`
@@ -1419,6 +1441,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 "Diluted EPS":"1.6666666666666667"
 }
 ```
+
 =======
 **GET** `/refinance`
 
@@ -1443,11 +1466,11 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-
 **GET** `/college_cost`
 
 - Required parameters : `book_cost`,`college_tuition`,`Devices`, `travel_expenses`, `hostel_charges`,`mess_fee`,`miscellaneous`
 - Sample output
+
 ```py
 {
             "Tag": "College Cost",
@@ -1462,8 +1485,117 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
+**GET** `/fixed_deposit_maturity`
+
+- Required parameters : `principle_amount`, `years`, `roi`, `compounding` <i>(calculated in monthly ,quaterly ,halfyearly, yearly)</i>
+- Sample output
+
+```py
+{
+
+            "Tag": "Fixed deposit maturity Amount",
+            "Total Value": 138041.98,
+            "Principle amount": 100000,
+            "Interest anount": 38041.98,
+            "Duration in year": 5,
+            "Interest Rate": "6.5%",
+            "compounding rate": "quaterly"
 
 
+}
+```
+**GET** `/recurring_deposit_maturity`
+
+- Required parameters : `principle_amount`, `years`, `roi`, `compounding` <i>(calculated in monthly ,quaterly ,halfyearly, yearly)</i>
+- Sample output
+
+```py
+{
+
+            "Tag": "Recurring deposit maturity Amount",
+            "Total Value": 62494.24,
+            "Investment": 5000,
+            "Duration in year": 1,
+            "Principle amount": 60000,
+            "Interest Value": 2494.24,
+            "Interest Rate": "7.5%",
+            "compounding rate": "monthly"
+
+}
+```
+
+
+**GET** `/calculate_retirement_goals`
+
+- Required parameters : `retirement_age`,`annual_retirement_expenses`,`inflation_rate`,`annual_retirement_income`,`current_age`
+- Sample output
+
+
+```py
+{
+            "Tag":"Retirement Goals",
+            "Retirement age":65000,
+            "Annual retirement expenses":50000,
+            "inflation rate":0.03,
+            "Annual Retirement Income":20000,
+            "Current Age":40,
+            "Retirement Goals":95010.80947570129
+}
+```
+
+**GET** `/student_loan`
+- Required parameters : 'principal','tenure', 'interest_rate'
+- Sample output
+```py
+{
+            "Tag": "Student Loan",
+            "Total amount to borrow":300000,
+            "total number of years to pay loan":10,
+            "interest rate percentage annual":9.2,
+            "total monthly cost":3832,
+            "Total Amount of loan":459938
+}
+```
+
+
+**GET** `/roi_equity_funds`
+
+- Required parameters : `amount_invested`,
+    `amount_returned`,
+    `tenure`,
+- Sample output
+
+```py
+{
+        
+            "Tag": "Calculate return of investments on equity funds",
+            "Amount Invested": 1000,
+            "Amount Returned": 2000,
+            "Duration of investment": 2,
+            "Return of Investment": "100%",
+            "Annualized Return": "43.88%"
+
+}
+```
+**GET** `/calculate_gst`
+
+- Required parameters : `price`,
+    `gst_rate`,
+    
+- Sample output
+
+```py
+{
+        
+            "Tag": "Calculate GST and Total Price",
+            "Original Price":2180,
+            "GST rate":18,
+            "Amount of GST": "392.4",
+            "Total price after GST":"2572.4"
+
+
+}
+```
 **GET** `/calculate_vat`
 - required parameters : `price`, `vat_rate`
 - Sample Request: GET /calculate_vat?price=100&vat_rate=20

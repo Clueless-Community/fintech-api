@@ -5,7 +5,7 @@ import math
 import datetime
 from dateutil.relativedelta import relativedelta
 
-# Function to Calculate Simmple Interest Rate
+# Function to Calculate Simple Interest Rate
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
     term = months / 12
     interest_paid = amount_paid - principle_amount
@@ -522,27 +522,27 @@ def credit_card_equation(
     N = -(1 // 30) * (a // b)
     return N
 
-#function to calculate the payoff of multiple credit cards using Debt Avalanche method 
+#function to calculate the payoff of multiple credit cards using Debt Avalanche method
 def credit_card_payoff(debts:list,interest_rates:list,minimum_payments:list,monthly_payment:int):
-     
+
       cards =[]
-      
+
       for i in range (len (debts)):
         cards.append (
       		 {
       'index': i,
-      'debt': debts[i], 
+      'debt': debts[i],
       'minimum_payment': minimum_payments[i],
       'interest_rate': interest_rates[i],
       'interest_paid':0,
       'month':0,
       'total_payment':0
       		 }
-      
+
       )
       #Sort the list of dictionaries by interest rate, in descending order
       cards.sort (key = lambda x:x['interest_rate'], reverse = True)
-      
+
       extra=0
       while sum(d['debt']  for d in cards) > 0:
            highest_interest_index=cards.index(max((d for d in cards if d['debt'] > 0), key=lambda x: x['interest_rate']))#highest index of the interest rate
@@ -551,7 +551,7 @@ def credit_card_payoff(debts:list,interest_rates:list,minimum_payments:list,mont
            extra =0
            for i in range(len(cards)):
                if cards[i]['debt']>0:
-                   
+
                   interest = round((cards[i]['debt'] * cards[i]['interest_rate']) / (12.00 * 100.00),2)
                   payment=cards[i]['minimum_payment']
                   cards[i]['interest_paid']+=interest
@@ -567,11 +567,11 @@ def credit_card_payoff(debts:list,interest_rates:list,minimum_payments:list,mont
                       cards[i]['total_payment']+=payment
                   if cards[i]['debt']==0:
                       cards[i]['total_payment']+=cards[i]['interest_paid']
-      
+
       cards.sort (key = lambda x:x['index'])
-      
-    
-      return cards 
+
+
+      return cards
 
 
 # function to calculate future value of the ordinary annuity
@@ -993,7 +993,7 @@ def salary_calculate(
     hours_per_day: int,
     days_per_week: int
 ):
-    # Get the total salary of the corresponding frequency 
+    # Get the total salary of the corresponding frequency
     salaries = {
         "hourly": {
         # Assuming there are 4.333333 weeks in a month (in real-time), 13 week quarters in a year & 52 weeks in a year
@@ -1106,8 +1106,8 @@ def personal_loan(
 
     return {"Monthly payment": monthly_payment, "Total interest paid": total_interest_paid,
             "Total cost loan": total_cost_loan, "Schedule": dframe.to_json()}
-            
-            
+
+
 
 # Function to calculate lump-sum mutual fund investment
 def calculate_lumpsum(principal, interest_rate, years):
@@ -1126,8 +1126,8 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-    
+
+
 # Function to calculate FHA loan
 def calculate_fha_loan():
 
@@ -1205,11 +1205,11 @@ def refinance_calculator(
 def commission_calc(sales_price: float = None, commission_rate: float = None, commission: float = None):
     if sales_price == None and commission_rate != None and commission != None:
         output = 100*commission/commission_rate
-    elif sales_price != None and commission_rate == None and commission != None: 
+    elif sales_price != None and commission_rate == None and commission != None:
         output = 100*commission/sales_price
     elif sales_price != None and commission_rate != None and commission == None:
         output = (sales_price*commission_rate)/100
-    
+
     return output
 
 #Function to calculate total college fee of one year assuming full tuition fee is being paid.
@@ -1222,7 +1222,7 @@ def college_cost(book_cost:float,
                  miscellaneous:float):
     Total_cost_ofOneYear=book_cost+college_tuition+Devices+(travel_expenses*12)+(hostel_charges*12)+(mess_fee*12)+(miscellaneous*12)
     return Total_cost_ofOneYear
-    
+
 def future_sip(
     interval_investment: float, rate_of_return: float, number_of_payments: int
 ):
@@ -1235,13 +1235,104 @@ def future_sip(
     )
     return value
 
+def calculate_pension(
+monthty_investment_amount:float,
+no_of_years:float,
+annuity_rates:float,
+annuity_purchased:float,
+yearly_interest_rates:float
+):
+    total_corpus=0
+    yearly_pension_amount=12*monthty_investment_amount
+    for i in range(0,no_of_years+1):
+        yearly_pension_amount+=yearly_pension_amount*(yearly_interest_rates/100)
+        total_corpus+=yearly_pension_amount
+    total_corpus=round(total_corpus,2)
+    annuity_pension=total_corpus*(annuity_purchased/100)
+    lump_sum_pension=total_corpus-annuity_pension
+    monthly_pension=round((annuity_pension*annuity_rates)/100*12.00,2)
+    return (
+        total_corpus,
+        lump_sum_pension,
+        monthly_pension
+    )
+
+
+
 # Function to Calculate Diluted EPS
 def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
     diluted_eps = net_income / (weighted_avg_shares + dilutive_securities)
     return diluted_eps
 
 
-# Function to Calculate Value Added Tax (VAT)
+# Function to calculate maturity value of a Fixed deposit.
+def fixed_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
+    types_of_componding =  {'yearly': 1 , 'halfyearly': 2 ,'quaterly': 4 ,'monthly': 12}
+    if compounding in types_of_componding.keys():
+        n = types_of_componding[compounding]
+        A = principle_amount * (1 + ((roi/100)/n)) ** (n*years)
+        return round(A,2)
+
+# Function to calculate maturity value of a Recurring deposit.
+def recurring_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
+    types_of_componding =  {'yearly': 1 , 'halfyearly': 2 ,'quaterly': 4 ,'monthly': 12}
+    if compounding in types_of_componding.keys():
+        months = years * 12
+        n = types_of_componding[compounding]
+        res = 0.0
+        for i in range(1, months + 1):
+            res += principle_amount * (1 + ((roi/100)/n)) ** (n*(i/12))
+        return round(res,2)
+
+
+#Function for calculating annual income neended during retiremnet period
+def calculate_retirement_goals(
+    retirement_age: int,
+    annual_retirement_expenses: int,
+    inflation_rate: float,
+    annual_retirement_income: int,
+    current_age: int
+):
+    retirement_duration = retirement_age-current_age
+    amount = (
+        (annual_retirement_expenses-annual_retirement_income) *
+        (1+inflation_rate)**retirement_duration
+    )
+    return amount
+
+     
+#Function to calculate Student loan and monthly emi for the same
+def student_loan(principal:int,
+                 tenure:int,
+                 interest_rate:float):
+    monthly_interest_rate=interest_rate/1200
+    total_months=tenure*12
+    n= principal*monthly_interest_rate * pow(1 + monthly_interest_rate,total_months)
+    d = pow(1+monthly_interest_rate, total_months)-1
+    emi = n/d
+    total_amount = emi*total_months
+    return int(emi),int(total_amount)
+    
+
+
+# Function to Calculate Return of Investment on some equity funds
+def calculate_roi_equity_funds(amount_invested,
+    amount_returned, tenure):
+    roi_equity_funds = (amount_returned - amount_invested) / amount_invested
+    annualized_roi = (1 + (amount_returned/amount_invested))**(1/tenure) - 1
+    return (
+        roi_equity_funds*100,
+        annualized_roi*100
+    )
+
+#Function to calculate GST (Goods and Service Tax)
+def calculate_gst(price, gst_rate):
+    gst_amount = price * (gst_rate / 100)
+    total_price = price + gst_amount
+    return gst_amount, total_price
+
+  
+  # Function to Calculate Value Added Tax (VAT)
 def calculate_vat():
     while True:
         try:

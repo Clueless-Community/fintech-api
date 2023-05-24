@@ -1,5 +1,5 @@
 <h1 align=center> FinTech API </h1>
-
+<div id="top"></div>
 <h3 align=center> Have you ever faced a problem while integrating financial tasks into your project, written too many lines of code for various calculations, or just some financial calculations in your day-to-day life?<br>Here we are with a solution, <b>FinTech API</b>⚡ An API that helps you to deal with your financial calculations.</h3>
 
 ----
@@ -48,3 +48,11 @@ The ambition of this project is to help user to deal with some simple financial 
 Before start contributing, we recommend you go through the [CONTRIBUTING.md](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md) file, where all the guidelines have been mentioned that will guide you to make your contribution.
 
 ---
+
+## Contributors
+<p align=center>
+<a href="https://github.com/Clueless-Community/fintech-api/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Clueless-Community/fintech-api" />
+</a></p>
+
+<p align="right">(<a href="#top">Back to top</a>)</p>
