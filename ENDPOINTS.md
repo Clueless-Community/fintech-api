@@ -1537,6 +1537,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
+
 **GET** `/roi_equity_funds`
 
 - Required parameters : `amount_invested`,
@@ -1553,6 +1554,24 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
             "Duration of investment": 2,
             "Return of Investment": "100%",
             "Annualized Return": "43.88%"
+
+}
+```
+**GET** `/calculate_gst`
+
+- Required parameters : `price`,
+    `gst_rate`,
+    
+- Sample output
+
+```py
+{
+        
+            "Tag": "Calculate GST and Total Price",
+            "Original Price":2180,
+            "GST rate":18,
+            "Amount of GST": "392.4",
+            "Total price after GST":"2572.4"
 
 }
 ```

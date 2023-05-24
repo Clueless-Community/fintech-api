@@ -1296,6 +1296,7 @@ def student_loan(principal:int,
     return int(emi),int(total_amount)
     
 
+
 # Function to Calculate Return of Investment on some equity funds
 def calculate_roi_equity_funds(amount_invested,
     amount_returned, tenure):
@@ -1305,3 +1306,9 @@ def calculate_roi_equity_funds(amount_invested,
         roi_equity_funds*100,
         annualized_roi*100
     )
+
+#Function to calculate GST (Goods and Service Tax)
+def calculate_gst(price, gst_rate):
+    gst_amount = price * (gst_rate / 100)
+    total_price = price + gst_amount
+    return gst_amount, total_price
