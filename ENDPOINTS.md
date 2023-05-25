@@ -1593,6 +1593,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
             "Amount of GST": "392.4",
             "Total price after GST":"2572.4"
 
+
 }
 ```
 
@@ -1617,4 +1618,17 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
     
   }
 
+```
+
+**GET** `/calculate_vat`
+- required parameters : `price`, `vat_rate`
+- Sample Request: GET /calculate_vat?price=100&vat_rate=20
+- Sample output
+```py
+{
+  "Price (excluding VAT)": 83.33,
+  "Price (including VAT)": 100.0,
+  "VAT Amount": 16.67
+
+} 
 ```

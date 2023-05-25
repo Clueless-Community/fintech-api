@@ -1264,6 +1264,7 @@ def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
     diluted_eps = net_income / (weighted_avg_shares + dilutive_securities)
     return diluted_eps
 
+
 # Function to calculate maturity value of a Fixed deposit.
 def fixed_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
     types_of_componding =  {'yearly': 1 , 'halfyearly': 2 ,'quaterly': 4 ,'monthly': 12}
@@ -1334,3 +1335,21 @@ def calculate_gst(price, gst_rate):
 def annual_debt_service_coverage_ratio(net_operating_cost: float, depreciation: float, non_cash_expenses: float, annual_debt_service: float):
     adscr_ratio = (net_operating_cost + depreciation + non_cash_expenses) / annual_debt_service
     return adscr_ratio
+  
+  # Function to Calculate Value Added Tax (VAT)
+def calculate_vat():
+    while True:
+        try:
+            price = float(input("Enter the price: "))
+            vat_rate = float(input("Enter the VAT rate (%): "))
+            break
+        except ValueError:
+            print("Invalid input. Please enter numeric values.")
+
+    excluding_vat = price / (1 + vat_rate / 100)
+    including_vat = price
+    vat_amount = price - excluding_vat
+
+    print(f"Price (excluding VAT): {excluding_vat:.2f}")
+    print(f"Price (including VAT): {including_vat:.2f}")
+    print(f"VAT Amount: {vat_amount:.2f}")
