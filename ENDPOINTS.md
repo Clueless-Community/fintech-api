@@ -1595,3 +1595,23 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
+
+
+**GET** `/loan-affordability`
+
+- Required parameters : `income`,
+        `expenses`,
+        `loan_term`,
+        `interest_rate`,
+- Sample Request: `GET`, `http://127.0.0.1:8000/loan-affordability?income=5000&expenses=2000&loan_term=12&interest_rate=5`,    
+- Sample output
+
+```py
+{
+  "income": 5000.0,
+  "expenses": 2000.0,
+  "loan_term": 12,
+  "interest_rate": 5.0,
+  "max_loan_amount": 2215.8129091122037
+}
+```
