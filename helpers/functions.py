@@ -1331,6 +1331,10 @@ def calculate_gst(price, gst_rate):
     total_price = price + gst_amount
     return gst_amount, total_price
 
+#Calculate Annual Debt Service Coverage Ratio (ADSCR)
+def annual_debt_service_coverage_ratio(net_operating_cost: float, depreciation: float, non_cash_expenses: float, annual_debt_service: float):
+    adscr_ratio = (net_operating_cost + depreciation + non_cash_expenses) / annual_debt_service
+    return adscr_ratio
   
   # Function to Calculate Value Added Tax (VAT)
 def calculate_vat():
@@ -1349,6 +1353,3 @@ def calculate_vat():
     print(f"Price (excluding VAT): {excluding_vat:.2f}")
     print(f"Price (including VAT): {including_vat:.2f}")
     print(f"VAT Amount: {vat_amount:.2f}")
-
-
-calculate_vat()

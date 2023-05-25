@@ -1596,6 +1596,30 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
+
+**GET** `/asdcr`
+
+- Required parameters :`net_operating_cost`,
+  `depreciation`,
+  `non_cash_expenses`
+  `annual_debt_service`
+- Sample output
+
+
+```py
+  {
+
+            "Tag":"Annual Debt Service Coverage Ratio",
+            "Annual Debt Ratio":2.0833333333333335,
+            "Net Operating Income":100000.0,
+            "Depreciation":20000.0,
+            "Non Cash Expenses":5000.0,
+            "Annual Debt":60000.0
+    
+  }
+
+```
+
 **GET** `/calculate_vat`
 - required parameters : `price`, `vat_rate`
 - Sample Request: GET /calculate_vat?price=100&vat_rate=20
@@ -1607,3 +1631,4 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
   "VAT Amount": 16.67
 
 } 
+```
