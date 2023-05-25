@@ -1,5 +1,5 @@
 ---
-name: 💡 Feature/Ehnancement Request
+name: 💡 Feature/Enhancement Request
 about: Want to add a new feature? Add and Contribute here!
 title: '[Feature] <description>'
 labels: enhancement
@@ -9,8 +9,8 @@ assignees: ''
 <!-- Put a 'x' between the box  and avoid spaces to tickmark.
 Example: 
 - [ x]  WRONG
--  [x ] WRONG
--  [x] CORRECT   
+- [x ] WRONG
+- [x] CORRECT
  -->
 
 ## Are you adding a new feature?
@@ -25,8 +25,8 @@ Example:
  - [ ] YES
  - [ ] NO
 
-## Describe your feature\enhancement.
-<!-- Describe about the feature\enhancement you are going to add -->
+## Describe your feature/enhancement.
+<!-- Describe about the feature/enhancement you are going to add -->
 
 ## Can you add the feature by yourself?
 
