@@ -1577,6 +1577,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
+
 **GET** `/calculate_gst`
 
 - Required parameters : `price`,

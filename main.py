@@ -2400,6 +2400,7 @@ def calculate_retirement_goals(
     except:
          return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 @app.get(
     "/calculate_bvps",
     tags=["calculate_bvps"],
