@@ -2376,7 +2376,7 @@ def calculate_gst(price, gst_rate):
 
 #Endpoint For calculated annual income needed during retiremnet period
 @app.get("/calculate_retirement_goals",
-         tag=["calculate_retirement_goals"],
+         tags=["calculate_retirement_goals"],
          description='Calculate amount annually needed during retirement years.',
 
 )
