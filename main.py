@@ -2467,10 +2467,10 @@ def calculate_loan_affordability(
         
     """
     try:
-        monthly_income = income / 12
-        monthly_expenses = expenses / 12
+        # monthly_income = income / 12
+        # monthly_expenses = expenses / 12
 
-        max_loan_amount = (monthly_income - monthly_expenses) * (1 - (1 + interest_rate / 100) ** -loan_term) / (interest_rate / 100)
+        max_loan_amount = functions.calculate_max_loan_amount(income, expenses, loan_term, interest_rate)
 
         return {
             "income": income,
