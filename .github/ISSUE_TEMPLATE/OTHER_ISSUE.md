@@ -1,6 +1,6 @@
 ---
 name: 🆕 Other Issue
-about: Found an issue. Contribute here!
+about: Found any other issue? Contribute here!
 title: '<description>'
 labels: 
 assignees: ''
@@ -10,8 +10,8 @@ assignees: ''
 <!-- Put a 'x' between the box  and avoid spaces to tickmark.
 Example: 
 - [ x]  WRONG
--  [x ] WRONG
--  [x] CORRECT   
+- [x ] WRONG
+- [x] CORRECT
  -->
 
 ## Describe about your issue.
