@@ -1312,3 +1312,19 @@ def calculate_gst(price, gst_rate):
     gst_amount = price * (gst_rate / 100)
     total_price = price + gst_amount
     return gst_amount, total_price
+
+#Function to calculate BVPS (Book value per share)
+def calculate_bvps(stockholders_equity, preferred_stock, average_outstanding_shares):
+    """
+    Calculate the book value per share using the given values.
+    
+    Args:
+        stockholders_equity (float): Total stockholders' equity.
+        preferred_stock (float): Value of preferred stock.
+        average_outstanding_shares (float): Average number of outstanding shares.
+    
+    Returns:
+        float: The book value per share.
+    """
+    book_value = (stockholders_equity - preferred_stock) / average_outstanding_shares
+    return book_value

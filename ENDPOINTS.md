@@ -1575,3 +1575,21 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
+**GET** `/calculate_bvps`
+
+- Required parameters : `stockholders_equity`,
+    `preferred_stock`, `average_outstanding_shares`,
+    
+- Sample output
+
+```py
+{
+        
+            "Tag": "Calculate Book value per share",
+            "Stockholders Equity":1000000.0,
+            "Preferred Stock value":50000.0,
+            "Average outstanding shares":50000.0,
+            "Book value per share":"19"
+
+}
+```
