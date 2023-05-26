@@ -63,7 +63,7 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 Join our growing community of developers who have already discovered the power of FinTech APIzap and contribute to the project's ambition to empower users with the ability to handle financial tasks efficiently.
 
 
-## Open Source Participation
+## ✨ Open Source Participation
 
 This project is a part of these Open Source Programs
 
