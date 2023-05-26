@@ -1594,8 +1594,82 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
             "Amount of GST": "392.4",
             "Total price after GST":"2572.4"
 
+
 }
 ```
+
+
+**GET** `/asdcr`
+
+- Required parameters :`net_operating_cost`,
+  `depreciation`,
+  `non_cash_expenses`
+  `annual_debt_service`
+- Sample output
+
+
+```py
+  {
+
+            "Tag":"Annual Debt Service Coverage Ratio",
+            "Annual Debt Ratio":2.0833333333333335,
+            "Net Operating Income":100000.0,
+            "Depreciation":20000.0,
+            "Non Cash Expenses":5000.0,
+            "Annual Debt":60000.0
+    
+  }
+
+```
+
+**GET** `/calculate_vat`
+- required parameters : `price`, `vat_rate`
+- Sample Request: GET /calculate_vat?price=100&vat_rate=20
+- Sample output
+```py
+{
+  "Price (excluding VAT)": 83.33,
+  "Price (including VAT)": 100.0,
+  "VAT Amount": 16.67
+
+} 
+```
+
+**GET** `/bond_equivalent_yield`
+- required parameters : `face_value`, `purchase_price`,`days_to_maturity`
+- Sample Request: GET /bond_equivalent_yield?face_value=1000&purchase_price=900&days_to_maturity=182
+- Sample output
+```py
+{
+  "Tag": "Bond Equivalent Yield",
+  "Face value":1000,
+  "Purchase Price": 900,
+  "Days to maturity": 182,
+  "Bond Equivalent Yield (BEY)": "22.28%"
+}
+```
+
+**GET** `/loan-affordability`
+
+- Required parameters : `income`,
+        `expenses`,
+        `loan_term`,
+        `interest_rate`,
+- Sample Request: `GET`, `http://127.0.0.1:8000/loan-affordability?income=5000&expenses=2000&loan_term=12&interest_rate=5`,    
+
+- Sample output
+
+```py
+{
+
+  "income": 5000.0,
+  "expenses": 2000.0,
+  "loan_term": 12,
+  "interest_rate": 5.0,
+  "max_loan_amount": 2215.8129091122037
+}
+```
+
 **GET** `/calculate_bvps`
 
 - Required parameters : `stockholders_equity`,
@@ -1613,4 +1687,3 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
             "Book value per share":"19"
 
 }
-```
