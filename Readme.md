@@ -44,11 +44,11 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 - Sign up and obtain API credentials
 - Install necessary dependencies
       - Python3.9x installed on your machine.
-      - Install the package using `pip`:
+      - Install the package using `pip`: (by Copying requirements.txt ./)
 ```bash
   pip install --no-cache-dir -r requirements.txt
 ```
-        by Copying requirements.txt ./
+      
 - Make API requests
 - Handle API responses
 - Test and debug
