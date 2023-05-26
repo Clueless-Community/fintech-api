@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, status
-from helpers import functions
+from helpers import functions, utils
 
 
 app = FastAPI(
@@ -72,7 +72,7 @@ def future_sip(
         return {
             "Tag": "Future Value of SIP",
             "Investment at every Interval": interval_investment,
-            "Interest": (rate_of_return / 100) / 12,
+            "Interest": utils.percent_to_decimal(rate_of_return) / 12,
             "Number of Payments": number_of_payments,
             "Future Value": f"{value}",
         }
@@ -212,7 +212,7 @@ def effective_annual_rate(annual_interest_rate: float, compounding_period: int):
         eff_annual_rate = functions.effective_annual_rate(
             annual_interest_rate, compounding_period
         )
-        eff_annual_rate_percentage = eff_annual_rate * 100
+        eff_annual_rate_percentage = utils.decimal_to_percent(eff_annual_rate)
         return {
             "Tag": "Effective Annual Rate",
             "Annual Intrest Rate": annual_interest_rate,
@@ -370,7 +370,7 @@ def asset_portfolio(
             + weight_B * weight_B * standard_dev_B * standard_dev_B
             + 2 * weight_A * weight_B * cov
         )
-        expected_return = 100 * (weight_A * return_A + weight_B * return_B)
+        expected_return = utils.decimal_to_percent(weight_A * return_A + weight_B * return_B)
         return {
             "Tag": "Portfolio Variance",
             "Expected Returns": f"{expected_return}%",
@@ -579,7 +579,7 @@ def inventory_shrinkage_rate(recorded_inventory: float, actual_inventory: float)
             "Recorded Inventory": recorded_inventory,
             "Actual Inventory": actual_inventory,
             "Inventory Shrinkage Rate": inventory_shrinkage_rate,
-            "Inventory Shrinkage Rate (%)": inventory_shrinkage_rate * 100,
+            "Inventory Shrinkage Rate (%)": utils.decimal_to_percent(inventory_shrinkage_rate),
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -1962,7 +1962,7 @@ def estimate_401k(
             "withdraw_tax_rate": withdraw_tax_rate,
             "estimated_401k": estimated_401k,
             "annual_withdraw_amount": round(
-                (withdraw_tax_rate / 100) * estimated_401k, 3
+                utils.percent_to_decimal(withdraw_tax_rate) * estimated_401k, 3
             ),
         }
     except:
@@ -2059,9 +2059,9 @@ def fha_loan(
         return {
             "TAG": "FHA Mortgage monthly payments",
             "mortgage_amount": mortgage_amount,
-            "mortgage_deposit": mortgage_deposit_percentage * mortgage_amount * 0.001,
+            "mortgage_deposit": utils.percent_to_decimal(mortgage_deposit_percentage) * mortgage_amount * 0.1,
             "FHA base loan amount": mortgage_amount
-            - (mortgage_deposit_percentage * mortgage_amount * 0.001),
+            - (utils.percent_to_decimal(mortgage_deposit_percentage) * mortgage_amount * 0.1),
             "FHA upfront MIP": upfront_mip,
             "FHA monthly mortgage payments": monthly_payment,
             "FHA Monthly MIP": monthly_mip,
@@ -2154,8 +2154,7 @@ def personal_loan(loan_amount: float, interest_rate: float, loan_term_years: int
 async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
 
     try:
-        interest_rate /= 100 # Convert percentage to decimal
-        total_amount = principal * ((1 + interest_rate) ** years)
+        total_amount = principal * ((1 + utils.percent_to_decimal(interest_rate)) ** years)
         interest_earned = total_amount - principal
         return {"total_amount": round(total_amount, 2), "interest_earned": round(interest_earned, 2)}
     except :
@@ -2430,7 +2429,7 @@ def asdcr(net_operating_cost: float, depreciation: float, non_cash_expenses: flo
 )
 async def calculate_vat(price: float, vat_rate: float):
     try:
-        excluding_vat = price / (1 + vat_rate / 100)
+        excluding_vat = price / (1 + utils.percent_to_decimal(vat_rate))
         including_vat = price
         vat_amount = price - excluding_vat
 
@@ -2459,7 +2458,7 @@ def bond_equivalent_yield(face_value:float, purchase_price:float, days_to_maturi
             "Face value":face_value, 
             "Purchase Price": purchase_price, 
             "Days to maturity": days_to_maturity, 
-            "Bond Equivalent Yield (BEY)": f"{bey*100}%", 
+            "Bond Equivalent Yield (BEY)": f"{utils.decimal_to_percent(bey)}%",
         } 
     except: 
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -2478,11 +2477,11 @@ def calculate_loan_affordability(
     eg url :- http://127.0.0.1:8000/loan-affordability?income=5000&expenses=2000&loan_term=12&interest_rate=5
     
     explanation for calculating max_loan_amount :-
-        (1 + interest_rate / 100): This calculates the factor by which the loan amount increases due to the interest rate. For example, if the interest rate is 5%, this factor would be 1.05.
+        (1 + utils.percent_to_decimal(interest_rate)): This calculates the factor by which the loan amount increases due to the interest rate. For example, if the interest rate is 5%, this factor would be 1.05.
         ** -loan_term: This raises the above factor to the power of negative loan_term. It represents the compounding effect of interest over the loan term. For example, if the loan term is 12 months, this factor would be (1.05) ** -12
-        (1 - (1 + interest_rate / 100) ** -loan_term): This calculates the ratio of the remaining loan balance after making monthly payments to the initial loan amount. It represents the discounted value of the loan.
+        (1 - (1 + utils.percent_to_decimal(interest_rate)) ** -loan_term): This calculates the ratio of the remaining loan balance after making monthly payments to the initial loan amount. It represents the discounted value of the loan.
         (monthly_income - monthly_expenses): This calculates the disposable income available for loan repayment each month.
-        (monthly_income - monthly_expenses) * (1 - (1 + interest_rate / 100) ** -loan_term): This calculates the discounted monthly loan payment amount based on the available disposable income.
+        (monthly_income - monthly_expenses) * (1 - (1 + utils.percent_to_decimal(interest_rate)) ** -loan_term): This calculates the discounted monthly loan payment amount based on the available disposable income.
         
     """
     try:
