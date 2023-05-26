@@ -1,7 +1,8 @@
 
-### FinTech API
+<h1 align=center> FinTech API </h1>
 
-Welcome to FinTech API, our powerful API is designed to simplify your life by offering a wide range of financial calculations at your fingertips. From simple interest and compound interest to return on investment (ROI) and more, FinTech APIzap provides the tools you need to handle a variety of financial tasks effortlessly such as annual percentage rate (APR), FHA loans, debt-to-income ratio and income related calculations. Whether you're building a web app, mobile application, or even a chrome extension, integrating our API is a breeze.  You can focus on the core aspects of your project while leaving the financial calculations to us.
+<p align=center>
+Welcome to FinTech API, our powerful API is designed to simplify your life by offering a wide range of financial calculations at your fingertips. From simple interest and compound interest to return on investment (ROI) and more, FinTech APIzap provides the tools you need to handle a variety of financial tasks effortlessly such as annual percentage rate (APR), FHA loans, debt-to-income ratio and income related calculations. Whether you're building a web app, mobile application, or even a chrome extension, integrating our API is a breeze.  You can focus on the core aspects of your project while leaving the financial calculations to us. </p>
 
 <div align="center">
   <br>
