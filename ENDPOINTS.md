@@ -1633,6 +1633,19 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 } 
 ```
 
+**GET** `/bond_equivalent_yield`
+- required parameters : `face_value`, `purchase_price`,`days_to_maturity`
+- Sample Request: GET /bond_equivalent_yield?face_value=1000&purchase_price=900&days_to_maturity=182
+- Sample output
+```py
+{
+  "Tag": "Bond Equivalent Yield",
+  "Face value":1000,
+  "Purchase Price": 900,
+  "Days to maturity": 182,
+  "Bond Equivalent Yield (BEY)": "22.28%"
+}
+```
 
 **GET** `/loan-affordability`
 
