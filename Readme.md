@@ -45,9 +45,9 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 - Install necessary dependencies
       - Python3.9x installed on your machine.
       - Install the package using `pip`:
-      ```bash
-            pip install --no-cache-dir -r requirements.txt
-      ```
+```bash
+  pip install --no-cache-dir -r requirements.txt
+```
         by Copying requirements.txt ./
 - Make API requests
 - Handle API responses
