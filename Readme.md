@@ -32,15 +32,15 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 - Developer Community: Join our thriving developer community for support, updates, and collaboration with like-minded professionals.
 
 
-## Tech Stack 💻
+## 💻 Tech Stack 
 
   ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
   ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 
 
-## How to use it? ✨
+## ✨ How to use it? 
 
-# To use FinTech API in your project, follow these steps:
+### To use FinTech API in your project, follow these steps:
 - Sign up and obtain API credentials
 - Install necessary dependencies
         - Python3.9x installed on your machine.
@@ -55,7 +55,7 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 - Integrate into your project
 
 
-## Contributing Roadmap
+## ✨ Contributing Roadmap
 
  - Go through the [CONTRIBUTING.md](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md) file, where all the guidelines have been mentioned that will guide you to make your contribution.
  - Do checkout the [project workflow](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-worflow) section.
@@ -76,7 +76,7 @@ Join our growing community of developers who have already discovered the power o
 ✨ Once again, thank you for your contribution!
 
 
-## License
+## ✨ License
 
 The project is licensed under the [MIT License](https://github.com/neelshah2409/Bot-Collection/blob/main/LICENSE).
 
