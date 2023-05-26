@@ -1329,3 +1329,9 @@ def calculate_gst(price, gst_rate):
     gst_amount = price * (gst_rate / 100)
     total_price = price + gst_amount
     return gst_amount, total_price
+
+#function to calculate marketcap
+
+def calculate_market_cap(current_market_share_price,total_number_of_shares_outstanding):
+    market_cap = current_market_share_price * total_number_of_shares_outstanding
+    return market_cap
