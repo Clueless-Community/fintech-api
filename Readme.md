@@ -48,7 +48,7 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 ```bash
   pip install --no-cache-dir -r requirements.txt
 ```
-      
+
 - Make API requests
 - Handle API responses
 - Test and debug
@@ -61,6 +61,13 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
  - Do checkout the [project workflow](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-worflow) section.
 
 Join our growing community of developers who have already discovered the power of FinTech APIzap and contribute to the project's ambition to empower users with the ability to handle financial tasks efficiently.
+
+
+## Open Source Participation
+
+This project is a part of these Open Source Programs
+
+- [Diversion 2K33](https://diversion.tech/) 
 
 
 ## ✨ Thank You for Your Contribution!
