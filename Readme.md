@@ -21,15 +21,15 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 
 ## ✨ Features
 
-- User-Friendly Integration: Seamlessly integrate the FinTech APIzap into your web app, mobile application, or chrome extension with our user-friendly API.
+- **User-Friendly Integration**: Seamlessly integrate the FinTech APIzap into your web app, mobile application, or chrome extension with our user-friendly API.
 
-- Fast and Reliable: Enjoy a fast and reliable API service, ensuring quick response times and minimal downtime.
+- **Fast and Reliable**: Enjoy a fast and reliable API service, ensuring quick response times and minimal downtime.
 
-- Scalability: Scale your projects effortlessly as FinTech APIzap supports high volumes of requests and can handle increased traffic.
+- **Scalability**: Scale your projects effortlessly as FinTech APIzap supports high volumes of requests and can handle increased traffic.
 
-- Customizable Options: Tailor the API's parameters and settings to suit your specific requirements and calculations.
+- **Customizable Options**: Tailor the API's parameters and settings to suit your specific requirements and calculations.
 
-- Developer Community: Join our thriving developer community for support, updates, and collaboration with like-minded professionals.
+- **Developer Community**: Join our thriving developer community for support, updates, and collaboration with like-minded professionals.
 
 
 ## 💻 Tech Stack 
