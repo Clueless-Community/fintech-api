@@ -1359,3 +1359,13 @@ def calculate_bond_equivalent_yield(face_value, purchase_price, days_to_maturity
     roi = (face_value-purchase_price)/purchase_price 
     bey = roi * 365/days_to_maturity 
     return bey
+
+# function to calculate max_loan_amount for calculating loan affordability for a particular person
+def calculate_max_loan_amount(income, expenses, loan_term, interest_rate):
+    monthly_income = income / 12
+    monthly_expenses = expenses / 12
+
+    loan_factor = 1 - (1 + interest_rate / 100) ** -loan_term
+    max_loan_amount = (monthly_income - monthly_expenses) * loan_factor / (interest_rate / 100)
+
+    return max_loan_amount
