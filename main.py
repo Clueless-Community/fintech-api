@@ -2444,3 +2444,22 @@ async def calculate_vat(price: float, vat_rate: float):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An error occurred during VAT calculation",
         )
+
+#Endpoint For calculating bond equivalent yield 
+@app.get( 
+    "/bond_equivalent_yield", 
+    tags=["bond_equivalent_yield"], 
+    description="Calculate bond equivalent yield", 
+) 
+def bond_equivalent_yield(face_value:float, purchase_price:float, days_to_maturity:int): 
+    try: 
+        bey = functions.calculate_bond_equivalent_yield(face_value,purchase_price,days_to_maturity) 
+        return { 
+            "Tag": "Bond Equivalent Yield", 
+            "Face value":face_value, 
+            "Purchase Price": purchase_price, 
+            "Days to maturity": days_to_maturity, 
+            "Bond Equivalent Yield (BEY)": f"{bey*100}%", 
+        } 
+    except: 
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
