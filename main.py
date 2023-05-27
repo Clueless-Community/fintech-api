@@ -207,17 +207,17 @@ def inflation(present_amount: float, inflation_rate: float, years: float):
     tags=["Effective Annual Rate"],
     description="Calculate Effective Annual Rate",
 )
-def inflation(annual_interest_rate: float, compounding_period: int):
+def effective_annual_rate(annual_interest_rate: float, compounding_period: int):
     try:
-        Eff_annual_rate = functions.effective_annual_rate(
+        eff_annual_rate = functions.effective_annual_rate(
             annual_interest_rate, compounding_period
         )
-        Eff_annual_rate_percentage = Eff_annual_rate * 100
+        eff_annual_rate_percentage = eff_annual_rate * 100
         return {
             "Tag": "Effective Annual Rate",
             "Annual Intrest Rate": annual_interest_rate,
             "Compounding Period": compounding_period,
-            "Effective Annual Rate (in percentage)": f"{Eff_annual_rate_percentage}%",
+            "Effective Annual Rate (in percentage)": f"{eff_annual_rate_percentage}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
