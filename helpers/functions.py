@@ -1366,3 +1366,9 @@ def calculate_max_loan_amount(income, expenses, loan_term, interest_rate):
     max_loan_amount = (monthly_income - monthly_expenses) * loan_factor / percent_to_decimal(interest_rate)
 
     return max_loan_amount
+
+def calculate_roa_amount(net_income: float, average_total_assets: float):
+
+    roa = (net_income / average_total_assets) * 100
+
+    return roa

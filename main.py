@@ -2499,3 +2499,18 @@ def calculate_loan_affordability(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,detail="Some Error occured",)
+
+@app.get("/calculate_roa", tags=["calculate_roa"], description="Calculate Return on Assets (ROA)")
+def calculate_roa(net_income: float, average_total_assets: float):
+    try:
+        # Calculate the Return on Assets (ROA)
+        roa = functions.calculate_roa_amount(net_income, average_total_assets)
+
+        return {
+            "Net Income": net_income,
+            "Average Total Assets": average_total_assets,
+            "ROA": f"{roa}%"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Error calculating ROA")
+

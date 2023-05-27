@@ -1665,3 +1665,17 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
   "max_loan_amount": 2215.8129091122037
 }
 ```
+**GET** `/calculate_roa`
+
+- Required parameters : `net_income`,
+        `average_total_assets`,
+        `
+- Sample Request: GET /calculate_roa? net_income=500000&average_total_assets=2000000    
+- Sample output
+
+```py
+{
+  "net_income": 500000.0,
+  "average_total_assets": 2000000.0,
+  "roa": 25%,
+}
