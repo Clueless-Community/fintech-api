@@ -1328,6 +1328,7 @@ def calculate_gst(price, gst_rate):
     total_price = price + gst_amount
     return gst_amount, total_price
 
+
 #Calculate Annual Debt Service Coverage Ratio (ADSCR)
 def annual_debt_service_coverage_ratio(net_operating_cost: float, depreciation: float, non_cash_expenses: float, annual_debt_service: float):
     adscr_ratio = (net_operating_cost + depreciation + non_cash_expenses) / annual_debt_service
@@ -1366,3 +1367,20 @@ def calculate_max_loan_amount(income, expenses, loan_term, interest_rate):
     max_loan_amount = (monthly_income - monthly_expenses) * loan_factor / percent_to_decimal(interest_rate)
 
     return max_loan_amount
+ 
+
+ #Function to calculate BVPS (Book value per share)
+def calculate_bvps(stockholders_equity, preferred_stock, average_outstanding_shares):
+    """
+    Calculate the book value per share using the given values.
+    
+    Args:
+        stockholders_equity (float): Total stockholders' equity.
+        preferred_stock (float): Value of preferred stock.
+        average_outstanding_shares (float): Average number of outstanding shares.
+    
+    Returns:
+        float: The book value per share.
+    """
+    book_value = (stockholders_equity - preferred_stock) / average_outstanding_shares
+    return book_value
