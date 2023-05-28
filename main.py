@@ -2520,3 +2520,155 @@ def calculate_bvps(stockholders_equity, preferred_stock, average_outstanding_sha
             }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@app.get("/present_value", tags=["present_value"], description="Calculate Present Value (PV)")
+def calculate_present_value(cashflows: List[float], discount_rate: float) -> Union[float, HTTPException]:
+    try:
+        pv = functions.calculate_present_value(cashflows, discount_rate)
+        return {
+            "Tag": "Present Value (PV)",
+            "Cashflows": cashflows,
+            "Discount Rate": discount_rate,
+            "PV": pv,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+@app.get("/return_on_investment", tags=["roi"], description="Calculate Return on Investment (ROI)")
+def calculate_roi(investment: float, net_profit: float) -> Union[float, HTTPException]:
+    try:
+        roi = functions.calculate_roi(investment, net_profit)
+        return {
+            "Tag": "Return on Investment (ROI)",
+            "Investment": investment,
+            "Net Profit": net_profit,
+            "ROI": roi,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+# Endpoint for Net Present Value (NPV)
+@app.get("/net_profit_value", tags=["npv"], description="Calculate Net Present Value (NPV)")
+def calculate_npv(cashflows: List[float], discount_rate: float) -> Union[float, HTTPException]:
+    try:
+        npv = functions.calculate_npv(cashflows, discount_rate)
+        return {
+            "Tag": "Net Present Value (NPV)",
+            "Cashflows": cashflows,
+            "Discount Rate": discount_rate,
+            "NPV": npv,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+# Endpoint for Internal Rate of Return (IRR)
+@app.get("/internal_rate_return", tags=["irr"], description="Calculate Internal Rate of Return (IRR)")
+def calculate_irr(cashflows: List[float]) -> Union[float, HTTPException]:
+    try:
+        irr = functions.calculate_irr(cashflows)
+        return {
+            "Tag": "Internal Rate of Return (IRR)",
+            "Cashflows": cashflows,
+            "IRR": irr,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+# Endpoint for Return on Assets (ROA)
+@app.get("/return_on_assets", tags=["roa"], description="Calculate Return on Assets (ROA)")
+def calculate_roa(net_income: float, total_assets: float) -> Union[float, HTTPException]:
+    try:
+        roa = functions.calculate_roa(net_income, total_assets)
+        return {
+            "Tag": "Return on Assets (ROA)",
+            "Net Income": net_income,
+            "Total Assets": total_assets,
+            "ROA": roa,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+# Endpoint for Return on Equity (ROE)
+@app.get("/return_on_equity", tags=["roe"], description="Calculate Return on Equity (ROE)")
+def calculate_roe(net_income: float, shareholders_equity: float) -> Union[float, HTTPException]:
+    try:
+        roe = functions.calculate_roe(net_income, shareholders_equity)
+        return {
+            "Tag": "Return on Equity (ROE)",
+            "Net Income": net_income,
+            "Shareholders' Equity": shareholders_equity,
+            "ROE": roe,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+# Endpoint for Debt Ratio
+@app.get("/debt_ratio", tags=["debt_ratio"], description="Calculate Debt Ratio")
+def calculate_debt_ratio(total_debt: float, total_assets: float) -> Union[float, HTTPException]:
+    try:
+        debt_ratio = functions.calculate_debt_ratio(total_debt, total_assets)
+        return {
+            "Tag": "Debt Ratio",
+            "Total Debt": total_debt,
+            "Total Assets": total_assets,
+            "Debt Ratio": debt_ratio,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+# Endpoint for Equity Ratio
+@app.get("/equity_ratio", tags=["equity_ratio"], description="Calculate Equity Ratio")
+def calculate_equity_ratio(total_equity: float, total_assets: float) -> Union[float, HTTPException]:
+    try:
+        equity_ratio = functions.calculate_equity_ratio(total_equity, total_assets)
+        return {
+            "Tag": "Equity Ratio",
+            "Total Equity": total_equity,
+            "Total Assets": total_assets,
+            "Equity Ratio": equity_ratio,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+# Endpoint for Times Interest Earned (TIE) Ratio
+@app.get("/tie_ratio", tags=["tie_ratio"], description="Calculate Times Interest Earned (TIE) Ratio")
+def calculate_tie_ratio(operating_income: float, interest_expense: float) -> Union[float, HTTPException]:
+    try:
+        tie_ratio = functions.calculate_tie_ratio(operating_income, interest_expense)
+        return {
+            "Tag": "Times Interest Earned (TIE) Ratio",
+            "Operating Income": operating_income,
+            "Interest Expense": interest_expense,
+            "TIE Ratio": tie_ratio,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+# Endpoint for Working Capital Ratio
+@app.get("/working_capital_ratio", tags=["working_capital_ratio"], description="Calculate Working Capital Ratio")
+def calculate_working_capital_ratio(current_assets: float, current_liabilities: float) -> Union[float, HTTPException]:
+    try:
+        working_capital_ratio = functions.calculate_working_capital_ratio(current_assets, current_liabilities)
+        return {
+            "Tag": "Working Capital Ratio",
+            "Current Assets": current_assets,
+            "Current Liabilities": current_liabilities,
+            "Working Capital Ratio": working_capital_ratio,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+# Endpoint for Dividend Discount Model (DDM)
+@app.get("/dividend_discount_model", tags=["ddm"], description="Calculate Dividend Discount Model (DDM)")
+def calculate_ddm(dividend: float, discount_rate: float) -> Union[float, HTTPException]:
+    try:
+        ddm = functions.calculate_ddm(dividend, discount_rate)
+        return {
+            "Tag": "Dividend Discount Model (DDM)",
+            "Dividend": dividend,
+            "Discount Rate": discount_rate,
+            "DDM": ddm,
+        }
+    except Exception as e:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
