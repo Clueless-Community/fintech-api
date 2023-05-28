@@ -2522,31 +2522,7 @@ def calculate_bvps(stockholders_equity, preferred_stock, average_outstanding_sha
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-@app.get("/present_value", tags=["present_value"], description="Calculate Present Value (PV)")
-def calculate_present_value(cashflows: List[float], discount_rate: float) -> Union[float, HTTPException]:
-    try:
-        pv = functions.calculate_present_value(cashflows, discount_rate)
-        return {
-            "Tag": "Present Value (PV)",
-            "Cashflows": cashflows,
-            "Discount Rate": discount_rate,
-            "PV": pv,
-        }
-    except Exception as e:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
-@app.get("/return_on_investment", tags=["roi"], description="Calculate Return on Investment (ROI)")
-def calculate_roi(investment: float, net_profit: float) -> Union[float, HTTPException]:
-    try:
-        roi = functions.calculate_roi(investment, net_profit)
-        return {
-            "Tag": "Return on Investment (ROI)",
-            "Investment": investment,
-            "Net Profit": net_profit,
-            "ROI": roi,
-        }
-    except Exception as e:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 # Endpoint for Net Present Value (NPV)
 @app.get("/net_profit_value", tags=["npv"], description="Calculate Net Present Value (NPV)")
@@ -2632,7 +2608,7 @@ def calculate_equity_ratio(total_equity: float, total_assets: float) -> Union[fl
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 # Endpoint for Times Interest Earned (TIE) Ratio
-@app.get("/tie_ratio", tags=["tie_ratio"], description="Calculate Times Interest Earned (TIE) Ratio")
+@app.get("/times_interest_earned_ratio", tags=["tie_ratio"], description="Calculate Times Interest Earned (TIE) Ratio")
 def calculate_tie_ratio(operating_income: float, interest_expense: float) -> Union[float, HTTPException]:
     try:
         tie_ratio = functions.calculate_tie_ratio(operating_income, interest_expense)
