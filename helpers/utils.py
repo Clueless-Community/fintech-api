@@ -1,6 +1,6 @@
-def percent_to_decimal(percent: int | float) -> float:
+def percent_to_decimal(percent: float) -> float:
     return percent / 100
 
 
-def decimal_to_percent(decimal: int | float) -> int | float:
+def decimal_to_percent(decimal: float) -> float:
     return decimal * 100
