@@ -4,7 +4,6 @@ import pandas as pd
 import math
 import datetime
 from dateutil.relativedelta import relativedelta
-from utils import *
 
 # Function to Calculate Simple Interest Rate
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
@@ -12,6 +11,14 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
     interest_paid = amount_paid - principle_amount
     rate = decimal_to_percent(interest_paid) / (principle_amount * term)
     return rate
+
+# Calculate percent to decimal
+def percent_to_decimal(percent: int | float) -> float:
+    return percent / 100
+
+# Calculate decimal to percent
+def decimal_to_percent(decimal: int | float) -> int | float:
+    return decimal * 100
 
 
 # Function to Calculate Loan Emi
