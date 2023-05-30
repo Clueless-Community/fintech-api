@@ -1406,3 +1406,47 @@ def calculate_gratuity(last_salary : float, tenure_years : int, tenure_months : 
     if tenure < 5: 
          return 0
     return round((15 * last_salary * tenure) / 26)
+def accrint(issue_date:str, settlement_date:str, rate:float, par:float, frequency:int=1, basis:int=0):
+    """
+    A function to calculate the accrued interest for a security that pays periodic interest.
+
+    Args:
+        issue_date: str (MM-DD-YYYY)
+        settlement_date: str (MM-DD-YYYY)
+        rate: float (indicates rate in percent)
+        par: float
+        frequency: int
+        basis: int (between 0 and 4)
+
+    Returns:
+        acrrued_interest : float
+
+    Examples:
+        accrint("01-01-2012","15-02-2012",5.25,5000,4,3)
+        >> 32.363013698630134
+    """
+    rate = rate/100
+    issue_date = datetime.datetime.strptime(issue_date,"%d-%m-%Y")
+    settlement_date = datetime.datetime.strptime(settlement_date,"%d-%m-%Y")
+    # Validate basis value
+    if basis not in range(5):
+        raise ValueError("Invalid basis value. Expected a value between 0 and 4.")
+
+    # Calculate the number of interest periods based on the specified basis
+    if basis == 0:  # US (NASD) 30/360 basis
+        periods = (settlement_date.year - issue_date.year) * frequency + (settlement_date.month - issue_date.month) / 12 * frequency
+    elif basis == 1:  # Actual/actual basis
+        periods = (settlement_date - issue_date).days / 365 * frequency
+    elif basis == 2:  # Actual/360 basis
+        periods = (settlement_date - issue_date).days / 360 * frequency
+    elif basis == 3:  # Actual/365 basis
+        periods = (settlement_date - issue_date).days / 365 * frequency
+    elif basis == 4:  # European 30/360 basis
+        periods = (settlement_date.year - issue_date.year) * frequency + (settlement_date.month - issue_date.month) / 12 * frequency
+        if settlement_date.day == 31:
+            periods -= 1 / 12 * frequency
+
+    # Calculate the accrued interest
+    accrint = par * rate * periods / frequency
+
+    return accrint
