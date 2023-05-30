@@ -1689,6 +1689,24 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
+**GET** `/gratuity-amount`
+- Required parameters : `last_salary`,
+        `tenure_years`,
+        `tenure_months`,
+- Sample Request: `GET`, `http://localhost:8000/calculate_gratuity?last_salary=20000000&tenure_years=10&tenure_months=1`,    
+- Sample output
+```py
+{
+  {
+  "Tag":"Gratuity",
+  "Last salary (basic + dearness allowance)":20000000.0,
+  "Tenure in years (excluding last partial year)":10,
+  "Last partial year in months":1,
+  "Gratuity Amount":"115384615"
+  }
+}
+```
+
 **GET** `/calculate_market_cap`
 -Required parameters: `urrent_market_share_price`,`total_number_of_shares_outstanding`,
 -Sample Output
