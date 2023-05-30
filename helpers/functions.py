@@ -1335,6 +1335,11 @@ def calculate_gst(price, gst_rate):
     total_price = price + gst_amount
     return gst_amount, total_price
 
+#function to calculate marketcap
+
+def calculate_market_cap(current_market_share_price,total_number_of_shares_outstanding):
+    market_cap = current_market_share_price * total_number_of_shares_outstanding
+    return market_cap
 
 #Calculate Annual Debt Service Coverage Ratio (ADSCR)
 def annual_debt_service_coverage_ratio(net_operating_cost: float, depreciation: float, non_cash_expenses: float, annual_debt_service: float):
@@ -1391,3 +1396,13 @@ def calculate_bvps(stockholders_equity, preferred_stock, average_outstanding_sha
     """
     book_value = (stockholders_equity - preferred_stock) / average_outstanding_shares
     return book_value
+
+# function to calculate the gratuity amount
+def calculate_gratuity(last_salary : float, tenure_years : int, tenure_months : int) -> float:
+    if tenure_months >= 12:
+        raise Exception
+    round_off = 1 if tenure_months > 6 else 0 
+    tenure = tenure_years + round_off
+    if tenure < 5: 
+         return 0
+    return round((15 * last_salary * tenure) / 26)
