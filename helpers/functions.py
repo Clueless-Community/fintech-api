@@ -1335,6 +1335,11 @@ def calculate_gst(price, gst_rate):
     total_price = price + gst_amount
     return gst_amount, total_price
 
+#function to calculate marketcap
+
+def calculate_market_cap(current_market_share_price,total_number_of_shares_outstanding):
+    market_cap = current_market_share_price * total_number_of_shares_outstanding
+    return market_cap
 
 #Calculate Annual Debt Service Coverage Ratio (ADSCR)
 def annual_debt_service_coverage_ratio(net_operating_cost: float, depreciation: float, non_cash_expenses: float, annual_debt_service: float):
