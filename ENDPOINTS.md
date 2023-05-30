@@ -1370,7 +1370,7 @@
 }
 ```
 
-**GET* `calculate_lumpsum`
+\*_GET_ `calculate_lumpsum`
 -Required Parameters: `principal`, `interest_rate `, `years`
 -sample output
 
@@ -1383,10 +1383,10 @@
     "interest_earned": 4693.28
 }
 ```
+
 =======
 
 Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
-
 
 **GET** `/FHA_loan`
 
@@ -1425,7 +1425,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-```
+````
 =======
 **GET** `/diluted-earnings-per-share`
 
@@ -1440,7 +1440,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 "Number of Dilutive Securities":100000.0,
 "Diluted EPS":"1.6666666666666667"
 }
-```
+````
 
 =======
 **GET** `/refinance`
@@ -1485,6 +1485,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
+
 **GET** `/fixed_deposit_maturity`
 
 - Required parameters : `principle_amount`, `years`, `roi`, `compounding` <i>(calculated in monthly ,quaterly ,halfyearly, yearly)</i>
@@ -1504,6 +1505,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 }
 ```
+
 **GET** `/recurring_deposit_maturity`
 
 - Required parameters : `principle_amount`, `years`, `roi`, `compounding` <i>(calculated in monthly ,quaterly ,halfyearly, yearly)</i>
@@ -1524,12 +1526,10 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-
 **GET** `/calculate_retirement_goals`
 
 - Required parameters : `retirement_age`,`annual_retirement_expenses`,`inflation_rate`,`annual_retirement_income`,`current_age`
 - Sample output
-
 
 ```py
 {
@@ -1544,8 +1544,10 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 ```
 
 **GET** `/student_loan`
+
 - Required parameters : 'principal','tenure', 'interest_rate'
 - Sample output
+
 ```py
 {
             "Tag": "Student Loan",
@@ -1557,17 +1559,16 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-
 **GET** `/roi_equity_funds`
 
 - Required parameters : `amount_invested`,
-    `amount_returned`,
-    `tenure`,
+  `amount_returned`,
+  `tenure`,
 - Sample output
 
 ```py
 {
-        
+
             "Tag": "Calculate return of investments on equity funds",
             "Amount Invested": 1000,
             "Amount Returned": 2000,
@@ -1581,13 +1582,12 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 **GET** `/calculate_gst`
 
 - Required parameters : `price`,
-    `gst_rate`,
-    
+  `gst_rate`,
 - Sample output
 
 ```py
 {
-        
+
             "Tag": "Calculate GST and Total Price",
             "Original Price":2180,
             "GST rate":18,
@@ -1707,3 +1707,16 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
+**GET** `/calculate_market_cap`
+-Required parameters: `urrent_market_share_price`,`total_number_of_shares_outstanding`,
+-Sample Output
+
+```py
+{
+  "Tag":"Market capitalization value",
+  "Current market share price":1000000,
+  "Total number of shares outstanding":200,
+  "Marketcap value":"200000000"
+}
+
+```
