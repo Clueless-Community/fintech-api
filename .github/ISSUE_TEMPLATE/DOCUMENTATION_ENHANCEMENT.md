@@ -1,7 +1,7 @@
 ---
 name: 📄 Improve documentation
-about: Can you imporve our documentations. Contribute here!
-title: '[Documentation]<description>'
+about: Can you improve our documentations? Contribute here!
+title: '[Documentation] <description>'
 labels: documentation
 assignees: ''
 
@@ -9,8 +9,8 @@ assignees: ''
 <!-- Put a 'x' between the box  and avoid spaces to tickmark.
 Example: 
 - [ x]  WRONG
--  [x ] WRONG
--  [x] CORRECT   
+- [x ] WRONG
+- [x] CORRECT
  -->
 
 ## How would you like to contribute?

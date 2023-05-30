@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, status
 from helpers import functions
 
+
 app = FastAPI(
     title="FinTech API",
     description="An API that helps you to deal with your financial calculations.",
@@ -32,7 +33,7 @@ def index():
             "name": " MIT license",
             "url": "https://github.com/Clueless-Community/fintech-api/blob/main/LICENSE.md",
         },
-        "endpoints": {'/simple_interest_rate': 'Calculate simple interest rates', '/future_sip': 'Calculate Future Value of SIP', '/calculate_pension': 'Calculate pension', '/payback_period': 'Calculate payback period', '/compound_interest': 'Calculate compound interest amount', '/certificate_of_deposit': 'Calculate certificate of deposit (CD)', '/inflation': 'Calculate Inflated amount', '/effective_annual_rate': 'Calculate Effective Annual Rate', '/roi': 'Calculate return on investment', '/compounded_annual_growth_rate': 'Calculate compounded annual growth rate', '/jensens_alpha': "Calculate Jensen's Alpha of a market return", '/wacc': 'Calculate Weighted Average Cost of Capital (WACC)', '/loan_emi': 'Calculate Loan EMI', '/asset_portfolio': 'Calculate Variance of a Two Asset Portfolio', '/put_call_parity': 'Calculate Future Price in Pull-Call Parity', '/bep': 'Calculate Break Even Point', '/fcff': 'Calculate Free Cash Flow to Firm', '/price_to_earning_ratio': 'Calculate price to earning ratio', '/dividend_yield_ratio': 'Calculate dividend yield ratio', '/dividend_payout_ratio': 'Calculate dividend payout ratio', '/debt_to_income_ratio': 'Calculate debt to income ratio per month', '/fixed_charges_coverage_ratio': 'Calculate fixed charges coverage ratio', '/inventory_shrinkage_rate': 'Calculate inventory shrinkage rate', '/markup_percentage': 'Calculate markup percentage', '/sharpe_ratio': 'Calculate sharpe ratio', '/purchasing_power': 'Calculate Purchasing Power', '/monthly_emi': 'Monthly EMI', '/doubling_time': 'Doubling Time', '/weighted_average': 'Weighted Average', '/capital_Asset_Pricing_Model': 'Calculating Capital Asset Pricing Model', '/cost_of_equity': 'Calculate cost of equity', '/cogs': 'Calculate Cost of Goods Sold', '/ruleof72': 'Calculate Rule of 72', '/acid_test_ratio': 'Calculate Acid test ratio', '/inflation_adjusted_return': 'Calculate Inflation Adjusted Return', '/cogr': 'Calculate Compound Annual Growth Rate', '/current_liability_coverage_ratio': 'Calculating current liability coverage ratio', '/levered_beta': 'Levered Beta', '/monthly_payment': 'Monthly payment', '/convexity_duration': 'Convexity Adjusted Duration', '/current_ratio': 'Current Ratio', '/inventory_turnover_ratio': 'Inventory Turnover Ratio', '/inflation_rate': 'Inflation Rate', '/herfindal_Index': 'Calculating herfindal Index', '/discount_opex': 'Discount OPEX', '/project_efficiency': 'Project Efficiency', '/real_gdp': 'Real GDP', '/excess_reserves': 'Excess Reserves', '/discounted_cash_flow': 'Discounted cash flow', '/gdp_growth_rate': 'GDP Growth Rate', '/credit_card_equation': 'Credit Card Equation', '/credit_card_payoff': 'Credit Card Payoff using Debt Avalanche method', '/future_value_of_ordinary_due': 'Calculating future value of ordinary annuity', '/future_value_of_annuity_due': 'Calculating future value of annuity due', '/present_value_of_annuity_due': 'Calculating present value of annuity due', '/compound_annual_growth_rate': 'Calculating compound annual growth rate', '/loan_to_value': 'Calculating loan to value ratio', '/retention_ratio': 'Calculating retention ratio', '/tax_equivalent_yield': 'Calculating tax equivalent yield', '/year_to_year': 'Calculating Year to Year Growth', '/future_value_of_annuity': 'Calculating future worth of annuity', '/balloon_balance': 'Calculating Balloon Balance of a Loan', '/periodic_lease_payment': 'Calculating Periodic lease payment', '/weighted_average_of_values': 'Calculating weighted average', '/discounted_payback_period': 'Calculating discounted payback period', '/yield_to_maturity': 'Calculating Yield to Maturity', '/perpetuity_payment': 'Calculating perpetuity payment', '/zero_coupoun_bond_value': 'Calculating zero coupoun bond value', '/zero_coupoun_bond_yield': 'Calculating Zero Coupon Bond Effective Yield', '/profitability_index': 'Calculating profitability index', '/profitability_index2': 'Calculating profitability index using annual cash flows', '/receivables_turnover_ratio': 'Calculating receivables turnover ratio', '/remaining_balance': 'Calculating remaining balance', '/net_present_value': 'Calculating net present value', '/leverage_ratio_income': 'Calculate Leverage Ratio', '/leverage_ratio_equity': 'Calculate Leverage Ratio', '/time_period_required_for_growth': 'Calculating the time period required for exponential growth', '/preferred-stock-value': 'Calculating the preferred stock value', '/asset_turnover_ratio': 'Calculate asset turnover ratio', '/bid-ask-spread': 'Calculating the Bid Ask Spread', '/calculate-period-FV-PV-rate': 'Calculating No of Periods(Time in years) with respect to Present value(PV) and Future value(FV)', '/balloon-loan-payment': 'Calculating the payments on a loan that has a balance remaining after all periodic payments are mad using balloon laon payment formula', '/monthly_lease_payment': 'Calculating Monthly lease payment', '/401k': 'Calculating an estimate of the 401(k) balance at retirement', '/roth-ira': 'This calculator estimates the balances of Roth IRA savings and regular taxable savings.', '/mortgage-amortization': 'Calculating annual or monthly amortization schedule for a mortgage loan.', '/fha-loan': '', '/enterprise-value': 'Calculating Enterprise Value for a publicly listed company.', '/salary-calculate': 'Converts salary amounts to their corresponding values based on payment frequency.', '/personal_loan': 'Calculate personal loan', '/lumpsum': '', '/refinance': 'Calculate refinance', '/commission_calc': 'compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.', '/college_cost': 'calculate total college fee of one year assuming full tuition fee is being paid.', '/diluted-earnings-per-share': 'Calculate Diluted Earnings Per Share (EPS).'}
+        "endpoints": {'/simple_interest_rate': 'Calculate simple interest rates', '/future_sip': 'Calculate Future Value of SIP', '/calculate_pension': 'Calculate pension', '/payback_period': 'Calculate payback period', '/compound_interest': 'Calculate compound interest amount', '/certificate_of_deposit': 'Calculate certificate of deposit (CD)', '/inflation': 'Calculate Inflated amount', '/effective_annual_rate': 'Calculate Effective Annual Rate', '/roi': 'Calculate return on investment', '/compounded_annual_growth_rate': 'Calculate compounded annual growth rate', '/jensens_alpha': "Calculate Jensen's Alpha of a market return", '/wacc': 'Calculate Weighted Average Cost of Capital (WACC)', '/loan_emi': 'Calculate Loan EMI', '/asset_portfolio': 'Calculate Variance of a Two Asset Portfolio', '/put_call_parity': 'Calculate Future Price in Pull-Call Parity', '/bep': 'Calculate Break Even Point', '/fcff': 'Calculate Free Cash Flow to Firm', '/price_to_earning_ratio': 'Calculate price to earning ratio', '/dividend_yield_ratio': 'Calculate dividend yield ratio', '/dividend_payout_ratio': 'Calculate dividend payout ratio', '/debt_to_income_ratio': 'Calculate debt to income ratio per month', '/fixed_charges_coverage_ratio': 'Calculate fixed charges coverage ratio', '/inventory_shrinkage_rate': 'Calculate inventory shrinkage rate', '/markup_percentage': 'Calculate markup percentage', '/sharpe_ratio': 'Calculate sharpe ratio', '/purchasing_power': 'Calculate Purchasing Power', '/monthly_emi': 'Monthly EMI', '/doubling_time': 'Doubling Time', '/weighted_average': 'Weighted Average', '/capital_Asset_Pricing_Model': 'Calculating Capital Asset Pricing Model', '/cost_of_equity': 'Calculate cost of equity', '/cogs': 'Calculate Cost of Goods Sold', '/ruleof72': 'Calculate Rule of 72', '/acid_test_ratio': 'Calculate Acid test ratio', '/inflation_adjusted_return': 'Calculate Inflation Adjusted Return', '/cogr': 'Calculate Compound Annual Growth Rate', '/current_liability_coverage_ratio': 'Calculating current liability coverage ratio', '/levered_beta': 'Levered Beta', '/monthly_payment': 'Monthly payment', '/convexity_duration': 'Convexity Adjusted Duration', '/current_ratio': 'Current Ratio', '/inventory_turnover_ratio': 'Inventory Turnover Ratio', '/inflation_rate': 'Inflation Rate', '/herfindal_Index': 'Calculating herfindal Index', '/discount_opex': 'Discount OPEX', '/project_efficiency': 'Project Efficiency', '/real_gdp': 'Real GDP', '/excess_reserves': 'Excess Reserves', '/discounted_cash_flow': 'Discounted cash flow', '/gdp_growth_rate': 'GDP Growth Rate', '/credit_card_equation': 'Credit Card Equation', '/credit_card_payoff': 'Credit Card Payoff using Debt Avalanche method', '/future_value_of_ordinary_due': 'Calculating future value of ordinary annuity', '/future_value_of_annuity_due': 'Calculating future value of annuity due', '/present_value_of_annuity_due': 'Calculating present value of annuity due', '/compound_annual_growth_rate': 'Calculating compound annual growth rate', '/loan_to_value': 'Calculating loan to value ratio', '/retention_ratio': 'Calculating retention ratio', '/tax_equivalent_yield': 'Calculating tax equivalent yield', '/year_to_year': 'Calculating Year to Year Growth', '/future_value_of_annuity': 'Calculating future worth of annuity', '/balloon_balance': 'Calculating Balloon Balance of a Loan', '/periodic_lease_payment': 'Calculating Periodic lease payment', '/weighted_average_of_values': 'Calculating weighted average', '/discounted_payback_period': 'Calculating discounted payback period', '/yield_to_maturity': 'Calculating Yield to Maturity', '/perpetuity_payment': 'Calculating perpetuity payment', '/zero_coupoun_bond_value': 'Calculating zero coupoun bond value', '/zero_coupoun_bond_yield': 'Calculating Zero Coupon Bond Effective Yield', '/profitability_index': 'Calculating profitability index', '/profitability_index2': 'Calculating profitability index using annual cash flows', '/receivables_turnover_ratio': 'Calculating receivables turnover ratio', '/remaining_balance': 'Calculating remaining balance', '/net_present_value': 'Calculating net present value', '/leverage_ratio_income': 'Calculate Leverage Ratio', '/leverage_ratio_equity': 'Calculate Leverage Ratio', '/time_period_required_for_growth': 'Calculating the time period required for exponential growth', '/preferred-stock-value': 'Calculating the preferred stock value', '/asset_turnover_ratio': 'Calculate asset turnover ratio', '/bid-ask-spread': 'Calculating the Bid Ask Spread', '/calculate-period-FV-PV-rate': 'Calculating No of Periods(Time in years) with respect to Present value(PV) and Future value(FV)', '/balloon-loan-payment': 'Calculating the payments on a loan that has a balance remaining after all periodic payments are mad using balloon laon payment formula', '/monthly_lease_payment': 'Calculating Monthly lease payment', '/401k': 'Calculating an estimate of the 401(k) balance at retirement', '/roth-ira': 'This calculator estimates the balances of Roth IRA savings and regular taxable savings.', '/mortgage-amortization': 'Calculating annual or monthly amortization schedule for a mortgage loan.', '/fha-loan': '', '/enterprise-value': 'Calculating Enterprise Value for a publicly listed company.', '/salary-calculate': 'Converts salary amounts to their corresponding values based on payment frequency.', '/personal_loan': 'Calculate personal loan', '/lumpsum': '', '/refinance': 'Calculate refinance', '/commission_calc': 'compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.', '/college_cost': 'calculate total college fee of one year assuming full tuition fee is being paid.', '/diluted-earnings-per-share': 'Calculate Diluted Earnings Per Share (EPS).','/asdcr':'Calculate Annual Debt Service Coverage Ratio'}
     }
 
 
@@ -71,7 +72,7 @@ def future_sip(
         return {
             "Tag": "Future Value of SIP",
             "Investment at every Interval": interval_investment,
-            "Interest": (rate_of_return / 100) / 12,
+            "Interest": functions.percent_to_decimal(rate_of_return) / 12,
             "Number of Payments": number_of_payments,
             "Future Value": f"{value}",
         }
@@ -206,17 +207,17 @@ def inflation(present_amount: float, inflation_rate: float, years: float):
     tags=["Effective Annual Rate"],
     description="Calculate Effective Annual Rate",
 )
-def inflation(annual_interest_rate: float, compounding_period: int):
+def effective_annual_rate(annual_interest_rate: float, compounding_period: int):
     try:
-        Eff_annual_rate = functions.effective_annual_rate(
+        eff_annual_rate = functions.effective_annual_rate(
             annual_interest_rate, compounding_period
         )
-        Eff_annual_rate_percentage = Eff_annual_rate * 100
+        eff_annual_rate_percentage = functions.decimal_to_percent(eff_annual_rate)
         return {
             "Tag": "Effective Annual Rate",
             "Annual Intrest Rate": annual_interest_rate,
             "Compounding Period": compounding_period,
-            "Effective Annual Rate (in percentage)": f"{Eff_annual_rate_percentage}%",
+            "Effective Annual Rate (in percentage)": f"{eff_annual_rate_percentage}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -369,7 +370,7 @@ def asset_portfolio(
             + weight_B * weight_B * standard_dev_B * standard_dev_B
             + 2 * weight_A * weight_B * cov
         )
-        expected_return = 100 * (weight_A * return_A + weight_B * return_B)
+        expected_return = functions.decimal_to_percent(weight_A * return_A + weight_B * return_B)
         return {
             "Tag": "Portfolio Variance",
             "Expected Returns": f"{expected_return}%",
@@ -578,7 +579,7 @@ def inventory_shrinkage_rate(recorded_inventory: float, actual_inventory: float)
             "Recorded Inventory": recorded_inventory,
             "Actual Inventory": actual_inventory,
             "Inventory Shrinkage Rate": inventory_shrinkage_rate,
-            "Inventory Shrinkage Rate (%)": inventory_shrinkage_rate * 100,
+            "Inventory Shrinkage Rate (%)": functions.decimal_to_percent(inventory_shrinkage_rate),
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -1961,7 +1962,7 @@ def estimate_401k(
             "withdraw_tax_rate": withdraw_tax_rate,
             "estimated_401k": estimated_401k,
             "annual_withdraw_amount": round(
-                (withdraw_tax_rate / 100) * estimated_401k, 3
+                functions.percent_to_decimal(withdraw_tax_rate) * estimated_401k, 3
             ),
         }
     except:
@@ -2058,9 +2059,9 @@ def fha_loan(
         return {
             "TAG": "FHA Mortgage monthly payments",
             "mortgage_amount": mortgage_amount,
-            "mortgage_deposit": mortgage_deposit_percentage * mortgage_amount * 0.001,
+            "mortgage_deposit": functions.percent_to_decimal(mortgage_deposit_percentage) * mortgage_amount * 0.1,
             "FHA base loan amount": mortgage_amount
-            - (mortgage_deposit_percentage * mortgage_amount * 0.001),
+            - (functions.percent_to_decimal(mortgage_deposit_percentage) * mortgage_amount * 0.1),
             "FHA upfront MIP": upfront_mip,
             "FHA monthly mortgage payments": monthly_payment,
             "FHA Monthly MIP": monthly_mip,
@@ -2153,8 +2154,7 @@ def personal_loan(loan_amount: float, interest_rate: float, loan_term_years: int
 async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
 
     try:
-        interest_rate /= 100 # Convert percentage to decimal
-        total_amount = principal * ((1 + interest_rate) ** years)
+        total_amount = principal * ((1 + functions.percent_to_decimal(interest_rate)) ** years)
         interest_earned = total_amount - principal
         return {"total_amount": round(total_amount, 2), "interest_earned": round(interest_earned, 2)}
     except :
@@ -2373,7 +2373,6 @@ def calculate_gst(price, gst_rate):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
 #Endpoint For calculated annual income needed during retiremnet period
 @app.get("/calculate_retirement_goals",
          tags=["calculate_retirement_goals"],
@@ -2420,3 +2419,122 @@ def calculate_market_cap(current_market_share_price:int,total_number_of_shares_o
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+# Endpoint to calculate Annual Debt Service Coverage Ratio (ADSCR)
+@app.get(
+    "/asdcr",
+    tags=["annual_debt_service_coverage_ratio"],
+    description="Calculate Annual Debt Service Coverage Ratio",
+)
+def asdcr(net_operating_cost: float, depreciation: float, non_cash_expenses: float, annual_debt_service: float):
+    try:
+        asdcr_debt = functions.annual_debt_service_coverage_ratio(net_operating_cost, depreciation, non_cash_expenses, annual_debt_service)
+        return {
+            "Tag": "Annual Debt Service Coverage Ratio",
+            "Annual Debt Ratio": asdcr_debt,
+            "Net Operating Income": net_operating_cost,
+            "Depreciation" : depreciation ,
+            "Non Cash Expenses": non_cash_expenses,
+            "Annual Debt":annual_debt_service
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+      
+# Endpoint to calculate Value Added Tax (VAT)
+@app.get(
+    "/calculate_vat",
+    tags=["VAT"],
+    description="Calculate VAT for both excluding and including amounts",
+)
+async def calculate_vat(price: float, vat_rate: float):
+    try:
+        excluding_vat = price / (1 + functions.percent_to_decimal(vat_rate))
+        including_vat = price
+        vat_amount = price - excluding_vat
+
+        return {
+            "Price (excluding VAT)": excluding_vat,
+            "Price (including VAT)": including_vat,
+            "VAT Amount": vat_amount,
+        }
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred during VAT calculation",
+        )
+
+#Endpoint For calculating bond equivalent yield 
+@app.get( 
+    "/bond_equivalent_yield", 
+    tags=["bond_equivalent_yield"], 
+    description="Calculate bond equivalent yield", 
+) 
+def bond_equivalent_yield(face_value:float, purchase_price:float, days_to_maturity:int): 
+    try: 
+        bey = functions.calculate_bond_equivalent_yield(face_value,purchase_price,days_to_maturity) 
+        return { 
+            "Tag": "Bond Equivalent Yield", 
+            "Face value":face_value, 
+            "Purchase Price": purchase_price, 
+            "Days to maturity": days_to_maturity, 
+            "Bond Equivalent Yield (BEY)": f"{functions.decimal_to_percent(bey)}%",
+        } 
+    except: 
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get("/loan-affordability")
+def calculate_loan_affordability( 
+                                 income: float, # annual Income
+                                 expenses: float, # annual expenses
+                                 loan_term: int, # loan term period 
+                                 interest_rate: float # annual interest rate
+                                 ):
+    """
+    This endpoint is use to check your ability to take any particular Loan on the Basis on
+    your income,expenses,loan_term,intrest_rate, This is basically loan affordability function 
+
+    eg url :- http://127.0.0.1:8000/loan-affordability?income=5000&expenses=2000&loan_term=12&interest_rate=5
+    
+    explanation for calculating max_loan_amount :-
+        (1 + utils.percent_to_decimal(interest_rate)): This calculates the factor by which the loan amount increases due to the interest rate. For example, if the interest rate is 5%, this factor would be 1.05.
+        ** -loan_term: This raises the above factor to the power of negative loan_term. It represents the compounding effect of interest over the loan term. For example, if the loan term is 12 months, this factor would be (1.05) ** -12
+        (1 - (1 + utils.percent_to_decimal(interest_rate)) ** -loan_term): This calculates the ratio of the remaining loan balance after making monthly payments to the initial loan amount. It represents the discounted value of the loan.
+        (monthly_income - monthly_expenses): This calculates the disposable income available for loan repayment each month.
+        (monthly_income - monthly_expenses) * (1 - (1 + utils.percent_to_decimal(interest_rate)) ** -loan_term): This calculates the discounted monthly loan payment amount based on the available disposable income.
+        
+    """
+    try:
+        # monthly_income = income / 12
+        # monthly_expenses = expenses / 12
+
+        max_loan_amount = functions.calculate_max_loan_amount(income, expenses, loan_term, interest_rate)
+
+        return {
+            "income": income,
+            "expenses": expenses,
+            "loan_term": loan_term,
+            "interest_rate": interest_rate,
+            "max_loan_amount": max_loan_amount
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,detail="Some Error occured",)
+
+
+@app.get(
+    "/calculate_bvps",
+    tags=["calculate_bvps"],
+    description="Calculate BVPS (Book value per share)",
+    )
+def calculate_bvps(stockholders_equity, preferred_stock, average_outstanding_shares):
+    try:
+        book_value = functions.calulate_bvps(stockholders_equity, preferred_stock, average_outstanding_shares)
+        return {
+            
+            "Tag": "Calculate Book value per share",
+            "Stockholders Equity":stockholders_equity,
+            "Preferred Stock value":preferred_stock,
+            "Average outstanding shares":average_outstanding_shares,
+            "Book value per share":f"{book_value}"
+            
+            }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
