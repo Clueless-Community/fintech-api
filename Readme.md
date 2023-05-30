@@ -18,6 +18,7 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
   <img src="https://img.shields.io/github/last-commit/Clueless-Community/fintech-api.svg?style=for-the-badge&logo=appveyor" />
 </div>
 
+![ClueLess x GSSOC](https://github.com/Clueless-Community/fintech-api/assets/93722719/978d4ad0-6353-450a-b144-bb591b71223f)
 
 ## ✨ Features
 
