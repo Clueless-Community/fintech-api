@@ -1406,3 +1406,11 @@ def calculate_gratuity(last_salary : float, tenure_years : int, tenure_months : 
     if tenure < 5: 
          return 0
     return round((15 * last_salary * tenure) / 26)
+
+#Function to calculate Personal Savings
+def personal_savings(init:int,
+                     monthly:int,
+                     tenure:float):
+    a=monthly*12*tenure
+    total_amount=a+init
+    return total_amount

@@ -1720,3 +1720,16 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 
 ```
+
+  **GET** `/personal_savings`
+- Required parameters : 'init','monthly', 'tenure'
+- Sample output
+```py
+{
+            "Tag": "Simple Personal Savings",
+            "Initial Deposit":10000,
+            "total number of years":10,
+            "Monthly Contribution":200,
+            "Total Amount saved":34000
+}
+```
