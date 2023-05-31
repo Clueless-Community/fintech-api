@@ -1721,13 +1721,25 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 ```
 
+  **GET** `/personal_savings`
+- Required parameters : 'init','monthly', 'tenure'
+- Sample output
+```py
+{
+            "Tag": "Simple Personal Savings",
+            "Initial Deposit":10000,
+            "total number of years":10,
+            "Monthly Contribution":200,
+            "Total Amount saved":34000
+}
+```
+
 **GET** `/accrint`
 - Required parameters : `issue_date`,`settlement_date`,`rate`,`par`,
 - Sample Request: `GET`, `http://localhost:8000/accrint?issue_date=01-01-2012&settlement_date=15-02-2012&rate=5.25&par=5000&frequency=4&basis=3`,    
 - Sample output
 ```py
 {
-  {
       "Tag":"Accrued Interest",
       "Issue Date":"01-01-2012",
       "Settlement Date":"15-02-2012",
@@ -1736,6 +1748,5 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
       "Frequency":4,
       "Basis":3,
       "Accrued Interest":32.363013698630134
-  }
 }
 ```

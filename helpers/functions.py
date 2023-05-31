@@ -1406,6 +1406,15 @@ def calculate_gratuity(last_salary : float, tenure_years : int, tenure_months : 
     if tenure < 5: 
          return 0
     return round((15 * last_salary * tenure) / 26)
+
+#Function to calculate Personal Savings
+def personal_savings(init:int,
+                     monthly:int,
+                     tenure:float):
+    a=monthly*12*tenure
+    total_amount=a+init
+    return total_amount
+
 def accrint(issue_date:str, settlement_date:str, rate:float, par:float, frequency:int=1, basis:int=0):
     """
     A function to calculate the accrued interest for a security that pays periodic interest.
