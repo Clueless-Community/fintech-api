@@ -900,6 +900,25 @@
 }
 ```
 
+**GET** `/calculate_pension`
+
+- Required parameters : `monthty_investment_amount`,`no_of_years`,`annuity_rates`,`annuity_purchased`,`yearly_interest_rates`
+- Sample output
+
+```py
+{
+    "Tag": "Calculate Pension",
+    "Monthly Investment amount":2000,
+    "No. of years": 36,
+    "Annuity Purchased":40
+    "Annuity Rates": 7,
+    "Interest Rate":9,
+    "Total Corpus":6759114.79,
+    "Lump sum pension":4055468.874,
+    "Monthly Pension":15771.27
+}
+```
+
 **GET** `/inflation`
 
 - Required parameters : `present_amount`,`inflation_rate`,`years`
@@ -1168,8 +1187,8 @@
 - Required parameters : `net_sales`, `total_asset_beginning` and `total_asset_ending`
 - Sample output
 
-
 =======
+
 ```py
 {
     "Tag": "Asset Turnover Ratio",
@@ -1351,10 +1370,10 @@
 }
 ```
 
-
-**GET* `calculate_lumpsum`
+\*_GET_ `calculate_lumpsum`
 -Required Parameters: `principal`, `interest_rate `, `years`
 -sample output
+
 ```py
 {
     "principal"=10000,
@@ -1363,10 +1382,11 @@
      "total_amount": 14693.28,
     "interest_earned": 4693.28
 }
+```
+
 =======
 
 Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
-
 
 **GET** `/FHA_loan`
 
@@ -1403,4 +1423,300 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
   'Commission Rate': '10%',
   'Commission': 50.0
 }
+```
+
+````
+=======
+**GET** `/diluted-earnings-per-share`
+
+- Required parameters : `net_income`, `weighted_avg_shares`, `dilutive_securities`
+- Sample output
+
+```py
+{
+"Tag":"Diluted Earnings Per Share (Diluted EPS)",
+"Net Income":1000000.0,
+"Weighted Average Shares Outstanding":500000.0,
+"Number of Dilutive Securities":100000.0,
+"Diluted EPS":"1.6666666666666667"
+}
+````
+
+=======
+**GET** `/refinance`
+
+- Required parameters : `current_loan_amount`, `current_interest_rate`, `current_loan_term_years`, `time_remaining_years`, `new_interest_rate`, `new_loan_term_years`, `cash_out_amount`
+- Sample output
+
+```py
+{
+    "Tag": "Refinance",
+    "Current loan amount": 330000.0,
+    "Balance left on loan": 170067.93,
+    "New loan amount": 169067.93,
+    "Current monthly payment": 1826.36,
+    "New monthly payment": 1711.73,
+    "Monthly savings": 114.63,
+    "Current interest paid left": 49095.54,
+    "New total interest paid": 36339.74,
+    "Total interest saving": 12755.79,
+    "Current total cost left": 219163.47,
+    "New total cost loan": 205407.68,
+    "Total cost saving": 13755.79
+}
+```
+
+**GET** `/college_cost`
+
+- Required parameters : `book_cost`,`college_tuition`,`Devices`, `travel_expenses`, `hostel_charges`,`mess_fee`,`miscellaneous`
+- Sample output
+
+```py
+{
+            "Tag": "College Cost",
+            "Books cost of one year": 5000,
+            "College tuition fee per year": 200000,
+            "Electronic devices cost":60000,
+            "Monthly Travel expenses":4000,
+            "Monthly Hostel charges":10000,
+            "Monthly mess fee":5000,
+            "monthly miscellaneous expenses":3000,
+            "Total cost of one year": 529000
+
+}
+```
+
+**GET** `/fixed_deposit_maturity`
+
+- Required parameters : `principle_amount`, `years`, `roi`, `compounding` <i>(calculated in monthly ,quaterly ,halfyearly, yearly)</i>
+- Sample output
+
+```py
+{
+
+            "Tag": "Fixed deposit maturity Amount",
+            "Total Value": 138041.98,
+            "Principle amount": 100000,
+            "Interest anount": 38041.98,
+            "Duration in year": 5,
+            "Interest Rate": "6.5%",
+            "compounding rate": "quaterly"
+
+
+}
+```
+
+**GET** `/recurring_deposit_maturity`
+
+- Required parameters : `principle_amount`, `years`, `roi`, `compounding` <i>(calculated in monthly ,quaterly ,halfyearly, yearly)</i>
+- Sample output
+
+```py
+{
+
+            "Tag": "Recurring deposit maturity Amount",
+            "Total Value": 62494.24,
+            "Investment": 5000,
+            "Duration in year": 1,
+            "Principle amount": 60000,
+            "Interest Value": 2494.24,
+            "Interest Rate": "7.5%",
+            "compounding rate": "monthly"
+
+}
+```
+
+**GET** `/calculate_retirement_goals`
+
+- Required parameters : `retirement_age`,`annual_retirement_expenses`,`inflation_rate`,`annual_retirement_income`,`current_age`
+- Sample output
+
+```py
+{
+            "Tag":"Retirement Goals",
+            "Retirement age":65000,
+            "Annual retirement expenses":50000,
+            "inflation rate":0.03,
+            "Annual Retirement Income":20000,
+            "Current Age":40,
+            "Retirement Goals":95010.80947570129
+}
+```
+
+**GET** `/student_loan`
+
+- Required parameters : 'principal','tenure', 'interest_rate'
+- Sample output
+
+```py
+{
+            "Tag": "Student Loan",
+            "Total amount to borrow":300000,
+            "total number of years to pay loan":10,
+            "interest rate percentage annual":9.2,
+            "total monthly cost":3832,
+            "Total Amount of loan":459938
+}
+```
+
+**GET** `/roi_equity_funds`
+
+- Required parameters : `amount_invested`,
+  `amount_returned`,
+  `tenure`,
+- Sample output
+
+```py
+{
+
+            "Tag": "Calculate return of investments on equity funds",
+            "Amount Invested": 1000,
+            "Amount Returned": 2000,
+            "Duration of investment": 2,
+            "Return of Investment": "100%",
+            "Annualized Return": "43.88%"
+
+}
+```
+
+**GET** `/calculate_gst`
+
+- Required parameters : `price`,
+  `gst_rate`,
+- Sample output
+
+```py
+{
+
+            "Tag": "Calculate GST and Total Price",
+            "Original Price":2180,
+            "GST rate":18,
+            "Amount of GST": "392.4",
+            "Total price after GST":"2572.4"
+
+
+}
+```
+
+
+**GET** `/asdcr`
+
+- Required parameters :`net_operating_cost`,
+  `depreciation`,
+  `non_cash_expenses`
+  `annual_debt_service`
+- Sample output
+
+
+```py
+  {
+
+            "Tag":"Annual Debt Service Coverage Ratio",
+            "Annual Debt Ratio":2.0833333333333335,
+            "Net Operating Income":100000.0,
+            "Depreciation":20000.0,
+            "Non Cash Expenses":5000.0,
+            "Annual Debt":60000.0
+    
+  }
+
+```
+
+**GET** `/calculate_vat`
+- required parameters : `price`, `vat_rate`
+- Sample Request: GET /calculate_vat?price=100&vat_rate=20
+- Sample output
+```py
+{
+  "Price (excluding VAT)": 83.33,
+  "Price (including VAT)": 100.0,
+  "VAT Amount": 16.67
+
+} 
+```
+
+**GET** `/bond_equivalent_yield`
+- required parameters : `face_value`, `purchase_price`,`days_to_maturity`
+- Sample Request: GET /bond_equivalent_yield?face_value=1000&purchase_price=900&days_to_maturity=182
+- Sample output
+```py
+{
+  "Tag": "Bond Equivalent Yield",
+  "Face value":1000,
+  "Purchase Price": 900,
+  "Days to maturity": 182,
+  "Bond Equivalent Yield (BEY)": "22.28%"
+}
+```
+
+**GET** `/loan-affordability`
+
+- Required parameters : `income`,
+        `expenses`,
+        `loan_term`,
+        `interest_rate`,
+- Sample Request: `GET`, `http://127.0.0.1:8000/loan-affordability?income=5000&expenses=2000&loan_term=12&interest_rate=5`,    
+
+- Sample output
+
+```py
+{
+
+  "income": 5000.0,
+  "expenses": 2000.0,
+  "loan_term": 12,
+  "interest_rate": 5.0,
+  "max_loan_amount": 2215.8129091122037
+}
+```
+
+**GET** `/calculate_bvps`
+
+- Required parameters : `stockholders_equity`,
+    `preferred_stock`, `average_outstanding_shares`,
+    
+- Sample output
+
+```py
+{
+        
+            "Tag": "Calculate Book value per share",
+            "Stockholders Equity":1000000.0,
+            "Preferred Stock value":50000.0,
+            "Average outstanding shares":50000.0,
+            "Book value per share":"19"
+
+}
+```
+
+**GET** `/gratuity-amount`
+- Required parameters : `last_salary`,
+        `tenure_years`,
+        `tenure_months`,
+- Sample Request: `GET`, `http://localhost:8000/calculate_gratuity?last_salary=20000000&tenure_years=10&tenure_months=1`,    
+- Sample output
+```py
+{
+  {
+  "Tag":"Gratuity",
+  "Last salary (basic + dearness allowance)":20000000.0,
+  "Tenure in years (excluding last partial year)":10,
+  "Last partial year in months":1,
+  "Gratuity Amount":"115384615"
+  }
+}
+```
+
+**GET** `/calculate_market_cap`
+-Required parameters: `urrent_market_share_price`,`total_number_of_shares_outstanding`,
+-Sample Output
+
+```py
+{
+  "Tag":"Market capitalization value",
+  "Current market share price":1000000,
+  "Total number of shares outstanding":200,
+  "Marketcap value":"200000000"
+}
+
 ```
