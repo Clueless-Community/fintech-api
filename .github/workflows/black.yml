@@ -1,7 +1,17 @@
 name: Linting with black
 
-on: [push, pull_request]
-
+on:
+  push:
+      branches:
+        - master
+      paths-ignore:
+        - 'main.py'
+  pull_request:
+      branches:
+        - master
+      paths-ignore:
+        - 'main.py'
+      
 jobs:
 
   black-linting:
