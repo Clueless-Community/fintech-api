@@ -2,13 +2,9 @@ name: Linting with black
 
 on:
   push:
-      branches:
-        - master
       paths-ignore:
         - 'main.py'
   pull_request:
-      branches:
-        - master
       paths-ignore:
         - 'main.py'
       
