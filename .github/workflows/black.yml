@@ -3,10 +3,10 @@ name: Linting with black
 on:
   push:
       paths-ignore:
-        - 'main.p**'
+        - 'main**'
   pull_request:
       paths-ignore:
-        - 'main.p**'
+        - 'main**'
       
 jobs:
 
