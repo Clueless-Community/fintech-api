@@ -2,11 +2,7 @@ name: Linting with black
 
 on:
   push:
-      paths-ignore:
-        - 'main**'
   pull_request:
-      paths-ignore:
-        - 'main**'
       
 jobs:
 
@@ -18,4 +14,7 @@ jobs:
 
       - uses: actions/checkout@v3
 
-      - uses: psf/black@stable
+      - name: Format code with black
+        run: |
+          pip install black
+          black . --exclude "main.py"
