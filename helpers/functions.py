@@ -1459,3 +1459,8 @@ def accrint(issue_date:str, settlement_date:str, rate:float, par:float, frequenc
     accrint = par * rate * periods / frequency
 
     return accrint
+
+# Function to calculate net profit margin
+def calculate_net_profit_margin(net_income : float, revenue : float):
+    calculate_net_profit_margin = (net_income/revenue)*100
+    return calculate_net_profit_margin

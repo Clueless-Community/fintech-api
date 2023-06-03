@@ -1750,3 +1750,18 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
       "Accrued Interest":32.363013698630134
 }
 ```
+
+**GET** `/calculate_net_profit_margin`
+-Required parameters: `net_income`,`revenue`,
+-Sample Output
+
+```py
+{
+  "Tag":"Net Profit Margin",
+  "net_income":100,
+  "revenue":200,
+  "net_profit_margin": 50
+}
+
+```
+
