@@ -2820,15 +2820,22 @@ def accrued_interest(
     tags=["net_profit_margin"],
     description="Calculate net profit margin",
     )
-def calculate_net_profit_margin(net_profit : float, revenue : float):
+def calculate_net_profit_margin(revenue : float, 
+                                cost_of_goods_sold : float, 
+                                operating_expenses : float, 
+                                other_expenses : float,         
+                                interest : float,
+                                taxes : float):
     try:
-        net_profit_margin = functions.calulate_net_profit_margin(net_profit, revenue)
+        net_profit_margin = functions.calulate_net_profit_margin(revenue, cost_of_goods_sold, operating_expenses, other_expenses, interest, taxes)
         return {
-            
             "Tag": "Calculate net profit margin",
-            "Net Profit": net_profit,
             "Revenue": revenue,
-            "Net Profit Margin":net_profit_margin
+            "Cost of goods sold": cost_of_goods_sold,
+            "Operating Expenses": operating_expenses,
+            "Interest": interest,
+            "Taxes": taxes,
+            "Net Profit Margin": net_profit_margin,
             
             }
     except:

@@ -1752,15 +1752,18 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 ```
 
 **GET** `/calculate_net_profit_margin`
--Required parameters: `net_income`,`revenue`,
+-Required parameters: `revenue`, `cost_of_goods_sold`, `operating_expenses`, `other_expenses`, `interest`, `taxes`
 -Sample Output
-
 ```py
 {
   "Tag":"Net Profit Margin",
-  "net_income":100,
-  "revenue":200,
-  "net_profit_margin": 50
+  "revenue": 1000,
+  "cost_of_goods_sold": 200,
+  "operating_expenses": 100,
+  "other_expenses": 50,
+  "interest": 250,
+  "taxes": 50,
+  "net_profit_margin": 45
 }
 
 ```
