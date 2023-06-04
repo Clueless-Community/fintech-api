@@ -2580,16 +2580,14 @@ def calculate_gratuity(
 def personal_savings(init:int,
                      monthly:int,
                      tenure:float):
-    try:
-        personal_savings = functions.personal_savings(init,monthly,tenure)
-        return {
-
-            "Tag": "Simple Personal Savings",
-            "Initial Deposit":init,
-            "total number of years":tenure,
-            "Monthly Contribution":monthly,
-            "Total Amount Saved": f"{total_amount}",
-            }
+    total_amount = functions.personal_savings(init,monthly,tenure)
+    return {
+        "Tag": "Simple Personal Savings",
+        "Initial Deposit":init,
+        "total number of years":tenure,
+        "Monthly Contribution":monthly,
+        "Total Amount Saved": f"{total_amount}",
+    }
 
 @app.get(
     "/accrint",
