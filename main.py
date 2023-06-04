@@ -33,7 +33,104 @@ def index():
             "name": " MIT license",
             "url": "https://github.com/Clueless-Community/fintech-api/blob/main/LICENSE.md",
         },
-        "endpoints": {'/simple_interest_rate': 'Calculate simple interest rates', '/future_sip': 'Calculate Future Value of SIP', '/calculate_pension': 'Calculate pension', '/payback_period': 'Calculate payback period', '/compound_interest': 'Calculate compound interest amount', '/certificate_of_deposit': 'Calculate certificate of deposit (CD)', '/inflation': 'Calculate Inflated amount', '/effective_annual_rate': 'Calculate Effective Annual Rate', '/roi': 'Calculate return on investment', '/compounded_annual_growth_rate': 'Calculate compounded annual growth rate', '/jensens_alpha': "Calculate Jensen's Alpha of a market return", '/wacc': 'Calculate Weighted Average Cost of Capital (WACC)', '/loan_emi': 'Calculate Loan EMI', '/asset_portfolio': 'Calculate Variance of a Two Asset Portfolio', '/put_call_parity': 'Calculate Future Price in Pull-Call Parity', '/bep': 'Calculate Break Even Point', '/fcff': 'Calculate Free Cash Flow to Firm', '/price_to_earning_ratio': 'Calculate price to earning ratio', '/dividend_yield_ratio': 'Calculate dividend yield ratio', '/dividend_payout_ratio': 'Calculate dividend payout ratio', '/debt_to_income_ratio': 'Calculate debt to income ratio per month', '/fixed_charges_coverage_ratio': 'Calculate fixed charges coverage ratio', '/inventory_shrinkage_rate': 'Calculate inventory shrinkage rate', '/markup_percentage': 'Calculate markup percentage', '/sharpe_ratio': 'Calculate sharpe ratio', '/purchasing_power': 'Calculate Purchasing Power', '/monthly_emi': 'Monthly EMI', '/doubling_time': 'Doubling Time', '/weighted_average': 'Weighted Average', '/capital_Asset_Pricing_Model': 'Calculating Capital Asset Pricing Model', '/cost_of_equity': 'Calculate cost of equity', '/cogs': 'Calculate Cost of Goods Sold', '/ruleof72': 'Calculate Rule of 72', '/acid_test_ratio': 'Calculate Acid test ratio', '/inflation_adjusted_return': 'Calculate Inflation Adjusted Return', '/cogr': 'Calculate Compound Annual Growth Rate', '/current_liability_coverage_ratio': 'Calculating current liability coverage ratio', '/levered_beta': 'Levered Beta', '/monthly_payment': 'Monthly payment', '/convexity_duration': 'Convexity Adjusted Duration', '/current_ratio': 'Current Ratio', '/inventory_turnover_ratio': 'Inventory Turnover Ratio', '/inflation_rate': 'Inflation Rate', '/herfindal_Index': 'Calculating herfindal Index', '/discount_opex': 'Discount OPEX', '/project_efficiency': 'Project Efficiency', '/real_gdp': 'Real GDP', '/excess_reserves': 'Excess Reserves', '/discounted_cash_flow': 'Discounted cash flow', '/gdp_growth_rate': 'GDP Growth Rate', '/credit_card_equation': 'Credit Card Equation', '/credit_card_payoff': 'Credit Card Payoff using Debt Avalanche method', '/future_value_of_ordinary_due': 'Calculating future value of ordinary annuity', '/future_value_of_annuity_due': 'Calculating future value of annuity due', '/present_value_of_annuity_due': 'Calculating present value of annuity due', '/compound_annual_growth_rate': 'Calculating compound annual growth rate', '/loan_to_value': 'Calculating loan to value ratio', '/retention_ratio': 'Calculating retention ratio', '/tax_equivalent_yield': 'Calculating tax equivalent yield', '/year_to_year': 'Calculating Year to Year Growth', '/future_value_of_annuity': 'Calculating future worth of annuity', '/balloon_balance': 'Calculating Balloon Balance of a Loan', '/periodic_lease_payment': 'Calculating Periodic lease payment', '/weighted_average_of_values': 'Calculating weighted average', '/discounted_payback_period': 'Calculating discounted payback period', '/yield_to_maturity': 'Calculating Yield to Maturity', '/perpetuity_payment': 'Calculating perpetuity payment', '/zero_coupoun_bond_value': 'Calculating zero coupoun bond value', '/zero_coupoun_bond_yield': 'Calculating Zero Coupon Bond Effective Yield', '/profitability_index': 'Calculating profitability index', '/profitability_index2': 'Calculating profitability index using annual cash flows', '/receivables_turnover_ratio': 'Calculating receivables turnover ratio', '/remaining_balance': 'Calculating remaining balance', '/net_present_value': 'Calculating net present value', '/leverage_ratio_income': 'Calculate Leverage Ratio', '/leverage_ratio_equity': 'Calculate Leverage Ratio', '/time_period_required_for_growth': 'Calculating the time period required for exponential growth', '/preferred-stock-value': 'Calculating the preferred stock value', '/asset_turnover_ratio': 'Calculate asset turnover ratio', '/bid-ask-spread': 'Calculating the Bid Ask Spread', '/calculate-period-FV-PV-rate': 'Calculating No of Periods(Time in years) with respect to Present value(PV) and Future value(FV)', '/balloon-loan-payment': 'Calculating the payments on a loan that has a balance remaining after all periodic payments are mad using balloon laon payment formula', '/monthly_lease_payment': 'Calculating Monthly lease payment', '/401k': 'Calculating an estimate of the 401(k) balance at retirement', '/roth-ira': 'This calculator estimates the balances of Roth IRA savings and regular taxable savings.', '/mortgage-amortization': 'Calculating annual or monthly amortization schedule for a mortgage loan.', '/fha-loan': '', '/enterprise-value': 'Calculating Enterprise Value for a publicly listed company.', '/salary-calculate': 'Converts salary amounts to their corresponding values based on payment frequency.', '/personal_loan': 'Calculate personal loan', '/lumpsum': '', '/refinance': 'Calculate refinance', '/commission_calc': 'compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.', '/college_cost': 'calculate total college fee of one year assuming full tuition fee is being paid.', '/diluted-earnings-per-share': 'Calculate Diluted Earnings Per Share (EPS).','/asdcr':'Calculate Annual Debt Service Coverage Ratio'}
+        "endpoints": {
+            "/simple_interest_rate": "Calculate simple interest rates",
+            "/future_sip": "Calculate Future Value of SIP",
+            "/calculate_pension": "Calculate pension",
+            "/payback_period": "Calculate payback period",
+            "/compound_interest": "Calculate compound interest amount",
+            "/certificate_of_deposit": "Calculate certificate of deposit (CD)",
+            "/inflation": "Calculate Inflated amount",
+            "/effective_annual_rate": "Calculate Effective Annual Rate",
+            "/roi": "Calculate return on investment",
+            "/compounded_annual_growth_rate": "Calculate compounded annual growth rate",
+            "/jensens_alpha": "Calculate Jensen's Alpha of a market return",
+            "/wacc": "Calculate Weighted Average Cost of Capital (WACC)",
+            "/loan_emi": "Calculate Loan EMI",
+            "/asset_portfolio": "Calculate Variance of a Two Asset Portfolio",
+            "/put_call_parity": "Calculate Future Price in Pull-Call Parity",
+            "/bep": "Calculate Break Even Point",
+            "/fcff": "Calculate Free Cash Flow to Firm",
+            "/price_to_earning_ratio": "Calculate price to earning ratio",
+            "/dividend_yield_ratio": "Calculate dividend yield ratio",
+            "/dividend_payout_ratio": "Calculate dividend payout ratio",
+            "/debt_to_income_ratio": "Calculate debt to income ratio per month",
+            "/fixed_charges_coverage_ratio": "Calculate fixed charges coverage ratio",
+            "/inventory_shrinkage_rate": "Calculate inventory shrinkage rate",
+            "/markup_percentage": "Calculate markup percentage",
+            "/sharpe_ratio": "Calculate sharpe ratio",
+            "/purchasing_power": "Calculate Purchasing Power",
+            "/monthly_emi": "Monthly EMI",
+            "/doubling_time": "Doubling Time",
+            "/weighted_average": "Weighted Average",
+            "/capital_Asset_Pricing_Model": "Calculating Capital Asset Pricing Model",
+            "/cost_of_equity": "Calculate cost of equity",
+            "/cogs": "Calculate Cost of Goods Sold",
+            "/ruleof72": "Calculate Rule of 72",
+            "/acid_test_ratio": "Calculate Acid test ratio",
+            "/inflation_adjusted_return": "Calculate Inflation Adjusted Return",
+            "/cogr": "Calculate Compound Annual Growth Rate",
+            "/current_liability_coverage_ratio": "Calculating current liability coverage ratio",
+            "/levered_beta": "Levered Beta",
+            "/monthly_payment": "Monthly payment",
+            "/convexity_duration": "Convexity Adjusted Duration",
+            "/current_ratio": "Current Ratio",
+            "/inventory_turnover_ratio": "Inventory Turnover Ratio",
+            "/inflation_rate": "Inflation Rate",
+            "/herfindal_Index": "Calculating herfindal Index",
+            "/discount_opex": "Discount OPEX",
+            "/project_efficiency": "Project Efficiency",
+            "/real_gdp": "Real GDP",
+            "/excess_reserves": "Excess Reserves",
+            "/discounted_cash_flow": "Discounted cash flow",
+            "/gdp_growth_rate": "GDP Growth Rate",
+            "/credit_card_equation": "Credit Card Equation",
+            "/credit_card_payoff": "Credit Card Payoff using Debt Avalanche method",
+            "/future_value_of_ordinary_due": "Calculating future value of ordinary annuity",
+            "/future_value_of_annuity_due": "Calculating future value of annuity due",
+            "/present_value_of_annuity_due": "Calculating present value of annuity due",
+            "/compound_annual_growth_rate": "Calculating compound annual growth rate",
+            "/loan_to_value": "Calculating loan to value ratio",
+            "/retention_ratio": "Calculating retention ratio",
+            "/tax_equivalent_yield": "Calculating tax equivalent yield",
+            "/year_to_year": "Calculating Year to Year Growth",
+            "/future_value_of_annuity": "Calculating future worth of annuity",
+            "/balloon_balance": "Calculating Balloon Balance of a Loan",
+            "/periodic_lease_payment": "Calculating Periodic lease payment",
+            "/weighted_average_of_values": "Calculating weighted average",
+            "/discounted_payback_period": "Calculating discounted payback period",
+            "/yield_to_maturity": "Calculating Yield to Maturity",
+            "/perpetuity_payment": "Calculating perpetuity payment",
+            "/zero_coupoun_bond_value": "Calculating zero coupoun bond value",
+            "/zero_coupoun_bond_yield": "Calculating Zero Coupon Bond Effective Yield",
+            "/profitability_index": "Calculating profitability index",
+            "/profitability_index2": "Calculating profitability index using annual cash flows",
+            "/receivables_turnover_ratio": "Calculating receivables turnover ratio",
+            "/remaining_balance": "Calculating remaining balance",
+            "/net_present_value": "Calculating net present value",
+            "/leverage_ratio_income": "Calculate Leverage Ratio",
+            "/leverage_ratio_equity": "Calculate Leverage Ratio",
+            "/time_period_required_for_growth": "Calculating the time period required for exponential growth",
+            "/preferred-stock-value": "Calculating the preferred stock value",
+            "/asset_turnover_ratio": "Calculate asset turnover ratio",
+            "/bid-ask-spread": "Calculating the Bid Ask Spread",
+            "/calculate-period-FV-PV-rate": "Calculating No of Periods(Time in years) with respect to Present value(PV) and Future value(FV)",
+            "/balloon-loan-payment": "Calculating the payments on a loan that has a balance remaining after all periodic payments are mad using balloon laon payment formula",
+            "/monthly_lease_payment": "Calculating Monthly lease payment",
+            "/401k": "Calculating an estimate of the 401(k) balance at retirement",
+            "/roth-ira": "This calculator estimates the balances of Roth IRA savings and regular taxable savings.",
+            "/mortgage-amortization": "Calculating annual or monthly amortization schedule for a mortgage loan.",
+            "/fha-loan": "",
+            "/enterprise-value": "Calculating Enterprise Value for a publicly listed company.",
+            "/salary-calculate": "Converts salary amounts to their corresponding values based on payment frequency.",
+            "/personal_loan": "Calculate personal loan",
+            "/lumpsum": "",
+            "/refinance": "Calculate refinance",
+            "/commission_calc": "compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.",
+            "/college_cost": "calculate total college fee of one year assuming full tuition fee is being paid.",
+            "/diluted-earnings-per-share": "Calculate Diluted Earnings Per Share (EPS).",
+            "/asdcr": "Calculate Annual Debt Service Coverage Ratio",
+        },
     }
 
 
@@ -80,33 +177,32 @@ def future_sip(
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-
 @app.get(
     "/calculate_pension",
     tags=["calculate_pension"],
     description="Calculate pension",
 )
-
 def calculate_pension(
-monthly_investment_amount,
-no_of_years,
-annuity_rates,
-annuity_purchased,
-yearly_interest_rates
+    monthly_investment_amount,
+    no_of_years,
+    annuity_rates,
+    annuity_purchased,
+    yearly_interest_rates,
 ):
     try:
-        (
-        total_corpus,
-        lump_sum_pension,
-        monthly_pension
-        ) = functions.calculate_pension(
-            monthly_investment_amount,no_of_years,annuity_rates,annuity_purchased,yearly_interest_rates)
-        return{
-            "Tag":"Calculate pension",
-            "Total Corpus":total_corpus,
-            "Lump sum pension":lump_sum_pension,
-            "Monthly pension":monthly_pension
-         }
+        (total_corpus, lump_sum_pension, monthly_pension) = functions.calculate_pension(
+            monthly_investment_amount,
+            no_of_years,
+            annuity_rates,
+            annuity_purchased,
+            yearly_interest_rates,
+        )
+        return {
+            "Tag": "Calculate pension",
+            "Total Corpus": total_corpus,
+            "Lump sum pension": lump_sum_pension,
+            "Monthly pension": monthly_pension,
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -370,7 +466,9 @@ def asset_portfolio(
             + weight_B * weight_B * standard_dev_B * standard_dev_B
             + 2 * weight_A * weight_B * cov
         )
-        expected_return = functions.decimal_to_percent(weight_A * return_A + weight_B * return_B)
+        expected_return = functions.decimal_to_percent(
+            weight_A * return_A + weight_B * return_B
+        )
         return {
             "Tag": "Portfolio Variance",
             "Expected Returns": f"{expected_return}%",
@@ -579,7 +677,9 @@ def inventory_shrinkage_rate(recorded_inventory: float, actual_inventory: float)
             "Recorded Inventory": recorded_inventory,
             "Actual Inventory": actual_inventory,
             "Inventory Shrinkage Rate": inventory_shrinkage_rate,
-            "Inventory Shrinkage Rate (%)": functions.decimal_to_percent(inventory_shrinkage_rate),
+            "Inventory Shrinkage Rate (%)": functions.decimal_to_percent(
+                inventory_shrinkage_rate
+            ),
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -1215,25 +1315,24 @@ def credit_card_equation(
     description="Credit Card Payoff using Debt Avalanche method",
 )
 def credit_card_payoff(
-    debts:list,interest_rates:list,minimum_payments:list,monthly_payment:int
+    debts: list, interest_rates: list, minimum_payments: list, monthly_payment: int
 ):
     try:
         result = functions.credit_card_payoff(
-            debts, interest_rates, minimum_payments,monthly_payment
+            debts, interest_rates, minimum_payments, monthly_payment
         )
         return {
             "Tag": "Credit card payoff",
-            "debts":debts,
+            "debts": debts,
             "interest rates": interest_rates,
-            "minimum payments":minimum_payments,
-            "Monthly payment":monthly_payment,
-            "Months":[r['month'] for r in result ],
-            'Interest paid':[r['interest_paid'] for r in result],
-            "Total Payment":[r['total_payment'] for r in result]
+            "minimum payments": minimum_payments,
+            "Monthly payment": monthly_payment,
+            "Months": [r["month"] for r in result],
+            "Interest paid": [r["interest_paid"] for r in result],
+            "Total Payment": [r["total_payment"] for r in result],
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
 
 
 # Endpoint to calculate future value of the ordinary annuity
@@ -1874,7 +1973,6 @@ def CalculatePeriods(present_val: float, future_val: float, rate: float):
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-
 @app.get(
     "/balloon-loan-payment",
     tags=["Balloon-loan-payment"],
@@ -2059,9 +2157,17 @@ def fha_loan(
         return {
             "TAG": "FHA Mortgage monthly payments",
             "mortgage_amount": mortgage_amount,
-            "mortgage_deposit": functions.percent_to_decimal(mortgage_deposit_percentage) * mortgage_amount * 0.1,
+            "mortgage_deposit": functions.percent_to_decimal(
+                mortgage_deposit_percentage
+            )
+            * mortgage_amount
+            * 0.1,
             "FHA base loan amount": mortgage_amount
-            - (functions.percent_to_decimal(mortgage_deposit_percentage) * mortgage_amount * 0.1),
+            - (
+                functions.percent_to_decimal(mortgage_deposit_percentage)
+                * mortgage_amount
+                * 0.1
+            ),
             "FHA upfront MIP": upfront_mip,
             "FHA monthly mortgage payments": monthly_payment,
             "FHA Monthly MIP": monthly_mip,
@@ -2071,6 +2177,7 @@ def fha_loan(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate Enterprise Value
 @app.get(
@@ -2085,9 +2192,16 @@ def calculate_enterprise_value(
     preferred_stock: float,
     non_controlling_interest: float,
     cash_and_cash_equivalents: float,
-    ):
+):
     try:
-        enterprise_value = functions.calculate_enterprise_value(share_price, fully_diluted_shares_outstanding, total_debt, preferred_stock, non_controlling_interest, cash_and_cash_equivalents)
+        enterprise_value = functions.calculate_enterprise_value(
+            share_price,
+            fully_diluted_shares_outstanding,
+            total_debt,
+            preferred_stock,
+            non_controlling_interest,
+            cash_and_cash_equivalents,
+        )
         return {
             "Tag": "Enterprise Value",
             "Equity Value": share_price * fully_diluted_shares_outstanding,
@@ -2095,10 +2209,11 @@ def calculate_enterprise_value(
             "Preferred Stock": preferred_stock,
             "Non-Controlling Interest": non_controlling_interest,
             "Cash & Cash Equivalents": cash_and_cash_equivalents,
-            "Enterprise Value": enterprise_value
+            "Enterprise Value": enterprise_value,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate Salary
 @app.get(
@@ -2110,40 +2225,42 @@ def salary_calculate(
     salary_amount: float,
     payment_frequency: str,
     hours_worked_per_day: int,
-    days_worked_per_week: int
+    days_worked_per_week: int,
 ):
     try:
         salary = functions.salary_calculate(
-            salary_amount,
-            payment_frequency,
-            hours_worked_per_day,
-            days_worked_per_week
+            salary_amount, payment_frequency, hours_worked_per_day, days_worked_per_week
         )
 
         return {
-            "Tag" : "Calculate Salary",
-            "Salary Amount" : salary_amount,
-            "Payment frequency" : payment_frequency,
-            "Salary" : salary
+            "Tag": "Calculate Salary",
+            "Salary Amount": salary_amount,
+            "Payment frequency": payment_frequency,
+            "Salary": salary,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
     "/personal_loan",
     tags=["personal_loan"],
     description="Calculate personal loan",
 )
-def personal_loan(loan_amount: float, interest_rate: float, loan_term_years: int, loan_start_date: str):
+def personal_loan(
+    loan_amount: float, interest_rate: float, loan_term_years: int, loan_start_date: str
+):
     try:
-        result = functions.personal_loan(loan_amount, interest_rate, loan_term_years, loan_start_date)
+        result = functions.personal_loan(
+            loan_amount, interest_rate, loan_term_years, loan_start_date
+        )
         return {
             "Tag": "Personal Loan",
             "Loan amount": loan_amount,
-            "Monthly payment": round(result['Monthly payment'], 2),
-            "Total interest paid": round(result['Total interest paid'], 2),
-            "Total cost loan": round(result['Total cost loan'], 2),
-            "Schedule": result['Schedule']
+            "Monthly payment": round(result["Monthly payment"], 2),
+            "Total interest paid": round(result["Total interest paid"], 2),
+            "Total cost loan": round(result["Total cost loan"], 2),
+            "Schedule": result["Schedule"],
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -2154,19 +2271,35 @@ def personal_loan(loan_amount: float, interest_rate: float, loan_term_years: int
 async def calculate_lumpsum(principal: float, interest_rate: float, years: int):
 
     try:
-        total_amount = principal * ((1 + functions.percent_to_decimal(interest_rate)) ** years)
+        total_amount = principal * (
+            (1 + functions.percent_to_decimal(interest_rate)) ** years
+        )
         interest_earned = total_amount - principal
-        return {"total_amount": round(total_amount, 2), "interest_earned": round(interest_earned, 2)}
-    except :
+        return {
+            "total_amount": round(total_amount, 2),
+            "interest_earned": round(interest_earned, 2),
+        }
+    except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
 
 
 # Endpoint to calculate FHA loan
 @app.get("/fha-loan")
-async def fha_loan(home_price: float, down_payment_percentage: float, loan_term_years: float, interest_rate: float, fha_annual_mip_percentage: float):
+async def fha_loan(
+    home_price: float,
+    down_payment_percentage: float,
+    loan_term_years: float,
+    interest_rate: float,
+    fha_annual_mip_percentage: float,
+):
     try:
-        result = functions.calculate_fha_loan(home_price, down_payment_percentage, loan_term_years, interest_rate, fha_annual_mip_percentage)
+        result = functions.calculate_fha_loan(
+            home_price,
+            down_payment_percentage,
+            loan_term_years,
+            interest_rate,
+            fha_annual_mip_percentage,
+        )
         return {
             "down_payment": result["down_payment"],
             "fha_base_loan_amount": result["fha_base_loan_amount"],
@@ -2175,10 +2308,11 @@ async def fha_loan(home_price: float, down_payment_percentage: float, loan_term_
             "monthly_mip": result["monthly_mip"],
             "total_fha_loan_amount": result["total_fha_loan_amount"],
             "total_monthly_payment": result["total_monthly_payment"],
-            "total_cost_of_loan": result["total_cost_of_loan"]
+            "total_cost_of_loan": result["total_cost_of_loan"],
         }
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate refinance
 @app.get(
@@ -2187,32 +2321,44 @@ async def fha_loan(home_price: float, down_payment_percentage: float, loan_term_
     description="Calculate refinance",
 )
 def refinance(
-        current_loan_amount: float,
-        current_interest_rate: float,
-        current_loan_term_years: int,
-        time_remaining_years: int,
-        new_interest_rate: float,
-        new_loan_term_years: int,
-        cash_out_amount: float):
+    current_loan_amount: float,
+    current_interest_rate: float,
+    current_loan_term_years: int,
+    time_remaining_years: int,
+    new_interest_rate: float,
+    new_loan_term_years: int,
+    cash_out_amount: float,
+):
     try:
-        result = functions.refinance_calculator(current_loan_amount, current_interest_rate, current_loan_term_years, time_remaining_years, new_interest_rate,new_loan_term_years, cash_out_amount)
+        result = functions.refinance_calculator(
+            current_loan_amount,
+            current_interest_rate,
+            current_loan_term_years,
+            time_remaining_years,
+            new_interest_rate,
+            new_loan_term_years,
+            cash_out_amount,
+        )
         return {
             "Tag": "Refinance",
             "Current loan amount": current_loan_amount,
-            "Balance left on loan": round(result['Balance left on loan'], 2),
-            "New loan amount":round(result['New loan amount'], 2),
-            "Current monthly payment": round(result['Current monthly payment'], 2),
-            "New monthly payment": round(result['New monthly payment'], 2),
-            "Monthly savings": round(result['Monthly savings'], 2),
-            "Current interest paid left": round(result['Current left interest paid'], 2),
-            "New total interest paid": round(result['New total interest paid'], 2),
-            "Total interest saving": round(result['Total interest saving'], 2),
-            "Current total cost left": round(result['Current total cost left'], 2),
-            "New total cost loan": round(result['New total cost loan'], 2),
-            "Total cost saving": round(result['Total cost saving'], 2)
+            "Balance left on loan": round(result["Balance left on loan"], 2),
+            "New loan amount": round(result["New loan amount"], 2),
+            "Current monthly payment": round(result["Current monthly payment"], 2),
+            "New monthly payment": round(result["New monthly payment"], 2),
+            "Monthly savings": round(result["Monthly savings"], 2),
+            "Current interest paid left": round(
+                result["Current left interest paid"], 2
+            ),
+            "New total interest paid": round(result["New total interest paid"], 2),
+            "Total interest saving": round(result["Total interest saving"], 2),
+            "Current total cost left": round(result["Current total cost left"], 2),
+            "New total cost loan": round(result["New total cost loan"], 2),
+            "Total cost saving": round(result["Total cost saving"], 2),
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.
 @app.get(
@@ -2220,7 +2366,9 @@ def refinance(
     tags=["commission_calc"],
     description="compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.",
 )
-def commission_calc(sales_price: float = None, commission_rate: float = None, commission: float = None):
+def commission_calc(
+    sales_price: float = None, commission_rate: float = None, commission: float = None
+):
     try:
         output = functions.commission_calc(sales_price, commission_rate, commission)
 
@@ -2248,35 +2396,48 @@ def commission_calc(sales_price: float = None, commission_rate: float = None, co
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint to compute Total college expenses
+
+# Endpoint to compute Total college expenses
+
 
 @app.get(
     "/college_cost",
     tags=["college_cost"],
     description="calculate total college fee of one year assuming full tuition fee is being paid.",
 )
-def college_cost(book_cost:float,
-                 college_tuition:float,
-                 Devices:float,
-                 travel_expenses:float,
-                 hostel_charges:float,
-                 mess_fee:float,
-                 miscellaneous:float):
+def college_cost(
+    book_cost: float,
+    college_tuition: float,
+    Devices: float,
+    travel_expenses: float,
+    hostel_charges: float,
+    mess_fee: float,
+    miscellaneous: float,
+):
     try:
-        cost = functions.college_cost(book_cost,college_tuition,Devices,travel_expenses,hostel_charges,mess_fee,miscellaneous)
+        cost = functions.college_cost(
+            book_cost,
+            college_tuition,
+            Devices,
+            travel_expenses,
+            hostel_charges,
+            mess_fee,
+            miscellaneous,
+        )
         return {
             "Tag": "College Cost",
-            "Books cost of one year":book_cost,
-            "College tuition fee per year":college_tuition,
-            "Electronic devices cost":Devices,
-            "Monthly Travel expenses":travel_expenses,
-            "Monthly Hostel charges":hostel_charges,
-            "Monthly mess fee":mess_fee,
-            "monthly miscellaneous expenses":miscellaneous,
-            "Total cost of one year": cost
+            "Books cost of one year": book_cost,
+            "College tuition fee per year": college_tuition,
+            "Electronic devices cost": Devices,
+            "Monthly Travel expenses": travel_expenses,
+            "Monthly Hostel charges": hostel_charges,
+            "Monthly mess fee": mess_fee,
+            "monthly miscellaneous expenses": miscellaneous,
+            "Total cost of one year": cost,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # Endpoint to calculate Diluted EPS
 @app.get(
@@ -2290,7 +2451,9 @@ def calculate_diluted_eps(
     dilutive_securities: float,
 ):
     try:
-        result = functions.diluted_eps(net_income, weighted_avg_shares, dilutive_securities)
+        result = functions.diluted_eps(
+            net_income, weighted_avg_shares, dilutive_securities
+        )
         return {
             "Tag": "Diluted Earnings Per Share (EPS)",
             "Net Income": net_income,
@@ -2306,6 +2469,7 @@ def calculate_diluted_eps(
 
 # Endpoint to calculate Return of Investment on equity funds
 
+
 @app.get(
     "/roi_equity_funds",
     tags=["roi_equity_funds"],
@@ -2317,103 +2481,116 @@ def calculate_roi_equity_funds(
     tenure: float,
 ):
     try:
-        roi, annualized_roi = functions.calculate_roi_equity_funds(amount_invested, amount_returned, tenure)
+        roi, annualized_roi = functions.calculate_roi_equity_funds(
+            amount_invested, amount_returned, tenure
+        )
         return {
             "Tag": "Calculate return of investments on equity funds",
             "Amount Invested": amount_invested,
             "Amount Returned": amount_returned,
             "Duration of investment": tenure,
             "Return of Investment": f"{roi}%",
-            "Annualized Return": f"{annualized_roi}%"
+            "Annualized Return": f"{annualized_roi}%",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-#Endpoint to compute Student loan and monthly emi for the same
+
+
+# Endpoint to compute Student loan and monthly emi for the same
+
 
 @app.get(
     "/student_loan",
     tags=["student_loan"],
     description="Calculate Student loan",
-    )
-def student_loan(principal:int,
-                 tenure:int,
-                 interest_rate:float):
+)
+def student_loan(principal: int, tenure: int, interest_rate: float):
     try:
-        student_loan = functions.student_loan(principal,tenure,interest_rate)
+        student_loan = functions.student_loan(principal, tenure, interest_rate)
         return {
-            
             "Tag": "Student Loan",
-            "Total amount to borrow":principal,
-            "total number of years to pay loan":tenure,
-            "interest rate percentage annual":interest_rate,
-            "total monthly cost":f"{student_loan[0]}",
-            "Total Amount of loan": f"{student_loan[1]}"
-            }
+            "Total amount to borrow": principal,
+            "total number of years to pay loan": tenure,
+            "interest rate percentage annual": interest_rate,
+            "total monthly cost": f"{student_loan[0]}",
+            "Total Amount of loan": f"{student_loan[1]}",
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+
+
 @app.get(
     "/calculate_gst",
     tags=["calculate_gst"],
     description="Calculate GST (Goods and Service Tax)",
-    )
+)
 def calculate_gst(price, gst_rate):
     try:
-        gst_amount , total_price = functions.calulate_gst(price, gst_rate)
+        gst_amount, total_price = functions.calulate_gst(price, gst_rate)
         return {
-            
             "Tag": "Calculate GST and Total Price",
-            "Original Price":price,
-            "GST rate":gst_rate,
-            "Amount of GST":f"{gst_amount}",
-            "Total price after GST":f"{total_price}"
-            
-            }
+            "Original Price": price,
+            "GST rate": gst_rate,
+            "Amount of GST": f"{gst_amount}",
+            "Total price after GST": f"{total_price}",
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint For calculated annual income needed during retiremnet period
-@app.get("/calculate_retirement_goals",
-         tags=["calculate_retirement_goals"],
-         description='Calculate amount annually needed during retirement years.',
 
+# Endpoint For calculated annual income needed during retiremnet period
+@app.get(
+    "/calculate_retirement_goals",
+    tags=["calculate_retirement_goals"],
+    description="Calculate amount annually needed during retirement years.",
 )
 def calculate_retirement_goals(
-     retirement_age:int,
-    annual_retirement_expenses:int,
-    inflation_rate:float,
-    annual_retirement_income:int,
-    current_age:int
+    retirement_age: int,
+    annual_retirement_expenses: int,
+    inflation_rate: float,
+    annual_retirement_income: int,
+    current_age: int,
 ):
     try:
-        amount = functions.calculate_retirement_goals(retirement_age,annual_retirement_expenses,inflation_rate,annual_retirement_income,current_age)
-        return{
-            "Tag":"Retirement Goals",
-            "Retirement age":retirement_age,
-            "Annual retirement expenses":annual_retirement_expenses,
-            "inflation rate":inflation_rate,
-            "Annual Retirement Income":annual_retirement_income,
-            "Current Age":current_age,
-            "Retirement Goals":f"{amount}",
+        amount = functions.calculate_retirement_goals(
+            retirement_age,
+            annual_retirement_expenses,
+            inflation_rate,
+            annual_retirement_income,
+            current_age,
+        )
+        return {
+            "Tag": "Retirement Goals",
+            "Retirement age": retirement_age,
+            "Annual retirement expenses": annual_retirement_expenses,
+            "inflation rate": inflation_rate,
+            "Annual Retirement Income": annual_retirement_income,
+            "Current Age": current_age,
+            "Retirement Goals": f"{amount}",
         }
     except:
-         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-    #Endpoint for calculating marketcap value 
-@app.get("/calculate_market_cap",
-         tags=["calculate_market_cap"],
-         description="calculation of marketcap",
-         )
-def calculate_market_cap(current_market_share_price:int,total_number_of_shares_outstanding:int):
-    try:
-        calculate  = functions.calculate_market_cap(current_market_share_price ,total_number_of_shares_outstanding)
-        return {
-            "Tag":"Market capitalization value",
-            "Current market share price":current_market_share_price,
-            "Total number of shares outstanding":total_number_of_shares_outstanding,
-            "Marketcap value":f"{calculate}"
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    # Endpoint for calculating marketcap value
+
+
+@app.get(
+    "/calculate_market_cap",
+    tags=["calculate_market_cap"],
+    description="calculation of marketcap",
+)
+def calculate_market_cap(
+    current_market_share_price: int, total_number_of_shares_outstanding: int
+):
+    try:
+        calculate = functions.calculate_market_cap(
+            current_market_share_price, total_number_of_shares_outstanding
+        )
+        return {
+            "Tag": "Market capitalization value",
+            "Current market share price": current_market_share_price,
+            "Total number of shares outstanding": total_number_of_shares_outstanding,
+            "Marketcap value": f"{calculate}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -2425,20 +2602,28 @@ def calculate_market_cap(current_market_share_price:int,total_number_of_shares_o
     tags=["annual_debt_service_coverage_ratio"],
     description="Calculate Annual Debt Service Coverage Ratio",
 )
-def asdcr(net_operating_cost: float, depreciation: float, non_cash_expenses: float, annual_debt_service: float):
+def asdcr(
+    net_operating_cost: float,
+    depreciation: float,
+    non_cash_expenses: float,
+    annual_debt_service: float,
+):
     try:
-        asdcr_debt = functions.annual_debt_service_coverage_ratio(net_operating_cost, depreciation, non_cash_expenses, annual_debt_service)
+        asdcr_debt = functions.annual_debt_service_coverage_ratio(
+            net_operating_cost, depreciation, non_cash_expenses, annual_debt_service
+        )
         return {
             "Tag": "Annual Debt Service Coverage Ratio",
             "Annual Debt Ratio": asdcr_debt,
             "Net Operating Income": net_operating_cost,
-            "Depreciation" : depreciation ,
+            "Depreciation": depreciation,
             "Non Cash Expenses": non_cash_expenses,
-            "Annual Debt":annual_debt_service
+            "Annual Debt": annual_debt_service,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-      
+
+
 # Endpoint to calculate Value Added Tax (VAT)
 @app.get(
     "/calculate_vat",
@@ -2462,100 +2647,110 @@ async def calculate_vat(price: float, vat_rate: float):
             detail="An error occurred during VAT calculation",
         )
 
-#Endpoint For calculating bond equivalent yield 
-@app.get( 
-    "/bond_equivalent_yield", 
-    tags=["bond_equivalent_yield"], 
-    description="Calculate bond equivalent yield", 
-) 
-def bond_equivalent_yield(face_value:float, purchase_price:float, days_to_maturity:int): 
-    try: 
-        bey = functions.calculate_bond_equivalent_yield(face_value,purchase_price,days_to_maturity) 
-        return { 
-            "Tag": "Bond Equivalent Yield", 
-            "Face value":face_value, 
-            "Purchase Price": purchase_price, 
-            "Days to maturity": days_to_maturity, 
+
+# Endpoint For calculating bond equivalent yield
+@app.get(
+    "/bond_equivalent_yield",
+    tags=["bond_equivalent_yield"],
+    description="Calculate bond equivalent yield",
+)
+def bond_equivalent_yield(
+    face_value: float, purchase_price: float, days_to_maturity: int
+):
+    try:
+        bey = functions.calculate_bond_equivalent_yield(
+            face_value, purchase_price, days_to_maturity
+        )
+        return {
+            "Tag": "Bond Equivalent Yield",
+            "Face value": face_value,
+            "Purchase Price": purchase_price,
+            "Days to maturity": days_to_maturity,
             "Bond Equivalent Yield (BEY)": f"{functions.decimal_to_percent(bey)}%",
-        } 
-    except: 
+        }
+    except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 @app.get("/loan-affordability")
-def calculate_loan_affordability( 
-                                 income: float, # annual Income
-                                 expenses: float, # annual expenses
-                                 loan_term: int, # loan term period 
-                                 interest_rate: float # annual interest rate
-                                 ):
+def calculate_loan_affordability(
+    income: float,  # annual Income
+    expenses: float,  # annual expenses
+    loan_term: int,  # loan term period
+    interest_rate: float,  # annual interest rate
+):
     """
     This endpoint is use to check your ability to take any particular Loan on the Basis on
-    your income,expenses,loan_term,intrest_rate, This is basically loan affordability function 
+    your income,expenses,loan_term,intrest_rate, This is basically loan affordability function
 
     eg url :- http://127.0.0.1:8000/loan-affordability?income=5000&expenses=2000&loan_term=12&interest_rate=5
-    
+
     explanation for calculating max_loan_amount :-
         (1 + utils.percent_to_decimal(interest_rate)): This calculates the factor by which the loan amount increases due to the interest rate. For example, if the interest rate is 5%, this factor would be 1.05.
         ** -loan_term: This raises the above factor to the power of negative loan_term. It represents the compounding effect of interest over the loan term. For example, if the loan term is 12 months, this factor would be (1.05) ** -12
         (1 - (1 + utils.percent_to_decimal(interest_rate)) ** -loan_term): This calculates the ratio of the remaining loan balance after making monthly payments to the initial loan amount. It represents the discounted value of the loan.
         (monthly_income - monthly_expenses): This calculates the disposable income available for loan repayment each month.
         (monthly_income - monthly_expenses) * (1 - (1 + utils.percent_to_decimal(interest_rate)) ** -loan_term): This calculates the discounted monthly loan payment amount based on the available disposable income.
-        
+
     """
     try:
         # monthly_income = income / 12
         # monthly_expenses = expenses / 12
 
-        max_loan_amount = functions.calculate_max_loan_amount(income, expenses, loan_term, interest_rate)
+        max_loan_amount = functions.calculate_max_loan_amount(
+            income, expenses, loan_term, interest_rate
+        )
 
         return {
             "income": income,
             "expenses": expenses,
             "loan_term": loan_term,
             "interest_rate": interest_rate,
-            "max_loan_amount": max_loan_amount
+            "max_loan_amount": max_loan_amount,
         }
     except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,detail="Some Error occured",)
+        return HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Some Error occured",
+        )
 
 
 @app.get(
     "/calculate_bvps",
     tags=["calculate_bvps"],
     description="Calculate BVPS (Book value per share)",
-    )
+)
 def calculate_bvps(stockholders_equity, preferred_stock, average_outstanding_shares):
     try:
-        book_value = functions.calulate_bvps(stockholders_equity, preferred_stock, average_outstanding_shares)
+        book_value = functions.calulate_bvps(
+            stockholders_equity, preferred_stock, average_outstanding_shares
+        )
         return {
-            
             "Tag": "Calculate Book value per share",
-            "Stockholders Equity":stockholders_equity,
-            "Preferred Stock value":preferred_stock,
-            "Average outstanding shares":average_outstanding_shares,
-            "Book value per share":f"{book_value}"
-            
-            }
+            "Stockholders Equity": stockholders_equity,
+            "Preferred Stock value": preferred_stock,
+            "Average outstanding shares": average_outstanding_shares,
+            "Book value per share": f"{book_value}",
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
     "/calculate_gratuity",
     tags=["Gratuity"],
     description="Calculate gratuity",
 )
-def calculate_gratuity(
-    last_salary : float, tenure_years : int, tenure_months : int
-):
-    '''
+def calculate_gratuity(last_salary: float, tenure_years: int, tenure_months: int):
+    """
     Gratuity in India refers to the amount payable to an employee who has rendered his / her services
-    to the company for a minimum period of five years (continuously) 
+    to the company for a minimum period of five years (continuously)
     Partial years in the tenure are rounded off to 1 if the number of months is greater than 6.
     Last salary  includes the basic salary and the dearness allowanace
     Gratuity is calculated as: (15 * last salary * tenure in years) / 26
-    
+
     Inputs: last drawn salary, tenure in years, last partial year in months
-    '''
+    """
     try:
         gratuity = functions.calculate_gratuity(
             last_salary, tenure_years, tenure_months
@@ -2570,41 +2765,51 @@ def calculate_gratuity(
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint to calculate Personal Savings
+
+# Endpoint to calculate Personal Savings
+
 
 @app.get(
     "/personal_savings",
     tags=["personal_savings"],
     description="Calculate Simple Personal Savings",
-    )
-def personal_savings(init:int,
-                     monthly:int,
-                     tenure:float):
-    total_amount = functions.personal_savings(init,monthly,tenure)
+)
+def personal_savings(init: int, monthly: int, tenure: float):
+    total_amount = functions.personal_savings(init, monthly, tenure)
     return {
         "Tag": "Simple Personal Savings",
-        "Initial Deposit":init,
-        "total number of years":tenure,
-        "Monthly Contribution":monthly,
+        "Initial Deposit": init,
+        "total number of years": tenure,
+        "Monthly Contribution": monthly,
         "Total Amount Saved": f"{total_amount}",
     }
+
 
 @app.get(
     "/accrint",
     tags=["accrint"],
     description="Calculate the accrued interest for a security that pays periodic interest.",
 )
-def accrued_interest(issue_date:str, settlement_date:str, rate:float, par:float, frequency:int=1, basis:int=0):
+def accrued_interest(
+    issue_date: str,
+    settlement_date: str,
+    rate: float,
+    par: float,
+    frequency: int = 1,
+    basis: int = 0,
+):
     try:
-        accr_int = functions.accrint(issue_date,settlement_date,rate,par,frequency,basis)
+        accr_int = functions.accrint(
+            issue_date, settlement_date, rate, par, frequency, basis
+        )
         return {
             "Tag": "Accrued Interest",
-            "Issue Date":issue_date,
+            "Issue Date": issue_date,
             "Settlement Date": settlement_date,
             "Rate": rate,
-            "Par":par,
-            "Frequency":frequency,
-            "Basis":basis,
+            "Par": par,
+            "Frequency": frequency,
+            "Basis": basis,
             "Accrued Interest": accr_int,
         }
     except:
