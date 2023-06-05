@@ -1768,3 +1768,18 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 ```
 
+**GET** `/calculate_expected_return_of_portfolio`
+-Required parameters: `no_of_investments`, `weight_of_investment`, `rate_of_return`
+-Sample Output
+```py
+{
+  "Tag": "Expected Return of Portfolio",
+  "no_of_investments": 2,
+  "investment_amount": [20000 , 60000],
+  "rate_of_return": [3, 6],
+  "expected_return_of_portfolio": 5.75
+
+}
+
+```
+
