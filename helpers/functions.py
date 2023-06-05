@@ -1470,3 +1470,22 @@ def calculate_net_profit_margin(
         taxes : float):
     net_profit_margin = ((revenue-cost_of_goods_sold-operating_expenses-other_expenses-interest-taxes)/revenue)*100
     return net_profit_margin
+
+# Function to calculate expected return of portfolio
+def calculate_expected_return_of_portfolio(
+        no_of_investments : int, 
+        investment_amount : list,  
+        rate_of_return : list):
+    total_value_of_portfolio = 0
+    for i in range(no_of_investments):
+        total_value_of_portfolio += investment_amount[i]
+
+    weight_of_investment = []
+    for i in range(no_of_investments):
+        weight_of_investment.append(investment_amount/total_value_of_portfolio)
+
+    expected_return_of_portfolio = 0
+    for i in range(no_of_investments):
+        expected_return_of_portfolio += weight_of_investment[i]*rate_of_return[i]
+        
+    return expected_return_of_portfolio
