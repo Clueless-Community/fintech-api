@@ -2590,6 +2590,9 @@ def personal_savings(init:int,
             "Monthly Contribution":monthly,
             "Total Amount Saved": f"{total_amount}",
             }
+    
+    except:
+        pass
 
 @app.get(
     "/accrint",
@@ -2609,5 +2612,51 @@ def accrued_interest(issue_date:str, settlement_date:str, rate:float, par:float,
             "Basis":basis,
             "Accrued Interest": accr_int,
         }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+@app.get('/mortrages',tags=["mortrage"],description="Endpoint to calculate Mortrages")
+def mortrage(princial:int,interest_rate:float,years:int,down_payment:int,property_tax_rate:float,insurance_rate:float):
+    
+    try: 
+        mortrage = functions.calculate_mortgage(
+            principal=princial,
+            interest_rate=interest_rate,
+            years=years,
+            down_payment=down_payment,
+            property_tax_rate=property_tax_rate,
+            insurance_rate=insurance_rate
+        )
+        return {
+            "Monthly Payment": mortrage['monthly_payment'],
+            "Total Payment": mortrage['total_payment'],
+            "Total Property Tax": mortrage['total_property_tax'],
+            "Total insurance cost": mortrage['total_insurance_cost'],
+            "Total Cost": mortrage['total_cost'],
+            "Loan to value ratio": mortrage["loan_to_value_ratio"]
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+
+@app.get(
+    '/social_securities',
+    tags=['Social Security'],
+    description="Endpoint to calculate Social securities"
+)
+def ss(birth_date:str,earnings:int,retirement_age:int):
+
+    try:
+        monthly_benefits, future_benefits = functions.calculate_social_security(
+            birth_date=birth_date,
+            earnings=earnings,
+            retirement_age=retirement_age
+        )
+        return {
+            f"The monthly benefits are {monthly_benefits} and future benefits are {future_benefits}"
+        }
+    
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

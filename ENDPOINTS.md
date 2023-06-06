@@ -1750,3 +1750,29 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
       "Accrued Interest":32.363013698630134
 }
 ```
+
+# GET #  Endpoint --> '/mortrage'
+Required Paramenters --> princial:int,interest_rate:float,years:int,down_payment:int,property_tax_rate:float,insurance_rate:float
+Sample request --> http://127.0.0.1:8000/mortrages?princial=200000&interest_rate=4.5&years=45&down_payment=50000&property_tax_rate=1.3&insurance_rate=0.5
+
+Sample Output
+
+{
+  "Monthly Payment": 648.4110284532501,
+  "Total Payment": 350141.95536475506,
+  "Total Property Tax": 117000.00000000001,
+  "Total insurance cost": 45000,
+  "Total Cost": 512141.95536475506,
+  "Loan to value ratio": 75
+}
+
+
+## GET ## Endpoint --> '/social_securities'
+Required Parameters --> birth_date:str,earnings:int,retirement_age:int
+
+Sample request --> http://127.0.0.1:8000/social_securities?birth_date=10-08-2002&earnings=250000&retirement_age=70
+Sample Output
+
+[
+  "The monthly benefits are 20833.333333333332 and future benefits are 55349.83286723857"
+]
