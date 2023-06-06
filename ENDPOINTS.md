@@ -1751,6 +1751,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
+```
 # GET #  Endpoint --> '/mortrage'
 Required Paramenters --> princial:int,interest_rate:float,years:int,down_payment:int,property_tax_rate:float,insurance_rate:float
 Sample request --> http://127.0.0.1:8000/mortrages?princial=200000&interest_rate=4.5&years=45&down_payment=50000&property_tax_rate=1.3&insurance_rate=0.5
@@ -1776,3 +1777,4 @@ Sample Output
 [
   "The monthly benefits are 20833.333333333332 and future benefits are 55349.83286723857"
 ]
+```
