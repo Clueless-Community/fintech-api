@@ -1720,3 +1720,66 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 
 ```
+
+  **GET** `/personal_savings`
+- Required parameters : 'init','monthly', 'tenure'
+- Sample output
+```py
+{
+            "Tag": "Simple Personal Savings",
+            "Initial Deposit":10000,
+            "total number of years":10,
+            "Monthly Contribution":200,
+            "Total Amount saved":34000
+}
+```
+
+**GET** `/accrint`
+- Required parameters : `issue_date`,`settlement_date`,`rate`,`par`,
+- Sample Request: `GET`, `http://localhost:8000/accrint?issue_date=01-01-2012&settlement_date=15-02-2012&rate=5.25&par=5000&frequency=4&basis=3`,    
+- Sample output
+```py
+{
+      "Tag":"Accrued Interest",
+      "Issue Date":"01-01-2012",
+      "Settlement Date":"15-02-2012",
+      "Rate":5.25,
+      "Par":5000.0,
+      "Frequency":4,
+      "Basis":3,
+      "Accrued Interest":32.363013698630134
+}
+```
+
+**GET** `/calculate_net_profit_margin`
+-Required parameters: `revenue`, `cost_of_goods_sold`, `operating_expenses`, `other_expenses`, `interest`, `taxes`
+-Sample Output
+```py
+{
+  "Tag":"Net Profit Margin",
+  "revenue": 1000,
+  "cost_of_goods_sold": 200,
+  "operating_expenses": 100,
+  "other_expenses": 50,
+  "interest": 250,
+  "taxes": 50,
+  "net_profit_margin": 45
+}
+
+```
+
+**GET** `/calculate_expected_return_of_portfolio`
+-Required parameters: `no_of_investments`, `weight_of_investment`, `rate_of_return`
+-Sample Output
+```py
+{
+  "Tag": "Expected Return of Portfolio",
+  "no_of_investments": 2,
+  "investment_amount": [20000 , 60000],
+  "rate_of_return": [3, 6],
+  "expected_return_of_portfolio": 5.75
+
+}
+
+```
+
