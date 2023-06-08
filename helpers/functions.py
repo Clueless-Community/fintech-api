@@ -1489,3 +1489,16 @@ def calculate_expected_return_of_portfolio(
         expected_return_of_portfolio += weight_of_investment[i]*rate_of_return[i]
         
     return expected_return_of_portfolio
+
+#Function to calculate net annual salary
+def calculate_salary(base:int,
+                     jb:int,
+                     stock:int,
+                     pb:int,
+                     bonus:int,
+                     ptax:int,
+                     deduction:int):
+    total_amount=(base*12)+jb+stock+pb+bonus
+    tax=(ptax/100)*total_amount
+    ctc=total_amount-tax-deduction
+    return ctc
