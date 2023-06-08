@@ -1799,3 +1799,20 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 ```
 
+```
+
+
+**GET** `/calculate_treynor_ratio_function`
+-Required parameters: `returns`, `risk_free_rate`,`beta`
+-Sample Output
+```py
+
+{
+  "Tag": "Treynor Ratio",
+   returns: list[float] = [0.1, 0.05, 0.08, 0.12, 0.09],
+   risk_free_rate: float = 0.03,
+   beta: float = 1.2
+}
+
+```
+
