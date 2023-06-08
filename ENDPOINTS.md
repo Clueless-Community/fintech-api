@@ -1803,7 +1803,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 ```py
 {
   "Tag" : "Post Tax Return Percentage",
-  "tax_rate_percentag" : 2,
+  "tax_rate_percentage" : 2,
   "annual_net_income" : 4000
   "initial_cost_of_investment" : 10000
   "post_tax_return_percentage" : 39.2

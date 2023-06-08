@@ -1655,6 +1655,6 @@ def calculate_post_tax_return_percentage(tax_rate_percentage : float,
                                     initial_cost_of_investment : float
                                     ):
     rate_of_return_percentage = (annual_net_income / initial_cost_of_investment)*100
-    post_tax_return_percentage = rate_of_return_percentage - (rate_of_return_percentage * tax_rate)/100
+    post_tax_return_percentage = rate_of_return_percentage - (rate_of_return_percentage * tax_rate_percentage)/100
 
     return post_tax_return_percentage 

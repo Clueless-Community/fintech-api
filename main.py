@@ -2905,7 +2905,8 @@ def calculate_post_tax_return_percentage(tax_rate_percentage : float,
             "Tag": "Calculate post tax return percentage",
             "Tax Rate Percentage": tax_rate_percentage,
             "Annual net income": annual_net_income,
-            "Initial cost of investment": initial_cost_of_investment
+            "Initial cost of investment": initial_cost_of_investment,
+            "Post tax return percentage": post_tax_return_percentage
             }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
