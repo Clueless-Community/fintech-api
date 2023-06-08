@@ -1799,3 +1799,23 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 ```
 
+**GET** `/calculate_salary`
+
+- Required parameters :`base`,`jb`,`stock`,`pb`,`bonus`,`ptax`,`deduction`
+- Sample output
+```py
+  {
+
+            "Tag":"Net Salary Calculator",
+            "Base Salary per month":150000,
+            "joining bonus/retention bonus":100000,
+            "RSU/stock bonus":200000,
+            "performance bonus":300000,
+            "any additional bonus":0,
+            "tax percentage":15,
+            "any additional deduction":0,
+            "ctc calculated":2040000.0
+    
+  }
+
+```

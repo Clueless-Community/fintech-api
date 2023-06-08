@@ -1490,6 +1490,19 @@ def calculate_expected_return_of_portfolio(
         
     return expected_return_of_portfolio
 
+#Function to calculate net annual salary
+def calculate_salary(base:int,
+                     jb:int,
+                     stock:int,
+                     pb:int,
+                     bonus:int,
+                     ptax:int,
+                     deduction:int):
+    total_amount=(base*12)+jb+stock+pb+bonus
+    tax=(ptax/100)*total_amount
+    ctc=total_amount-tax-deduction
+    return ctc
+
 #function to calculate the Sharpe ratio in Python
 
 def sharpe_ratio(returns, risk_free_rate):
