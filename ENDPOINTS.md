@@ -1782,4 +1782,20 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 
 ```
+```
+
+
+**GET** `/calculate_sharpe_ratio_function`
+-Required parameters: `returns`, `risk_free_rate`
+-Sample Output
+```py
+
+{
+  "Tag": "Sharpe Ratio",
+  "returns": [0.1, 0.05, 0.08, 0.12, 0.09],
+  "risk_free_rate": 0.03,
+  "sharpe_ratio": 1.25
+}
+
+```
 

@@ -2861,3 +2861,24 @@ def calculate_expected_return_of_portfolio(no_of_investments : int,
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+#Endpoint for function Sharpe ratio
+
+@app.get(
+    "/sharpe_ratio",
+    tags=["sharpe_ratio"],
+    description="Calculate Sharpe ratio",
+)
+def sharpe_ratio(
+    prices: list[float], risk_free_rate: float
+):
+    try:
+        returns = functions.calculate_returns(prices)
+        ratio = functions.calculate_sharpe_ratio(returns, risk_free_rate)
+        return {
+            "Tag": "Sharpe Ratio",
+            "Prices": prices,
+            "Risk-free Rate": risk_free_rate,
+            "Sharpe Ratio": ratio,
+        }
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))

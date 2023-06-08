@@ -1489,3 +1489,31 @@ def calculate_expected_return_of_portfolio(
         expected_return_of_portfolio += weight_of_investment[i]*rate_of_return[i]
         
     return expected_return_of_portfolio
+
+#function to calculate the Sharpe ratio in Python
+
+def sharpe_ratio(returns, risk_free_rate):
+    """
+    Calculate the Sharpe ratio given a series of returns and the risk-free rate.
+    
+    Parameters:
+    - returns (array-like): An array-like object containing the returns of an investment/portfolio.
+    - risk_free_rate (float): The risk-free rate of return.
+    
+    Returns:
+    - float: The calculated Sharpe ratio.
+    """
+    avg_return = np.mean(returns)
+    std_dev = np.std(returns)
+    
+    sharpe_ratio = (avg_return - risk_free_rate) / std_dev
+    
+    return sharpe_ratio
+
+#You can use this function by passing your investment/portfolio returns and the risk-free rate to it. For example:
+
+returns = [0.05, 0.03, 0.02, 0.04, 0.06]  # Example returns
+risk_free_rate = 0.02  # Example risk-free rate
+
+sharpe = sharpe_ratio(returns, risk_free_rate)
+print(f"The Sharpe ratio is: {sharpe}")
