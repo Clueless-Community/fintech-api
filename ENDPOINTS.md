@@ -1797,6 +1797,18 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
   "sharpe_ratio": 1.25
 }
 
+**GET** `/calculate_post_tax_return_percentage`
+-Required parameters: `tax_rate_percentage`, `annual_net_income`, `initial_cost_of_investment`
+-Sample Output
+```py
+{
+  "Tag" : "Post Tax Return Percentage",
+  "tax_rate_percentag" : 2,
+  "annual_net_income" : 4000
+  "initial_cost_of_investment" : 10000
+  "post_tax_return_percentage" : 39.2
+}
+
 ```
 
 **GET** `/calculate_salary`
