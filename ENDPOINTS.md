@@ -1819,3 +1819,16 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
   }
 
 ```
+
+**GET** `/loan_to_value_ratio`
+
+- Required parameters : `loan_amount`, `value_of_collateral` 
+- Sample output
+
+```py
+{
+    "Tag": "Loan to Value Ratio",
+    "Loan Amount": 5000.0,
+    "Value Of Collateral": 10000.0,
+    "Loan to Value Ratio": 50%,
+}

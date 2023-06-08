@@ -2913,3 +2913,21 @@ def sharpe_ratio(
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
+#Endpoint for function Loan to Value Ratio
+
+@app.get(
+    "/loan_to_value_ratio",
+    tags=["loan_to_value_ratio"],
+    description="Calculate loan amount to value of collateral ratio",
+)
+def loan_to_value_ratio (loan_amount:float, value_of_collateral:float):
+    try:
+        ratio = functions.loan_to_value_ratio(loan_amount, value_of_collateral)
+        return {
+            "Tag": "Loan to Value Ratio",
+            "Loan Amount": loan_amount,
+            "Value Of Collateral": value_of_collateral,
+            "Loan to Value Ratio": f"{ratio}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
