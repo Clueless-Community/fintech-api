@@ -2861,3 +2861,116 @@ def calculate_expected_return_of_portfolio(no_of_investments : int,
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+#Endpoint to calculate Net annual salary of an employee
+@app.get(
+    "/calculate_salary",
+    tags=["calculate_salary"],
+    description="Calculate Net annual salary of an employee",
+    )
+def calculate_salary(base:int,
+                     jb:int,
+                     stock:int,
+                     pb:int,
+                     bonus:int,
+                     ptax:int,
+                     deduction:int):
+    try:
+        calculate_salary = functions.calculate_salary(base,jb,stock,pb,bonus,ptax,deduction):
+        return {
+
+            "Tag":"Net Salary Calculator",
+            "Base Salary per month":base,
+            "joining bonus/retention bonus":jb,
+            "RSU/stock bonus":stock,
+            "performance bonus":pb,
+            "any additional bonus":bonus,
+            "tax percentage":ptax,
+            "any additional deduction":deduction,
+            "ctc calculated": f"{ctc}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+@app.get(
+    "/calculate_post_tax_return_percentage",
+    tags=["post_tax_return_percentage"],
+    description="Calculate post tax return percentage",
+    )
+def calculate_post_tax_return_percentage(tax_rate_percentage : float, 
+                                    annual_net_income : float,  
+                                    initial_cost_of_investment : float):
+    try:
+        post_tax_return_percentage = functions.calculate_post_tax_return_percentage(tax_rate_percentage, annual_net_income, initial_cost_of_investment)
+        return {
+            "Tag": "Calculate post tax return percentage",
+            "Tax Rate Percentage": tax_rate_percentage,
+            "Annual net income": annual_net_income,
+            "Initial cost of investment": initial_cost_of_investment,
+            "Post tax return percentage": post_tax_return_percentage
+            }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+#Endpoint for function Sharpe ratio
+
+@app.get(
+    "/sharpe_ratio",
+    tags=["sharpe_ratio"],
+    description="Calculate Sharpe ratio",
+)
+def sharpe_ratio(
+    prices: list[float], risk_free_rate: float
+):
+    try:
+        returns = functions.calculate_returns(prices)
+        ratio = functions.calculate_sharpe_ratio(returns, risk_free_rate)
+        return {
+            "Tag": "Sharpe Ratio",
+            "Prices": prices,
+            "Risk-free Rate": risk_free_rate,
+            "Sharpe Ratio": ratio,
+        }
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+    
+    
+#Endpoint for function Treynor Ratio
+
+@app.get(
+    "/treynor_ratio",
+    tags=["treynor_ratio"],
+    description="Calculate Treynor ratio",
+)
+def treynor_ratio(
+    returns: list[float], risk_free_rate: float, beta: float
+):
+    try:
+        ratio = functions.calculate_treynor_ratio(returns, risk_free_rate, beta)
+        return {
+            "Tag": "Treynor Ratio",
+            "Returns": returns,
+            "Risk-free Rate": risk_free_rate,
+            "Beta": beta,
+            "Treynor Ratio": ratio,
+        }
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))    
+
+#Endpoint for function Loan to Value Ratio
+
+@app.get(
+    "/loan_to_value_ratio",
+    tags=["loan_to_value_ratio"],
+    description="Calculate loan amount to value of collateral ratio",
+)
+def loan_to_value_ratio (loan_amount:float, value_of_collateral:float):
+    try:
+        ratio = functions.loan_to_value_ratio(loan_amount, value_of_collateral)
+        return {
+            "Tag": "Loan to Value Ratio",
+            "Loan Amount": loan_amount,
+            "Value Of Collateral": value_of_collateral,
+            "Loan to Value Ratio": f"{ratio}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

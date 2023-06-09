@@ -1782,4 +1782,78 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 
 ```
+```
 
+
+**GET** `/calculate_sharpe_ratio_function`
+-Required parameters: `returns`, `risk_free_rate`
+-Sample Output
+```py
+
+{
+  "Tag": "Sharpe Ratio",
+  "returns": [0.1, 0.05, 0.08, 0.12, 0.09],
+  "risk_free_rate": 0.03,
+  "sharpe_ratio": 1.25
+}
+
+**GET** `/calculate_post_tax_return_percentage`
+-Required parameters: `tax_rate_percentage`, `annual_net_income`, `initial_cost_of_investment`
+-Sample Output
+```py
+{
+  "Tag" : "Post Tax Return Percentage",
+  "tax_rate_percentage" : 2,
+  "annual_net_income" : 4000,
+  "initial_cost_of_investment" : 10000,
+  "post_tax_return_percentage" : 39.2
+}
+
+```
+
+**GET** `/calculate_salary`
+
+- Required parameters :`base`,`jb`,`stock`,`pb`,`bonus`,`ptax`,`deduction`
+- Sample output
+```py
+  {
+
+            "Tag":"Net Salary Calculator",
+            "Base Salary per month":150000,
+            "joining bonus/retention bonus":100000,
+            "RSU/stock bonus":200000,
+            "performance bonus":300000,
+            "any additional bonus":0,
+            "tax percentage":15,
+            "any additional deduction":0,
+            "ctc calculated":2040000.0
+    
+  }
+
+```
+
+**GET** `/loan_to_value_ratio`
+
+- Required parameters : `loan_amount`, `value_of_collateral` 
+- Sample output
+
+```py
+{
+    "Tag": "Loan to Value Ratio",
+    "Loan Amount": 5000.0,
+    "Value Of Collateral": 10000.0,
+    "Loan to Value Ratio": 50%,
+}
+```
+
+**GET** `/calculate_treynor_ratio_function`
+-Required parameters: `returns`, `risk_free_rate`,`beta`
+-Sample Output
+```py
+{
+  "Tag": "Treynor Ratio",
+   returns: list[float] = [0.1, 0.05, 0.08, 0.12, 0.09],
+   risk_free_rate: float = 0.03,
+   beta: float = 1.2
+}
+```
