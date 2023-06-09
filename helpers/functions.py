@@ -1649,6 +1649,15 @@ risk_free_rate = 0.02  # Example risk-free rate
 sharpe = sharpe_ratio(returns, risk_free_rate)
 print(f"The Sharpe ratio is: {sharpe}")
 
+# Function to calculate post tax return percentage
+def calculate_post_tax_return_percentage(tax_rate_percentage : float,
+                                    annual_net_income : float,
+                                    initial_cost_of_investment : float
+                                    ):
+    rate_of_return_percentage = (annual_net_income / initial_cost_of_investment)*100
+    post_tax_return_percentage = rate_of_return_percentage - (rate_of_return_percentage * tax_rate_percentage)/100
+
+    return post_tax_return_percentage 
 
 #Function to calculate the Treynor Ratio in python
 

@@ -2887,6 +2887,26 @@ def calculate_salary(base:int,
             "tax percentage":ptax,
             "any additional deduction":deduction,
             "ctc calculated": f"{ctc}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+@app.get(
+    "/calculate_post_tax_return_percentage",
+    tags=["post_tax_return_percentage"],
+    description="Calculate post tax return percentage",
+    )
+def calculate_post_tax_return_percentage(tax_rate_percentage : float, 
+                                    annual_net_income : float,  
+                                    initial_cost_of_investment : float):
+    try:
+        post_tax_return_percentage = functions.calculate_post_tax_return_percentage(tax_rate_percentage, annual_net_income, initial_cost_of_investment)
+        return {
+            "Tag": "Calculate post tax return percentage",
+            "Tax Rate Percentage": tax_rate_percentage,
+            "Annual net income": annual_net_income,
+            "Initial cost of investment": initial_cost_of_investment,
+            "Post tax return percentage": post_tax_return_percentage
             }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
