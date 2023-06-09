@@ -1649,6 +1649,14 @@ risk_free_rate = 0.02  # Example risk-free rate
 sharpe = sharpe_ratio(returns, risk_free_rate)
 print(f"The Sharpe ratio is: {sharpe}")
 
+#Function to calculate Loan to Value Ratio
+
+def loan_to_value_ratio(
+    loan_amount:float, 
+    value_of_collateral:float):
+    ratio = (loan_amount / value_of_collateral) * 100
+    return ratio
+
 # Function to calculate post tax return percentage
 def calculate_post_tax_return_percentage(tax_rate_percentage : float,
                                     annual_net_income : float,

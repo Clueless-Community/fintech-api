@@ -1832,6 +1832,20 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 ```
 
+**GET** `/loan_to_value_ratio`
+
+- Required parameters : `loan_amount`, `value_of_collateral` 
+- Sample output
+
+```py
+{
+    "Tag": "Loan to Value Ratio",
+    "Loan Amount": 5000.0,
+    "Value Of Collateral": 10000.0,
+    "Loan to Value Ratio": 50%,
+}
+```
+
 **GET** `/calculate_treynor_ratio_function`
 -Required parameters: `returns`, `risk_free_rate`,`beta`
 -Sample Output
@@ -1842,6 +1856,4 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
    risk_free_rate: float = 0.03,
    beta: float = 1.2
 }
-
-
 ```
