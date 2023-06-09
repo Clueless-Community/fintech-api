@@ -1656,3 +1656,45 @@ def loan_to_value_ratio(
     value_of_collateral:float):
     ratio = (loan_amount / value_of_collateral) * 100
     return ratio
+
+# Function to calculate post tax return percentage
+def calculate_post_tax_return_percentage(tax_rate_percentage : float,
+                                    annual_net_income : float,
+                                    initial_cost_of_investment : float
+                                    ):
+    rate_of_return_percentage = (annual_net_income / initial_cost_of_investment)*100
+    post_tax_return_percentage = rate_of_return_percentage - (rate_of_return_percentage * tax_rate_percentage)/100
+
+    return post_tax_return_percentage 
+
+#Function to calculate the Treynor Ratio in python
+
+def calculate_treynor_ratio(returns, risk_free_rate, beta):
+    """
+    Calculates the Treynor Ratio for a given set of returns, risk-free rate, and beta.
+    Parameters:
+    - returns (float or list): The returns of the investment/portfolio.
+      If a single value is provided, it is assumed to be the total return.
+      If a list is provided, it is assumed to be a series of periodic returns.
+    - risk_free_rate (float): The risk-free rate of return.
+    - beta (float): The beta coefficient of the investment/portfolio.
+    Returns:
+    - treynor_ratio (float): The calculated Treynor Ratio.
+    Note:
+    The Treynor Ratio is calculated as (returns - risk-free rate) / beta.
+    """
+
+    if isinstance(returns, list):
+        returns = sum(returns)  # Calculate the total return if periodic returns are provided
+
+    treynor_ratio = (returns - risk_free_rate) / beta
+    return treynor_ratio
+
+
+# Example usage
+returns = 0.1  # Total return of the investment/portfolio
+risk_free_rate = 0.05  # Risk-free rate of return
+beta = 1.2  # Beta coefficient
+
+treynor_ratio = calculate_treynor_ratio(returns, risk_free_rate, beta)
+print(f"Treynor Ratio: {treynor_ratio}")
