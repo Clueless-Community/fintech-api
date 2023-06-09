@@ -94,3 +94,15 @@ def test_calculate_enterprise_value_main():
         "Cash & Cash Equivalents": 1000,
         "Enterprise Value": 2000,
     }
+
+
+def test_calculate_treynor_ratio():
+    response = client.get("/calculate_treynor_ratio/?returns=0.1,0.05,0.08,0.12,0.09&risk_free_rate=0.03")
+    assert response.status_code == 200
+
+    assert response.json() == {
+        "Tag": "Treynor Ratio",
+        "returns": [0.1, 0.05, 0.08, 0.12, 0.09],
+        "risk_free_rate": 0.03,
+        "treynor_ratio": 1.6
+    }
