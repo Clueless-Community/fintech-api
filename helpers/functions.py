@@ -1698,3 +1698,56 @@ beta = 1.2  # Beta coefficient
 
 treynor_ratio = calculate_treynor_ratio(returns, risk_free_rate, beta)
 print(f"Treynor Ratio: {treynor_ratio}")
+
+
+#function to calculate stop order function
+
+import datetime
+
+def execute_stop_order(order_type, symbol, stop_price, quantity):
+    # Simulating order execution
+    current_price = function.get_current_price(symbol)  # Function to get the current price for the symbol
+    timestamp = datetime.datetime.now()
+
+    if order_type == "buy" and current_price >= stop_price:
+        execute_buy_order(symbol, stop_price, quantity)  # Function to execute a buy order
+        print(f"Buy order for {symbol} executed at stop price {stop_price} at {timestamp}")
+    elif order_type == "sell" and current_price <= stop_price:
+        execute_sell_order(symbol, stop_price, quantity)  # Function to execute a sell order
+        print(f"Sell order for {symbol} executed at stop price {stop_price} at {timestamp}")
+    else:
+        print(f"Stop order for {symbol} not triggered at stop price {stop_price}. Current price: {current_price}")
+
+# Example usage
+execute_stop_order("buy", "AAPL", 150.0, 10)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

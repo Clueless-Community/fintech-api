@@ -2974,3 +2974,30 @@ def loan_to_value_ratio (loan_amount:float, value_of_collateral:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+#Endpoints for stop order function    
+
+import requests
+
+def test_main():
+    url = "http://localhost:8000/loan_to_value_ratio"
+
+    # Define test parameters
+    loan_amount = 100000
+    value_of_collateral = 150000
+
+    # Make a GET request to the loan_to_value_ratio endpoint
+    response = requests.get(url, params={"loan_amount": loan_amount, "value_of_collateral": value_of_collateral})
+
+    # Check the response status code
+    if response.status_code == 200:
+        data = response.json()
+        print("Loan to Value Ratio:")
+        print(f"  Loan Amount: {data['Loan Amount']}")
+        print(f"  Value Of Collateral: {data['Value Of Collateral']}")
+        print(f"  Loan to Value Ratio: {data['Loan to Value Ratio']}")
+    else:
+        print("Error occurred while requesting loan_to_value_ratio endpoint")
+
+# Call the test_main function
+test_main()
