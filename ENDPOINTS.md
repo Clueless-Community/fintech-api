@@ -1857,3 +1857,37 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
    beta: float = 1.2
 }
 ```
+#Endpoints for market order function
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get(
+    "/execute_market_order_function",
+    tags=["execute_market_order"],
+    description="Execute a market order",
+)
+def execute_market_order_function(
+    order_type: str,
+    symbol: str,
+    quantity: int,
+):
+    try:
+        # Your implementation to execute the market order
+        # Replace with your logic to execute the order on the trading platform
+        # Example code to return the order details
+        return {
+            "Tag": "Market Order",
+            "Order Type": order_type,
+            "Symbol": symbol,
+            "Quantity": quantity,
+            "Message": f"{order_type.capitalize()} order for {quantity} shares of {symbol} executed successfully at market price.",
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
+# Run the application
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
