@@ -2974,3 +2974,30 @@ def loan_to_value_ratio (loan_amount:float, value_of_collateral:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+#ENDPOINTS for limit order function    
+    
+from fastapi import FastAPI, HTTPException, status
+
+app = FastAPI()
+
+@app.post("/limit_order", tags=["trading"], description="Execute a limit order")
+def execute_limit_order(order_type: str, symbol: str, price: float, quantity: int):
+    try:
+        # Your implementation to execute the limit order
+        # Replace with your logic to execute the order on the trading platform
+        # Example code to print the order details
+        print(f"Executing {order_type} order for {quantity} shares of {symbol} at a limit price of {price}")
+        return {"message": "Limit order executed successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+# Define the main function to run the application
+def main():
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+# Run the application
+if __name__ == "__main__":
+    main()
+    
