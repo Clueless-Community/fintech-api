@@ -1698,3 +1698,27 @@ beta = 1.2  # Beta coefficient
 
 treynor_ratio = calculate_treynor_ratio(returns, risk_free_rate, beta)
 print(f"Treynor Ratio: {treynor_ratio}")
+
+
+#Function to Calculate Free Cash Flow to Equity
+
+def free_cash_flow_to_equity(
+    total_revenues:float, 
+    total_expenses:float,
+    initial_cost_of_asset: float,
+    lifetime_of_asset: float,
+    change_in_PPE:float,
+    current_depreciation:float,
+    current_assets:float,
+    current_liabilities:float,
+    amount_a_company_borrows:float,
+    debt_it_repays:float):
+
+    net_income = total_revenues - total_expenses,
+    depreciation_and_amortization = initial_cost_of_asset / lifetime_of_asset,
+    capEx = change_in_PPE + current_depreciation,
+    change_in_working_capital = current_assets - current_liabilities,
+    net_borrowing = amount_a_company_borrows - debt_it_repays,
+
+    fcfe = net_income + depreciation_and_amortization - capEx - change_in_working_capital + net_borrowing
+    return fcfe 

@@ -1857,3 +1857,30 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
    beta: float = 1.2
 }
 ```
+
+**GET** `/free_cash_flow_to_equity`
+
+- Required parameters
+- Sample output
+```py
+  {
+    "Tag":"Free Cash Flow to Equity",
+    "Total Revenues": 750000.0,
+    "Total Expenses": 350000.0,
+    "Inital Cost of Asset": 900000.0,
+    "Life Time of Asset": 10.0,
+    "Change in Price, Property or Equity": 45000.0,
+    "Current Depreciation": 25000.0,
+    "Current Assets": 250000.0,
+    "Current Liabilities": 100000.0,
+    "Amount a Company Borrows": 450000.0,
+    "Debt it Repays": 100000.0,
+    "Net Income": 400000.0,
+    "Depreciation and Amortization": 90000.0,
+    "Capital Expenditures": 70000.0,
+    "Change in Working Capital": 150000.0,
+    "Net Borrowing": 350000.0,
+    "Free Cash Flow to Equity": 620000.0
+  }
+
+```
