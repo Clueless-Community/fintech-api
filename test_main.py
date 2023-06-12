@@ -70,3 +70,16 @@ def test_calculate_enterprise_value_main():
         "Cash & Cash Equivalents": 1000,
         "Enterprise Value": 2000
     }
+
+def test_main():
+    # Define test parameters
+    order_type = "buy"
+    symbol = "AAPL"
+    limit_price = 150.0
+    quantity = 10
+
+    # Call the execute_limit_order function
+    execute_limit_order(order_type, symbol, limit_price, quantity)
+
+# Call the test_main function
+test_main()

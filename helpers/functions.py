@@ -1554,3 +1554,23 @@ beta = 1.2  # Beta coefficient
 treynor_ratio = calculate_treynor_ratio(returns, risk_free_rate, beta)
 print(f"Treynor Ratio: {treynor_ratio}")
 
+# Limit order function in python
+
+import datetime
+
+def execute_limit_order(order_type, symbol, price, quantity):
+    # Simulating order execution
+    current_price = function.get_current_price(symbol)  # Function to get the current price for the symbol
+    timestamp = datetime.datetime.now()
+    
+    if order_type == "buy" and current_price <= price:
+        execute_buy_order(symbol, price, quantity)  # Function to execute a buy order
+        print(f"Buy order for {symbol} executed at {price} at {timestamp}")
+    elif order_type == "sell" and current_price >= price:
+        execute_sell_order(symbol, price, quantity)  # Function to execute a sell order
+        print(f"Sell order for {symbol} executed at {price} at {timestamp}")
+    else:
+        print(f"Limit order for {symbol} not executed at {price} at {timestamp}. Current price: {current_price}")
+
+# Example usage
+execute_limit_order("buy", "AAPL", 150.0, 10)
