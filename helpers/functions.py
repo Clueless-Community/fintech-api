@@ -1578,6 +1578,107 @@ def accrint(
 
     return accrint
 
+
+def calculate_mortgage(principal, interest_rate, years, down_payment=0, property_tax_rate=0, insurance_rate=0):
+    """
+    Calculate the monthly mortgage payment and provide additional information about the mortgage.
+
+    Args:
+        principal (float): The principal amount (loan amount).
+        interest_rate (float): The annual interest rate (in percentage).
+        years (int): The number of years for the mortgage.
+        down_payment (float, optional): The down payment amount (default: 0).
+        property_tax_rate (float, optional): The annual property tax rate (in percentage) (default: 0).
+        insurance_rate (float, optional): The annual insurance rate (in percentage) (default: 0).
+
+    Returns:
+        dict: A dictionary containing the monthly mortgage payment and additional mortgage information.
+    """
+    monthly_interest_rate = interest_rate / 100 / 12  # Monthly interest rate
+    num_payments = years * 12  # Total number of payments
+
+    # Calculate the loan amount after down payment
+    loan_amount = principal - down_payment
+
+    # Calculate the monthly mortgage payment
+    monthly_payment = (
+        loan_amount
+        * monthly_interest_rate
+        * (1 + monthly_interest_rate) ** num_payments
+        / ((1 + monthly_interest_rate) ** num_payments - 1)
+    )
+
+    # Calculate the total payment over the mortgage term
+    total_payment = monthly_payment * num_payments
+
+    # Calculate the total property tax over the mortgage term
+    total_property_tax = property_tax_rate / 100 * principal * years
+
+    # Calculate the total insurance cost over the mortgage term
+    total_insurance_cost = insurance_rate / 100 * principal * years
+
+    # Calculate the total cost of the mortgage (principal + interest + property tax + insurance)
+    total_cost = total_payment + total_property_tax + total_insurance_cost
+
+    # Calculate the loan-to-value (LTV) ratio
+    ltv_ratio = (loan_amount / principal) * 100
+
+    # Create a dictionary with the mortgage information
+    mortgage_info = {
+        "monthly_payment": monthly_payment,
+        "total_payment": total_payment,
+        "total_property_tax": total_property_tax,
+        "total_insurance_cost": total_insurance_cost,
+        "total_cost": total_cost,
+        "loan_to_value_ratio": ltv_ratio,
+    }
+
+    return mortgage_info
+
+
+def calculate_social_security(birth_date, earnings, retirement_age):
+    """
+    Calculate the estimated monthly Social Security benefits based on the birth date, earnings, and retirement age.
+
+    Args:
+        birth_date (str): The birth date in the format 'YYYY-MM-DD'.
+        earnings (float): The average indexed monthly earnings.
+        retirement_age (int): The desired retirement age.
+
+    Returns:
+        float: The estimated monthly Social Security benefits.
+    """
+    birth_date = pd.to_datetime(birth_date)
+    current_date = pd.to_datetime('today')
+    age = pd.Timedelta(current_date - birth_date).days / 365.25
+
+    # Determine the full retirement age based on the year of birth
+    if birth_date.year < 1938:
+        full_retirement_age = 65
+    elif birth_date.year < 1943:
+        full_retirement_age = 65 + (birth_date.year - 1937) * 2
+    else:
+        full_retirement_age = 66
+
+    # Calculate the reduction factor for claiming benefits before full retirement age
+    if retirement_age < full_retirement_age:
+        reduction_factor = 1 - ((full_retirement_age - retirement_age) * 5 / 900)
+    else:
+        reduction_factor = 1.0  # No reduction if retirement age is at or after full retirement age
+
+    # Calculate the primary insurance amount (PIA)
+    pia = earnings * reduction_factor
+
+    # Calculate the estimated monthly Social Security benefits
+    monthly_benefits = pia / 12
+
+    # Predict future benefits
+    years_to_retirement = retirement_age - age
+    future_benefits = monthly_benefits * (1 + 0.02) ** years_to_retirement
+
+    return monthly_benefits, future_benefits
+  
+  
 # Function to calculate net profit margin
 def calculate_net_profit_margin(
         revenue : float, 
