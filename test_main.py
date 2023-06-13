@@ -106,3 +106,16 @@ def test_calculate_treynor_ratio():
         "risk_free_rate": 0.03,
         "treynor_ratio": 1.6
     }
+
+
+def test_main():
+    # Define test parameters
+    order_type = "buy"
+    symbol = "AAPL"
+    quantity = 10
+
+    # Call the execute_market_order function
+    execute_market_order(order_type, symbol, quantity)
+
+# Call the test_main function
+test_main()

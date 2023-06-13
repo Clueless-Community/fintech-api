@@ -1699,7 +1699,6 @@ beta = 1.2  # Beta coefficient
 treynor_ratio = calculate_treynor_ratio(returns, risk_free_rate, beta)
 print(f"Treynor Ratio: {treynor_ratio}")
 
-
 #Function to Calculate Free Cash Flow to Equity
 
 def free_cash_flow_to_equity(
@@ -1721,4 +1720,4 @@ def free_cash_flow_to_equity(
     net_borrowing = amount_a_company_borrows - debt_it_repays,
 
     fcfe = net_income + depreciation_and_amortization - capEx - change_in_working_capital + net_borrowing
-    return fcfe 
+    return fcfe
