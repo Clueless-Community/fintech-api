@@ -107,14 +107,15 @@ def test_calculate_treynor_ratio():
         "treynor_ratio": 1.6
     }
 
-def test_main():
-    # Define test parameters
-    order_type = "buy"
-    symbol = "AAPL"
-    quantity = 10
+def test_market_order_function():
+    response = client.get("/market_order_function/?symbol=AAPL&quantity=10&side=buy")
+    assert response.status_code == 200
 
-    # Call the execute_market_order function
-    execute_market_order(order_type, symbol, quantity)
-
-# Call the test_main function
-test_main()  
+    assert response.json() == {
+        "Tag": "Market Order",
+        "symbol": "AAPL",
+        "quantity": 10,
+        "side": "buy",
+        "status": "executed"
+    }
+}
