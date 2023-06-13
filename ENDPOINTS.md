@@ -1751,13 +1751,13 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-```
+
 # GET #  Endpoint --> '/mortrage'
 Required Paramenters --> princial:int,interest_rate:float,years:int,down_payment:int,property_tax_rate:float,insurance_rate:float
 Sample request --> http://127.0.0.1:8000/mortrages?princial=200000&interest_rate=4.5&years=45&down_payment=50000&property_tax_rate=1.3&insurance_rate=0.5
 
 Sample Output
-
+```py
 {
   "Monthly Payment": 648.4110284532501,
   "Total Payment": 350141.95536475506,
@@ -1766,15 +1766,148 @@ Sample Output
   "Total Cost": 512141.95536475506,
   "Loan to value ratio": 75
 }
-
+```
 
 ## GET ## Endpoint --> '/social_securities'
 Required Parameters --> birth_date:str,earnings:int,retirement_age:int
 
 Sample request --> http://127.0.0.1:8000/social_securities?birth_date=10-08-2002&earnings=250000&retirement_age=70
 Sample Output
-
+```py
 [
   "The monthly benefits are 20833.333333333332 and future benefits are 55349.83286723857"
 ]
+```
+
+**GET** `/calculate_net_profit_margin`
+-Required parameters: `revenue`, `cost_of_goods_sold`, `operating_expenses`, `other_expenses`, `interest`, `taxes`
+-Sample Output
+```py
+{
+  "Tag":"Net Profit Margin",
+  "revenue": 1000,
+  "cost_of_goods_sold": 200,
+  "operating_expenses": 100,
+  "other_expenses": 50,
+  "interest": 250,
+  "taxes": 50,
+  "net_profit_margin": 45
+}
+
+```
+
+**GET** `/calculate_expected_return_of_portfolio`
+-Required parameters: `no_of_investments`, `weight_of_investment`, `rate_of_return`
+-Sample Output
+```py
+{
+  "Tag": "Expected Return of Portfolio",
+  "no_of_investments": 2,
+  "investment_amount": [20000 , 60000],
+  "rate_of_return": [3, 6],
+  "expected_return_of_portfolio": 5.75
+
+}
+
+```
+
+
+**GET** `/calculate_sharpe_ratio_function`
+-Required parameters: `returns`, `risk_free_rate`
+-Sample Output
+```py
+
+{
+  "Tag": "Sharpe Ratio",
+  "returns": [0.1, 0.05, 0.08, 0.12, 0.09],
+  "risk_free_rate": 0.03,
+  "sharpe_ratio": 1.25
+}
+```
+
+**GET** `/calculate_post_tax_return_percentage`
+-Required parameters: `tax_rate_percentage`, `annual_net_income`, `initial_cost_of_investment`
+-Sample Output
+```py
+{
+  "Tag" : "Post Tax Return Percentage",
+  "tax_rate_percentage" : 2,
+  "annual_net_income" : 4000,
+  "initial_cost_of_investment" : 10000,
+  "post_tax_return_percentage" : 39.2
+}
+
+```
+
+**GET** `/calculate_salary`
+
+- Required parameters :`base`,`jb`,`stock`,`pb`,`bonus`,`ptax`,`deduction`
+- Sample output
+```py
+  {
+
+            "Tag":"Net Salary Calculator",
+            "Base Salary per month":150000,
+            "joining bonus/retention bonus":100000,
+            "RSU/stock bonus":200000,
+            "performance bonus":300000,
+            "any additional bonus":0,
+            "tax percentage":15,
+            "any additional deduction":0,
+            "ctc calculated":2040000.0
+    
+  }
+
+```
+
+**GET** `/loan_to_value_ratio`
+
+- Required parameters : `loan_amount`, `value_of_collateral` 
+- Sample output
+
+```py
+{
+    "Tag": "Loan to Value Ratio",
+    "Loan Amount": 5000.0,
+    "Value Of Collateral": 10000.0,
+    "Loan to Value Ratio": 50%,
+}
+```
+
+**GET** `/calculate_treynor_ratio_function`
+-Required parameters: `returns`, `risk_free_rate`,`beta`
+-Sample Output
+```py
+{
+  "Tag": "Treynor Ratio",
+   returns: list[float] = [0.1, 0.05, 0.08, 0.12, 0.09],
+   risk_free_rate: float = 0.03,
+   beta: float = 1.2
+}
+```
+
+**GET** `/free_cash_flow_to_equity`
+
+- Required parameters
+- Sample output
+```py
+  {
+    "Tag":"Free Cash Flow to Equity",
+    "Total Revenues": 750000.0,
+    "Total Expenses": 350000.0,
+    "Inital Cost of Asset": 900000.0,
+    "Life Time of Asset": 10.0,
+    "Change in Price, Property or Equity": 45000.0,
+    "Current Depreciation": 25000.0,
+    "Current Assets": 250000.0,
+    "Current Liabilities": 100000.0,
+    "Amount a Company Borrows": 450000.0,
+    "Debt it Repays": 100000.0,
+    "Net Income": 400000.0,
+    "Depreciation and Amortization": 90000.0,
+    "Capital Expenditures": 70000.0,
+    "Change in Working Capital": 150000.0,
+    "Net Borrowing": 350000.0,
+    "Free Cash Flow to Equity": 620000.0
+  }
 ```

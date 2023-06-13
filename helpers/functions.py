@@ -5,6 +5,7 @@ import math
 import datetime
 from dateutil.relativedelta import relativedelta
 
+
 # Function to Calculate Simple Interest Rate
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
     term = months / 12
@@ -12,9 +13,11 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
     rate = decimal_to_percent(interest_paid) / (principle_amount * term)
     return rate
 
+
 # Calculate percent to decimal
 def percent_to_decimal(percent: int | float) -> float:
     return percent / 100
+
 
 # Calculate decimal to percent
 def decimal_to_percent(decimal: int | float) -> int | float:
@@ -63,7 +66,9 @@ def compound_interest(
 
 # Function to Calculate Inflation
 def inflation(present_amount: float, inflation_rate: float, years: int):
-    future_amount = present_amount * (pow((1 + percent_to_decimal(inflation_rate)), years))
+    future_amount = present_amount * (
+        pow((1 + percent_to_decimal(inflation_rate)), years)
+    )
     return future_amount
 
 
@@ -77,9 +82,9 @@ def effective_annual_rate(annual_interest_rate: float, compounding_period: int):
 def certificate_of_deposit(
     principal_amount: float, interest_rate: float, yrs: int, compounding_per_yr: int
 ):
-    cd = principal_amount * (1 + interest_rate / decimal_to_percent(compounding_per_yr)) ** (
-        compounding_per_yr * yrs
-    )
+    cd = principal_amount * (
+        1 + interest_rate / decimal_to_percent(compounding_per_yr)
+    ) ** (compounding_per_yr * yrs)
     return float(cd)
 
 
@@ -387,7 +392,6 @@ def duration(
     settlement_date: float,
     maturity_date: float,
 ):
-
     try:
         settlement_date = pd.to_datetime(settlement_date, format="%d/%m/%Y")
 
@@ -516,7 +520,9 @@ def discounted_cash_flow(
 
 # Function to calculate GDP growth rate
 def gdp_growth_rate(current_year_gdp: float, last_year_gdp: float):
-    gdp_growth_rate = decimal_to_percent((current_year_gdp - last_year_gdp) / last_year_gdp)
+    gdp_growth_rate = decimal_to_percent(
+        (current_year_gdp - last_year_gdp) / last_year_gdp
+    )
     return gdp_growth_rate
 
 
@@ -529,56 +535,63 @@ def credit_card_equation(
     N = -(1 // 30) * (a // b)
     return N
 
-#function to calculate the payoff of multiple credit cards using Debt Avalanche method
-def credit_card_payoff(debts:list,interest_rates:list,minimum_payments:list,monthly_payment:int):
 
-      cards =[]
+# function to calculate the payoff of multiple credit cards using Debt Avalanche method
+def credit_card_payoff(
+    debts: list, interest_rates: list, minimum_payments: list, monthly_payment: int
+):
+    cards = []
 
-      for i in range (len (debts)):
-        cards.append (
-      		 {
-      'index': i,
-      'debt': debts[i],
-      'minimum_payment': minimum_payments[i],
-      'interest_rate': interest_rates[i],
-      'interest_paid':0,
-      'month':0,
-      'total_payment':0
-      		 }
+    for i in range(len(debts)):
+        cards.append(
+            {
+                "index": i,
+                "debt": debts[i],
+                "minimum_payment": minimum_payments[i],
+                "interest_rate": interest_rates[i],
+                "interest_paid": 0,
+                "month": 0,
+                "total_payment": 0,
+            }
+        )
+    # Sort the list of dictionaries by interest rate, in descending order
+    cards.sort(key=lambda x: x["interest_rate"], reverse=True)
 
-      )
-      #Sort the list of dictionaries by interest rate, in descending order
-      cards.sort (key = lambda x:x['interest_rate'], reverse = True)
+    extra = 0
+    while sum(d["debt"] for d in cards) > 0:
+        highest_interest_index = cards.index(
+            max((d for d in cards if d["debt"] > 0), key=lambda x: x["interest_rate"])
+        )  # highest index of the interest rate
+        total_minimum_payment = sum(
+            c["minimum_payment"] for c in cards if c["debt"] > 0
+        )
+        extra_payment = monthly_payment - total_minimum_payment + extra
+        extra = 0
+        for i in range(len(cards)):
+            if cards[i]["debt"] > 0:
+                interest = round(
+                    percent_to_decimal(cards[i]["debt"] * cards[i]["interest_rate"])
+                    / 12,
+                    2,
+                )
+                payment = cards[i]["minimum_payment"]
+                cards[i]["interest_paid"] += interest
+                cards[i]["month"] += 1
+                if i == highest_interest_index:
+                    payment += extra_payment
+                if payment > cards[i]["debt"]:
+                    extra = payment - cards[i]["debt"]
+                    cards[i]["total_payment"] += cards[i]["debt"]
+                    cards[i]["debt"] = 0
+                else:
+                    cards[i]["debt"] -= payment
+                    cards[i]["total_payment"] += payment
+                if cards[i]["debt"] == 0:
+                    cards[i]["total_payment"] += cards[i]["interest_paid"]
 
-      extra=0
-      while sum(d['debt']  for d in cards) > 0:
-           highest_interest_index=cards.index(max((d for d in cards if d['debt'] > 0), key=lambda x: x['interest_rate']))#highest index of the interest rate
-           total_minimum_payment=sum(c['minimum_payment'] for c in cards if c['debt']>0)
-           extra_payment=monthly_payment- total_minimum_payment +extra
-           extra =0
-           for i in range(len(cards)):
-               if cards[i]['debt']>0:
+    cards.sort(key=lambda x: x["index"])
 
-                  interest = round(percent_to_decimal(cards[i]['debt'] * cards[i]['interest_rate']) / 12, 2)
-                  payment=cards[i]['minimum_payment']
-                  cards[i]['interest_paid']+=interest
-                  cards[i]['month']+=1
-                  if i==highest_interest_index:
-                      payment+=extra_payment
-                  if payment>cards[i]['debt']:
-                      extra=payment-cards[i]['debt']
-                      cards[i]['total_payment']+=cards[i]['debt']
-                      cards[i]['debt']=0
-                  else:
-                      cards[i]['debt']-=payment
-                      cards[i]['total_payment']+=payment
-                  if cards[i]['debt']==0:
-                      cards[i]['total_payment']+=cards[i]['interest_paid']
-
-      cards.sort (key = lambda x:x['index'])
-
-
-      return cards
+    return cards
 
 
 # function to calculate future value of the ordinary annuity
@@ -715,7 +728,8 @@ def yield_to_maturity(
     bond_price: float, face_value: float, coupon_rate: float, years_to_maturity: float
 ):
     yield_cal = (
-        coupon_rate * percent_to_decimal(face_value) + (face_value - bond_price) / years_to_maturity
+        coupon_rate * percent_to_decimal(face_value)
+        + (face_value - bond_price) / years_to_maturity
     ) / ((face_value + bond_price) / 2)
     return round(decimal_to_percent(yield_cal), 2)
 
@@ -756,7 +770,8 @@ def profitability_index2(
     pv_cash_flow_list = []
     for i in range(len(annual_cash_flow_list)):
         pv_cash_flow_list.append(
-            (annual_cash_flow_list[i]) / ((1 + percent_to_decimal(discount_rate)) ** (i + 1))
+            (annual_cash_flow_list[i])
+            / ((1 + percent_to_decimal(discount_rate)) ** (i + 1))
         )
     total_pv_cash_flow = sum(pv_cash_flow_list)
     profitability_index = total_pv_cash_flow / initial_inverstment
@@ -814,6 +829,7 @@ def time_period_required_for_growth(interest_rate: float, growth_factor: int):
         1 + percent_to_decimal(interest_rate)
     )
     return time_period_required_for_growth
+
 
 # Function to calculate preferred stock value
 def preferred_stock_value(dividend: float, discount_rate: float):
@@ -901,8 +917,12 @@ def calculate_401k(
     number_of_years = age_at_retirement - current_age
     amount = 0
     for _ in range(number_of_years):
-        amount = (amount + contribution_amount) * (1 + percent_to_decimal(rate_of_return))
-        contribution_amount = (contribution_amount) * (1 + percent_to_decimal(salary_increase_rate))
+        amount = (amount + contribution_amount) * (
+            1 + percent_to_decimal(rate_of_return)
+        )
+        contribution_amount = (contribution_amount) * (
+            1 + percent_to_decimal(salary_increase_rate)
+        )
     return round(amount, 3)
 
 
@@ -913,7 +933,7 @@ def calculate_mortgage_interest(
     annual_interest_rate: float,
     loan_term: int,
 ):
-    annual_interest_rate = percent_to_decimal(annual_interest_rate) 
+    annual_interest_rate = percent_to_decimal(annual_interest_rate)
     loan_amount = mortgage_amount * percent_to_decimal(100 - mortgage_deposit)
     power = (1 + annual_interest_rate) ** loan_term
     mortgage_annual_payment = loan_amount * (annual_interest_rate * power) / (power - 1)
@@ -986,116 +1006,129 @@ def calculate_enterprise_value(
     preferred_stock: float,
     non_controlling_interest: float,
     cash_and_cash_equivalents: float,
-    ):
+):
     equity_value = share_price * fully_diluted_shares_outstanding
-    enterprise_value = equity_value + total_debt + preferred_stock + non_controlling_interest - cash_and_cash_equivalents
+    enterprise_value = (
+        equity_value
+        + total_debt
+        + preferred_stock
+        + non_controlling_interest
+        - cash_and_cash_equivalents
+    )
     return round(enterprise_value, 2)
+
 
 # Function to convert salary_amount amounts to their corresponding values based on payment frequency.
 def salary_calculate(
-    salary_amount: float,
-    payment_frequency: str,
-    hours_per_day: int,
-    days_per_week: int
+    salary_amount: float, payment_frequency: str, hours_per_day: int, days_per_week: int
 ):
     # Get the total salary of the corresponding frequency
     salaries = {
         "hourly": {
-        # Assuming there are 4.333333 weeks in a month (in real-time), 13 week quarters in a year & 52 weeks in a year
+            # Assuming there are 4.333333 weeks in a month (in real-time), 13 week quarters in a year & 52 weeks in a year
             "hourly": salary_amount,
             "daily": salary_amount * hours_per_day,
             "weekly": salary_amount * hours_per_day * days_per_week,
             "bi-weekly": salary_amount * hours_per_day * days_per_week * 2,
             "monthly": salary_amount * hours_per_day * days_per_week * 4.333333,
             "quarterly": salary_amount * hours_per_day * days_per_week * 13,
-            "yearly": salary_amount * hours_per_day * (days_per_week * 52)
+            "yearly": salary_amount * hours_per_day * (days_per_week * 52),
         },
         "daily": {
-        # Assuming there are 4.333333 weeks in a month, and 3 months in a quarter & 52 working weeks
+            # Assuming there are 4.333333 weeks in a month, and 3 months in a quarter & 52 working weeks
             "hourly": salary_amount / hours_per_day,
             "daily": salary_amount,
             "weekly": salary_amount * days_per_week,
             "bi-weekly": salary_amount * days_per_week * 2,
             "monthly": salary_amount * (days_per_week * 4.333333),
             "quarterly": salary_amount * days_per_week * (4.333333 * 3),
-            "yearly": salary_amount * days_per_week * 52
+            "yearly": salary_amount * days_per_week * 52,
         },
         "weekly": {
-        # Assuming there are 4.333333 weeks in a month, 13 weeks in a quarter & 2 weeks make up a bi-week
+            # Assuming there are 4.333333 weeks in a month, 13 weeks in a quarter & 2 weeks make up a bi-week
             "hourly": salary_amount / (hours_per_day * days_per_week),
             "daily": salary_amount / days_per_week,
             "weekly": salary_amount,
             "bi-weekly": salary_amount * 2,
             "monthly": salary_amount * 4.333333,
             "quarterly": salary_amount * 13,
-            "yearly": salary_amount * 52
+            "yearly": salary_amount * 52,
         },
         "bi-weekly": {
-        # Assuming there are 2 bi-weekly periods in a month & round(6.5223214,1) bi-weekly periods in a quarter
+            # Assuming there are 2 bi-weekly periods in a month & round(6.5223214,1) bi-weekly periods in a quarter
             "hourly": salary_amount / (hours_per_day * days_per_week * 2),
             "daily": salary_amount / (days_per_week * 2),
             "weekly": salary_amount / 2,
             "bi-weekly": salary_amount,
             "monthly": salary_amount * 2,
             "quarterly": salary_amount * 6.5,
-            "yearly": salary_amount * 26
+            "yearly": salary_amount * 26,
         },
         "monthly": {
-        # Assuming there are 2 bi-weekly periods, 4.333333 weeks in a month & 3 months in a quarter
+            # Assuming there are 2 bi-weekly periods, 4.333333 weeks in a month & 3 months in a quarter
             "hourly": salary_amount / (hours_per_day * days_per_week * 4.333333),
             "daily": salary_amount / (days_per_week * 4.333333),
             "weekly": salary_amount / 4.333333,
             "bi-weekly": salary_amount / (4.333333 / 2),
             "monthly": salary_amount,
             "quarterly": salary_amount * 3,
-            "yearly": salary_amount * 12
+            "yearly": salary_amount * 12,
         },
         "quarterly": {
-        # Assuming there are 3 months, 13 weeks in a quarter, and 4 quarters in a year
+            # Assuming there are 3 months, 13 weeks in a quarter, and 4 quarters in a year
             "hourly": salary_amount / ((13 * days_per_week) * hours_per_day),
             "daily": salary_amount / (13 * days_per_week),
             "weekly": salary_amount / 13,
             "bi-weekly": salary_amount / 13 * 2,
             "monthly": salary_amount / 3,
             "quarterly": salary_amount,
-            "yearly": salary_amount * 4
+            "yearly": salary_amount * 4,
         },
         "yearly": {
-        # Assuming there are 4 quarters, 12 months, 26 bi-weeks & 52 weeks in a year.
+            # Assuming there are 4 quarters, 12 months, 26 bi-weeks & 52 weeks in a year.
             "hourly": salary_amount / (hours_per_day * days_per_week * 52),
             "daily": salary_amount / (52 * days_per_week),
             "weekly": salary_amount / 52,
             "bi-weekly": salary_amount / 26,
             "monthly": salary_amount / 12,
             "quarterly": salary_amount / 4,
-            "yearly": salary_amount
-        }
+            "yearly": salary_amount,
+        },
     }
 
     if payment_frequency not in salaries.keys():
         return {"error": "Invalid payment frequency."}
 
     # Get the rounded off values for the salaries (to 2 decimal places)
-    return {k: round(v,2) for k, v in salaries[payment_frequency].items()}
+    return {k: round(v, 2) for k, v in salaries[payment_frequency].items()}
 
 
 # Function to Calculate Personal Loan and visualization monthly payments (schedule)
 # interest_rate - % per year; loan_term - years; loan_start_date - format %B %Y (February 2023)
 def personal_loan(
-        loan_amount: float,
-        interest_rate: float,
-        loan_term_years: int,
-        loan_start_date: str
+    loan_amount: float, interest_rate: float, loan_term_years: int, loan_start_date: str
 ):
     loan_term_month = loan_term_years * 12
     interest_rate_month = percent_to_decimal(interest_rate) / 12
-    monthly_payment = loan_amount * interest_rate_month / (1 - (1 + interest_rate_month) ** (-loan_term_month))
+    monthly_payment = (
+        loan_amount
+        * interest_rate_month
+        / (1 - (1 + interest_rate_month) ** (-loan_term_month))
+    )
     total_cost_loan = monthly_payment * loan_term_month
     total_interest_paid = total_cost_loan - loan_amount
 
     dframe = pd.DataFrame(
-        columns=['Date', 'Principal', 'Interest', 'Remaining balance', 'Principal Total', 'Interest Total'])
-    date = datetime.datetime.strptime(loan_start_date, '%B %Y')
+        columns=[
+            "Date",
+            "Principal",
+            "Interest",
+            "Remaining balance",
+            "Principal Total",
+            "Interest Total",
+        ]
+    )
+    date = datetime.datetime.strptime(loan_start_date, "%B %Y")
     principal_total = interest_total = 0
     remain_balance = loan_amount
     for i in range(loan_term_years * 12):
@@ -1105,13 +1138,21 @@ def personal_loan(
         principal = monthly_payment - interest
         principal_total = principal_total + principal
         remain_balance = remain_balance - principal
-        dframe.loc[i, :] = date.strftime("%B %Y"), round(principal, 2), round(interest, 2), round(remain_balance,
-                                                                                                  2), round(
-            principal_total, 2), round(interest_total, 2)
+        dframe.loc[i, :] = (
+            date.strftime("%B %Y"),
+            round(principal, 2),
+            round(interest, 2),
+            round(remain_balance, 2),
+            round(principal_total, 2),
+            round(interest_total, 2),
+        )
 
-    return {"Monthly payment": monthly_payment, "Total interest paid": total_interest_paid,
-            "Total cost loan": total_cost_loan, "Schedule": dframe.to_json()}
-
+    return {
+        "Monthly payment": monthly_payment,
+        "Total interest paid": total_interest_paid,
+        "Total cost loan": total_cost_loan,
+        "Schedule": dframe.to_json(),
+    }
 
 
 # Function to calculate lump-sum mutual fund investment
@@ -1119,6 +1160,7 @@ def calculate_lumpsum(principal, interest_rate, years):
     total_amount = principal * ((1 + percent_to_decimal(interest_rate)) ** years)
     interest_earned = total_amount - principal
     return (total_amount, interest_earned)
+
 
 def main():
     principal = float(input("Enter the principal amount: "))
@@ -1128,13 +1170,13 @@ def main():
     print(f"Total Amount: Rs.{total_amount:.2f}")
     print(f"Interest Earned: Rs.{interest_earned:.2f}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
 
 
 # Function to calculate FHA loan
 def calculate_fha_loan():
-
     # Get user input for home price, down payment percentage, loan term, interest rate, and FHA annual MIP
     home_price = float(input("Enter home price: "))
     down_payment_percentage = float(input("Enter down payment percentage: "))
@@ -1155,7 +1197,11 @@ def calculate_fha_loan():
     # Calculate monthly mortgage payment
     loan_term_months = loan_term_years * 12
     monthly_interest_rate = percent_to_decimal(interest_rate) / 12
-    monthly_payment = (base_loan_amount * monthly_interest_rate * (1 + monthly_interest_rate) ** loan_term_months) / ((1 + monthly_interest_rate) ** loan_term_months - 1)
+    monthly_payment = (
+        base_loan_amount
+        * monthly_interest_rate
+        * (1 + monthly_interest_rate) ** loan_term_months
+    ) / ((1 + monthly_interest_rate) ** loan_term_months - 1)
 
     # Calculate total FHA loan amount and total monthly payment
     total_fha_loan_amount = base_loan_amount + upfront_mip
@@ -1175,38 +1221,67 @@ def calculate_fha_loan():
     print(f"Total cost of loan: ${total_cost_of_loan:.2f}")
 
 
-#Function to Calculate Refinance and side-by-side comparison with existing loan
+# Function to Calculate Refinance and side-by-side comparison with existing loan
 # interest_rate - % per year; loan_term - years
 def refinance_calculator(
-        current_loan_amount: float,
-        current_interest_rate: float,
-        current_loan_term_years: int,
-        time_remaining_years: int,
-        new_interest_rate: float,
-        new_loan_term_years: int,
-        cash_out_amount: float
-    ):
+    current_loan_amount: float,
+    current_interest_rate: float,
+    current_loan_term_years: int,
+    time_remaining_years: int,
+    new_interest_rate: float,
+    new_loan_term_years: int,
+    cash_out_amount: float,
+):
     loan_term_month = current_loan_term_years * 12
     interest_rate_month = percent_to_decimal(current_interest_rate) / 12
-    current_monthly_payment = current_loan_amount * interest_rate_month / (1 - (1 + interest_rate_month) ** (-loan_term_month))
+    current_monthly_payment = (
+        current_loan_amount
+        * interest_rate_month
+        / (1 - (1 + interest_rate_month) ** (-loan_term_month))
+    )
     term_years_pass = loan_term_month - 12 * time_remaining_years
-    balance_left_loan = (current_loan_amount * (1 + interest_rate_month) ** (term_years_pass)) - (current_monthly_payment * ((1 + interest_rate_month) ** term_years_pass - 1) / interest_rate_month)
+    balance_left_loan = (
+        current_loan_amount * (1 + interest_rate_month) ** (term_years_pass)
+    ) - (
+        current_monthly_payment
+        * ((1 + interest_rate_month) ** term_years_pass - 1)
+        / interest_rate_month
+    )
     new_loan_amount = balance_left_loan - cash_out_amount
     current_total_cost_left = current_monthly_payment * 12 * time_remaining_years
     current_total_interest_paid = current_total_cost_left - balance_left_loan
 
-    new_credit = personal_loan(new_loan_amount, new_interest_rate, new_loan_term_years, datetime.datetime.now().strftime('%B %Y'))
+    new_credit = personal_loan(
+        new_loan_amount,
+        new_interest_rate,
+        new_loan_term_years,
+        datetime.datetime.now().strftime("%B %Y"),
+    )
 
-    return {"Balance left on loan": balance_left_loan, "New loan amount": new_loan_amount,
-            "Current monthly payment": current_monthly_payment, "New monthly payment": new_credit['Monthly payment'], "Monthly savings": current_monthly_payment - new_credit['Monthly payment'],
-            "Current left interest paid":current_total_interest_paid, "New total interest paid":new_credit['Total interest paid'], "Total interest saving":current_total_interest_paid-new_credit['Total interest paid'],
-            "Current total cost left":current_total_cost_left, "New total cost loan": new_credit['Total cost loan'], "Total cost saving":current_total_cost_left-new_credit['Total cost loan']}
+    return {
+        "Balance left on loan": balance_left_loan,
+        "New loan amount": new_loan_amount,
+        "Current monthly payment": current_monthly_payment,
+        "New monthly payment": new_credit["Monthly payment"],
+        "Monthly savings": current_monthly_payment - new_credit["Monthly payment"],
+        "Current left interest paid": current_total_interest_paid,
+        "New total interest paid": new_credit["Total interest paid"],
+        "Total interest saving": current_total_interest_paid
+        - new_credit["Total interest paid"],
+        "Current total cost left": current_total_cost_left,
+        "New total cost loan": new_credit["Total cost loan"],
+        "Total cost saving": current_total_cost_left - new_credit["Total cost loan"],
+    }
 
-#calculate_fha_loan()
 
-#Function to compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission for a simple percentage commission structure.
+# calculate_fha_loan()
 
-def commission_calc(sales_price: float = None, commission_rate: float = None, commission: float = None):
+# Function to compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission for a simple percentage commission structure.
+
+
+def commission_calc(
+    sales_price: float = None, commission_rate: float = None, commission: float = None
+):
     if sales_price == None and commission_rate != None and commission != None:
         output = 100 * commission / commission_rate
     elif sales_price != None and commission_rate == None and commission != None:
@@ -1216,16 +1291,28 @@ def commission_calc(sales_price: float = None, commission_rate: float = None, co
 
     return output
 
-#Function to calculate total college fee of one year assuming full tuition fee is being paid.
-def college_cost(book_cost:float,
-                 college_tuition:float,
-                 Devices:float,
-                 travel_expenses:float,
-                 hostel_charges:float,
-                 mess_fee:float,
-                 miscellaneous:float):
-    Total_cost_ofOneYear=book_cost+college_tuition+Devices+(travel_expenses*12)+(hostel_charges*12)+(mess_fee*12)+(miscellaneous*12)
+
+# Function to calculate total college fee of one year assuming full tuition fee is being paid.
+def college_cost(
+    book_cost: float,
+    college_tuition: float,
+    Devices: float,
+    travel_expenses: float,
+    hostel_charges: float,
+    mess_fee: float,
+    miscellaneous: float,
+):
+    Total_cost_ofOneYear = (
+        book_cost
+        + college_tuition
+        + Devices
+        + (travel_expenses * 12)
+        + (hostel_charges * 12)
+        + (mess_fee * 12)
+        + (miscellaneous * 12)
+    )
     return Total_cost_ofOneYear
+
 
 def future_sip(
     interval_investment: float, rate_of_return: float, number_of_payments: int
@@ -1239,28 +1326,26 @@ def future_sip(
     )
     return value
 
+
 def calculate_pension(
-monthty_investment_amount:float,
-no_of_years:float,
-annuity_rates:float,
-annuity_purchased:float,
-yearly_interest_rates:float
+    monthty_investment_amount: float,
+    no_of_years: float,
+    annuity_rates: float,
+    annuity_purchased: float,
+    yearly_interest_rates: float,
 ):
-    total_corpus=0
+    total_corpus = 0
     yearly_pension_amount = 12 * monthty_investment_amount
     for i in range(0, no_of_years + 1):
-        yearly_pension_amount += yearly_pension_amount * percent_to_decimal(yearly_interest_rates)
+        yearly_pension_amount += yearly_pension_amount * percent_to_decimal(
+            yearly_interest_rates
+        )
         total_corpus += yearly_pension_amount
     total_corpus = round(total_corpus, 2)
     annuity_pension = total_corpus * percent_to_decimal(annuity_purchased)
     lump_sum_pension = total_corpus - annuity_pension
     monthly_pension = round(percent_to_decimal(annuity_pension * annuity_rates) * 12, 2)
-    return (
-        total_corpus,
-        lump_sum_pension,
-        monthly_pension
-    )
-
+    return (total_corpus, lump_sum_pension, monthly_pension)
 
 
 # Function to Calculate Diluted EPS
@@ -1270,83 +1355,96 @@ def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
 
 
 # Function to calculate maturity value of a Fixed deposit.
-def fixed_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
-    types_of_componding =  {'yearly': 1 , 'halfyearly': 2 ,'quaterly': 4 ,'monthly': 12}
+def fixed_deposit_maturity(
+    principle_amount: float, years: int, compounding: str, roi: float
+):
+    types_of_componding = {"yearly": 1, "halfyearly": 2, "quaterly": 4, "monthly": 12}
     if compounding in types_of_componding.keys():
         n = types_of_componding[compounding]
         A = principle_amount * (1 + (percent_to_decimal(roi) / n)) ** (n * years)
         return round(A, 2)
 
+
 # Function to calculate maturity value of a Recurring deposit.
-def recurring_deposit_maturity(principle_amount: float, years: int, compounding: str, roi: float):
-    types_of_componding =  {'yearly': 1 , 'halfyearly': 2 ,'quaterly': 4 ,'monthly': 12}
+def recurring_deposit_maturity(
+    principle_amount: float, years: int, compounding: str, roi: float
+):
+    types_of_componding = {"yearly": 1, "halfyearly": 2, "quaterly": 4, "monthly": 12}
     if compounding in types_of_componding.keys():
         months = years * 12
         n = types_of_componding[compounding]
         res = 0.0
         for i in range(1, months + 1):
-            res += principle_amount * (1 + (percent_to_decimal(roi) / n)) ** (n * (i/12))
+            res += principle_amount * (1 + (percent_to_decimal(roi) / n)) ** (
+                n * (i / 12)
+            )
         return round(res, 2)
 
 
-#Function for calculating annual income neended during retiremnet period
+# Function for calculating annual income neended during retiremnet period
 def calculate_retirement_goals(
     retirement_age: int,
     annual_retirement_expenses: int,
     inflation_rate: float,
     annual_retirement_income: int,
-    current_age: int
+    current_age: int,
 ):
-    retirement_duration = retirement_age-current_age
-    amount = (
-        (annual_retirement_expenses-annual_retirement_income) *
-        (1+inflation_rate)**retirement_duration
-    )
+    retirement_duration = retirement_age - current_age
+    amount = (annual_retirement_expenses - annual_retirement_income) * (
+        1 + inflation_rate
+    ) ** retirement_duration
     return amount
 
-     
-#Function to calculate Student loan and monthly emi for the same
-def student_loan(principal:int,
-                 tenure:int,
-                 interest_rate:float):
+
+# Function to calculate Student loan and monthly emi for the same
+def student_loan(principal: int, tenure: int, interest_rate: float):
     monthly_interest_rate = percent_to_decimal(interest_rate) / 12
     total_months = tenure * 12
-    n = principal * monthly_interest_rate * pow(1 + monthly_interest_rate,total_months)
+    n = principal * monthly_interest_rate * pow(1 + monthly_interest_rate, total_months)
     d = pow(1 + monthly_interest_rate, total_months) - 1
     emi = n / d
     total_amount = emi * total_months
     return int(emi), int(total_amount)
-    
 
 
 # Function to Calculate Return of Investment on some equity funds
-def calculate_roi_equity_funds(amount_invested,
-    amount_returned, tenure):
+def calculate_roi_equity_funds(amount_invested, amount_returned, tenure):
     roi_equity_funds = (amount_returned - amount_invested) / amount_invested
-    annualized_roi = (1 + (amount_returned/amount_invested))**(1/tenure) - 1
-    return (
-        decimal_to_percent(roi_equity_funds),
-        decimal_to_percent(annualized_roi)
-    )
+    annualized_roi = (1 + (amount_returned / amount_invested)) ** (1 / tenure) - 1
+    return (decimal_to_percent(roi_equity_funds), decimal_to_percent(annualized_roi))
 
-#Function to calculate GST (Goods and Service Tax)
+
+# Function to calculate GST (Goods and Service Tax)
 def calculate_gst(price, gst_rate):
     gst_amount = price * percent_to_decimal(gst_rate)
     total_price = price + gst_amount
     return gst_amount, total_price
 
-#function to calculate marketcap
 
-def calculate_market_cap(current_market_share_price,total_number_of_shares_outstanding):
+# function to calculate marketcap
+
+
+def calculate_market_cap(
+    current_market_share_price, total_number_of_shares_outstanding
+):
     market_cap = current_market_share_price * total_number_of_shares_outstanding
     return market_cap
 
-#Calculate Annual Debt Service Coverage Ratio (ADSCR)
-def annual_debt_service_coverage_ratio(net_operating_cost: float, depreciation: float, non_cash_expenses: float, annual_debt_service: float):
-    adscr_ratio = (net_operating_cost + depreciation + non_cash_expenses) / annual_debt_service
+
+# Calculate Annual Debt Service Coverage Ratio (ADSCR)
+def annual_debt_service_coverage_ratio(
+    net_operating_cost: float,
+    depreciation: float,
+    non_cash_expenses: float,
+    annual_debt_service: float,
+):
+    adscr_ratio = (
+        net_operating_cost + depreciation + non_cash_expenses
+    ) / annual_debt_service
     return adscr_ratio
-  
-  # Function to Calculate Value Added Tax (VAT)
+
+
+# Function to Calculate Value Added Tax (VAT)
 def calculate_vat():
     while True:
         try:
@@ -1364,11 +1462,13 @@ def calculate_vat():
     print(f"Price (including VAT): {including_vat:.2f}")
     print(f"VAT Amount: {vat_amount:.2f}")
 
-#Function to calculate BEY (Bond Equivalent Yield) 
-def calculate_bond_equivalent_yield(face_value, purchase_price, days_to_maturity): 
-    roi = (face_value-purchase_price)/purchase_price 
-    bey = roi * 365/days_to_maturity 
+
+# Function to calculate BEY (Bond Equivalent Yield)
+def calculate_bond_equivalent_yield(face_value, purchase_price, days_to_maturity):
+    roi = (face_value - purchase_price) / purchase_price
+    bey = roi * 365 / days_to_maturity
     return bey
+
 
 # function to calculate max_loan_amount for calculating loan affordability for a particular person
 def calculate_max_loan_amount(income, expenses, loan_term, interest_rate):
@@ -1376,46 +1476,60 @@ def calculate_max_loan_amount(income, expenses, loan_term, interest_rate):
     monthly_expenses = expenses / 12
 
     loan_factor = 1 - (1 + percent_to_decimal(interest_rate)) ** -loan_term
-    max_loan_amount = (monthly_income - monthly_expenses) * loan_factor / percent_to_decimal(interest_rate)
+    max_loan_amount = (
+        (monthly_income - monthly_expenses)
+        * loan_factor
+        / percent_to_decimal(interest_rate)
+    )
 
     return max_loan_amount
- 
 
- #Function to calculate BVPS (Book value per share)
+
+# Function to calculate BVPS (Book value per share)
 def calculate_bvps(stockholders_equity, preferred_stock, average_outstanding_shares):
     """
     Calculate the book value per share using the given values.
-    
+
     Args:
         stockholders_equity (float): Total stockholders' equity.
         preferred_stock (float): Value of preferred stock.
         average_outstanding_shares (float): Average number of outstanding shares.
-    
+
     Returns:
         float: The book value per share.
     """
     book_value = (stockholders_equity - preferred_stock) / average_outstanding_shares
     return book_value
 
+
 # function to calculate the gratuity amount
-def calculate_gratuity(last_salary : float, tenure_years : int, tenure_months : int) -> float:
+def calculate_gratuity(
+    last_salary: float, tenure_years: int, tenure_months: int
+) -> float:
     if tenure_months >= 12:
         raise Exception
-    round_off = 1 if tenure_months > 6 else 0 
+    round_off = 1 if tenure_months > 6 else 0
     tenure = tenure_years + round_off
-    if tenure < 5: 
-         return 0
+    if tenure < 5:
+        return 0
     return round((15 * last_salary * tenure) / 26)
 
-#Function to calculate Personal Savings
-def personal_savings(init:int,
-                     monthly:int,
-                     tenure:float):
-    a=monthly*12*tenure
-    total_amount=a+init
+
+# Function to calculate Personal Savings
+def personal_savings(init: int, monthly: int, tenure: float):
+    a = monthly * 12 * tenure
+    total_amount = a + init
     return total_amount
 
-def accrint(issue_date:str, settlement_date:str, rate:float, par:float, frequency:int=1, basis:int=0):
+
+def accrint(
+    issue_date: str,
+    settlement_date: str,
+    rate: float,
+    par: float,
+    frequency: int = 1,
+    basis: int = 0,
+):
     """
     A function to calculate the accrued interest for a security that pays periodic interest.
 
@@ -1434,16 +1548,18 @@ def accrint(issue_date:str, settlement_date:str, rate:float, par:float, frequenc
         accrint("01-01-2012","15-02-2012",5.25,5000,4,3)
         >> 32.363013698630134
     """
-    rate = rate/100
-    issue_date = datetime.datetime.strptime(issue_date,"%d-%m-%Y")
-    settlement_date = datetime.datetime.strptime(settlement_date,"%d-%m-%Y")
+    rate = rate / 100
+    issue_date = datetime.datetime.strptime(issue_date, "%d-%m-%Y")
+    settlement_date = datetime.datetime.strptime(settlement_date, "%d-%m-%Y")
     # Validate basis value
     if basis not in range(5):
         raise ValueError("Invalid basis value. Expected a value between 0 and 4.")
 
     # Calculate the number of interest periods based on the specified basis
     if basis == 0:  # US (NASD) 30/360 basis
-        periods = (settlement_date.year - issue_date.year) * frequency + (settlement_date.month - issue_date.month) / 12 * frequency
+        periods = (settlement_date.year - issue_date.year) * frequency + (
+            settlement_date.month - issue_date.month
+        ) / 12 * frequency
     elif basis == 1:  # Actual/actual basis
         periods = (settlement_date - issue_date).days / 365 * frequency
     elif basis == 2:  # Actual/360 basis
@@ -1451,7 +1567,9 @@ def accrint(issue_date:str, settlement_date:str, rate:float, par:float, frequenc
     elif basis == 3:  # Actual/365 basis
         periods = (settlement_date - issue_date).days / 365 * frequency
     elif basis == 4:  # European 30/360 basis
-        periods = (settlement_date.year - issue_date.year) * frequency + (settlement_date.month - issue_date.month) / 12 * frequency
+        periods = (settlement_date.year - issue_date.year) * frequency + (
+            settlement_date.month - issue_date.month
+        ) / 12 * frequency
         if settlement_date.day == 31:
             periods -= 1 / 12 * frequency
 
@@ -1518,9 +1636,6 @@ def calculate_mortgage(principal, interest_rate, years, down_payment=0, property
     return mortgage_info
 
 
-
-import pandas as pd
-
 def calculate_social_security(birth_date, earnings, retirement_age):
     """
     Calculate the estimated monthly Social Security benefits based on the birth date, earnings, and retirement age.
@@ -1562,3 +1677,148 @@ def calculate_social_security(birth_date, earnings, retirement_age):
     future_benefits = monthly_benefits * (1 + 0.02) ** years_to_retirement
 
     return monthly_benefits, future_benefits
+  
+  
+# Function to calculate net profit margin
+def calculate_net_profit_margin(
+        revenue : float, 
+        cost_of_goods_sold : float, 
+        operating_expenses : float, 
+        other_expenses : float, 
+        interest : float,
+        taxes : float):
+    net_profit_margin = ((revenue-cost_of_goods_sold-operating_expenses-other_expenses-interest-taxes)/revenue)*100
+    return net_profit_margin
+
+# Function to calculate expected return of portfolio
+def calculate_expected_return_of_portfolio(
+        no_of_investments : int, 
+        investment_amount : list,  
+        rate_of_return : list):
+    total_value_of_portfolio = 0
+    for i in range(no_of_investments):
+        total_value_of_portfolio += investment_amount[i]
+
+    weight_of_investment = []
+    for i in range(no_of_investments):
+        weight_of_investment.append(investment_amount/total_value_of_portfolio)
+
+    expected_return_of_portfolio = 0
+    for i in range(no_of_investments):
+        expected_return_of_portfolio += weight_of_investment[i]*rate_of_return[i]
+        
+    return expected_return_of_portfolio
+
+#Function to calculate net annual salary
+def calculate_salary(base:int,
+                     jb:int,
+                     stock:int,
+                     pb:int,
+                     bonus:int,
+                     ptax:int,
+                     deduction:int):
+    total_amount=(base*12)+jb+stock+pb+bonus
+    tax=(ptax/100)*total_amount
+    ctc=total_amount-tax-deduction
+    return ctc
+
+#function to calculate the Sharpe ratio in Python
+
+def sharpe_ratio(returns, risk_free_rate):
+    """
+    Calculate the Sharpe ratio given a series of returns and the risk-free rate.
+    
+    Parameters:
+    - returns (array-like): An array-like object containing the returns of an investment/portfolio.
+    - risk_free_rate (float): The risk-free rate of return.
+    
+    Returns:
+    - float: The calculated Sharpe ratio.
+    """
+    avg_return = np.mean(returns)
+    std_dev = np.std(returns)
+    
+    sharpe_ratio = (avg_return - risk_free_rate) / std_dev
+    
+    return sharpe_ratio
+
+#You can use this function by passing your investment/portfolio returns and the risk-free rate to it. For example:
+
+returns = [0.05, 0.03, 0.02, 0.04, 0.06]  # Example returns
+risk_free_rate = 0.02  # Example risk-free rate
+
+sharpe = sharpe_ratio(returns, risk_free_rate)
+print(f"The Sharpe ratio is: {sharpe}")
+
+#Function to calculate Loan to Value Ratio
+
+def loan_to_value_ratio(
+    loan_amount:float, 
+    value_of_collateral:float):
+    ratio = (loan_amount / value_of_collateral) * 100
+    return ratio
+
+# Function to calculate post tax return percentage
+def calculate_post_tax_return_percentage(tax_rate_percentage : float,
+                                    annual_net_income : float,
+                                    initial_cost_of_investment : float
+                                    ):
+    rate_of_return_percentage = (annual_net_income / initial_cost_of_investment)*100
+    post_tax_return_percentage = rate_of_return_percentage - (rate_of_return_percentage * tax_rate_percentage)/100
+
+    return post_tax_return_percentage 
+
+#Function to calculate the Treynor Ratio in python
+
+def calculate_treynor_ratio(returns, risk_free_rate, beta):
+    """
+    Calculates the Treynor Ratio for a given set of returns, risk-free rate, and beta.
+    Parameters:
+    - returns (float or list): The returns of the investment/portfolio.
+      If a single value is provided, it is assumed to be the total return.
+      If a list is provided, it is assumed to be a series of periodic returns.
+    - risk_free_rate (float): The risk-free rate of return.
+    - beta (float): The beta coefficient of the investment/portfolio.
+    Returns:
+    - treynor_ratio (float): The calculated Treynor Ratio.
+    Note:
+    The Treynor Ratio is calculated as (returns - risk-free rate) / beta.
+    """
+
+    if isinstance(returns, list):
+        returns = sum(returns)  # Calculate the total return if periodic returns are provided
+
+    treynor_ratio = (returns - risk_free_rate) / beta
+    return treynor_ratio
+
+
+# Example usage
+returns = 0.1  # Total return of the investment/portfolio
+risk_free_rate = 0.05  # Risk-free rate of return
+beta = 1.2  # Beta coefficient
+
+treynor_ratio = calculate_treynor_ratio(returns, risk_free_rate, beta)
+print(f"Treynor Ratio: {treynor_ratio}")
+
+#Function to Calculate Free Cash Flow to Equity
+
+def free_cash_flow_to_equity(
+    total_revenues:float, 
+    total_expenses:float,
+    initial_cost_of_asset: float,
+    lifetime_of_asset: float,
+    change_in_PPE:float,
+    current_depreciation:float,
+    current_assets:float,
+    current_liabilities:float,
+    amount_a_company_borrows:float,
+    debt_it_repays:float):
+
+    net_income = total_revenues - total_expenses,
+    depreciation_and_amortization = initial_cost_of_asset / lifetime_of_asset,
+    capEx = change_in_PPE + current_depreciation,
+    change_in_working_capital = current_assets - current_liabilities,
+    net_borrowing = amount_a_company_borrows - debt_it_repays,
+
+    fcfe = net_income + depreciation_and_amortization - capEx - change_in_working_capital + net_borrowing
+    return fcfe
