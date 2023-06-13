@@ -3072,3 +3072,24 @@ def free_cash_flow_to_equity(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    
+@app.get(
+    "/market_order",
+    tags=["market_order"],
+    description="Execute a market order",
+)
+def market_order(symbol: str, quantity: int, side: str):
+    try:
+        # Logic to execute the market order
+        # ...
+        
+        return {
+            "Tag": "Market Order",
+            "symbol": symbol,
+            "quantity": quantity,
+            "side": side,
+            "status": "executed"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

@@ -1911,3 +1911,17 @@ Sample Output
     "Free Cash Flow to Equity": 620000.0
   }
 ```
+**GET** `/test_market_order_function`
+-Required parameters: `symbol`, `quantity`, `side`
+-Sample Output
+```py
+{
+        "Tag": "Market Order",
+        "symbol": "AAPL",
+        "quantity": 10,
+        "side": "buy",
+        "status": "executed"
+}
+```
+
+

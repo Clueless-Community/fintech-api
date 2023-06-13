@@ -1822,3 +1822,25 @@ def free_cash_flow_to_equity(
 
     fcfe = net_income + depreciation_and_amortization - capEx - change_in_working_capital + net_borrowing
     return fcfe
+
+
+#To calculate market orders function
+
+import datetime
+
+def execute_market_order(order_type, symbol, quantity):
+    # Simulating order execution
+    current_price = get_current_price(symbol)  # Function to get the current price for the symbol
+    timestamp = datetime.datetime.now()
+
+    if order_type == "buy":
+        execute_buy_order(symbol, current_price, quantity)  # Function to execute a buy order
+        print(f"Buy order for {quantity} shares of {symbol} executed at market price {current_price} at {timestamp}")
+    elif order_type == "sell":
+        execute_sell_order(symbol, current_price, quantity)  # Function to execute a sell order
+        print(f"Sell order for {quantity} shares of {symbol} executed at market price {current_price} at {timestamp}")
+    else:
+        print(f"Invalid order type: {order_type}")
+
+# Example usage
+execute_market_order("buy", "AAPL", 10)

@@ -107,7 +107,6 @@ def test_calculate_treynor_ratio():
         "treynor_ratio": 1.6
     }
 
-
 def test_main():
     # Define test parameters
     order_type = "buy"
@@ -118,4 +117,4 @@ def test_main():
     execute_market_order(order_type, symbol, quantity)
 
 # Call the test_main function
-test_main()
+test_main()  
