@@ -3081,9 +3081,6 @@ def free_cash_flow_to_equity(
 )
 def market_order(symbol: str, quantity: int, side: str):
     try:
-        # Logic to execute the market order
-        # ...
-        
         return {
             "Tag": "Market Order",
             "symbol": symbol,
