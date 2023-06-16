@@ -142,7 +142,8 @@ def index():
 )
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
     try:
-        rate = functions.simple_interest_rate(amount_paid, principle_amount, months)
+        rate = functions.simple_interest_rate(
+            amount_paid, principle_amount, months)
         return {
             "Tag": "Simple Interest Rate",
             "Total amount paid": amount_paid,
@@ -285,7 +286,8 @@ def certificate_of_deposit(
 @app.get("/inflation", tags=["inflated"], description="Calculate Inflated amount")
 def inflation(present_amount: float, inflation_rate: float, years: float):
     try:
-        future_amount = functions.inflation(present_amount, inflation_rate, years)
+        future_amount = functions.inflation(
+            present_amount, inflation_rate, years)
         return {
             "Tag": "Inflated Amount",
             "Present Amount": present_amount,
@@ -308,7 +310,8 @@ def effective_annual_rate(annual_interest_rate: float, compounding_period: int):
         eff_annual_rate = functions.effective_annual_rate(
             annual_interest_rate, compounding_period
         )
-        eff_annual_rate_percentage = functions.decimal_to_percent(eff_annual_rate)
+        eff_annual_rate_percentage = functions.decimal_to_percent(
+            eff_annual_rate)
         return {
             "Tag": "Effective Annual Rate",
             "Annual Intrest Rate": annual_interest_rate,
@@ -486,7 +489,8 @@ def asset_portfolio(
 )
 def put_call_parity(call_price: float, put_price: float, strike_price: float):
     try:
-        future_amount = functions.put_call_parity(call_price, put_price, strike_price)
+        future_amount = functions.put_call_parity(
+            call_price, put_price, strike_price)
         return {
             "Tag": "Pull Call Parity",
             "Future Price": f"{future_amount}",
@@ -507,7 +511,8 @@ def put_call_parity(call_price: float, put_price: float, strike_price: float):
 def break_even_point(fixed_cost: float, selling_price: float, variable_cost: float):
     try:
 
-        bep = functions.break_even_point(fixed_cost, selling_price, variable_cost)
+        bep = functions.break_even_point(
+            fixed_cost, selling_price, variable_cost)
         return {
             "Tag": "Break Even Point (BEP)",
             "Fixed costs": fixed_cost,
@@ -584,7 +589,8 @@ def price_to_earning_ratio(share_price: float, earnings_per_share: float):
 )
 def dividend_yield_ratio(dividend_per_share: float, share_price: float):
     try:
-        dividend_yield = functions.dividend_yield_ratio(dividend_per_share, share_price)
+        dividend_yield = functions.dividend_yield_ratio(
+            dividend_per_share, share_price)
         return {
             "Tag": "Dividend yield ratio",
             "Dividend per share": dividend_per_share,
@@ -624,7 +630,8 @@ def dividend_payout_ratio(dividend_per_share: float, earnings_per_share: float):
 )
 def debt_to_income_ratio(annual_income: float, total_debt_per_month: float):
     try:
-        DTI = functions.debt_to_income_ratio(annual_income, total_debt_per_month)
+        DTI = functions.debt_to_income_ratio(
+            annual_income, total_debt_per_month)
         return {
             "Tag": "Debt to income ratio",
             "Annual income": annual_income,
@@ -945,8 +952,10 @@ def inflation_adjusted_return(
     ending_cpi__level: float,
 ):
     try:
-        stock_return = (ending_price - beginning_price + dividends) / beginning_price
-        inflation = (ending_cpi__level - beginning_cpi_level) / beginning_cpi_level
+        stock_return = (ending_price - beginning_price +
+                        dividends) / beginning_price
+        inflation = (ending_cpi__level - beginning_cpi_level) / \
+            beginning_cpi_level
         inflation_adj_return = functions.inflation_adjusted_return(
             beginning_price,
             ending_price,
@@ -1094,7 +1103,8 @@ def duration(rate, coupon_rate, frequency, face_value, settlement_date, maturity
 )
 def current_ratio(total_current_assets: float, total_liabilities: float):
     try:
-        ratio = functions.current_ratio(total_current_assets, total_liabilities)
+        ratio = functions.current_ratio(
+            total_current_assets, total_liabilities)
         return {
             "Tag": "Current Ratio",
             "Total Current Assets": total_current_assets,
@@ -1135,7 +1145,8 @@ def inventory_turnover_ratio(
 )
 def inflation_rate(bigger_year: int, smaller_year: int, base_year: int):
     try:
-        inflation_rate = functions.inflation_rate(bigger_year, smaller_year, base_year)
+        inflation_rate = functions.inflation_rate(
+            bigger_year, smaller_year, base_year)
         return {
             "Tag": "Inflation Rate",
             "Bigger Year": bigger_year,
@@ -1230,7 +1241,8 @@ def real_gdp(nominal_gdp: float, gdp_deflator: float):
 )
 def excess_reserves(deposits: float, reserve_requirement: float):
     try:
-        excess_reserves = functions.excess_reserves(deposits, reserve_requirement)
+        excess_reserves = functions.excess_reserves(
+            deposits, reserve_requirement)
         return {
             "Tag": "Excess Reserves",
             "Deposits": deposits,
@@ -1275,7 +1287,8 @@ def discounted_cash_flow(
 )
 def gdp_growth_rate(current_year_gdp: float, last_year_gdp: float):
     try:
-        gdp_growth_rate = functions.gdp_growth_rate(current_year_gdp, last_year_gdp)
+        gdp_growth_rate = functions.gdp_growth_rate(
+            current_year_gdp, last_year_gdp)
         return {
             "Tag": "GDP Growth Rate",
             "Current Year GDP": current_year_gdp,
@@ -1476,7 +1489,8 @@ def retention_ratio(net_income: float, dividends: float):
 )
 def tax_equivalent_yield(tax_free_yield: float, tax_rate: float):
     try:
-        tax_equivalent_yield = functions.tax_equivalent_yield(tax_free_yield, tax_rate)
+        tax_equivalent_yield = functions.tax_equivalent_yield(
+            tax_free_yield, tax_rate)
         return {
             "Tag": "Tax Equivalent Yield",
             "Tax Free Yield": tax_free_yield,
@@ -1495,7 +1509,8 @@ def tax_equivalent_yield(tax_free_yield: float, tax_rate: float):
 )
 def year_over_year(later_period_value: float, earlier_period_value: float):
     try:
-        growth = functions.year_over_year(later_period_value, earlier_period_value)
+        growth = functions.year_over_year(
+            later_period_value, earlier_period_value)
         return {
             "Tag": "Year to Year Growth",
             "Year to Year growth": f"{growth}%",
@@ -1898,7 +1913,8 @@ def time_period_required_for_growth(interest_rate: float, growth_factor: int):
 )
 def preferred_stock_value(dividend: float, discount_rate: float):
     try:
-        preferred_stock_value = functions.preferred_stock_value(dividend, discount_rate)
+        preferred_stock_value = functions.preferred_stock_value(
+            dividend, discount_rate)
         return {
             "Tag": "Preferred stock value",
             "Dividend": dividend,
@@ -2060,7 +2076,8 @@ def estimate_401k(
             "withdraw_tax_rate": withdraw_tax_rate,
             "estimated_401k": estimated_401k,
             "annual_withdraw_amount": round(
-                functions.percent_to_decimal(withdraw_tax_rate) * estimated_401k, 3
+                functions.percent_to_decimal(
+                    withdraw_tax_rate) * estimated_401k, 3
             ),
         }
     except:
@@ -2370,7 +2387,8 @@ def commission_calc(
     sales_price: float = None, commission_rate: float = None, commission: float = None
 ):
     try:
-        output = functions.commission_calc(sales_price, commission_rate, commission)
+        output = functions.commission_calc(
+            sales_price, commission_rate, commission)
 
         if sales_price == None and commission_rate != None and commission != None:
             return {
@@ -2765,25 +2783,27 @@ def calculate_gratuity(last_salary: float, tenure_years: int, tenure_months: int
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 @app.get(
     "/personal_savings",
     tags=["personal_savings"],
     description="Calculate Simple Personal Savings",
 )
-def personal_savings(init:int,
-                     monthly:int,
-                     tenure:float):
+def personal_savings(init: int,
+                     monthly: int,
+                     tenure: float):
     try:
-        personal_savings = functions.personal_savings(init,monthly,tenure)
+        personal_savings = functions.personal_savings(init, monthly, tenure)
         return {
             "Tag": "Simple Personal Savings",
-            "Initial Deposit":init,
-            "total number of years":tenure,
-            "Monthly Contribution":monthly,
+            "Initial Deposit": init,
+            "total number of years": tenure,
+            "Monthly Contribution": monthly,
             "Total Amount Saved": f"{total_amount}",
-          }
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
     "/accrint",
@@ -2814,13 +2834,12 @@ def accrued_interest(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
 
 
-@app.get('/mortrages',tags=["mortrage"],description="Endpoint to calculate Mortrages")
-def mortrage(princial:int,interest_rate:float,years:int,down_payment:int,property_tax_rate:float,insurance_rate:float):
-    
-    try: 
+@app.get('/mortrages', tags=["mortrage"], description="Endpoint to calculate Mortrages")
+def mortrage(princial: int, interest_rate: float, years: int, down_payment: int, property_tax_rate: float, insurance_rate: float):
+
+    try:
         mortrage = functions.calculate_mortgage(
             principal=princial,
             interest_rate=interest_rate,
@@ -2840,19 +2859,21 @@ def mortrage(princial:int,interest_rate:float,years:int,down_payment:int,propert
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 @app.get(
     "/calculate_net_profit_margin",
     tags=["net_profit_margin"],
     description="Calculate net profit margin",
-    )
-def calculate_net_profit_margin(revenue : float, 
-                                cost_of_goods_sold : float, 
-                                operating_expenses : float, 
-                                other_expenses : float,         
-                                interest : float,
-                                taxes : float):
+)
+def calculate_net_profit_margin(revenue: float,
+                                cost_of_goods_sold: float,
+                                operating_expenses: float,
+                                other_expenses: float,
+                                interest: float,
+                                taxes: float):
     try:
-        net_profit_margin = functions.calulate_net_profit_margin(revenue, cost_of_goods_sold, operating_expenses, other_expenses, interest, taxes)
+        net_profit_margin = functions.calulate_net_profit_margin(
+            revenue, cost_of_goods_sold, operating_expenses, other_expenses, interest, taxes)
         return {
             "Tag": "Calculate net profit margin",
             "Revenue": revenue,
@@ -2861,56 +2882,61 @@ def calculate_net_profit_margin(revenue : float,
             "Interest": interest,
             "Taxes": taxes,
             "Net Profit Margin": net_profit_margin,
-            
-            }
+
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+
+
 @app.get(
     "/calculate_expected_return_of_portfolio",
     tags=["expected_return_of_portfolio"],
     description="Calculate expected return of portfolio",
-    )
-def calculate_expected_return_of_portfolio(no_of_investments : int, 
-                                investment_amount : list,  
-                                rate_of_return : list):
+)
+def calculate_expected_return_of_portfolio(no_of_investments: int,
+                                           investment_amount: list,
+                                           rate_of_return: list):
     try:
-        expected_return_of_portfolio = functions.calculate_expected_return_of_portfolio(no_of_investments, investment_amount, rate_of_return)
+        expected_return_of_portfolio = functions.calculate_expected_return_of_portfolio(
+            no_of_investments, investment_amount, rate_of_return)
         return {
             "Tag": "Calculate expected return of portfolio",
             "No of investments": no_of_investments,
             "Investment Amount": investment_amount,
             "Rate of Return": rate_of_return
-            
-            }
+
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint to calculate Net annual salary of an employee
+# Endpoint to calculate Net annual salary of an employee
+
+
 @app.get(
     "/calculate_salary",
     tags=["calculate_salary"],
     description="Calculate Net annual salary of an employee",
-    )
-def calculate_salary(base:int,
-                     jb:int,
-                     stock:int,
-                     pb:int,
-                     bonus:int,
-                     ptax:int,
-                     deduction:int):
+)
+def calculate_salary(base: int,
+                     jb: int,
+                     stock: int,
+                     pb: int,
+                     bonus: int,
+                     ptax: int,
+                     deduction: int):
     try:
-        calculate_salary = functions.calculate_salary(base,jb,stock,pb,bonus,ptax,deduction):
+        calculate_salary = functions.calculate_salary(
+            base, jb, stock, pb, bonus, ptax, deduction)
         return {
 
-            "Tag":"Net Salary Calculator",
-            "Base Salary per month":base,
-            "joining bonus/retention bonus":jb,
-            "RSU/stock bonus":stock,
-            "performance bonus":pb,
-            "any additional bonus":bonus,
-            "tax percentage":ptax,
-            "any additional deduction":deduction,
+            "Tag": "Net Salary Calculator",
+            "Base Salary per month": base,
+            "joining bonus/retention bonus": jb,
+            "RSU/stock bonus": stock,
+            "performance bonus": pb,
+            "any additional bonus": bonus,
+            "tax percentage": ptax,
+            "any additional deduction": deduction,
             "ctc calculated": f"{ctc}",
         }
     except:
@@ -2922,7 +2948,7 @@ def calculate_salary(base:int,
     tags=['Social Security'],
     description="Endpoint to calculate Social securities"
 )
-def ss(birth_date:str,earnings:int,retirement_age:int):
+def ss(birth_date: str, earnings: int, retirement_age: int):
 
     try:
         monthly_benefits, future_benefits = functions.calculate_social_security(
@@ -2933,31 +2959,34 @@ def ss(birth_date:str,earnings:int,retirement_age:int):
         return {
             f"The monthly benefits are {monthly_benefits} and future benefits are {future_benefits}"
         }
-    
+
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
     "/calculate_post_tax_return_percentage",
     tags=["post_tax_return_percentage"],
     description="Calculate post tax return percentage",
-    )
-def calculate_post_tax_return_percentage(tax_rate_percentage : float, 
-                                    annual_net_income : float,  
-                                    initial_cost_of_investment : float):
+)
+def calculate_post_tax_return_percentage(tax_rate_percentage: float,
+                                         annual_net_income: float,
+                                         initial_cost_of_investment: float):
     try:
-        post_tax_return_percentage = functions.calculate_post_tax_return_percentage(tax_rate_percentage, annual_net_income, initial_cost_of_investment)
+        post_tax_return_percentage = functions.calculate_post_tax_return_percentage(
+            tax_rate_percentage, annual_net_income, initial_cost_of_investment)
         return {
             "Tag": "Calculate post tax return percentage",
             "Tax Rate Percentage": tax_rate_percentage,
             "Annual net income": annual_net_income,
             "Initial cost of investment": initial_cost_of_investment,
             "Post tax return percentage": post_tax_return_percentage
-            }
+        }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint for function Sharpe ratio
+# Endpoint for function Sharpe ratio
+
 
 @app.get(
     "/sharpe_ratio",
@@ -2977,10 +3006,11 @@ def sharpe_ratio(
             "Sharpe Ratio": ratio,
         }
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
-    
-    
-#Endpoint for function Treynor Ratio
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+
+# Endpoint for function Treynor Ratio
 
 @app.get(
     "/treynor_ratio",
@@ -2991,7 +3021,8 @@ def treynor_ratio(
     returns: list[float], risk_free_rate: float, beta: float
 ):
     try:
-        ratio = functions.calculate_treynor_ratio(returns, risk_free_rate, beta)
+        ratio = functions.calculate_treynor_ratio(
+            returns, risk_free_rate, beta)
         return {
             "Tag": "Treynor Ratio",
             "Returns": returns,
@@ -3000,16 +3031,18 @@ def treynor_ratio(
             "Treynor Ratio": ratio,
         }
     except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))    
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
-#Endpoint for function Loan to Value Ratio
+# Endpoint for function Loan to Value Ratio
+
 
 @app.get(
     "/loan_to_value_ratio",
     tags=["loan_to_value_ratio"],
     description="Calculate loan amount to value of collateral ratio",
 )
-def loan_to_value_ratio (loan_amount:float, value_of_collateral:float):
+def loan_to_value_ratio(loan_amount: float, value_of_collateral: float):
     try:
         ratio = functions.loan_to_value_ratio(loan_amount, value_of_collateral)
         return {
@@ -3021,7 +3054,8 @@ def loan_to_value_ratio (loan_amount:float, value_of_collateral:float):
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-#Endpoint for function Free Cash Flow To Equity
+# Endpoint for function Free Cash Flow To Equity
+
 
 @app.get(
     "/free_cash_flow_to_equity",
@@ -3029,17 +3063,17 @@ def loan_to_value_ratio (loan_amount:float, value_of_collateral:float):
     description="Calculate Free Cash Flow to Equity",
 )
 def free_cash_flow_to_equity(
-    total_revenues:float, 
-    total_expenses:float,
-    initial_cost_of_asset: float,
-    lifetime_of_asset: float,
-    change_in_PPE:float,
-    current_depreciation:float,
-    current_assets:float,
-    current_liabilities:float,
-    amount_a_company_borrows:float,
-    debt_it_repays:float): 
-    try :
+        total_revenues: float,
+        total_expenses: float,
+        initial_cost_of_asset: float,
+        lifetime_of_asset: float,
+        change_in_PPE: float,
+        current_depreciation: float,
+        current_assets: float,
+        current_liabilities: float,
+        amount_a_company_borrows: float,
+        debt_it_repays: float):
+    try:
         fcfe = functions.free_cash_flow_to_equity(
             total_revenues, total_expenses, initial_cost_of_asset, lifetime_of_asset,
             change_in_PPE, current_depreciation, current_assets, current_liabilities,
