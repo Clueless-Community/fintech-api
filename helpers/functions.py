@@ -1859,7 +1859,6 @@ beta = 1.2  # Beta coefficient
 treynor_ratio = calculate_treynor_ratio(returns, risk_free_rate, beta)
 print(f"Treynor Ratio: {treynor_ratio}")
 
-<<<<<<< HEAD
 def calculate_macaulay_duration(face_value : float, coupon_rate : float, dt : int, month : int, year : int, coupon_frequency : int, discount_rate : float):
     cash_flows = []
     maturity_date = date(year, month, dt)
@@ -1885,7 +1884,6 @@ def calculate_macaulay_duration(face_value : float, coupon_rate : float, dt : in
         duration += (i + 1) * (cash_flow / (1 + discount_rate) ** (i + 1))
 
     return round((duration / present_value)/ coupon_frequency, 2)
-=======
 # Function to Calculate Free Cash Flow to Equity
 
 
@@ -1910,4 +1908,3 @@ def free_cash_flow_to_equity(
     fcfe = net_income + depreciation_and_amortization - \
         capEx - change_in_working_capital + net_borrowing
     return fcfe
->>>>>>> 6442394d64f72d82cfd32adb3b0a9a94b9b6c578
