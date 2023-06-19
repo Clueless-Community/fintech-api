@@ -4,6 +4,7 @@ import pandas as pd
 import math
 import datetime
 from dateutil.relativedelta import relativedelta
+from datetime import date
 
 
 # Function to Calculate Simple Interest Rate
@@ -1698,3 +1699,29 @@ beta = 1.2  # Beta coefficient
 
 treynor_ratio = calculate_treynor_ratio(returns, risk_free_rate, beta)
 print(f"Treynor Ratio: {treynor_ratio}")
+
+def calculate_macaulay_duration(face_value : float, coupon_rate : float, dt : int, month : int, year : int, coupon_frequency : int, discount_rate : float):
+    cash_flows = []
+    maturity_date = date(year, month, dt)
+    years_to_maturity = (maturity_date - date.today()).days / 365.25
+
+    # Calculate the coupon payment amount
+    coupon_payment = face_value * coupon_rate / coupon_frequency
+
+    # Generate the cash flows
+    for i in range(1, int(years_to_maturity * coupon_frequency) + 1):
+        if i == int(years_to_maturity * coupon_frequency):
+            # Last period's cash flow includes the final coupon payment plus the face value
+            cash_flows.append(coupon_payment + face_value)
+        else:
+            cash_flows.append(coupon_payment)
+
+    duration = 0.0
+    present_value = 0.0
+    
+    
+    for i, cash_flow in enumerate(cash_flows):
+        present_value += cash_flow / (1 + discount_rate) ** (i + 1)
+        duration += (i + 1) * (cash_flow / (1 + discount_rate) ** (i + 1))
+
+    return round((duration / present_value)/ coupon_frequency, 2)
