@@ -1911,3 +1911,31 @@ Sample Output
     "Free Cash Flow to Equity": 620000.0
   }
 ```
+
+    
+**GET** `/macaulay-duration`
+- Required parameters : `face_value`,
+        `coupon_rate`,
+        `dt`,
+        `month`,
+        `year`,
+        `coupon_frequency`,
+        `discount_rate`,
+
+- Sample Request: `GET`, `http://localhost:8000/calculate_macaulay_duration?face_value=1000.0&coupon_rate=0.06&dt=19&month=6&year=2026&coupon_frequency=2&discount_rate=0.06`,    
+- Sample output
+```py
+{
+  {
+    "Tag": "Macaulay_duration",
+    "Face-value of bond": 1000.0,
+    "Coupon Rate (in decimal)": 0.06,
+    "Date of maturity(DD)": 19,
+    "Month of maturity(MM)": 6,
+    "Year of maturity(YY)": 2026,
+    "Coupon frequency": 2,
+    "Discount frequency (int decimal)": 0.06,
+    "Macaulay duration": 2.77
+  }
+}
+```
