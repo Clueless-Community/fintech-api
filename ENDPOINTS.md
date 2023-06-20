@@ -1911,3 +1911,20 @@ Sample Output
     "Free Cash Flow to Equity": 620000.0
   }
 ```
+
+
+**GET** `/net_worth`
+
+- Required parameters : `assets`, `liabilities`,'loans','mortgage'
+- Sample output
+
+```py
+{
+    "Tag": "Net Worth",
+    "Assets": 100000.0,
+    "Liabilities": 50000.0,
+    "Loans": 20000.0,
+    "Mortgage": 10000.0,
+    "Net Worth": 50000.0
+}
+```
