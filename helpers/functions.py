@@ -1879,3 +1879,17 @@ def free_cash_flow_to_equity(
     fcfe = net_income + depreciation_and_amortization - \
         capEx - change_in_working_capital + net_borrowing
     return fcfe
+
+#Function to Calculate Capital Gains Yield
+
+def capital_gains_yield(
+	inital_price : float,
+	price_after_first_period : float):
+    '''
+        Capital Gains Yield used to calculate a company's total stock return 
+        if a company does not pay dividends. 
+        inital_price indicates Inital Stock Price,
+        price_after_first_period indicates Stock Price after first period
+    '''
+    gains_yield = ((price_after_first_period - inital_price) / inital_price) * 100
+    return gains_yield

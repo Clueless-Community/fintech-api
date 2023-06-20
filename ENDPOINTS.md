@@ -1911,3 +1911,17 @@ Sample Output
     "Free Cash Flow to Equity": 620000.0
   }
 ```
+
+**GET** `/capital_gains_yield`
+
+- Required parameters : `inital_price`, `price_after_first_period` 
+- Sample output
+
+```py
+{
+    "Tag": "Capital Gains Yield",
+    "Inital Price of Stock": 200.0,
+    "Price of Stock After First Period": 220.0,
+    "Capital Gains Yield": 10%,
+}
+```
