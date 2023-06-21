@@ -1939,3 +1939,19 @@ Sample Output
   }
 }
 ```
+
+**GET** `/calculate_financial_leverage`
+-Required parameters: `total_assets`, `total_liabilities`, `short_term_debt`, `long_term_debt`
+-Sample Output
+```py
+{
+  "Tag" : "Calculate financial leverage",
+  "total_assets" : 16645,
+  "total_liabilities" : 9906,
+  "short_term_debt" : 5000,
+  "long_term_debt" : 10000,
+  "financial_leverage" : 1.51
+}
+
+```
+

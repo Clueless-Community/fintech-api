@@ -1907,3 +1907,16 @@ def calculate_macaulay_duration(face_value : float, coupon_rate : float, dt : in
 
     return round((duration / present_value)/ coupon_frequency, 2)
 
+# Function to calculate Financial Leverage
+def calculate_financial_leverage(total_assets : float,
+                                 total_liabilities : float,
+                                 short_term_debt : float,
+                                 long_term_debt : float
+                                 ):
+    debt = short_term_debt + long_term_debt
+
+    shareholder_equity = total_assets - total_liabilities
+
+    financial_leverage = debt / shareholder_equity
+
+    return financial_leverage
