@@ -3107,6 +3107,26 @@ def free_cash_flow_to_equity(
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+## Endpoint for function Capital Gains Yield
+
+app.get(
+	"/capital_gains_yield",
+	tags=["capital_gains_yield"],
+	description="Calculate Capital Gains Yield of a Stock",
+)
+def capital_gains_yield(inital_price: float, price_after_first_period: float):
+    try:
+        gains_yield = functions.capital_gains_yield(inital_price, price_after_first_period)
+        return {
+            "Tag": "Capital Gains Yield",
+		    "Inital Price of Stock": inital_price,
+    	    "Price of Stock After First Period": price_after_first_period,
+    	    "Capital Gains Yield": f"{gains_yield}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 @app.get(
     "/calculate_macaulay_duration",
     tags=["Macaulay_duration"],
