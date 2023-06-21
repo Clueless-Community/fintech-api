@@ -1879,3 +1879,17 @@ def free_cash_flow_to_equity(
     fcfe = net_income + depreciation_and_amortization - \
         capEx - change_in_working_capital + net_borrowing
     return fcfe
+
+# Function to calculate Financial Leverage
+def calculate_financial_leverage(total_assets : float,
+                                 total_liabilities : float,
+                                 short_term_debt : float,
+                                 long_term_debt : float
+                                 ):
+    debt = short_term_debt + long_term_debt
+
+    shareholder_equity = total_assets - total_liabilities
+
+    financial_leverage = debt / shareholder_equity
+
+    return financial_leverage
