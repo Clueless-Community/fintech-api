@@ -1879,3 +1879,58 @@ def free_cash_flow_to_equity(
     fcfe = net_income + depreciation_and_amortization - \
         capEx - change_in_working_capital + net_borrowing
     return fcfe
+
+#Function to Calculate Capital Gains Yield
+
+def capital_gains_yield(
+	inital_price : float,
+	price_after_first_period : float):
+    '''
+        Capital Gains Yield used to calculate a company's total stock return 
+        if a company does not pay dividends. 
+        inital_price indicates Inital Stock Price,
+        price_after_first_period indicates Stock Price after first period
+    '''
+    gains_yield = ((price_after_first_period - inital_price) / inital_price) * 100
+    return gains_yield
+
+#function to calculate macaulay duration
+def calculate_macaulay_duration(face_value : float, coupon_rate : float, dt : int, month : int, year : int, coupon_frequency : int, discount_rate : float):
+    cash_flows = []
+    maturity_date = datetime.date(year, month, dt)
+    years_to_maturity = (maturity_date - datetime.date.today()).days / 365.25
+
+    # Calculate the coupon payment amount
+    coupon_payment = face_value * coupon_rate / coupon_frequency
+
+    # Generate the cash flows
+    for i in range(1, int(years_to_maturity * coupon_frequency) + 1):
+        if i == int(years_to_maturity * coupon_frequency):
+            # Last period's cash flow includes the final coupon payment plus the face value
+            cash_flows.append(coupon_payment + face_value)
+        else:
+            cash_flows.append(coupon_payment)
+
+    duration = 0.0
+    present_value = 0.0
+    
+    
+    for i, cash_flow in enumerate(cash_flows):
+        present_value += cash_flow / (1 + discount_rate) ** (i + 1)
+        duration += (i + 1) * (cash_flow / (1 + discount_rate) ** (i + 1))
+
+    return round((duration / present_value)/ coupon_frequency, 2)
+
+# Function to calculate Financial Leverage
+def calculate_financial_leverage(total_assets : float,
+                                 total_liabilities : float,
+                                 short_term_debt : float,
+                                 long_term_debt : float
+                                 ):
+    debt = short_term_debt + long_term_debt
+
+    shareholder_equity = total_assets - total_liabilities
+
+    financial_leverage = debt / shareholder_equity
+
+    return financial_leverage

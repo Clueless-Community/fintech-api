@@ -1912,7 +1912,6 @@ Sample Output
   }
 ```
 
-
 **GET** `/net_worth`
 
 - Required parameters : `assets`, `liabilities`,'loans','mortgage'
@@ -1927,4 +1926,60 @@ Sample Output
     "Mortgage": 10000.0,
     "Net Worth": 50000.0
 }
+```
+
+**GET** `/capital_gains_yield`
+
+- Required parameters : `inital_price`, `price_after_first_period` 
+- Sample output
+
+```py
+{
+    "Tag": "Capital Gains Yield",
+    "Inital Price of Stock": 200.0,
+    "Price of Stock After First Period": 220.0,
+    "Capital Gains Yield": 10%,
+}
+```
+    
+**GET** `/macaulay-duration`
+- Required parameters : `face_value`,
+        `coupon_rate`,
+        `dt`,
+        `month`,
+        `year`,
+        `coupon_frequency`,
+        `discount_rate`,
+
+- Sample Request: `GET`, `http://localhost:8000/calculate_macaulay_duration?face_value=1000.0&coupon_rate=0.06&dt=19&month=6&year=2026&coupon_frequency=2&discount_rate=0.06`,    
+- Sample output
+```py
+{
+  {
+    "Tag": "Macaulay_duration",
+    "Face-value of bond": 1000.0,
+    "Coupon Rate (in decimal)": 0.06,
+    "Date of maturity(DD)": 19,
+    "Month of maturity(MM)": 6,
+    "Year of maturity(YY)": 2026,
+    "Coupon frequency": 2,
+    "Discount frequency (int decimal)": 0.06,
+    "Macaulay duration": 2.77
+  }
+}
+```
+
+**GET** `/calculate_financial_leverage`
+-Required parameters: `total_assets`, `total_liabilities`, `short_term_debt`, `long_term_debt`
+-Sample Output
+```py
+{
+  "Tag" : "Calculate financial leverage",
+  "total_assets" : 16645,
+  "total_liabilities" : 9906,
+  "short_term_debt" : 5000,
+  "long_term_debt" : 10000,
+  "financial_leverage" : 1.51
+}
+
 ```

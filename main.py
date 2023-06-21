@@ -3106,6 +3106,7 @@ def free_cash_flow_to_equity(
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 @app.get(
     "/net_worth",
     tags=["net_worth"],
@@ -3120,6 +3121,81 @@ def net_worth_calculation(assets: float, liabilities: float, loans: float, mortg
             "Assets": assets,
             "Liabilities": total_liabilities,
             "Net Worth": net_worth,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+## Endpoint for function Capital Gains Yield
+
+app.get(
+	"/capital_gains_yield",
+	tags=["capital_gains_yield"],
+	description="Calculate Capital Gains Yield of a Stock",
+)
+def capital_gains_yield(inital_price: float, price_after_first_period: float):
+    try:
+        gains_yield = functions.capital_gains_yield(inital_price, price_after_first_period)
+        return {
+            "Tag": "Capital Gains Yield",
+		    "Inital Price of Stock": inital_price,
+    	    "Price of Stock After First Period": price_after_first_period,
+    	    "Capital Gains Yield": f"{gains_yield}%",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/calculate_macaulay_duration",
+    tags=["Macaulay_duration"],
+    description="Calculate macaulay duration",
+)
+def calculate_macaulay_duration(
+    face_value : float, coupon_rate : float, dt : int, month : int, year : int, coupon_frequency : int, discount_rate : float
+):
+    '''
+    Macaulay duration is the weighted average term to maturity of the cash flows from a bond. 
+    Inputs:  face value of bond, coupon rate, dt, month, year of maturity, coupon frequency, discount rate
+    Ouput: Macaulay duration in years 
+    '''
+    try:
+        duration = functions.calculate_gratuity(
+            face_value, coupon_rate, dt, month, year, coupon_frequency, discount_rate
+        )
+        return {
+            "Tag": "Macaulay_duration",
+            "Face-value of bond": face_value,
+            "Coupon Rate (in decimal)": coupon_rate,
+            "Date of maturity(DD)": dt,
+            "Month of maturity(MM)": month,
+            "Year of maturity(YY)": year,
+            "Coupon frequency": coupon_frequency,
+            "Discount frequency (int decimal)": discount_rate,
+            "Macaulay duration": f"{duration}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+      
+@app.get(
+    "/calculate_financial_leverage",
+    tags=["financial_leverage"],
+    description="Calculate financial leverage",
+)
+def calculate_financial_leverage(total_assets : float,
+                                 total_liabilities : float,
+                                 short_term_debt : float,
+                                 long_term_debt : float
+                                 ):
+    try:
+        financial_leverage = functions.calculate_financial_leverage(
+            total_assets, total_liabilities, short_term_debt, long_term_debt)
+        return {
+            "Tag": "Calculate financial leverage",
+            "Total Assets": total_assets,
+            "Total Liabilities": total_liabilities,
+            "Short term debt": short_term_debt,
+            "Long term debt": long_term_debt,
+            "Financial Leverage": financial_leverage,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
