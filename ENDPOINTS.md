@@ -1967,3 +1967,17 @@ Sample Output
 }
 
 ```
+
+**GET** `/accounts_payable_turnover_ratio`
+
+- Required parameters : `total_supply_purchases`, `beginning_accounts_payable` and `ending_accounts_payable`
+- Sample output
+
+```py
+{
+  "Tag": "Accounts Payable Turnover Ratio",
+  "Total Supply Purchases": 1000,
+  "Beginning Accounts Payable": 200,
+  "Ending Accounts Payable": 300,
+  "Accounts Payable Turnover Ratio": 4
+}

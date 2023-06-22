@@ -1934,3 +1934,13 @@ def calculate_financial_leverage(total_assets : float,
     financial_leverage = debt / shareholder_equity
 
     return financial_leverage
+
+# Function to calculate Accounts Payable Turnover Ratio
+def accounts_payable_turnover_ratio(total_supply_purchases: float,
+                                    beginning_accounts_payable: float,
+                                    ending_accounts_payable: float):
+    
+    average_accounts_payable = (beginning_accounts_payable + ending_accounts_payable)/2
+    ap_turnover_ratio = total_supply_purchases/average_accounts_payable
+
+    return ap_turnover_ratio
