@@ -1934,3 +1934,29 @@ def calculate_financial_leverage(total_assets : float,
     financial_leverage = debt / shareholder_equity
 
     return financial_leverage
+
+# Function to estimate the portfolio return using Monte Carlo simulation.
+def portfolio_return_monte_carlo(principal, expected_return_range_start,expected_return_range_end, volatility_range_start,volatility_range_end, num_simulations):
+    portfolio_returns = np.zeros(int(num_simulations))
+
+    min_return, max_return = expected_return_range_start, expected_return_range_end
+    min_volatility, max_volatility = volatility_range_start, volatility_range_end
+
+    for i in range(int(num_simulations)):
+        random_return = np.random.uniform(min_return, max_return)
+        random_volatility = np.random.uniform(min_volatility, max_volatility)
+        random_returns = np.random.normal(random_return, random_volatility)
+        portfolio_value = principal * np.prod(1 + random_returns)
+        portfolio_returns[i] = (portfolio_value - principal) / principal
+
+    portfolio_stats = {
+        "Portfolio Returns": portfolio_returns.tolist(),
+        "Average Return": np.mean(portfolio_returns),
+        "Standard Deviation": np.std(portfolio_returns),
+        "Min Return": np.min(portfolio_returns),
+        "Max Return": np.max(portfolio_returns),
+        "Positive Returns": len(portfolio_returns[portfolio_returns > 0]),
+        "Negative Returns": len(portfolio_returns[portfolio_returns < 0])
+    }
+
+    return portfolio_stats

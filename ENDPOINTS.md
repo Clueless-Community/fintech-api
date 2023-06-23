@@ -1967,3 +1967,32 @@ Sample Output
 }
 
 ```
+
+**GET** `/portfolio_return_monte_carlo`
+-Required parameters: `principal`, `expected_return_range_start`,`expected_return_range_end`, `volatility_range_start`,`volatility_range_end`, `num_simulations`
+-Sample Output
+```py
+{
+  'Tag': 'Portfolio Return Monte Carlo',
+  'Principal': 100000.0,
+  'Number of Simulations': 100.0,
+  'Portfolio Returns': {
+    'Portfolio Returns': [
+      0.1508024611892416,
+      0.09317653795670179,
+      0.5116882858279181,
+      ..................
+      -0.129317612028336,
+      0.3255694082529636,
+      0.11115286872158307
+    ],
+    'Average Return': 0.08973870952953042,
+    'Standard Deviation': 0.15306996560080827,
+    'Min Return': -0.3923187345080281,
+    'Max Return': 0.5116882858279181,
+    'Positive Returns': 75,
+    'Negative Returns': 25
+  }
+}
+
+```
