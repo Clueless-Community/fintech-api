@@ -3185,19 +3185,6 @@ def calculate_financial_leverage(total_assets : float,
 
 
 
-# Endpoint for Net Present Value (NPV)
-@app.get("/net_profit_value", tags=["npv"], description="Calculate Net Present Value (NPV)")
-def calculate_npv(cashflows: List[float], discount_rate: float) -> Union[float, HTTPException]:
-    try:
-        npv = functions.calculate_npv(cashflows, discount_rate)
-        return {
-            "Tag": "Net Present Value (NPV)",
-            "Cashflows": cashflows,
-            "Discount Rate": discount_rate,
-            "NPV": npv,
-        }
-    except Exception as e:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 # Endpoint for Internal Rate of Return (IRR)
 @app.get("/internal_rate_return", tags=["irr"], description="Calculate Internal Rate of Return (IRR)")
@@ -3226,33 +3213,7 @@ def calculate_roa(net_income: float, total_assets: float) -> Union[float, HTTPEx
     except Exception as e:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
-# Endpoint for Return on Equity (ROE)
-@app.get("/return_on_equity", tags=["roe"], description="Calculate Return on Equity (ROE)")
-def calculate_roe(net_income: float, shareholders_equity: float) -> Union[float, HTTPException]:
-    try:
-        roe = functions.calculate_roe(net_income, shareholders_equity)
-        return {
-            "Tag": "Return on Equity (ROE)",
-            "Net Income": net_income,
-            "Shareholders' Equity": shareholders_equity,
-            "ROE": roe,
-        }
-    except Exception as e:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
-# Endpoint for Debt Ratio
-@app.get("/debt_ratio", tags=["debt_ratio"], description="Calculate Debt Ratio")
-def calculate_debt_ratio(total_debt: float, total_assets: float) -> Union[float, HTTPException]:
-    try:
-        debt_ratio = functions.calculate_debt_ratio(total_debt, total_assets)
-        return {
-            "Tag": "Debt Ratio",
-            "Total Debt": total_debt,
-            "Total Assets": total_assets,
-            "Debt Ratio": debt_ratio,
-        }
-    except Exception as e:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 # Endpoint for Equity Ratio
 @app.get("/equity_ratio", tags=["equity_ratio"], description="Calculate Equity Ratio")
