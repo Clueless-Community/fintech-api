@@ -1983,3 +1983,24 @@ Sample Output
 }
 
 ```
+
+**GET** `/capitalization_rate`
+
+-Required parameters: `rental_income`, `amenities`, `propertyManagement`, `propertyTaxes`, `insurance`, `current_market_value`
+-Sample Output
+
+```py
+{
+  "Tag": "Capitalization Rate",
+  "Rental Income": 70000.0,
+  "Amenities": 30000.0,
+  "Property Management": 2000.0,
+  "Property Taxes": 3000.0,
+  "Insurance": 2500.0,
+  "Annual Income": 100000.0,
+  "Expenses": 7500.0,
+  "Net Operating Income": 92500.0,
+  "Current Market Value": 1500000.0
+  "Capitalization Rate": 6.16%
+}
+```

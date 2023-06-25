@@ -1935,6 +1935,22 @@ def calculate_financial_leverage(total_assets : float,
 
     return financial_leverage
 
+
+# Function to Calculate Capitalization Rate 
+
+def capitalization_rate(
+        rental_income: float,
+        amenities: float,
+        propertyManagement: float,
+        propertyTaxes:float,
+        insurance: float,
+        current_market_value: float):
+  annual_income = rental_income + amenities
+  expenses = propertyManagement + propertyTaxes + insurance
+  net_operating_income = annual_income - expenses
+  rate = (net_operating_income / current_market_value) * 100
+  return rate
+
 #Function to calculate net worth
 def net_worth_calculation(assets: float, liabilities: float, loans: float, mortgages: float):
  
@@ -1946,3 +1962,4 @@ def net_worth_calculation(assets: float, liabilities: float, loans: float, mortg
             "Liabilities": total_liabilities,
             "Net Worth": net_worth,
         }
+
