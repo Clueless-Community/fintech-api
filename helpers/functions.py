@@ -1934,3 +1934,15 @@ def calculate_financial_leverage(total_assets : float,
     financial_leverage = debt / shareholder_equity
 
     return financial_leverage
+
+#Function to calculate net worth
+def net_worth_calculation(assets: float, liabilities: float, loans: float, mortgages: float):
+ 
+    total_liabilities = liabilities + loans + mortgages
+    net_worth = assets - total_liabilities
+    return {
+            "Tag": "Net Worth",
+            "Assets": assets,
+            "Liabilities": total_liabilities,
+            "Net Worth": net_worth,
+        }

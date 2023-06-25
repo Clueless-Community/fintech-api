@@ -1912,6 +1912,22 @@ Sample Output
   }
 ```
 
+**GET** `/net_worth`
+
+- Required parameters : `assets`, `liabilities`,'loans','mortgage'
+- Sample output
+
+```py
+{
+    "Tag": "Net Worth",
+    "Assets": 100000.0,
+    "Liabilities": 50000.0,
+    "Loans": 20000.0,
+    "Mortgage": 10000.0,
+    "Net Worth": 50000.0
+}
+```
+
 **GET** `/capital_gains_yield`
 
 - Required parameters : `inital_price`, `price_after_first_period` 

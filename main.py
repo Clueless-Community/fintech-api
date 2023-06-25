@@ -3107,6 +3107,24 @@ def free_cash_flow_to_equity(
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+@app.get(
+    "/net_worth",
+    tags=["net_worth"],
+    description="Calculate net worth",
+)
+def net_worth_calculation(assets: float, liabilities: float, loans: float, mortgages: float):
+    try:
+        total_liabilities = liabilities + loans + mortgages
+        net_worth = assets - total_liabilities
+        return {
+            "Tag": "Net Worth",
+            "Assets": assets,
+            "Liabilities": total_liabilities,
+            "Net Worth": net_worth,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 ## Endpoint for function Capital Gains Yield
 
@@ -3177,7 +3195,7 @@ def calculate_financial_leverage(total_assets : float,
             "Total Liabilities": total_liabilities,
             "Short term debt": short_term_debt,
             "Long term debt": long_term_debt,
-            "Financial Leverage": financial_leverage
+            "Financial Leverage": financial_leverage,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
