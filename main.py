@@ -130,6 +130,8 @@ def index():
             "/college_cost": "calculate total college fee of one year assuming full tuition fee is being paid.",
             "/diluted-earnings-per-share": "Calculate Diluted Earnings Per Share (EPS).",
             "/asdcr": "Calculate Annual Debt Service Coverage Ratio",
+            "/portfolio_return_monte_carlo":"Calculates Portfolio returns based on Monte Carlo Simulation",
+
         },
     }
 
@@ -3200,6 +3202,29 @@ def calculate_financial_leverage(total_assets : float,
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+@app.get(
+        "/portfolio_return_monte_carlo", 
+        tags=["portfolio_return"], 
+        description="Estimate portfolio return using Monte Carlo simulation"
+)
+def portfolio_return_monte_carlo(principal: float, 
+                                 expected_return_range_start: float, 
+                                 expected_return_range_end: float,
+                                 volatility_range_start: float,
+                                 volatility_range_end: float,
+                                 num_simulations: float):
+    try:
+        portfolio_returns = functions.portfolio_return_monte_carlo(principal, expected_return_range_start,expected_return_range_end, volatility_range_start,volatility_range_end, num_simulations)
+
+        return {
+            "Tag": "Portfolio Return Monte Carlo",
+            "Principal": principal,
+            "Number of Simulations": num_simulations,
+            "Portfolio Returns": f"{portfolio_returns}%"
+        }
+      except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 #Endpoint for function Capitalization Rate
 
 @app.get(
