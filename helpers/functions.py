@@ -1960,3 +1960,41 @@ def portfolio_return_monte_carlo(principal, expected_return_range_start,expected
     }
 
     return portfolio_stats
+
+# Function to calculate Accounts Payable Turnover Ratio
+def accounts_payable_turnover_ratio(total_supply_purchases: float,
+                                    beginning_accounts_payable: float,
+                                    ending_accounts_payable: float):
+    
+    average_accounts_payable = (beginning_accounts_payable + ending_accounts_payable)/2
+    ap_turnover_ratio = total_supply_purchases/average_accounts_payable
+
+    return ap_turnover_ratio
+
+
+# Function to Calculate Capitalization Rate 
+
+def capitalization_rate(
+        rental_income: float,
+        amenities: float,
+        propertyManagement: float,
+        propertyTaxes:float,
+        insurance: float,
+        current_market_value: float):
+  annual_income = rental_income + amenities
+  expenses = propertyManagement + propertyTaxes + insurance
+  net_operating_income = annual_income - expenses
+  rate = (net_operating_income / current_market_value) * 100
+  return rate
+
+#Function to calculate net worth
+def net_worth_calculation(assets: float, liabilities: float, loans: float, mortgages: float):
+ 
+    total_liabilities = liabilities + loans + mortgages
+    net_worth = assets - total_liabilities
+    return {
+            "Tag": "Net Worth",
+            "Assets": assets,
+            "Liabilities": total_liabilities,
+            "Net Worth": net_worth,
+        }

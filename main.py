@@ -3109,6 +3109,24 @@ def free_cash_flow_to_equity(
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+@app.get(
+    "/net_worth",
+    tags=["net_worth"],
+    description="Calculate net worth",
+)
+def net_worth_calculation(assets: float, liabilities: float, loans: float, mortgages: float):
+    try:
+        total_liabilities = liabilities + loans + mortgages
+        net_worth = assets - total_liabilities
+        return {
+            "Tag": "Net Worth",
+            "Assets": assets,
+            "Liabilities": total_liabilities,
+            "Net Worth": net_worth,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 ## Endpoint for function Capital Gains Yield
 
@@ -3179,10 +3197,11 @@ def calculate_financial_leverage(total_assets : float,
             "Total Liabilities": total_liabilities,
             "Short term debt": short_term_debt,
             "Long term debt": long_term_debt,
-            "Financial Leverage": financial_leverage
+            "Financial Leverage": financial_leverage,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @app.get(
         "/portfolio_return_monte_carlo", 
@@ -3202,7 +3221,66 @@ def portfolio_return_monte_carlo(principal: float,
             "Tag": "Portfolio Return Monte Carlo",
             "Principal": principal,
             "Number of Simulations": num_simulations,
-            "Portfolio Returns": f"{portfolio_returns}%",
+            "Portfolio Returns": f"{portfolio_returns}%"
+        }
+      except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+#Endpoint for function Capitalization Rate
+
+@app.get(
+    "/capitalization_rate",
+    tags=["capitalization_rate"],
+    description="Calculate capitalization rate for a given property.",
+)
+def capitalization_rate(
+        rental_income: float,
+        amenities: float,
+        propertyManagement: float,
+        propertyTaxes:float,
+        insurance: float,
+        current_market_value: float):
+    try:
+        rate = functions.capitalization_rate(rental_income, amenities, propertyManagement, 
+            propertyTaxes, insurance, current_market_value
+        )
+        annual_income = rental_income + amenities, 
+        expenses = propertyManagement + propertyTaxes + insurance,
+        net_operating_income = annual_income - expenses,
+ 
+        return {
+            "Tag": "Capitalization Rate",
+            "Rental Income": rental_income,
+            "Amenities": amenities,
+            "Property Management": propertyManagement,
+            "Property Taxes": propertyTaxes,
+            "Insurance": insurance,
+  	        "Annual Income": annual_income,
+  	        "Expenses": expenses,
+  	        "Net Operating Income": net_operating_income,
+  	        "Current Market Value": current_market_value,
+  	        "Capitalization Rate": f"{rate}%"
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@app.get(
+    "/accounts_payable_turnover_ratio",
+    tags=["accounts_payable_turnover_ratio"],
+    description="Calculates the Accounts Payable Turnover Ratio",
+)
+def accounts_payable_turnover_ratio(total_supply_purchases: float,
+                                    beginning_accounts_payable: float,
+                                    ending_accounts_payable: float):
+    try:
+        ap_turnover_ratio = functions.accounts_payable_turnover_ratio(total_supply_purchases,
+                                                         beginning_accounts_payable,
+                                                         ending_accounts_payable)
+        return {
+            "Tag": "Accounts Payable Turnover Ratio",
+            "Total Supply Purchases": total_supply_purchases,
+            "Beginning Accounts Payable": beginning_accounts_payable,
+            "Ending Accounts Payable": ending_accounts_payable,
+            "Accounts Payable Turnover Ratio": ap_turnover_ratio
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
