@@ -661,3 +661,19 @@ def leverage_equity(debt: int, equity: int):
 def time_period_required_for_growth(interest_rate: float, growth_factor: int ):
     time_period_required_for_growth = math.log(growth_factor) / math.log(1 + interest_rate/100)
     return time_period_required_for_growth
+
+# Endpoint to calculate the net income
+def net_income(revenue: float, expenses: float):
+    return float(revenue)-float(expenses)
+
+# Endpoint to calculate the break-even point
+def break_even_point(fixed_costs:int ,sales_price_per_unit: float,variable_price_per_unit:float):
+    return fixed_costs/(sales_price_per_unit-variable_price_per_unit)
+
+# Endpoint to calculate the Day Sales in Inventory Ratio   
+def day_sales_in_inventory_ratio(avg_inventory:int ,cost_of_goods_sold: int,no_of_days:int):
+    return (avg_inventory/cost_of_goods_sold)*no_of_days
+
+# Endpoint to calculate the Cash Ratio   
+def cash_ratio(cash:float ,cash_equivalents:float,current_liabilities:float):
+    return (cash+cash_equivalents)/current_liabilities
