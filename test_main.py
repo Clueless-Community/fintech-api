@@ -61,4 +61,54 @@ def test_roi_main():
             "Return on Investment":f"49.0%"
     }
 
+# Endpoint to calculate the Net Income
+def net_income():
+    response = client.get("/net_income/", params={"revenue": 30000, "expenses": 25000})
+    assert response.status_code == 200
+
+    assert response.json() == {
+        "Tag": "Net Income",
+        "Revenue": 30000,
+        "Expenses": 25000,
+        "Net Income": 5000
+    }
+
+# Endpoint to calculate the break-even point
+def break_even_point():
+    response = client.get("/break_even_point/", params={"fixed_costs": 2500,"sales_price_per_unit": 2.95,"variable_price_per_unit":1.40 })
+    assert response.status_code == 200
+
+    assert response.json() == {
+        "Tag": "Break-even Point",
+        "Fixed Costs": 2500,
+        "Sales Price Per Unit": 2.95,
+        "Variable Price Per Unit": 1.40,
+        "Break-even Point": f"1612.9032258064512"
+    }
+
+# Endpoint to calculate the Day Sales in Inventory Ratio   
+def day_sales_in_inventory_ratio():
+    response = client.get("/day_sales_in_inventory_ratio/", params={"avg_inventory":50000,"cost_of_goods_sold":200000,"no_of_days":365 })
+    assert response.status_code == 200
+
+    assert response.json() == {
+        "Tag": "Day Sales in Inventory Ratio",
+        "Average Inventory": 50000,
+        "Cost of Goods Sold": 200000,
+        "No of Days": 365,
+        "Day Sales in Inventory Ratio": "91.25"
+    }
+
+# Endpoint to calculate the Cash Ratio   
+def cash_ratio():
+    response = client.get("/cash_ratio/", params={"cash":37.1,"cash_equivalents":26.8,"current_liabilities":123.5 })
+    assert response.status_code == 200
+
+    assert response.json() == {
+        "Tag": "Cash Ratio",
+        "Cash": 37.1,
+        "Cash Equivalents": 26.8,
+        "Current Liabilities": 123.5,
+        "Cash Ratio": "0.52"
+    }
 
