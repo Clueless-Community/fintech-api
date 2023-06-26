@@ -1934,3 +1934,67 @@ def calculate_financial_leverage(total_assets : float,
     financial_leverage = debt / shareholder_equity
 
     return financial_leverage
+
+# Function to estimate the portfolio return using Monte Carlo simulation.
+def portfolio_return_monte_carlo(principal, expected_return_range_start,expected_return_range_end, volatility_range_start,volatility_range_end, num_simulations):
+    portfolio_returns = np.zeros(int(num_simulations))
+
+    min_return, max_return = expected_return_range_start, expected_return_range_end
+    min_volatility, max_volatility = volatility_range_start, volatility_range_end
+
+    for i in range(int(num_simulations)):
+        random_return = np.random.uniform(min_return, max_return)
+        random_volatility = np.random.uniform(min_volatility, max_volatility)
+        random_returns = np.random.normal(random_return, random_volatility)
+        portfolio_value = principal * np.prod(1 + random_returns)
+        portfolio_returns[i] = (portfolio_value - principal) / principal
+
+    portfolio_stats = {
+        "Portfolio Returns": portfolio_returns.tolist(),
+        "Average Return": np.mean(portfolio_returns),
+        "Standard Deviation": np.std(portfolio_returns),
+        "Min Return": np.min(portfolio_returns),
+        "Max Return": np.max(portfolio_returns),
+        "Positive Returns": len(portfolio_returns[portfolio_returns > 0]),
+        "Negative Returns": len(portfolio_returns[portfolio_returns < 0])
+    }
+
+    return portfolio_stats
+
+# Function to calculate Accounts Payable Turnover Ratio
+def accounts_payable_turnover_ratio(total_supply_purchases: float,
+                                    beginning_accounts_payable: float,
+                                    ending_accounts_payable: float):
+    
+    average_accounts_payable = (beginning_accounts_payable + ending_accounts_payable)/2
+    ap_turnover_ratio = total_supply_purchases/average_accounts_payable
+
+    return ap_turnover_ratio
+
+
+# Function to Calculate Capitalization Rate 
+
+def capitalization_rate(
+        rental_income: float,
+        amenities: float,
+        propertyManagement: float,
+        propertyTaxes:float,
+        insurance: float,
+        current_market_value: float):
+  annual_income = rental_income + amenities
+  expenses = propertyManagement + propertyTaxes + insurance
+  net_operating_income = annual_income - expenses
+  rate = (net_operating_income / current_market_value) * 100
+  return rate
+
+#Function to calculate net worth
+def net_worth_calculation(assets: float, liabilities: float, loans: float, mortgages: float):
+ 
+    total_liabilities = liabilities + loans + mortgages
+    net_worth = assets - total_liabilities
+    return {
+            "Tag": "Net Worth",
+            "Assets": assets,
+            "Liabilities": total_liabilities,
+            "Net Worth": net_worth,
+        }

@@ -1912,6 +1912,22 @@ Sample Output
   }
 ```
 
+**GET** `/net_worth`
+
+- Required parameters : `assets`, `liabilities`,'loans','mortgage'
+- Sample output
+
+```py
+{
+    "Tag": "Net Worth",
+    "Assets": 100000.0,
+    "Liabilities": 50000.0,
+    "Loans": 20000.0,
+    "Mortgage": 10000.0,
+    "Net Worth": 50000.0
+}
+```
+
 **GET** `/capital_gains_yield`
 
 - Required parameters : `inital_price`, `price_after_first_period` 
@@ -1966,4 +1982,69 @@ Sample Output
   "financial_leverage" : 1.51
 }
 
+```
+
+**GET** `/portfolio_return_monte_carlo`
+-Required parameters: `principal`, `expected_return_range_start`,`expected_return_range_end`, `volatility_range_start`,`volatility_range_end`, `num_simulations`
+-Sample Output
+```py
+{
+  'Tag': 'Portfolio Return Monte Carlo',
+  'Principal': 100000.0,
+  'Number of Simulations': 100.0,
+  'Portfolio Returns': {
+    'Portfolio Returns': [
+      0.1508024611892416,
+      0.09317653795670179,
+      0.5116882858279181,
+      ..................
+      -0.129317612028336,
+      0.3255694082529636,
+      0.11115286872158307
+    ],
+    'Average Return': 0.08973870952953042,
+    'Standard Deviation': 0.15306996560080827,
+    'Min Return': -0.3923187345080281,
+    'Max Return': 0.5116882858279181,
+    'Positive Returns': 75,
+    'Negative Returns': 25
+  }
+}
+
+```
+
+**GET** `/accounts_payable_turnover_ratio`
+
+- Required parameters : `total_supply_purchases`, `beginning_accounts_payable` and `ending_accounts_payable`
+- Sample output
+
+```py
+{
+  "Tag": "Accounts Payable Turnover Ratio",
+  "Total Supply Purchases": 1000,
+  "Beginning Accounts Payable": 200,
+  "Ending Accounts Payable": 300,
+  "Accounts Payable Turnover Ratio": 4
+}
+```
+
+**GET** `/capitalization_rate`
+
+-Required parameters: `rental_income`, `amenities`, `propertyManagement`, `propertyTaxes`, `insurance`, `current_market_value`
+-Sample Output
+
+```py
+{
+  "Tag": "Capitalization Rate",
+  "Rental Income": 70000.0,
+  "Amenities": 30000.0,
+  "Property Management": 2000.0,
+  "Property Taxes": 3000.0,
+  "Insurance": 2500.0,
+  "Annual Income": 100000.0,
+  "Expenses": 7500.0,
+  "Net Operating Income": 92500.0,
+  "Current Market Value": 1500000.0
+  "Capitalization Rate": 6.16%
+}
 ```
