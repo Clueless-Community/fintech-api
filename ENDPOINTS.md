@@ -1,5 +1,5 @@
 <h1 align=center> Endpoints we are providing 💫</h1>
-
+   
 **GET** `/simple_interest_rate`
 
 - Required parameters : `amount_paid`, `principle_amount` and `months`
