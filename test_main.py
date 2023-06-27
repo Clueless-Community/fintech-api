@@ -6,7 +6,7 @@ import json
 
 app = FastAPI()
 
-
+  
 
 @app.get("/")
 async def read_main():
