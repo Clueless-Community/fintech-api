@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, status
 from helpers import functions
-
+   
 app = FastAPI(
     title="FinTech API",
     description="An API that helps you to deal with your financial calculations.",
