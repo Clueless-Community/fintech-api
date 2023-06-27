@@ -1,6 +1,6 @@
 # This file must be used with "source bin/activate" *from bash*
 # you cannot run it directly
-
+   
 deactivate () {
     # reset old environment variables
     if [ -n "${_OLD_VIRTUAL_PATH:-}" ] ; then
