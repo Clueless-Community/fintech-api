@@ -8,7 +8,7 @@ Do check our [First Contribution](https://github.com/Clueless-Community/first-co
 Copy the URL of the forked repository and clone it.
 ```bash
 git clone https://github.com/nikhil25803/fintech-api
-```
+```  
 
 ## Change the directory
 ```bash
