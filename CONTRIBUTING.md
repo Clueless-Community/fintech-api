@@ -21,6 +21,12 @@ fintect-api
 │
 └───📂helpers
 │   │   { Python functions for different calculations }
+│
+└───📂tasks
+│   │   { Python functions for different tasks }
+│
+└───📂validators
+│   │   { Pydantic Models for different validations }
 
 📄.gitignore
 📄CONTRIBUTING.md
@@ -112,14 +118,18 @@ def simple_interest_rate(amount_paid:float, principle_amount:float, months:int):
 ```
 + Cross-validate your endpoint output from some online calculators available or even manually.
 
-+ Once the function is ready, create an endpoint in the `main.py` file following all the good practices of Fast API.
++ After completing with creating the function, create the request validation in `validators/request_validation.py` like this -
 
 ```python
-@app.get(
-    "/simple_interest_rate",
-    tags=["simple_interest_rate"],
-    description="Calculate simple interest rates",
-)
+class SimpleInterestRateRequest(BaseModel):
+    amount_paid: float
+    principle_amount: float
+    months: int
+```
+
++ Once the validation is done, create a task called `simple_interest.py` in `./tasks` and the task like this -
+
+```python
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
     try:
         rate = functions.simple_interest_rate(amount_paid, principle_amount, months)
@@ -132,6 +142,18 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+```
+
++ Once the task is ready, create an endpoint in the `main.py` file following all the good practices of Fast API.
+
+```python
+@app.get(
+    "/simple_interest_rate",
+    tags=["simple_interest_rate"],
+    description="Calculate simple interest rates",
+)
+def simple_interest_rate(request: SimpleInterestRateRequest):
+    return simple_interest_rate_task(request.amount_paid, request.principle_amount, request.months)
 ```
 
 +Also add your funtion in `ENDPOINTS.md`.
