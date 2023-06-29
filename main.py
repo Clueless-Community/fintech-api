@@ -1,4 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.responses import JSONResponse
+import jwt
 
 # Importing all the tasks
 from tasks.simple_interest_rate import simple_interest_rate_task
@@ -260,10 +263,33 @@ def index():
         },
     }
 
+class UnauthorizedException(HTTPException):
+    def __init__(self, detail="Unauthorized"):
+        super().__init__(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=detail,
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+# Validate access token (Not for all endpoints)
+def validate_access_token(credentials: HTTPAuthorizationCredentials = Depends(HTTPBearer())):
+    try:
+        token = credentials.credentials
+        payload = jwt.decode(token,"fintech-api", algorithms=["HS256"])
+        return payload
+    except jwt.exceptions.DecodeError:
+        raise UnauthorizedException()
+
+
+# Endpoint to generate access token
+@app.get("/generate-access-token")
+def generate_access_token():
+    token = jwt.encode({},"fintech-api", algorithm="HS256")
+    return {"access_token": token}
 
 # Endpoints to calculate simple interest.
 
-@app.get(
+@app.post(
     "/simple_interest_rate",
     tags=["simple_interest_rate"],
     description="Calculate simple interest rates",
@@ -273,19 +299,20 @@ def simple_interest_rate(request: SimpleInterestRateRequest):
 
 # Endpoints to calculate Future sip
 
-@app.get(
+@app.post(
     "/future_sip",
     tags=["future_sip"],
     description="Calculate Future Value of SIP",
 )
 def future_sip(
     request: futureSip,
+    payload: dict = Depends(validate_access_token)
 ):
     return future_sip_task(request.interval_investment, request.rate_of_return, request.number_of_payments)
 
 # Endpoints to calculate Future value
 
-@app.get(
+@app.post(
     "/calculate_pension",
     tags=["calculate_pension"],
     description="Calculate pension",
@@ -297,7 +324,7 @@ def calculate_pension(
 
 
 # endpoint for payback period
-@app.get(
+@app.post(
     "/payback_period",
     tags=["payback_period_years"],
     description="Calculate payback period",
@@ -309,7 +336,7 @@ def payback_period(
 
 
 # Endpoints to calculate Compound Interest.
-@app.get(
+@app.post(
     "/compound_interest",
     tags=["compound_interest_amount"],
     description="Calculate compound interest amount",
