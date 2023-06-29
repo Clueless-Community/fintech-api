@@ -147,7 +147,7 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
 + Once the task is ready, create an endpoint in the `main.py` file following all the good practices of Fast API.
 
 ```python
-@app.get(
+@app.post(
     "/simple_interest_rate",
     tags=["simple_interest_rate"],
     description="Calculate simple interest rates",
@@ -158,18 +158,22 @@ def simple_interest_rate(request: SimpleInterestRateRequest):
 
 +Also add your funtion in `ENDPOINTS.md`.
 ```
-**GET** `/simple_interest_rate`
+**POST** `/simple_interest_rate`
 
-- Required parameters : `amount_paid`, `principle_amount` and `months`
+- Request body : `{
+  "amount_paid": 20.23,
+  "principle_amount": 30.9,
+  "months": 5
+}`
 - Sample output
 
 ```py
 {
-    "Tag": "Simple Interest Rate",
-    "Total amount paid": 5000.0,
-    "Principle amount": 4500.0,
-    "Interest Paid": 500.0,
-    "Interest Rate": "11.11111111111111%"
+  "Tag": "Simple Interest Rate",
+  "Total amount paid": 20.23,
+  "Principle amount": 30.9,
+  "Interest Paid": -10.669999999999998,
+  "Interest Rate": "-82.87378640776697%"
 }
 ```
 ```
