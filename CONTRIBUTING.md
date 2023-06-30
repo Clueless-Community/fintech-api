@@ -176,6 +176,13 @@ def simple_interest_rate(request: SimpleInterestRateRequest):
   "Interest Rate": "-82.87378640776697%"
 }
 ```
++Update the Docs
+```
+|---------------------------|----------------------------------------|---------------------------------------------------------|
+| GET /simple_interest_rate | Calculate simple interest rates        | - `amount_paid` (float): The amount paid.               |
+|                           |                                        | - `principle_amount` (float): The principle amount.     |
+|                           |                                        | - `months` (int): The number of months.                 |
+```
 ```
 + And that's it, you are now ready to make your pull request.
 
