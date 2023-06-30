@@ -2048,3 +2048,29 @@ Sample Output
   "Capitalization Rate": 6.16%
 }
 ```
+
+**GET** `/risk_assessment`
+
+- Required parameters : `age`, `financial_goals`,'investment_knowledge','time_horizon'
+- Sample output
+
+```py
+{
+  "Tag": "Risk Assessment",
+            "Age": age,
+            "Financial Goals": financial_goals,
+            "Investment Knowledge": investment_knowledge,
+            "Time Horizon": time_horizon,
+            "Risk Score": risk_score,
+}
+```
+
+**GET** `/calculate_risk_score`
+
+- Required parameters : `age`, `financial_goals`,'investment_knowledge','time_horizon'
+- Sample output
+
+```py
+- Sample output
+"risk Score": 0.5
+```
