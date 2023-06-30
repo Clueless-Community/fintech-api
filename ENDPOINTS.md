@@ -105,20 +105,6 @@
  }
 ```
 
-**GET** `/compounded_annual_growth_rate`
-
-- Required parameters : `end_investment_value`, `initial_investment_value` and`years`
-- Sample output
-
-```py
-{
-   "Tag":"Compounded Annual Growth Rate",
-   "End investment value":100000,
-   "Initial investment value":70000,
-   "Years":3,
-   "Compunded Annual Growth Rate":0.12624788
-}
-```
 
 **GET** `/asset_portfolio`
 

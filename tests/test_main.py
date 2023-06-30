@@ -222,20 +222,6 @@ def test_return_on_investment():
   "Return on Investment": "1891.1764705882351%"
 }
 
-def test_compounded_annual_growth_rate():
-    response = client.get(
-        "http://127.0.0.1:8000/compounded_annual_growth_rate?end_investment_value=456&initial_investment_value=113&years=4"
-    )
-    assert response.status_code == status.HTTP_200_OK
-
-    assert response.json() == {
-  "Tag": "Compounded Annual Growth Rate",
-  "End investment value": 456,
-  "Initial investment value": 113,
-  "Years": 4,
-  "Compounded Annual Growth Rate": "0.4173320235605005%"
-}
-
 def test_jensens_alpha():
     response = client.get(
         "http://127.0.0.1:8000/jensens_alpha?return_from_investment=4566&return_of_appropriate_market_index=32&risk_free_rate=3&beta=45"
