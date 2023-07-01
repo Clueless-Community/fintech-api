@@ -611,7 +611,7 @@ def doubling_time(r: float):
 
 
 # Endpoint to calculate weighted average
-@app.get(
+@app.post(
     "/weighted_average",
     tags=["weighted_average"],
     description="Weighted Average",
@@ -884,7 +884,7 @@ def credit_card_equation(
     return credit_card_equation_task(balance, monthly_payment, daily_interest_rate)
 
 
-@app.get(
+@app.post(
     "/credit_card_payoff",
     tags=["credit_card_payoff"],
     description="Credit Card Payoff using Debt Avalanche method",
