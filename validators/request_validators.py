@@ -856,3 +856,9 @@ class calculateMarketCap(BaseModel):
 class calculateBvps(BaseModel):
     total_equity: float
     number_of_shares: float
+    
+class calculateRiskScore(BaseModel):
+    age: int
+    financial_goals: str
+    investment_knowledge: str
+    time_horizon: str

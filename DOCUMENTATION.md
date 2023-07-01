@@ -6,3 +6,19 @@
 | GET /future_sip           | Calculate Future Value of SIP          | - `interval_investment` (float): The interval investment|
 |                           |                                        | - `rate_of_return` (float): The rate of return.         |
 |                           |                                        | - `number_of_payments` (int): The number of payments.   |
+
+
+| GET /risk_assessment      | Perform Risk Assessment                | - `age` (integer): The age of the individual.           |
+|                           |                                        | - `financial_goals` (string): Financial goals of individual|
+|                           |                                        | - `investment_knowledge`(string):Investment knowledge level|
+|                           |                                        |- `time_horizon` (string):Investment time horizon         |
+
+
+| GET /calculate_risk_score | Calculate Risk Score                   | - `age` (integer): The age of the individual.           |
+|                           |                                        | - `financial_goals` (string): Financial goals of individual|
+|                           |                                        | - `investment_knowledge`(string):Investment knowledge level|
+|                           |                                        |- `time_horizon` (string):Investment time horizon         |
+
+
+
+
