@@ -101,15 +101,6 @@ def return_on_investment(current_value_of_investment: float, cost_of_investment:
     return decimal_to_percent(roi)
 
 
-# Function to calculate Compounded Annual Growth Rate (CAGR)
-def compounded_annual_growth_rate(
-    end_investment_value: float, initial_investment_value: float, years: int
-):
-    n = 1 / years
-    cagr = (end_investment_value / initial_investment_value) ** n - 1
-    return cagr
-
-
 # Function to calculate Jensens Alpha
 def jensens_alpha(
     return_from_investment: float,
@@ -648,15 +639,6 @@ def present_value_of_annuity_due(
         (1 - (1 + rate_per_period) ** (-number_of_periods + 1)) / rate_per_period
     )
     return present_value_of_annuity_due
-
-
-# function to calculate compound annual growth rate
-def compound_annual_growth_rate_1(
-    ending_value: float, beginning_value: float, number_of_periods: float
-):
-    a = (ending_value // beginning_value) ** (1 // number_of_periods)
-    cagr = a - 1
-    return cagr
 
 
 # Function to calculate loan to value
