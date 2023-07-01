@@ -126,7 +126,8 @@ from tasks.mortrages import mortrage_task
 from tasks.net_worth import net_worth_calculation_task
 from tasks.personal_savings import personal_savings_task
 from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod
+from tasks.calculate_capm import calculate_capm
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest
 
 # Creating the app
 app = FastAPI(
@@ -596,7 +597,7 @@ def doubling_time(r: float):
 
 
 # Endpoint to calculate weighted average
-@app.get(
+@app.post(
     "/weighted_average",
     tags=["weighted_average"],
     description="Weighted Average",
@@ -869,7 +870,7 @@ def credit_card_equation(
     return credit_card_equation_task(balance, monthly_payment, daily_interest_rate)
 
 
-@app.get(
+@app.post(
     "/credit_card_payoff",
     tags=["credit_card_payoff"],
     description="Credit Card Payoff using Debt Avalanche method",
@@ -1817,3 +1818,12 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
                                     beginning_accounts_payable: float,
                                     ending_accounts_payable: float):
     return accounts_payable_turnover_ratio_task(total_supply_purchases, beginning_accounts_payable, ending_accounts_payable)
+
+
+@app.post(
+    "/capm",
+    tags=["Capital Asset Pricing Model (CAPM)"],
+    description="Estimate the expected return on an investment.",
+)
+def capm(request: capmRequest):
+    return calculate_capm(request.risk_free_return, request.sensitivity, request.expected_market_return)

@@ -241,9 +241,8 @@ def sharpe_ratio(
     risk_free_rate: float,
     standard_deviation_of_portfolio: float,
 ):
-    sharpe_ratio = (portfolio_return - risk_free_rate) / \
-        standard_deviation_of_portfolio
-    return sharpe_ratio
+    sharpe_ratio_val = (portfolio_return - risk_free_rate) / standard_deviation_of_portfolio
+    return sharpe_ratio_val
 
 
 # Function to calculate Purchasing Power
@@ -406,7 +405,6 @@ def duration(
         maturity_date = pd.to_datetime(maturity_date, format="%d/%m/%Y")
     except:
         maturity_date = pd.to_datetime(maturity_date, format="%d-%m-%Y")
-
     data = pd.DataFrame()
     rate = percent_to_decimal(rate)
     coupon_rate = percent_to_decimal(coupon_rate)
@@ -556,9 +554,9 @@ def credit_card_payoff(
         cards.append(
             {
                 "index": i,
-                "debt": debts[i],
-                "minimum_payment": minimum_payments[i],
-                "interest_rate": interest_rates[i],
+                "debt": int(debts[i]),
+                "minimum_payment": int(minimum_payments[i]),
+                "interest_rate": int(interest_rates[i]),
                 "interest_paid": 0,
                 "month": 0,
                 "total_payment": 0,
@@ -692,8 +690,8 @@ def balloon_balance_of_loan(
 # Function to calculate discounted payback period
 def discounted_payback_period(outflow: float, rate: float, periodic_cash_flow: float):
     discounted_payback_period = np.log(
-        1 / (1 - (outflow * rate / periodic_cash_flow))
-    ) / np.log(1 + rate)
+        1 / (1 - (outflow * rate / periodic_cash_flow)),10
+    ) / np.log(1 + rate,10)
     return discounted_payback_period
 
 
@@ -1752,37 +1750,6 @@ def calculate_salary(base: int,
 
 # function to calculate the Sharpe ratio in Python
 
-
-def sharpe_ratio(returns, risk_free_rate):
-    """
-    Calculate the Sharpe ratio given a series of returns and the risk-free rate.
-
-    Parameters:
-    - returns (array-like): An array-like object containing the returns of an investment/portfolio.
-    - risk_free_rate (float): The risk-free rate of return.
-
-    Returns:
-    - float: The calculated Sharpe ratio.
-    """
-    avg_return = np.mean(returns)
-    std_dev = np.std(returns)
-
-    sharpe_ratio = (avg_return - risk_free_rate) / std_dev
-
-    return sharpe_ratio
-
-# You can use this function by passing your investment/portfolio returns and the risk-free rate to it. For example:
-
-
-returns = [0.05, 0.03, 0.02, 0.04, 0.06]  # Example returns
-risk_free_rate = 0.02  # Example risk-free rate
-
-sharpe = sharpe_ratio(returns, risk_free_rate)
-print(f"The Sharpe ratio is: {sharpe}")
-
-# Function to calculate Loan to Value Ratio
-
-
 def loan_to_value_ratio(
         loan_amount: float,
         value_of_collateral: float):
@@ -1980,3 +1947,8 @@ def net_worth_calculation(assets: float, liabilities: float, loans: float, mortg
             "Liabilities": total_liabilities,
             "Net Worth": net_worth,
         }
+
+
+def capm_calculation(risk_free_return:float, sensitivity:float, expected_market_return:float):
+    expected_asset_return = risk_free_return + sensitivity * (expected_market_return - risk_free_return)
+    return expected_asset_return

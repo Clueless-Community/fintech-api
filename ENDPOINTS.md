@@ -2034,3 +2034,20 @@ Sample Output
   "Capitalization Rate": 6.16%
 }
 ```
+**POST** `/capm`
+
+- Request body : `{
+  "risk_free_return": 86,
+  "sensitivity": 6,
+  "expected_market_return": 87
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Capital Asset Pricing Model (CAPM)",
+  "Risk-free rate of return": 86,
+  "Asset's sensitivity": 6,
+  "Expected return of the market": 87,
+  "Expected return on the asset": "92.0%"
+}

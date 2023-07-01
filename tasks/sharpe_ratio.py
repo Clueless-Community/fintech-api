@@ -7,7 +7,7 @@ def sharpe_ratio_task(
     standard_deviation_of_portfolio: float,
 ):
     try:
-        sharpe_ratio = functions.sharpe_ratio(
+        sharpe_ratio_val = functions.sharpe_ratio(
             portfolio_return, risk_free_rate, standard_deviation_of_portfolio
         )
         return {
@@ -15,7 +15,7 @@ def sharpe_ratio_task(
             "Portfolio Return": portfolio_return,
             "Risk Free Rate": risk_free_rate,
             "Standard Deviation of Portfolio": standard_deviation_of_portfolio,
-            "Sharpe Ratio": f"{sharpe_ratio}",
+            "Sharpe Ratio": f"{sharpe_ratio_val}",
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
