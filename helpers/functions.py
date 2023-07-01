@@ -1965,3 +1965,8 @@ def net_worth_calculation(assets: float, liabilities: float, loans: float, mortg
             "Liabilities": total_liabilities,
             "Net Worth": net_worth,
         }
+
+
+def capm_calculation(risk_free_return:float, sensitivity:float, expected_market_return:float):
+    expected_asset_return = risk_free_return + sensitivity * (expected_market_return - risk_free_return)
+    return expected_asset_return
