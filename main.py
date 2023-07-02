@@ -12,7 +12,6 @@ from tasks.compound_interest import compound_interest_task
 from tasks.certificate_of_deposit import certificate_of_deposit_task
 from tasks.inflation import inflation_task
 from tasks.roi import return_on_investment_task
-from tasks.compounded_annual_growth_rate import compounded_annual_growth_rate_task
 from tasks.jensens_alpha import jensens_alpha_task
 from tasks.social_securities import ss_task
 from tasks.tax_equivalent_yield import tax_equivalent_yield_task
@@ -48,7 +47,6 @@ from tasks.levered_beta import levered_beta_task
 from tasks.monthly_payment import monthly_payment_task
 from tasks.convexity_duration import duration_task
 from tasks.current_ratio import current_ratio_task
-from tasks.compound_annual_growth_rate import compound_annual_growth_rate_1_task
 from tasks.credit_card_equation import credit_card_equation_task
 from tasks.credit_card_payoff import credit_card_payoff_task
 from tasks.discount_opex import discount_opex_task
@@ -128,7 +126,8 @@ from tasks.mortrages import mortrage_task
 from tasks.net_worth import net_worth_calculation_task
 from tasks.personal_savings import personal_savings_task
 from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod
+from tasks.calculate_capm import calculate_capm
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest
 
 # Creating the app
 app = FastAPI(
@@ -171,7 +170,6 @@ def index():
             "/inflation": "Calculate Inflated amount",
             "/effective_annual_rate": "Calculate Effective Annual Rate",
             "/roi": "Calculate return on investment",
-            "/compounded_annual_growth_rate": "Calculate compounded annual growth rate",
             "/jensens_alpha": "Calculate Jensen's Alpha of a market return",
             "/wacc": "Calculate Weighted Average Cost of Capital (WACC)",
             "/loan_emi": "Calculate Loan EMI",
@@ -379,18 +377,6 @@ def effective_annual_rate(annual_interest_rate: float, compounding_period: int):
 )
 def return_on_investment(current_value_of_investment: float, cost_of_investment: float):
     return return_on_investment_task(current_value_of_investment, cost_of_investment)
-
-
-# Endpoint to calculate Compounded Annual Growth Rate.
-@app.get(
-    "/compounded_annual_growth_rate",
-    tags=["compounded_annual_growth_rate"],
-    description="Calculate compounded annual growth rate",
-)
-def compounded_annual_growth_rate(
-    end_investment_value: float, initial_investment_value: float, years: int
-):
-    return compounded_annual_growth_rate_task( end_investment_value, initial_investment_value, years)
 
 
 # Endpoint to calculate Jensen's Alpha
@@ -611,7 +597,7 @@ def doubling_time(r: float):
 
 
 # Endpoint to calculate weighted average
-@app.get(
+@app.post(
     "/weighted_average",
     tags=["weighted_average"],
     description="Weighted Average",
@@ -884,7 +870,7 @@ def credit_card_equation(
     return credit_card_equation_task(balance, monthly_payment, daily_interest_rate)
 
 
-@app.get(
+@app.post(
     "/credit_card_payoff",
     tags=["credit_card_payoff"],
     description="Credit Card Payoff using Debt Avalanche method",
@@ -931,19 +917,6 @@ def present_value_of_annuity_due(
     periodic_payment: float, number_of_periods: int, rate_per_period: float
 ):
     return present_value_of_annuity_due_task( periodic_payment, number_of_periods, rate_per_period)
-
-
-@app.get(
-    "/compound_annual_growth_rate",
-    tags=["compound_annual_growth_rate"],
-    description="Calculating compound annual growth rate",
-)
-def compound_annual_growth_rate_1(
-    ending_value: float, beginning_value: float, number_of_periods: float
-):
-    return compound_annual_growth_rate_1_task(
-        ending_value, beginning_value, number_of_periods
-    )
 
 
 # Endpoint to calculate loan to value
@@ -1847,6 +1820,15 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
     return accounts_payable_turnover_ratio_task(total_supply_purchases, beginning_accounts_payable, ending_accounts_payable)
 
 
+@app.post(
+    "/capm",
+    tags=["Capital Asset Pricing Model (CAPM)"],
+    description="Estimate the expected return on an investment.",
+)
+def capm(request: capmRequest):
+    return calculate_capm(request.risk_free_return, request.sensitivity, request.expected_market_return)
+
+  
 @app.get(
     "/risk_assessment",
     tags=["risk_assessment"],

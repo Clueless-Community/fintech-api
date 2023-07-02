@@ -3,7 +3,7 @@ from fastapi import HTTPException, status
 
 def price_to_earning_ratio_task(share_price: float, earnings_per_share: float):
     try:
-        p_e_ratio = functions.price_to_earning(share_price, earnings_per_share)
+        p_e_ratio = functions.price_to_earning_ratio(share_price, earnings_per_share)
         return {
             "Tag": "Price to Earning ratio",
             "Share price": share_price,

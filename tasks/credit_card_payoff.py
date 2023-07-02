@@ -18,5 +18,5 @@ def credit_card_payoff_task(
             "Interest paid": [r["interest_paid"] for r in result],
             "Total Payment": [r["total_payment"] for r in result],
         }
-    except:
+    except: 
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

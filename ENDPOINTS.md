@@ -105,20 +105,6 @@
  }
 ```
 
-**GET** `/compounded_annual_growth_rate`
-
-- Required parameters : `end_investment_value`, `initial_investment_value` and`years`
-- Sample output
-
-```py
-{
-   "Tag":"Compounded Annual Growth Rate",
-   "End investment value":100000,
-   "Initial investment value":70000,
-   "Years":3,
-   "Compunded Annual Growth Rate":0.12624788
-}
-```
 
 **GET** `/asset_portfolio`
 
@@ -2068,6 +2054,25 @@ Sample Output
   "Capitalization Rate": 6.16%
 }
 ```
+
+**POST** `/capm`
+
+- Request body : `{
+  "risk_free_return": 86,
+  "sensitivity": 6,
+  "expected_market_return": 87
+}`
+- Sample output
+
+```py
+{
+
+  "Tag": "Capital Asset Pricing Model (CAPM)",
+  "Risk-free rate of return": 86,
+  "Asset's sensitivity": 6,
+  "Expected return of the market": 87,
+  "Expected return on the asset": "92.0%"
+}
 
 **GET** `/risk_assessment`
 
