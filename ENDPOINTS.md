@@ -2051,3 +2051,28 @@ Sample Output
   "Expected return of the market": 87,
   "Expected return on the asset": "92.0%"
 }
+```
+
+**POST** `/debt_service_coverage_ratio`
+
+- Request body : `{
+  "revenue": 143528.79,
+  "operating_expenses": 62148.63,
+  "interest": 4765.32,
+  "tax_rate": 20,
+  "principal": 60371.61
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Debt Service Coverage Ratio",
+  "Revenue": 143528.79,
+  "Operating Expenses": 62148.63,
+  "Interest": 4765.32,
+  "Tax Rate": 0.2,
+  "Principal": 90371.61,
+  "Net Operating Income": 81380.16,
+  "Total Debt Service": 64183.866,
+  "Debt Service Coverage Ratio": 1.34
+}
