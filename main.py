@@ -877,7 +877,8 @@ def credit_card_equation(
     description="Credit Card Payoff using Debt Avalanche method",
 )
 def credit_card_payoff(
-    debts: list, interest_rates: list, minimum_payments: list, monthly_payment: int
+    debts: list, interest_rates: list, minimum_payments: list, monthly_payment: int,
+    payload: dict = Depends(validate_access_token)
 ):
     return credit_card_payoff_task(
         debts, interest_rates, minimum_payments, monthly_payment
