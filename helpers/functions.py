@@ -1962,3 +1962,12 @@ tax_rate: float, principal: float):
     total_debt_service = (interest * (1 - tax_rate)) + principal
     ratio = net_operating_income / total_debt_service
     return ratio 
+
+## Function to Calculate Defensive Interval Ratio
+
+def defensive_interval_ratio(cash: float, marketable_securities: float,
+net_receivables: float, annual_operating_expenses: float, non_cash_charges: float):
+	current_assets = cash + marketable_securities + net_receivables	
+	daily_operational_expenses  = (annual_operating_expenses - non_cash_charges) / 365
+	ratio = current_assets / daily_operational_expenses
+	return ratio
