@@ -1952,6 +1952,16 @@ def capm_calculation(risk_free_return:float, sensitivity:float, expected_market_
     expected_asset_return = risk_free_return + sensitivity * (expected_market_return - risk_free_return)
     return expected_asset_return
 
+# Function to Calculate Debt Service Coverage Ratio. 
+
+def debt_service_coverage_ratio(revenue: float, operating_expenses: float, interest: float, 
+tax_rate: float, principal: float):
+    tax_rate = tax_rate / 100
+    net_operating_income = revenue - operating_expenses
+    total_debt_service = (interest * (1 - tax_rate)) + principal
+    ratio = net_operating_income / total_debt_service
+    return ratio 
+
   
 def risk_assessment(age: int, financial_goals: str, investment_knowledge: str, time_horizon: str):
    
@@ -2003,4 +2013,3 @@ def calculate_risk_score(age: int, financial_goals: str, investment_knowledge: s
         risk_score += 6
 
     return risk_score
-

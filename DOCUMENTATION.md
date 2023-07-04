@@ -10,10 +10,16 @@
 | POST /capm                  | Calculate Capital Asset Pricing Model (CAPM) | - `risk_free_return` (float): Risk-free rate of return.            |
 |                             |                                              | - `sensitivity` (float): Asset's sensitivity.            |
 |                             |                                              | - `expected_market_return` (float): Expected return of the market. |
+| --------------------------- | ----------------------------------------     | --------------------------------------------------------- |
+| POST /debt_service_coverage_ratio | Calculate Debt Service Coverage Ratio  | - `revenue` (float): Amount of Company Revenue.           |
+|                                   |                                        | - `operating_expenses` (float): Cost of operating expenses.|
+|                                   |                                        | - `interest` (float): Amount of interest to be paid       |
+|                                   |                                        | - `tax_rate` (float): The tax rate applied.               |
+|                                   |                                        | - `principal` (float): Amount of principal borrowed.      |
 
 | --------------------------- | ----------------------------------------     | --------------------------------------------------------- |
 
-| POST /risk_assessment        | Perform Risk Assessment                      | - `age` (integer): The age of the individual.           |
+| POST /risk_assessment        | Perform Risk Assessment                     | - `age` (integer): The age of the individual.           |
 |                             |                                              | - `financial_goals` (string): Financial goals of individual|
 |                             |                                              | - `investment_knowledge`(string):Investment knowledge level|
 |                             |                                              |- `time_horizon` (string):Investment time horizon         |

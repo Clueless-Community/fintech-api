@@ -862,6 +862,13 @@ class capmRequest(BaseModel):
     sensitivity:float
     expected_market_return:float
 
+class DebtServiceCoverageRatio(BaseModel):
+	revenue: float
+	operating_expenses: float
+	interest: float
+	tax_rate: float
+	principal: float
+
 class calculateRiskScore(BaseModel):
     age: int
     financial_goals: str

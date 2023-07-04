@@ -127,7 +127,8 @@ from tasks.net_worth import net_worth_calculation_task
 from tasks.personal_savings import personal_savings_task
 from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
 from tasks.calculate_capm import calculate_capm
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest
+from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio
 
 # Creating the app
 app = FastAPI(
@@ -1828,7 +1829,20 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
 def capm(request: capmRequest):
     return calculate_capm(request.risk_free_return, request.sensitivity, request.expected_market_return)
 
-  
+# Endpoint to calculate Debt Service Coverage Ratio
+
+@app.post(
+    "/debt_service_coverage_ratio",
+    tags=["debt_service_coverage_ratio"],
+    description="Calculate Debt Service Coverage Ratio",
+)
+def debt_service_coverage_ratio(request: DebtServiceCoverageRatio):
+    return debt_service_coverage_ratio_task(request.revenue,
+	request.operating_expenses,
+	request.interest,
+	request.tax_rate,
+	request.principal)
+
 @app.post(
     "/risk_assessment",
     tags=["risk_assessment"],
