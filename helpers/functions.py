@@ -1952,3 +1952,13 @@ def net_worth_calculation(assets: float, liabilities: float, loans: float, mortg
 def capm_calculation(risk_free_return:float, sensitivity:float, expected_market_return:float):
     expected_asset_return = risk_free_return + sensitivity * (expected_market_return - risk_free_return)
     return expected_asset_return
+
+# Function to Calculate Debt Service Coverage Ratio. 
+
+def debt_service_coverage_ratio(revenue: float, operating_expenses: float, interest: float, 
+tax_rate: float, principal: float):
+    tax_rate = tax_rate / 100
+    net_operating_income = revenue - operating_expenses
+    total_debt_service = (interest * (1 - tax_rate)) + principal
+    ratio = net_operating_income / total_debt_service
+    return ratio 
