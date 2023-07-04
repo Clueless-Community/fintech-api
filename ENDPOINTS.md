@@ -2074,7 +2074,7 @@ Sample Output
   "Expected return on the asset": "92.0%"
 }
 
-**GET** `/risk_assessment`
+**POST** `/risk_assessment`
 
 - Required parameters : `age`, `financial_goals`,'investment_knowledge','time_horizon'
 - Sample output

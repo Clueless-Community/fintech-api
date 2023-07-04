@@ -1829,7 +1829,7 @@ def capm(request: capmRequest):
     return calculate_capm(request.risk_free_return, request.sensitivity, request.expected_market_return)
 
   
-@app.get(
+@app.post(
     "/risk_assessment",
     tags=["risk_assessment"],
     description="Perform risk assessment",

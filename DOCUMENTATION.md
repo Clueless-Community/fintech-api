@@ -13,7 +13,7 @@
 
 | --------------------------- | ----------------------------------------     | --------------------------------------------------------- |
 
-| GET /risk_assessment        | Perform Risk Assessment                      | - `age` (integer): The age of the individual.           |
+| POST /risk_assessment        | Perform Risk Assessment                      | - `age` (integer): The age of the individual.           |
 |                             |                                              | - `financial_goals` (string): Financial goals of individual|
 |                             |                                              | - `investment_knowledge`(string):Investment knowledge level|
 |                             |                                              |- `time_horizon` (string):Investment time horizon         |
