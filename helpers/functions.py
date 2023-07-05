@@ -1971,3 +1971,4 @@ net_receivables: float, annual_operating_expenses: float, non_cash_charges: floa
 	daily_operational_expenses  = (annual_operating_expenses - non_cash_charges) / 365
 	ratio = current_assets / daily_operational_expenses
 	return ratio
+

@@ -1855,3 +1855,4 @@ def debt_service_coverage_ratio(request: DebtServiceCoverageRatio):
 def defensive_interval_ratio(request: DefensiveIntervalRatio):
     return defensive_interval_ratio_task(request.cash, request.marketable_securities, 
     request.net_receivables, request.annual_operating_expenses , request.non_cash_charges)
+

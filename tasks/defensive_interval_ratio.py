@@ -20,3 +20,4 @@ annual_operating_expenses: float, non_cash_charges: float):
 		}
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+

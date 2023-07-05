@@ -875,3 +875,4 @@ class DefensiveIntervalRatio(BaseModel):
 	net_receivables: float
 	annual_operating_expenses: float 
 	non_cash_charges: float
+
