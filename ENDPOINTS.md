@@ -105,20 +105,6 @@
  }
 ```
 
-**GET** `/compounded_annual_growth_rate`
-
-- Required parameters : `end_investment_value`, `initial_investment_value` and`years`
-- Sample output
-
-```py
-{
-   "Tag":"Compounded Annual Growth Rate",
-   "End investment value":100000,
-   "Initial investment value":70000,
-   "Years":3,
-   "Compunded Annual Growth Rate":0.12624788
-}
-```
 
 **GET** `/asset_portfolio`
 
@@ -2046,5 +2032,48 @@ Sample Output
   "Net Operating Income": 92500.0,
   "Current Market Value": 1500000.0
   "Capitalization Rate": 6.16%
+}
+```
+**POST** `/capm`
+
+- Request body : `{
+  "risk_free_return": 86,
+  "sensitivity": 6,
+  "expected_market_return": 87
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Capital Asset Pricing Model (CAPM)",
+  "Risk-free rate of return": 86,
+  "Asset's sensitivity": 6,
+  "Expected return of the market": 87,
+  "Expected return on the asset": "92.0%"
+}
+```
+
+**POST** `/debt_service_coverage_ratio`
+
+- Request body : `{
+  "revenue": 143528.79,
+  "operating_expenses": 62148.63,
+  "interest": 4765.32,
+  "tax_rate": 20,
+  "principal": 60371.61
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Debt Service Coverage Ratio",
+  "Revenue": 143528.79,
+  "Operating Expenses": 62148.63,
+  "Interest": 4765.32,
+  "Tax Rate": 0.2,
+  "Principal": 90371.61,
+  "Net Operating Income": 81380.16,
+  "Total Debt Service": 64183.866,
+  "Debt Service Coverage Ratio": 1.34
 }
 ```

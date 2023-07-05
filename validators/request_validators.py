@@ -856,3 +856,15 @@ class calculateMarketCap(BaseModel):
 class calculateBvps(BaseModel):
     total_equity: float
     number_of_shares: float
+
+class capmRequest(BaseModel):
+    risk_free_return:float
+    sensitivity:float
+    expected_market_return:float
+
+class DebtServiceCoverageRatio(BaseModel):
+	revenue: float
+	operating_expenses: float
+	interest: float
+	tax_rate: float
+	principal: float
