@@ -129,7 +129,7 @@ from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
 from tasks.calculate_capm import calculate_capm
 from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from tasks.defensive_interval_ratio import defensive_interval_ratio_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, DefensiveIntervalRatio
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, DefensiveIntervalRatio
 
 # Creating the app
 app = FastAPI(
