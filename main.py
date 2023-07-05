@@ -878,7 +878,8 @@ def credit_card_equation(
     description="Credit Card Payoff using Debt Avalanche method",
 )
 def credit_card_payoff(
-    debts: list, interest_rates: list, minimum_payments: list, monthly_payment: int
+    debts: list, interest_rates: list, minimum_payments: list, monthly_payment: int,
+    payload: dict = Depends(validate_access_token)
 ):
     return credit_card_payoff_task(
         debts, interest_rates, minimum_payments, monthly_payment
@@ -904,9 +905,9 @@ def future_value_of_ordinary_due(
     description="Calculating future value of annuity due",
 )
 def future_value_of_annuity_due(
-    periodic_payment: float, number_of_periods: int, effective_interest_rate: float
+    request: futureValueOfAnnuity,
 ):
-    return future_value_of_annuity_due_task( periodic_payment, number_of_periods, effective_interest_rate)
+    return future_value_of_annuity_due_task(request.periodic_payment, request.number_of_periods, request.rate_per_period)
 
 
 # Endpoint to calculate present value of the annuity due
