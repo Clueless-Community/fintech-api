@@ -868,3 +868,9 @@ class DebtServiceCoverageRatio(BaseModel):
 	interest: float
 	tax_rate: float
 	principal: float
+        
+class RateofReturnCalculator(BaseModel):
+    initial_investment: int
+    final_value: int
+    additional_investments: int
+    additional_withdrawals: int

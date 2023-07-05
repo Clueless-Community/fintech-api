@@ -17,3 +17,8 @@
 |                                   |                                        | - `tax_rate` (float): The tax rate applied.               |
 |                                   |                                        | - `principal` (float): Amount of principal borrowed.      |
 | -------------------------------   | ------------------------------------   | --------------------------------------------------------- |
+| POST /rate_of_return_calculator   | Rate of return calculator      | - `initial_investement` (int): Initial amount of money invested.            |
+|                                   |                                        | - `final_value` (int): financial asset at the end of a  period.|
+|                                   |                             | - `additional_investments` (int): Additional amounts of money invested in an investment       |
+|                                   |                            | - `additional_withdrawals` (int): Additional amounts of money withdrawn.               |
+| -------------------------------   | ------------------------------------   | --------------------------------------------------------- |

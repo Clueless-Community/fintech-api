@@ -2077,3 +2077,27 @@ Sample Output
   "Debt Service Coverage Ratio": 1.34
 }
 ```
+
+**POST** `/rate_of_return_calculator`
+
+- Request body : `{
+   "initial_investment" = 10000,
+   "final_value" = 15000,
+   "additional_investments" = 2000,
+   "additional_withdrawals" = 2000,
+}`
+- Sample output
+
+```py
+{
+  
+  "Tag": "Rate of Return Calculator",
+  "Initial Investment": 10000,
+  "Final Value": 15000,
+  "Additional Investments": [5000, 3000, 2000],
+  "Additional Withdrawals": [2000, 1000],
+  "Rate of Return": 0.3333333333333333,
+  "Percentage Return": 33.33333333333333
+
+}
+```
