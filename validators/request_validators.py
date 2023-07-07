@@ -868,3 +868,11 @@ class DebtServiceCoverageRatio(BaseModel):
 	interest: float
 	tax_rate: float
 	principal: float
+        
+class ProfitPercentage(BaseModel):
+    profit: float
+    cost_price: float
+
+class LossPercentage(BaseModel):
+    loss: float
+    cost_price: float

@@ -128,7 +128,9 @@ from tasks.personal_savings import personal_savings_task
 from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
 from tasks.calculate_capm import calculate_capm
 from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity
+from tasks.profit_percentage import profit_percentage_task
+from tasks.loss_percentage import loss_percentage_task
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage
 
 # Creating the app
 app = FastAPI(
@@ -258,7 +260,8 @@ def index():
             "/diluted-earnings-per-share": "Calculate Diluted Earnings Per Share (EPS).",
             "/asdcr": "Calculate Annual Debt Service Coverage Ratio",
             "/portfolio_return_monte_carlo":"Calculates Portfolio returns based on Monte Carlo Simulation",
-
+            "/profit_percent": "Calculates the profit percentage",
+            "/loss_percent": "Calculates the loss percentage",
         },
     }
 
@@ -1843,3 +1846,21 @@ def debt_service_coverage_ratio(request: DebtServiceCoverageRatio):
 	request.interest,
 	request.tax_rate,
 	request.principal)
+
+#Endpoint to calculate profit percentage
+@app.post(
+    "/profit_percent",
+    tags=["profit_percentage"],
+    description="Calculates the profit percentage",
+)
+def profit_percent(request: ProfitPercentage):
+    return profit_percentage_task(request.profit, request.cost_price)
+
+#Endpoint to calculate loss percentage
+@app.post(
+    "/loss_percent",
+    tags=["loss_percentage"],
+    description="Calculates the loss percentage",
+)
+def loss_percent(request: ProfitPercentage):
+    return loss_percentage_task(request.loss, request.cost_price)
