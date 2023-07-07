@@ -19,7 +19,5 @@
 | -------------------------------   | ------------------------------------   | --------------------------------------------------------- |
 | POST /profit_percent | Calculate profit percentage  | - `profit` (float): Total profit earned.           |
 |                                   |                                        | - `cost_price` (float): The original price of the item |
-| -------------------------------   | ------------------------------------   | ------------------------------------------------------ |
 | POST /loss_percent | Calculate loss percentage  | - `loss` (float): Total loss occured.           |
 |                                   |                                        | - `cost_price` (float): The original price of the item |
-| -------------------------------   | ------------------------------------   | ------------------------------------------------------ |
