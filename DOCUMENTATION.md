@@ -17,3 +17,8 @@
 |                                   |                                        | - `tax_rate` (float): The tax rate applied.               |
 |                                   |                                        | - `principal` (float): Amount of principal borrowed.      |
 | -------------------------------   | ------------------------------------   | --------------------------------------------------------- |
+| POST /defensive_interval_ratio | Calculate Defensive Interval Ratio        | - `cash` (float): The amount of cash on hand.             |
+|                                |                                           | - `marketable_securities` (float): The amount of marketable_securities.|
+|                                |                                           | - `net_receivables` (float): The amount of net_receivables.|
+|                                |                                           | - `annual_operating_expenses` (float): The amount of annual_operating_expenses.|
+|                                |                                           | - `non_cash_charges` (float): The amount of non cash charges.|
