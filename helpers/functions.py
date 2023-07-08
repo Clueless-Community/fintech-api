@@ -1972,3 +1972,13 @@ def profit_percentage(profit: float, cost_price: float):
 def loss_percentage(loss: float, cost_price: float):
     loss_percent = (loss / cost_price) * 100
     return loss_percent
+
+## Function to Calculate Defensive Interval Ratio
+
+def defensive_interval_ratio(cash: float, marketable_securities: float,
+net_receivables: float, annual_operating_expenses: float, non_cash_charges: float):
+	current_assets = cash + marketable_securities + net_receivables	
+	daily_operational_expenses  = (annual_operating_expenses - non_cash_charges) / 365
+	ratio = current_assets / daily_operational_expenses
+	return ratio
+

@@ -130,7 +130,8 @@ from tasks.calculate_capm import calculate_capm
 from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from tasks.profit_percentage import profit_percentage_task
 from tasks.loss_percentage import loss_percentage_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage
+from tasks.defensive_interval_ratio import defensive_interval_ratio_task
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio,
 
 # Creating the app
 app = FastAPI(
@@ -1864,3 +1865,15 @@ def profit_percent(request: ProfitPercentage):
 )
 def loss_percent(request: ProfitPercentage):
     return loss_percentage_task(request.loss, request.cost_price)
+
+# Endpoint to calculate Defensive Interval Ratio
+
+@app.post(
+    "/defensive_interval_ratio",
+    tags=["defensive_interval_ratio"],
+    description="Calculate Defensive Interval Ratio",
+)
+def defensive_interval_ratio(request: DefensiveIntervalRatio):
+    return defensive_interval_ratio_task(request.cash, request.marketable_securities, 
+    request.net_receivables, request.annual_operating_expenses , request.non_cash_charges)
+

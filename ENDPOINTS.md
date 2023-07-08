@@ -2083,6 +2083,15 @@ Sample Output
 - Request body : `{
   "profit": 1560.8,
   "cost_price": 7500.4
+=======
+**POST** `/defensive_interval_ratio`
+
+- Request body : `{
+	"cash": 40000.00,
+	"marketable_securities": 20000.00,
+	"net_receivables": 10000.00,
+	"annual_operating_expenses": 300000.00,
+	"non_cash_charges": 25000.00
 }`
 - Sample output
 
@@ -2111,3 +2120,14 @@ Sample Output
   "Loss Percentage": 6.67,
 }
 ```
+	"Tag": "Defensive Interval Ratio",
+	"Cash": 40000.00,
+	"Marketable Securites": 20000.00,
+	"Net Receivables": 10000.00,
+	"Annual Operating Expenses": 300000.00,
+	"Non Cash Charges": 25000.00,
+	"Current Assets": 70000.0,
+	"Daily Operational Expenses": 753.42,
+	"Defensive Interval Ratio": 92.90
+}
+``` 
