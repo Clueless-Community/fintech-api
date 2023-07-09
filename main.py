@@ -130,6 +130,8 @@ from tasks.calculate_capm import calculate_capm
 from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity
 from tasks.rate_of_return_calculator import calcualate_rate_of_return
+from tasks.defensive_interval_ratio import defensive_interval_ratio_task
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, DefensiveIntervalRatio
 
 # Creating the app
 app = FastAPI(
@@ -1845,7 +1847,6 @@ def debt_service_coverage_ratio(request: DebtServiceCoverageRatio):
 	request.tax_rate,
 	request.principal)
 
-
 # Endpoint to calculate Rate of return calculator
 
 @app.post("/rate-of-return")
@@ -1860,3 +1861,14 @@ def calculate_rate_of_return(investment: calcualate_rate_of_return):
         "Rate of Return": rate_of_return,
         "Percentage Return": percentage_return
     }
+# Endpoint to calculate Defensive Interval Ratio
+
+@app.post(
+    "/defensive_interval_ratio",
+    tags=["defensive_interval_ratio"],
+    description="Calculate Defensive Interval Ratio",
+)
+def defensive_interval_ratio(request: DefensiveIntervalRatio):
+    return defensive_interval_ratio_task(request.cash, request.marketable_securities, 
+    request.net_receivables, request.annual_operating_expenses , request.non_cash_charges)
+
