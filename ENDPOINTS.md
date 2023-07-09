@@ -2077,6 +2077,13 @@ Sample Output
   "Debt Service Coverage Ratio": 1.34
 }
 ```
+
+**POST** `/profit_percent`
+
+- Request body : `{
+  "profit": 1560.8,
+  "cost_price": 7500.4
+=======
 **POST** `/defensive_interval_ratio`
 
 - Request body : `{
@@ -2090,6 +2097,29 @@ Sample Output
 
 ```py
 {
+  "Tag": "Profit Percentage",
+  "Profit": 1560.86,
+  "Cost Price": 7500.47,
+  "Profit Percentage": 20.81,
+}
+```
+
+**POST** `/loss_percent`
+
+- Request body : `{
+  "loss": 500.96,
+  "cost_price": 7500.47
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Loss Percentage",
+  "Loss": 500.96,
+  "Cost Price": 7500.47,
+  "Loss Percentage": 6.67,
+}
+```
 	"Tag": "Defensive Interval Ratio",
 	"Cash": 40000.00,
 	"Marketable Securites": 20000.00,
@@ -2101,4 +2131,3 @@ Sample Output
 	"Defensive Interval Ratio": 92.90
 }
 ``` 
-

@@ -17,6 +17,10 @@
 |                                   |                                        | - `tax_rate` (float): The tax rate applied.               |
 |                                   |                                        | - `principal` (float): Amount of principal borrowed.      |
 | -------------------------------   | ------------------------------------   | --------------------------------------------------------- |
+| POST /profit_percent | Calculate profit percentage  | - `profit` (float): Total profit earned.           |
+|                                   |                                        | - `cost_price` (float): The original price of the item |
+| POST /loss_percent | Calculate loss percentage  | - `loss` (float): Total loss occured.           |
+|                                   |                                        | - `cost_price` (float): The original price of the item |
 | POST /defensive_interval_ratio | Calculate Defensive Interval Ratio        | - `cash` (float): The amount of cash on hand.             |
 |                                |                                           | - `marketable_securities` (float): The amount of marketable_securities.|
 |                                |                                           | - `net_receivables` (float): The amount of net_receivables.|

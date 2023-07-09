@@ -588,6 +588,14 @@ class DebtServiceCoverageRatio(BaseModel):
 	interest: float
 	tax_rate: float
 	principal: float
+        
+class ProfitPercentage(BaseModel):
+    profit: float
+    cost_price: float
+
+class LossPercentage(BaseModel):
+    loss: float
+    cost_price: float
 
 class DefensiveIntervalRatio(BaseModel):
 	cash: float 
@@ -595,4 +603,3 @@ class DefensiveIntervalRatio(BaseModel):
 	net_receivables: float
 	annual_operating_expenses: float 
 	non_cash_charges: float
-

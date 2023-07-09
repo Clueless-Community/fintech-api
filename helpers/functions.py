@@ -1963,6 +1963,16 @@ tax_rate: float, principal: float):
     ratio = net_operating_income / total_debt_service
     return ratio 
 
+#Function to calculate profit percentage
+def profit_percentage(profit: float, cost_price: float):
+    profit_percent = (profit / cost_price) * 100
+    return profit_percent
+
+#Function to calculate loss percentage
+def loss_percentage(loss: float, cost_price: float):
+    loss_percent = (loss / cost_price) * 100
+    return loss_percent
+
 ## Function to Calculate Defensive Interval Ratio
 
 def defensive_interval_ratio(cash: float, marketable_securities: float,
