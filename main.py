@@ -1665,7 +1665,7 @@ def calculate_expected_return_of_portfolio(no_of_investments: int,
     "/calculate_salary",
     tags=["calculate_salary"],
     description="Calculate Net annual salary of an employee",
-<<<<<<< HEAD
+
     )
 def calculate_salary(base:int,
                      jb:int,
@@ -1690,8 +1690,7 @@ def calculate_salary(base:int,
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-=======
-)
+
 def calculate_salary(base: int,
                      jb: int,
                      stock: int,
@@ -1700,7 +1699,6 @@ def calculate_salary(base: int,
                      ptax: int,
                      deduction: int):
     return calculate_salary_task(base, jb, stock, pb, bonus, ptax, deduction)
->>>>>>> 9378a9693d83ad3ee0f6894332ad225cca633534
 
 
 @app.get(
