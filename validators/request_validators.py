@@ -603,3 +603,9 @@ class DefensiveIntervalRatio(BaseModel):
 	net_receivables: float
 	annual_operating_expenses: float 
 	non_cash_charges: float
+        
+class RateofReturnCalculator(BaseModel):
+    initial_investment: int
+    final_value: int
+    additional_investments: int
+    additional_withdrawals: int

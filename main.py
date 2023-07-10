@@ -131,7 +131,8 @@ from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from tasks.profit_percentage import profit_percentage_task
 from tasks.loss_percentage import loss_percentage_task
 from tasks.defensive_interval_ratio import defensive_interval_ratio_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio,
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio
+from tasks.rate_of_return_calculator import calcualate_rate_of_return
 
 # Creating the app
 app = FastAPI(
@@ -1877,3 +1878,17 @@ def defensive_interval_ratio(request: DefensiveIntervalRatio):
     return defensive_interval_ratio_task(request.cash, request.marketable_securities, 
     request.net_receivables, request.annual_operating_expenses , request.non_cash_charges)
 
+# Endpoint to calculate Rate of return calculator
+
+@app.post("/rate-of-return")
+def calculate_rate_of_return(investment: calcualate_rate_of_return):
+    total_invested = investment.initial_investment + sum(investment.additional_investments)
+    final_value = investment.final_value - sum(investment.additional_withdrawals)
+
+    rate_of_return = (final_value - total_invested) / total_invested
+    percentage_return = rate_of_return * 100
+
+    return {
+        "Rate of Return": rate_of_return,
+        "Percentage Return": percentage_return
+    }

@@ -26,3 +26,9 @@
 |                                |                                           | - `net_receivables` (float): The amount of net_receivables.|
 |                                |                                           | - `annual_operating_expenses` (float): The amount of annual_operating_expenses.|
 |                                |                                           | - `non_cash_charges` (float): The amount of non cash charges.|
+--------------------------------------------------------- |
+| POST /rate_of_return_calculator   | Rate of return calculator              |-`initial_investement` (int): Initial amount of money invested.            |
+|                                   |                                        | - `final_value` (int): financial asset at the end of a  period.|
+|                                   |                                |-`additional_investments` (int): Additional amounts of money invested in an investment       |
+|                                   |                            | - `additional_withdrawals` (int): Additional amounts of money withdrawn.               |
+| -------------------------------   | ------------------------------------   | --------------------------------------------------------- |

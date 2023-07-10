@@ -1982,3 +1982,10 @@ net_receivables: float, annual_operating_expenses: float, non_cash_charges: floa
 	ratio = current_assets / daily_operational_expenses
 	return ratio
 
+# Function to Calculate Rate of return calculator.
+
+def calculate_rate_of_return(initial_investment: int, final_value: int, additional_investments=0, additional_withdrawals=0):
+    total_invested = initial_investment + additional_investments
+    final_value -= additional_withdrawals
+    rate_of_return = (final_value - total_invested) / total_invested
+    return rate_of_return
