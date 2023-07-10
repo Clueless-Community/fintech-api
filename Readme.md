@@ -22,7 +22,7 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 
 ## ✨ Features
 
-- **Modular structure**: Not the API has a clean structure which benifits in improved code organizationqn and enhanced reusability of components
+- **Modular structure**: Not the API has a clean structure which benefits in improved code organization and enhanced reusability of components
 
 - **Request validation**: It improves security, prevents errors and vulnerabilities to the API
 
