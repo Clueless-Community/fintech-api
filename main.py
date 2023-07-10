@@ -2900,7 +2900,7 @@ def calculate_salary(base:int,
                      ptax:int,
                      deduction:int):
     try:
-        calculate_salary = functions.calculate_salary(base,jb,stock,pb,bonus,ptax,deduction):
+        calculate_salary = functions.calculate_salary(base,jb,stock,pb,bonus,ptax,deduction) 
         return {
 
             "Tag":"Net Salary Calculator",
