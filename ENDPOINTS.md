@@ -105,20 +105,6 @@
  }
 ```
 
-**GET** `/compounded_annual_growth_rate`
-
-- Required parameters : `end_investment_value`, `initial_investment_value` and`years`
-- Sample output
-
-```py
-{
-   "Tag":"Compounded Annual Growth Rate",
-   "End investment value":100000,
-   "Initial investment value":70000,
-   "Years":3,
-   "Compunded Annual Growth Rate":0.12624788
-}
-```
 
 **GET** `/asset_portfolio`
 
@@ -1911,3 +1897,237 @@ Sample Output
     "Free Cash Flow to Equity": 620000.0
   }
 ```
+
+**GET** `/net_worth`
+
+- Required parameters : `assets`, `liabilities`,'loans','mortgage'
+- Sample output
+
+```py
+{
+    "Tag": "Net Worth",
+    "Assets": 100000.0,
+    "Liabilities": 50000.0,
+    "Loans": 20000.0,
+    "Mortgage": 10000.0,
+    "Net Worth": 50000.0
+}
+```
+
+**GET** `/capital_gains_yield`
+
+- Required parameters : `inital_price`, `price_after_first_period` 
+- Sample output
+
+```py
+{
+    "Tag": "Capital Gains Yield",
+    "Inital Price of Stock": 200.0,
+    "Price of Stock After First Period": 220.0,
+    "Capital Gains Yield": 10%,
+}
+```
+    
+**GET** `/macaulay-duration`
+- Required parameters : `face_value`,
+        `coupon_rate`,
+        `dt`,
+        `month`,
+        `year`,
+        `coupon_frequency`,
+        `discount_rate`,
+
+- Sample Request: `GET`, `http://localhost:8000/calculate_macaulay_duration?face_value=1000.0&coupon_rate=0.06&dt=19&month=6&year=2026&coupon_frequency=2&discount_rate=0.06`,    
+- Sample output
+```py
+{
+  {
+    "Tag": "Macaulay_duration",
+    "Face-value of bond": 1000.0,
+    "Coupon Rate (in decimal)": 0.06,
+    "Date of maturity(DD)": 19,
+    "Month of maturity(MM)": 6,
+    "Year of maturity(YY)": 2026,
+    "Coupon frequency": 2,
+    "Discount frequency (int decimal)": 0.06,
+    "Macaulay duration": 2.77
+  }
+}
+```
+
+**GET** `/calculate_financial_leverage`
+-Required parameters: `total_assets`, `total_liabilities`, `short_term_debt`, `long_term_debt`
+-Sample Output
+```py
+{
+  "Tag" : "Calculate financial leverage",
+  "total_assets" : 16645,
+  "total_liabilities" : 9906,
+  "short_term_debt" : 5000,
+  "long_term_debt" : 10000,
+  "financial_leverage" : 1.51
+}
+
+```
+
+**GET** `/portfolio_return_monte_carlo`
+-Required parameters: `principal`, `expected_return_range_start`,`expected_return_range_end`, `volatility_range_start`,`volatility_range_end`, `num_simulations`
+-Sample Output
+```py
+{
+  'Tag': 'Portfolio Return Monte Carlo',
+  'Principal': 100000.0,
+  'Number of Simulations': 100.0,
+  'Portfolio Returns': {
+    'Portfolio Returns': [
+      0.1508024611892416,
+      0.09317653795670179,
+      0.5116882858279181,
+      ..................
+      -0.129317612028336,
+      0.3255694082529636,
+      0.11115286872158307
+    ],
+    'Average Return': 0.08973870952953042,
+    'Standard Deviation': 0.15306996560080827,
+    'Min Return': -0.3923187345080281,
+    'Max Return': 0.5116882858279181,
+    'Positive Returns': 75,
+    'Negative Returns': 25
+  }
+}
+
+```
+
+**GET** `/accounts_payable_turnover_ratio`
+
+- Required parameters : `total_supply_purchases`, `beginning_accounts_payable` and `ending_accounts_payable`
+- Sample output
+
+```py
+{
+  "Tag": "Accounts Payable Turnover Ratio",
+  "Total Supply Purchases": 1000,
+  "Beginning Accounts Payable": 200,
+  "Ending Accounts Payable": 300,
+  "Accounts Payable Turnover Ratio": 4
+}
+```
+
+**GET** `/capitalization_rate`
+
+-Required parameters: `rental_income`, `amenities`, `propertyManagement`, `propertyTaxes`, `insurance`, `current_market_value`
+-Sample Output
+
+```py
+{
+  "Tag": "Capitalization Rate",
+  "Rental Income": 70000.0,
+  "Amenities": 30000.0,
+  "Property Management": 2000.0,
+  "Property Taxes": 3000.0,
+  "Insurance": 2500.0,
+  "Annual Income": 100000.0,
+  "Expenses": 7500.0,
+  "Net Operating Income": 92500.0,
+  "Current Market Value": 1500000.0
+  "Capitalization Rate": 6.16%
+}
+```
+**POST** `/capm`
+
+- Request body : `{
+  "risk_free_return": 86,
+  "sensitivity": 6,
+  "expected_market_return": 87
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Capital Asset Pricing Model (CAPM)",
+  "Risk-free rate of return": 86,
+  "Asset's sensitivity": 6,
+  "Expected return of the market": 87,
+  "Expected return on the asset": "92.0%"
+}
+```
+
+**POST** `/debt_service_coverage_ratio`
+
+- Request body : `{
+  "revenue": 143528.79,
+  "operating_expenses": 62148.63,
+  "interest": 4765.32,
+  "tax_rate": 20,
+  "principal": 60371.61
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Debt Service Coverage Ratio",
+  "Revenue": 143528.79,
+  "Operating Expenses": 62148.63,
+  "Interest": 4765.32,
+  "Tax Rate": 0.2,
+  "Principal": 90371.61,
+  "Net Operating Income": 81380.16,
+  "Total Debt Service": 64183.866,
+  "Debt Service Coverage Ratio": 1.34
+}
+```
+
+**POST** `/profit_percent`
+
+- Request body : `{
+  "profit": 1560.8,
+  "cost_price": 7500.4
+=======
+**POST** `/defensive_interval_ratio`
+
+- Request body : `{
+	"cash": 40000.00,
+	"marketable_securities": 20000.00,
+	"net_receivables": 10000.00,
+	"annual_operating_expenses": 300000.00,
+	"non_cash_charges": 25000.00
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Profit Percentage",
+  "Profit": 1560.86,
+  "Cost Price": 7500.47,
+  "Profit Percentage": 20.81,
+}
+```
+
+**POST** `/loss_percent`
+
+- Request body : `{
+  "loss": 500.96,
+  "cost_price": 7500.47
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Loss Percentage",
+  "Loss": 500.96,
+  "Cost Price": 7500.47,
+  "Loss Percentage": 6.67,
+}
+```
+	"Tag": "Defensive Interval Ratio",
+	"Cash": 40000.00,
+	"Marketable Securites": 20000.00,
+	"Net Receivables": 10000.00,
+	"Annual Operating Expenses": 300000.00,
+	"Non Cash Charges": 25000.00,
+	"Current Assets": 70000.0,
+	"Daily Operational Expenses": 753.42,
+	"Defensive Interval Ratio": 92.90
+}
+``` 

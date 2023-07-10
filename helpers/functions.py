@@ -4,6 +4,7 @@ import pandas as pd
 import math
 import datetime
 from dateutil.relativedelta import relativedelta
+from typing import Union
 
 
 # Function to Calculate Simple Interest Rate
@@ -15,12 +16,15 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
 
 
 # Calculate percent to decimal
-def percent_to_decimal(percent: int | float) -> float:
-    return percent / 100
-
+# def percent_to_decimal(percent: int | float) -> float:
+#     return (percent / 100)
+def percent_to_decimal(percent: Union[int, float]) -> float:
+    return (percent / 100)
 
 # Calculate decimal to percent
-def decimal_to_percent(decimal: int | float) -> int | float:
+
+
+def decimal_to_percent(decimal: Union[int, float]) -> float:
     return decimal * 100
 
 
@@ -58,7 +62,8 @@ def compound_interest(
     principal_amount: float, intrest_rate: float, years: int, compounding_period: int
 ):
     amount = principal_amount * (
-        pow((1 + (intrest_rate / compounding_period)), (compounding_period * years))
+        pow((1 + (intrest_rate / compounding_period)),
+            (compounding_period * years))
     )
     print(amount)
     return amount
@@ -74,7 +79,8 @@ def inflation(present_amount: float, inflation_rate: float, years: int):
 
 # Function to Calculate Effective Annual Rate
 def effective_annual_rate(annual_interest_rate: float, compounding_period: int):
-    EAR = pow((1 + (annual_interest_rate / compounding_period)), compounding_period) - 1
+    EAR = pow((1 + (annual_interest_rate / compounding_period)),
+              compounding_period) - 1
     return EAR
 
 
@@ -90,17 +96,9 @@ def certificate_of_deposit(
 
 # Function to Calculate Return on Investment
 def return_on_investment(current_value_of_investment: float, cost_of_investment: float):
-    roi = (current_value_of_investment - cost_of_investment) / cost_of_investment
+    roi = (current_value_of_investment -
+           cost_of_investment) / cost_of_investment
     return decimal_to_percent(roi)
-
-
-# Function to calculate Compounded Annual Growth Rate (CAGR)
-def compounded_annual_growth_rate(
-    end_investment_value: float, initial_investment_value: float, years: int
-):
-    n = 1 / years
-    cagr = (end_investment_value / initial_investment_value) ** n - 1
-    return cagr
 
 
 # Function to calculate Jensens Alpha
@@ -111,7 +109,8 @@ def jensens_alpha(
     beta: float,
 ):
     alpha = return_from_investment - (
-        risk_free_rate + beta * (return_of_appropriate_market_index - risk_free_rate)
+        risk_free_rate + beta *
+        (return_of_appropriate_market_index - risk_free_rate)
     )
     return alpha
 
@@ -242,8 +241,8 @@ def sharpe_ratio(
     risk_free_rate: float,
     standard_deviation_of_portfolio: float,
 ):
-    sharpe_ratio = (portfolio_return - risk_free_rate) / standard_deviation_of_portfolio
-    return sharpe_ratio
+    sharpe_ratio_val = (portfolio_return - risk_free_rate) / standard_deviation_of_portfolio
+    return sharpe_ratio_val
 
 
 # Function to calculate Purchasing Power
@@ -321,7 +320,8 @@ def acid_test_ratio(
     accounts_receivable: float,
     current_liabilities: float,
 ):
-    ratio = (cash + marketable_securitie + accounts_receivable) / current_liabilities
+    ratio = (cash + marketable_securitie +
+             accounts_receivable) / current_liabilities
     return round(ratio, 2)
 
 
@@ -333,11 +333,13 @@ def inflation_adjusted_return(
     beginning_cpi_level: float,
     ending_cpi__level: float,
 ):
-    stock_return = (ending_price - beginning_price + dividends) / beginning_price
+    stock_return = (ending_price - beginning_price +
+                    dividends) / beginning_price
 
     inflation = (ending_cpi__level - beginning_cpi_level) / beginning_cpi_level
 
-    inflation_adj = decimal_to_percent((1 + stock_return) / (1 + inflation) - 1)
+    inflation_adj = decimal_to_percent(
+        (1 + stock_return) / (1 + inflation) - 1)
     return round(inflation_adj, 2)
 
 
@@ -345,7 +347,8 @@ def inflation_adjusted_return(
 def compound_annual_growth_rate(
     beginning_value: float, ending_value: float, years: int
 ):
-    rate = decimal_to_percent(pow((beginning_value / ending_value), 1 / years) - 1)
+    rate = decimal_to_percent(
+        pow((beginning_value / ending_value), 1 / years) - 1)
     return round(rate, 1)
 
 
@@ -402,7 +405,6 @@ def duration(
         maturity_date = pd.to_datetime(maturity_date, format="%d/%m/%Y")
     except:
         maturity_date = pd.to_datetime(maturity_date, format="%d-%m-%Y")
-
     data = pd.DataFrame()
     rate = percent_to_decimal(rate)
     coupon_rate = percent_to_decimal(coupon_rate)
@@ -412,11 +414,14 @@ def duration(
     )
     total_payment = n * frequency
     coupon_payment = coupon_rate / frequency * face_value
-    payment = [coupon_payment] * (total_payment - 1) + [coupon_payment + face_value]
+    payment = [coupon_payment] * \
+        (total_payment - 1) + [coupon_payment + face_value]
     data["period"] = pd.DataFrame(np.arange(1, total_payment + 1))
     data["payment"] = pd.DataFrame(payment)
-    data["dcoupon"] = data["payment"] / ((1 + rate / frequency) ** data["period"])
-    data["pv"] = data["dcoupon"] / frequency * data["period"] / data["dcoupon"].sum()
+    data["dcoupon"] = data["payment"] / \
+        ((1 + rate / frequency) ** data["period"])
+    data["pv"] = data["dcoupon"] / frequency * \
+        data["period"] / data["dcoupon"].sum()
     duration = data["pv"].sum()
     m_duration = duration / (1 + rate / frequency)
 
@@ -450,7 +455,8 @@ def inventory_turnover_ratio(
 
 # Function to calculate Inflation Rate
 def inflation_rate(bigger_year: int, smaller_year: int, base_year: int):
-    inflation_rate = decimal_to_percent((bigger_year - smaller_year) / base_year)
+    inflation_rate = decimal_to_percent(
+        (bigger_year - smaller_year) / base_year)
     return inflation_rate
 
 
@@ -469,7 +475,8 @@ def herfindal_Index(Firms_market_shares: str):
         i = i + 1
     market_share_list.append(
         int(
-            Firms_market_shares[len(Firms_market_shares) - 2 : len(Firms_market_shares)]
+            Firms_market_shares[len(Firms_market_shares) -
+                                2: len(Firms_market_shares)]
         )
     )
     herfindal_Index = 0
@@ -530,7 +537,8 @@ def gdp_growth_rate(current_year_gdp: float, last_year_gdp: float):
 def credit_card_equation(
     balance: float, monthly_payment: float, daily_interest_rate: float
 ):
-    a = np.log(1 + (balance // monthly_payment) * (1 - (daily_interest_rate) ** 30))
+    a = np.log(1 + (balance // monthly_payment) *
+               (1 - (daily_interest_rate) ** 30))
     b = np.log(1 + daily_interest_rate)
     N = -(1 // 30) * (a // b)
     return N
@@ -546,9 +554,9 @@ def credit_card_payoff(
         cards.append(
             {
                 "index": i,
-                "debt": debts[i],
-                "minimum_payment": minimum_payments[i],
-                "interest_rate": interest_rates[i],
+                "debt": int(debts[i]),
+                "minimum_payment": int(minimum_payments[i]),
+                "interest_rate": int(interest_rates[i]),
                 "interest_paid": 0,
                 "month": 0,
                 "total_payment": 0,
@@ -560,7 +568,8 @@ def credit_card_payoff(
     extra = 0
     while sum(d["debt"] for d in cards) > 0:
         highest_interest_index = cards.index(
-            max((d for d in cards if d["debt"] > 0), key=lambda x: x["interest_rate"])
+            max((d for d in cards if d["debt"] > 0),
+                key=lambda x: x["interest_rate"])
         )  # highest index of the interest rate
         total_minimum_payment = sum(
             c["minimum_payment"] for c in cards if c["debt"] > 0
@@ -570,7 +579,8 @@ def credit_card_payoff(
         for i in range(len(cards)):
             if cards[i]["debt"] > 0:
                 interest = round(
-                    percent_to_decimal(cards[i]["debt"] * cards[i]["interest_rate"])
+                    percent_to_decimal(
+                        cards[i]["debt"] * cards[i]["interest_rate"])
                     / 12,
                     2,
                 )
@@ -629,15 +639,6 @@ def present_value_of_annuity_due(
     return present_value_of_annuity_due
 
 
-# function to calculate compound annual growth rate
-def compound_annual_growth_rate_1(
-    ending_value: float, beginning_value: float, number_of_periods: float
-):
-    a = (ending_value // beginning_value) ** (1 // number_of_periods)
-    cagr = a - 1
-    return cagr
-
-
 # Function to calculate loan to value
 def loan_to_value(mortage_value: float, appraised_value: float):
     ratio = mortage_value / appraised_value
@@ -689,8 +690,8 @@ def balloon_balance_of_loan(
 # Function to calculate discounted payback period
 def discounted_payback_period(outflow: float, rate: float, periodic_cash_flow: float):
     discounted_payback_period = np.log(
-        1 / (1 - (outflow * rate / periodic_cash_flow))
-    ) / np.log(1 + rate)
+        1 / (1 - (outflow * rate / periodic_cash_flow)),10
+    ) / np.log(1 + rate,10)
     return discounted_payback_period
 
 
@@ -744,7 +745,8 @@ def perpetuity_payment(present_value: float, rate: float):
 def zero_coupon_bond_value(
     face_value: float, rate_of_yield: float, time_of_maturity: float
 ):
-    zcbv = face_value / pow((1 + percent_to_decimal(rate_of_yield)), time_of_maturity)
+    zcbv = face_value / \
+        pow((1 + percent_to_decimal(rate_of_yield)), time_of_maturity)
     return round(zcbv, 2)
 
 
@@ -810,7 +812,8 @@ def net_present_value(cash_flows: str, discount_rate: float, initial_investment:
     net_present_value = -1 * (initial_investment)
     for i in range(len(cash_flow_list)):
         net_present_value = net_present_value + (
-            cash_flow_list[i] / ((1 + percent_to_decimal(discount_rate)) ** (i + 1))
+            cash_flow_list[i] /
+            ((1 + percent_to_decimal(discount_rate)) ** (i + 1))
         )
     return net_present_value
 
@@ -866,7 +869,8 @@ def bid_ask_spread(ask_price: float, bid_price: float):
 
 # Function To calculate No of Periods(Time in years) with respect to Present value(PV) and Future value(FV)
 def CalculatePeriods(present_val: float, future_val: float, rate: float):
-    n = math.log(future_val / present_val) / math.log(1 + percent_to_decimal(rate))
+    n = math.log(future_val / present_val) / \
+        math.log(1 + percent_to_decimal(rate))
     return n
 
 
@@ -936,7 +940,8 @@ def calculate_mortgage_interest(
     annual_interest_rate = percent_to_decimal(annual_interest_rate)
     loan_amount = mortgage_amount * percent_to_decimal(100 - mortgage_deposit)
     power = (1 + annual_interest_rate) ** loan_term
-    mortgage_annual_payment = loan_amount * (annual_interest_rate * power) / (power - 1)
+    mortgage_annual_payment = loan_amount * \
+        (annual_interest_rate * power) / (power - 1)
     return round(mortgage_annual_payment, 3)
 
 
@@ -962,7 +967,8 @@ def calculate_fha_mortgage_interest(
     loan_term_months = loan_term * 12
     monthly_interest_rate = percent_to_decimal(annual_interest_rate) / 12
     power = (1 + monthly_interest_rate) ** loan_term_months
-    monthly_payment = mortgage_amount * (monthly_interest_rate * power) / (power - 1)
+    monthly_payment = mortgage_amount * \
+        (monthly_interest_rate * power) / (power - 1)
 
     # Calculate total FHA loan amount and total monthly payment
     total_fha_loan_amount = mortgage_amount + upfront_mip
@@ -993,7 +999,8 @@ def roth_ira(
             1 + percent_to_decimal(interest_rate)
         )
         taxable_balance = (taxable_balance + annual_contribution) * (
-            1 + percent_to_decimal(interest_rate) * (1 - percent_to_decimal(tax_rate))
+            1 + percent_to_decimal(interest_rate) *
+            (1 - percent_to_decimal(tax_rate))
         )
     return math.ceil(roth_ira_balance), math.ceil(taxable_balance)
 
@@ -1157,7 +1164,8 @@ def personal_loan(
 
 # Function to calculate lump-sum mutual fund investment
 def calculate_lumpsum(principal, interest_rate, years):
-    total_amount = principal * ((1 + percent_to_decimal(interest_rate)) ** years)
+    total_amount = principal * \
+        ((1 + percent_to_decimal(interest_rate)) ** years)
     interest_earned = total_amount - principal
     return (total_amount, interest_earned)
 
@@ -1166,7 +1174,8 @@ def main():
     principal = float(input("Enter the principal amount: "))
     interest_rate = float(input("Enter the interest rate (%): "))
     years = int(input("Enter the number of years: "))
-    total_amount, interest_earned = calculate_lumpsum(principal, interest_rate, years)
+    total_amount, interest_earned = calculate_lumpsum(
+        principal, interest_rate, years)
     print(f"Total Amount: Rs.{total_amount:.2f}")
     print(f"Interest Earned: Rs.{interest_earned:.2f}")
 
@@ -1182,7 +1191,8 @@ def calculate_fha_loan():
     down_payment_percentage = float(input("Enter down payment percentage: "))
     loan_term_years = float(input("Enter loan term (years): "))
     interest_rate = float(input("Enter interest rate (%): "))
-    fha_annual_mip_percentage = float(input("Enter FHA annual MIP percentage (%): "))
+    fha_annual_mip_percentage = float(
+        input("Enter FHA annual MIP percentage (%): "))
 
     # Calculate down payment and base loan amount
     down_payment = home_price * percent_to_decimal(down_payment_percentage)
@@ -1344,7 +1354,8 @@ def calculate_pension(
     total_corpus = round(total_corpus, 2)
     annuity_pension = total_corpus * percent_to_decimal(annuity_purchased)
     lump_sum_pension = total_corpus - annuity_pension
-    monthly_pension = round(percent_to_decimal(annuity_pension * annuity_rates) * 12, 2)
+    monthly_pension = round(percent_to_decimal(
+        annuity_pension * annuity_rates) * 12, 2)
     return (total_corpus, lump_sum_pension, monthly_pension)
 
 
@@ -1358,10 +1369,12 @@ def diluted_eps(net_income, weighted_avg_shares, dilutive_securities):
 def fixed_deposit_maturity(
     principle_amount: float, years: int, compounding: str, roi: float
 ):
-    types_of_componding = {"yearly": 1, "halfyearly": 2, "quaterly": 4, "monthly": 12}
+    types_of_componding = {"yearly": 1,
+                           "halfyearly": 2, "quaterly": 4, "monthly": 12}
     if compounding in types_of_componding.keys():
         n = types_of_componding[compounding]
-        A = principle_amount * (1 + (percent_to_decimal(roi) / n)) ** (n * years)
+        A = principle_amount * \
+            (1 + (percent_to_decimal(roi) / n)) ** (n * years)
         return round(A, 2)
 
 
@@ -1369,7 +1382,8 @@ def fixed_deposit_maturity(
 def recurring_deposit_maturity(
     principle_amount: float, years: int, compounding: str, roi: float
 ):
-    types_of_componding = {"yearly": 1, "halfyearly": 2, "quaterly": 4, "monthly": 12}
+    types_of_componding = {"yearly": 1,
+                           "halfyearly": 2, "quaterly": 4, "monthly": 12}
     if compounding in types_of_componding.keys():
         months = years * 12
         n = types_of_componding[compounding]
@@ -1400,7 +1414,8 @@ def calculate_retirement_goals(
 def student_loan(principal: int, tenure: int, interest_rate: float):
     monthly_interest_rate = percent_to_decimal(interest_rate) / 12
     total_months = tenure * 12
-    n = principal * monthly_interest_rate * pow(1 + monthly_interest_rate, total_months)
+    n = principal * monthly_interest_rate * \
+        pow(1 + monthly_interest_rate, total_months)
     d = pow(1 + monthly_interest_rate, total_months) - 1
     emi = n / d
     total_amount = emi * total_months
@@ -1410,7 +1425,8 @@ def student_loan(principal: int, tenure: int, interest_rate: float):
 # Function to Calculate Return of Investment on some equity funds
 def calculate_roi_equity_funds(amount_invested, amount_returned, tenure):
     roi_equity_funds = (amount_returned - amount_invested) / amount_invested
-    annualized_roi = (1 + (amount_returned / amount_invested)) ** (1 / tenure) - 1
+    annualized_roi = (1 + (amount_returned / amount_invested)
+                      ) ** (1 / tenure) - 1
     return (decimal_to_percent(roi_equity_funds), decimal_to_percent(annualized_roi))
 
 
@@ -1498,7 +1514,8 @@ def calculate_bvps(stockholders_equity, preferred_stock, average_outstanding_sha
     Returns:
         float: The book value per share.
     """
-    book_value = (stockholders_equity - preferred_stock) / average_outstanding_shares
+    book_value = (stockholders_equity - preferred_stock) / \
+        average_outstanding_shares
     return book_value
 
 
@@ -1553,7 +1570,8 @@ def accrint(
     settlement_date = datetime.datetime.strptime(settlement_date, "%d-%m-%Y")
     # Validate basis value
     if basis not in range(5):
-        raise ValueError("Invalid basis value. Expected a value between 0 and 4.")
+        raise ValueError(
+            "Invalid basis value. Expected a value between 0 and 4.")
 
     # Calculate the number of interest periods based on the specified basis
     if basis == 0:  # US (NASD) 30/360 basis
@@ -1662,9 +1680,11 @@ def calculate_social_security(birth_date, earnings, retirement_age):
 
     # Calculate the reduction factor for claiming benefits before full retirement age
     if retirement_age < full_retirement_age:
-        reduction_factor = 1 - ((full_retirement_age - retirement_age) * 5 / 900)
+        reduction_factor = 1 - \
+            ((full_retirement_age - retirement_age) * 5 / 900)
     else:
-        reduction_factor = 1.0  # No reduction if retirement age is at or after full retirement age
+        # No reduction if retirement age is at or after full retirement age
+        reduction_factor = 1.0
 
     # Calculate the primary insurance amount (PIA)
     pia = earnings * reduction_factor
@@ -1677,24 +1697,27 @@ def calculate_social_security(birth_date, earnings, retirement_age):
     future_benefits = monthly_benefits * (1 + 0.02) ** years_to_retirement
 
     return monthly_benefits, future_benefits
-  
-  
+
+
 # Function to calculate net profit margin
 def calculate_net_profit_margin(
-        revenue : float, 
-        cost_of_goods_sold : float, 
-        operating_expenses : float, 
-        other_expenses : float, 
-        interest : float,
-        taxes : float):
-    net_profit_margin = ((revenue-cost_of_goods_sold-operating_expenses-other_expenses-interest-taxes)/revenue)*100
+        revenue: float,
+        cost_of_goods_sold: float,
+        operating_expenses: float,
+        other_expenses: float,
+        interest: float,
+        taxes: float):
+    net_profit_margin = ((revenue-cost_of_goods_sold -
+                         operating_expenses-other_expenses-interest-taxes)/revenue)*100
     return net_profit_margin
 
 # Function to calculate expected return of portfolio
+
+
 def calculate_expected_return_of_portfolio(
-        no_of_investments : int, 
-        investment_amount : list,  
-        rate_of_return : list):
+        no_of_investments: int,
+        investment_amount: list,
+        rate_of_return: list):
     total_value_of_portfolio = 0
     for i in range(no_of_investments):
         total_value_of_portfolio += investment_amount[i]
@@ -1705,70 +1728,50 @@ def calculate_expected_return_of_portfolio(
 
     expected_return_of_portfolio = 0
     for i in range(no_of_investments):
-        expected_return_of_portfolio += weight_of_investment[i]*rate_of_return[i]
-        
+        expected_return_of_portfolio += weight_of_investment[i] * \
+            rate_of_return[i]
+
     return expected_return_of_portfolio
 
-#Function to calculate net annual salary
-def calculate_salary(base:int,
-                     jb:int,
-                     stock:int,
-                     pb:int,
-                     bonus:int,
-                     ptax:int,
-                     deduction:int):
-    total_amount=(base*12)+jb+stock+pb+bonus
-    tax=(ptax/100)*total_amount
-    ctc=total_amount-tax-deduction
+# Function to calculate net annual salary
+
+
+def calculate_salary(base: int,
+                     jb: int,
+                     stock: int,
+                     pb: int,
+                     bonus: int,
+                     ptax: int,
+                     deduction: int):
+    total_amount = (base*12)+jb+stock+pb+bonus
+    tax = (ptax/100)*total_amount
+    ctc = total_amount-tax-deduction
     return ctc
 
-#function to calculate the Sharpe ratio in Python
-
-def sharpe_ratio(returns, risk_free_rate):
-    """
-    Calculate the Sharpe ratio given a series of returns and the risk-free rate.
-    
-    Parameters:
-    - returns (array-like): An array-like object containing the returns of an investment/portfolio.
-    - risk_free_rate (float): The risk-free rate of return.
-    
-    Returns:
-    - float: The calculated Sharpe ratio.
-    """
-    avg_return = np.mean(returns)
-    std_dev = np.std(returns)
-    
-    sharpe_ratio = (avg_return - risk_free_rate) / std_dev
-    
-    return sharpe_ratio
-
-#You can use this function by passing your investment/portfolio returns and the risk-free rate to it. For example:
-
-returns = [0.05, 0.03, 0.02, 0.04, 0.06]  # Example returns
-risk_free_rate = 0.02  # Example risk-free rate
-
-sharpe = sharpe_ratio(returns, risk_free_rate)
-print(f"The Sharpe ratio is: {sharpe}")
-
-#Function to calculate Loan to Value Ratio
+# function to calculate the Sharpe ratio in Python
 
 def loan_to_value_ratio(
-    loan_amount:float, 
-    value_of_collateral:float):
+        loan_amount: float,
+        value_of_collateral: float):
     ratio = (loan_amount / value_of_collateral) * 100
     return ratio
 
 # Function to calculate post tax return percentage
-def calculate_post_tax_return_percentage(tax_rate_percentage : float,
-                                    annual_net_income : float,
-                                    initial_cost_of_investment : float
-                                    ):
-    rate_of_return_percentage = (annual_net_income / initial_cost_of_investment)*100
-    post_tax_return_percentage = rate_of_return_percentage - (rate_of_return_percentage * tax_rate_percentage)/100
 
-    return post_tax_return_percentage 
 
-#Function to calculate the Treynor Ratio in python
+def calculate_post_tax_return_percentage(tax_rate_percentage: float,
+                                         annual_net_income: float,
+                                         initial_cost_of_investment: float
+                                         ):
+    rate_of_return_percentage = (
+        annual_net_income / initial_cost_of_investment)*100
+    post_tax_return_percentage = rate_of_return_percentage - \
+        (rate_of_return_percentage * tax_rate_percentage)/100
+
+    return post_tax_return_percentage
+
+# Function to calculate the Treynor Ratio in python
+
 
 def calculate_treynor_ratio(returns, risk_free_rate, beta):
     """
@@ -1786,7 +1789,8 @@ def calculate_treynor_ratio(returns, risk_free_rate, beta):
     """
 
     if isinstance(returns, list):
-        returns = sum(returns)  # Calculate the total return if periodic returns are provided
+        # Calculate the total return if periodic returns are provided
+        returns = sum(returns)
 
     treynor_ratio = (returns - risk_free_rate) / beta
     return treynor_ratio
@@ -1800,19 +1804,20 @@ beta = 1.2  # Beta coefficient
 treynor_ratio = calculate_treynor_ratio(returns, risk_free_rate, beta)
 print(f"Treynor Ratio: {treynor_ratio}")
 
-#Function to Calculate Free Cash Flow to Equity
+# Function to Calculate Free Cash Flow to Equity
+
 
 def free_cash_flow_to_equity(
-    total_revenues:float, 
-    total_expenses:float,
-    initial_cost_of_asset: float,
-    lifetime_of_asset: float,
-    change_in_PPE:float,
-    current_depreciation:float,
-    current_assets:float,
-    current_liabilities:float,
-    amount_a_company_borrows:float,
-    debt_it_repays:float):
+        total_revenues: float,
+        total_expenses: float,
+        initial_cost_of_asset: float,
+        lifetime_of_asset: float,
+        change_in_PPE: float,
+        current_depreciation: float,
+        current_assets: float,
+        current_liabilities: float,
+        amount_a_company_borrows: float,
+        debt_it_repays: float):
 
     net_income = total_revenues - total_expenses,
     depreciation_and_amortization = initial_cost_of_asset / lifetime_of_asset,
@@ -1820,5 +1825,160 @@ def free_cash_flow_to_equity(
     change_in_working_capital = current_assets - current_liabilities,
     net_borrowing = amount_a_company_borrows - debt_it_repays,
 
-    fcfe = net_income + depreciation_and_amortization - capEx - change_in_working_capital + net_borrowing
+    fcfe = net_income + depreciation_and_amortization - \
+        capEx - change_in_working_capital + net_borrowing
     return fcfe
+
+#Function to Calculate Capital Gains Yield
+
+def capital_gains_yield(
+	inital_price : float,
+	price_after_first_period : float):
+    '''
+        Capital Gains Yield used to calculate a company's total stock return 
+        if a company does not pay dividends. 
+        inital_price indicates Inital Stock Price,
+        price_after_first_period indicates Stock Price after first period
+    '''
+    gains_yield = ((price_after_first_period - inital_price) / inital_price) * 100
+    return gains_yield
+
+#function to calculate macaulay duration
+def calculate_macaulay_duration(face_value : float, coupon_rate : float, dt : int, month : int, year : int, coupon_frequency : int, discount_rate : float):
+    cash_flows = []
+    maturity_date = datetime.date(year, month, dt)
+    years_to_maturity = (maturity_date - datetime.date.today()).days / 365.25
+
+    # Calculate the coupon payment amount
+    coupon_payment = face_value * coupon_rate / coupon_frequency
+
+    # Generate the cash flows
+    for i in range(1, int(years_to_maturity * coupon_frequency) + 1):
+        if i == int(years_to_maturity * coupon_frequency):
+            # Last period's cash flow includes the final coupon payment plus the face value
+            cash_flows.append(coupon_payment + face_value)
+        else:
+            cash_flows.append(coupon_payment)
+
+    duration = 0.0
+    present_value = 0.0
+    
+    
+    for i, cash_flow in enumerate(cash_flows):
+        present_value += cash_flow / (1 + discount_rate) ** (i + 1)
+        duration += (i + 1) * (cash_flow / (1 + discount_rate) ** (i + 1))
+
+    return round((duration / present_value)/ coupon_frequency, 2)
+
+# Function to calculate Financial Leverage
+def calculate_financial_leverage(total_assets : float,
+                                 total_liabilities : float,
+                                 short_term_debt : float,
+                                 long_term_debt : float
+                                 ):
+    debt = short_term_debt + long_term_debt
+
+    shareholder_equity = total_assets - total_liabilities
+
+    financial_leverage = debt / shareholder_equity
+
+    return financial_leverage
+
+# Function to estimate the portfolio return using Monte Carlo simulation.
+def portfolio_return_monte_carlo(principal, expected_return_range_start,expected_return_range_end, volatility_range_start,volatility_range_end, num_simulations):
+    portfolio_returns = np.zeros(int(num_simulations))
+
+    min_return, max_return = expected_return_range_start, expected_return_range_end
+    min_volatility, max_volatility = volatility_range_start, volatility_range_end
+
+    for i in range(int(num_simulations)):
+        random_return = np.random.uniform(min_return, max_return)
+        random_volatility = np.random.uniform(min_volatility, max_volatility)
+        random_returns = np.random.normal(random_return, random_volatility)
+        portfolio_value = principal * np.prod(1 + random_returns)
+        portfolio_returns[i] = (portfolio_value - principal) / principal
+
+    portfolio_stats = {
+        "Portfolio Returns": portfolio_returns.tolist(),
+        "Average Return": np.mean(portfolio_returns),
+        "Standard Deviation": np.std(portfolio_returns),
+        "Min Return": np.min(portfolio_returns),
+        "Max Return": np.max(portfolio_returns),
+        "Positive Returns": len(portfolio_returns[portfolio_returns > 0]),
+        "Negative Returns": len(portfolio_returns[portfolio_returns < 0])
+    }
+
+    return portfolio_stats
+
+# Function to calculate Accounts Payable Turnover Ratio
+def accounts_payable_turnover_ratio(total_supply_purchases: float,
+                                    beginning_accounts_payable: float,
+                                    ending_accounts_payable: float):
+    
+    average_accounts_payable = (beginning_accounts_payable + ending_accounts_payable)/2
+    ap_turnover_ratio = total_supply_purchases/average_accounts_payable
+
+    return ap_turnover_ratio
+
+
+# Function to Calculate Capitalization Rate 
+
+def capitalization_rate(
+        rental_income: float,
+        amenities: float,
+        propertyManagement: float,
+        propertyTaxes:float,
+        insurance: float,
+        current_market_value: float):
+  annual_income = rental_income + amenities
+  expenses = propertyManagement + propertyTaxes + insurance
+  net_operating_income = annual_income - expenses
+  rate = (net_operating_income / current_market_value) * 100
+  return rate
+
+#Function to calculate net worth
+def net_worth_calculation(assets: float, liabilities: float, loans: float, mortgages: float):
+ 
+    total_liabilities = liabilities + loans + mortgages
+    net_worth = assets - total_liabilities
+    return {
+            "Tag": "Net Worth",
+            "Assets": assets,
+            "Liabilities": total_liabilities,
+            "Net Worth": net_worth,
+        }
+
+
+def capm_calculation(risk_free_return:float, sensitivity:float, expected_market_return:float):
+    expected_asset_return = risk_free_return + sensitivity * (expected_market_return - risk_free_return)
+    return expected_asset_return
+
+# Function to Calculate Debt Service Coverage Ratio. 
+
+def debt_service_coverage_ratio(revenue: float, operating_expenses: float, interest: float, 
+tax_rate: float, principal: float):
+    tax_rate = tax_rate / 100
+    net_operating_income = revenue - operating_expenses
+    total_debt_service = (interest * (1 - tax_rate)) + principal
+    ratio = net_operating_income / total_debt_service
+    return ratio 
+
+#Function to calculate profit percentage
+def profit_percentage(profit: float, cost_price: float):
+    profit_percent = (profit / cost_price) * 100
+    return profit_percent
+
+#Function to calculate loss percentage
+def loss_percentage(loss: float, cost_price: float):
+    loss_percent = (loss / cost_price) * 100
+    return loss_percent
+
+## Function to Calculate Defensive Interval Ratio
+
+def defensive_interval_ratio(cash: float, marketable_securities: float,
+net_receivables: float, annual_operating_expenses: float, non_cash_charges: float):
+	current_assets = cash + marketable_securities + net_receivables	
+	daily_operational_expenses  = (annual_operating_expenses - non_cash_charges) / 365
+	ratio = current_assets / daily_operational_expenses
+	return ratio
+

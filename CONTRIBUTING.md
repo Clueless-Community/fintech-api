@@ -21,6 +21,12 @@ fintect-api
 │
 └───📂helpers
 │   │   { Python functions for different calculations }
+│
+└───📂tasks
+│   │   { Python functions for different tasks }
+│
+└───📂validators
+│   │   { Pydantic Models for different validations }
 
 📄.gitignore
 📄CONTRIBUTING.md
@@ -112,14 +118,18 @@ def simple_interest_rate(amount_paid:float, principle_amount:float, months:int):
 ```
 + Cross-validate your endpoint output from some online calculators available or even manually.
 
-+ Once the function is ready, create an endpoint in the `main.py` file following all the good practices of Fast API.
++ After completing with creating the function, create the request validation in `validators/request_validation.py` like this -
 
 ```python
-@app.get(
-    "/simple_interest_rate",
-    tags=["simple_interest_rate"],
-    description="Calculate simple interest rates",
-)
+class SimpleInterestRateRequest(BaseModel):
+    amount_paid: float
+    principle_amount: float
+    months: int
+```
+
++ Once the validation is done, create a task called `simple_interest.py` in `./tasks` and the task like this -
+
+```python
 def simple_interest_rate(amount_paid: float, principle_amount: float, months: int):
     try:
         rate = functions.simple_interest_rate(amount_paid, principle_amount, months)
@@ -134,21 +144,44 @@ def simple_interest_rate(amount_paid: float, principle_amount: float, months: in
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 ```
 
++ Once the task is ready, create an endpoint in the `main.py` file following all the good practices of Fast API.
+
+```python
+@app.post(
+    "/simple_interest_rate",
+    tags=["simple_interest_rate"],
+    description="Calculate simple interest rates",
+)
+def simple_interest_rate(request: SimpleInterestRateRequest):
+    return simple_interest_rate_task(request.amount_paid, request.principle_amount, request.months)
+```
+
 +Also add your funtion in `ENDPOINTS.md`.
 ```
-**GET** `/simple_interest_rate`
+**POST** `/simple_interest_rate`
 
-- Required parameters : `amount_paid`, `principle_amount` and `months`
+- Request body : `{
+  "amount_paid": 20.23,
+  "principle_amount": 30.9,
+  "months": 5
+}`
 - Sample output
 
 ```py
 {
-    "Tag": "Simple Interest Rate",
-    "Total amount paid": 5000.0,
-    "Principle amount": 4500.0,
-    "Interest Paid": 500.0,
-    "Interest Rate": "11.11111111111111%"
+  "Tag": "Simple Interest Rate",
+  "Total amount paid": 20.23,
+  "Principle amount": 30.9,
+  "Interest Paid": -10.669999999999998,
+  "Interest Rate": "-82.87378640776697%"
 }
+```
++Update the Docs
+```
+|---------------------------|----------------------------------------|---------------------------------------------------------|
+| GET /simple_interest_rate | Calculate simple interest rates        | - `amount_paid` (float): The amount paid.               |
+|                           |                                        | - `principle_amount` (float): The principle amount.     |
+|                           |                                        | - `months` (int): The number of months.                 |
 ```
 ```
 + And that's it, you are now ready to make your pull request.
