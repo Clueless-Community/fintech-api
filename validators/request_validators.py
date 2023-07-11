@@ -611,4 +611,14 @@ class financialAssestRatio(BaseModel):
     total_equity: float
     net_income: float
     total_revenue: float
+
+class CashConversionCycle(BaseModel):
+	beginning_inventory: float 
+	ending_inventory: float  
+	beginning_receivables: float 
+	ending_receivables: float  
+	beginning_payable: float 
+	ending_payable: float
+	cost_of_goods_sold: float
+	net_credit_sales: float
    

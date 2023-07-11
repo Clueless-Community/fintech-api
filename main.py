@@ -131,7 +131,8 @@ from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from tasks.profit_percentage import profit_percentage_task
 from tasks.loss_percentage import loss_percentage_task
 from tasks.defensive_interval_ratio import defensive_interval_ratio_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, financialAssestRatio
+from tasks.cash_conversion_cycle import cash_conversion_cycle_task
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, financialAssestRatio, CashConversionCycle
 from tasks.financialAssestRatio import financial_assest_ratio
 
 # Creating the app
@@ -1892,3 +1893,16 @@ def financial_assest_ratio(request: financialAssestRatio):
 	request.total_equity,
 	request.net_income,
     request.total_revenue)
+
+# Endpoint to calculate Cash Conversion Cycle
+
+@app.post(
+    "/cash_conversion_cycle",
+    tags=["cash_conversion_cycle"],
+    description="Calculate Cash Conversion Cycle",
+)
+def cash_conversion_cycle(request: CashConversionCycle):
+    return cash_conversion_cycle_task(request.beginning_inventory , request.ending_inventory ,
+    request.beginning_receivables, request.ending_receivables , request.beginning_payable, 
+    request.ending_payable , request.net_credit_sales , request.cost_of_goods_sold)
+
