@@ -345,9 +345,9 @@ def payback_period(
     description="Calculate compound interest amount",
 )
 def compound_interest(
-    request: compoundInterest,
+    request: compoundInterest
 ):
-    return compound_interest_task(request.principal_amount, request.interest_rate, request.time)
+    return compound_interest_task(request.principal_amount, request.interest_rate, request.years ,request.compounding_period)
 
 
 # Endpoints to calculate certificate of deposit (CD)
