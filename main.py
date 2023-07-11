@@ -131,7 +131,8 @@ from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from tasks.profit_percentage import profit_percentage_task
 from tasks.loss_percentage import loss_percentage_task
 from tasks.defensive_interval_ratio import defensive_interval_ratio_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio,
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, financialAssestRatio
+from tasks.financialAssestRatio import financial_assest_ratio
 
 # Creating the app
 app = FastAPI(
@@ -1877,3 +1878,17 @@ def defensive_interval_ratio(request: DefensiveIntervalRatio):
     return defensive_interval_ratio_task(request.cash, request.marketable_securities, 
     request.net_receivables, request.annual_operating_expenses , request.non_cash_charges)
 
+# Endpoint to calculate Financial assest Ratio
+
+@app.post(
+    "/financial_assest_ratio",
+    tags=["financial_assest_ratio"],
+    description="Calculate financial assest Ratio",
+)
+def financial_assest_ratio(request: financialAssestRatio):
+    return financial_assest_ratio(request.current_assets,
+	request.current_liabilities,
+	request.total_debt,
+	request.total_equity,
+	request.net_income,
+    request.total_revenue)
