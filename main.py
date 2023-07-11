@@ -131,8 +131,13 @@ from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from tasks.profit_percentage import profit_percentage_task
 from tasks.loss_percentage import loss_percentage_task
 from tasks.defensive_interval_ratio import defensive_interval_ratio_task
+
 from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio
 from tasks.rate_of_return_calculator import calcualate_rate_of_return
+
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, financialAssestRatio
+from tasks.financialAssestRatio import financial_assest_ratio
+
 
 # Creating the app
 app = FastAPI(
@@ -346,9 +351,9 @@ def payback_period(
     description="Calculate compound interest amount",
 )
 def compound_interest(
-    request: compoundInterest,
+    request: compoundInterest
 ):
-    return compound_interest_task(request.principal_amount, request.interest_rate, request.time)
+    return compound_interest_task(request.principal_amount, request.interest_rate, request.years ,request.compounding_period)
 
 
 # Endpoints to calculate certificate of deposit (CD)
@@ -1878,6 +1883,7 @@ def defensive_interval_ratio(request: DefensiveIntervalRatio):
     return defensive_interval_ratio_task(request.cash, request.marketable_securities, 
     request.net_receivables, request.annual_operating_expenses , request.non_cash_charges)
 
+
 # Endpoint to calculate Rate of return calculator
 
 @app.post("/rate-of-return")
@@ -1892,3 +1898,19 @@ def calculate_rate_of_return(investment: calcualate_rate_of_return):
         "Rate of Return": rate_of_return,
         "Percentage Return": percentage_return
     }
+
+# Endpoint to calculate Financial assest Ratio
+
+@app.post(
+    "/financial_assest_ratio",
+    tags=["financial_assest_ratio"],
+    description="Calculate financial assest Ratio",
+)
+def financial_assest_ratio(request: financialAssestRatio):
+    return financial_assest_ratio(request.current_assets,
+	request.current_liabilities,
+	request.total_debt,
+	request.total_equity,
+	request.net_income,
+    request.total_revenue)
+

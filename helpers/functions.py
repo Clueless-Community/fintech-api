@@ -1982,6 +1982,7 @@ net_receivables: float, annual_operating_expenses: float, non_cash_charges: floa
 	ratio = current_assets / daily_operational_expenses
 	return ratio
 
+
 # Function to Calculate Rate of return calculator.
 
 def calculate_rate_of_return(initial_investment: int, final_value: int, additional_investments=0, additional_withdrawals=0):
@@ -1989,3 +1990,24 @@ def calculate_rate_of_return(initial_investment: int, final_value: int, addition
     final_value -= additional_withdrawals
     rate_of_return = (final_value - total_invested) / total_invested
     return rate_of_return
+
+## Function to Calculate Financial Assest Ratio
+
+def calculate_financial_asset_ratios(current_assets, current_liabilities, total_debt, total_equity, net_income, total_revenue, total_assets):
+
+    current_ratio = current_assets / current_liabilities
+    debt_to_equity_ratio = total_debt / total_equity
+    return_on_assets = net_income / total_assets
+    return_on_equity = net_income / total_equity
+    profit_margin = net_income / total_revenue
+
+    ratios = {
+        "current_ratio": current_ratio,
+        "debt_to_equity_ratio": debt_to_equity_ratio,
+        "return_on_assets": return_on_assets,
+        "return_on_equity": return_on_equity,
+        "profit_margin": profit_margin
+    }
+
+    return ratios
+
