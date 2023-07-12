@@ -604,6 +604,13 @@ class DefensiveIntervalRatio(BaseModel):
 	annual_operating_expenses: float 
 	non_cash_charges: float
         
+class RateofReturn(BaseModel):
+    initial_investment: float 
+    final_value: float
+    cash_flows: float
+    time_period: float
+    holding_period: float
+      
 class financialAssestRatio(BaseModel):
     current_assets: float
     current_liabilities: float
@@ -621,4 +628,3 @@ class CashConversionCycle(BaseModel):
 	ending_payable: float
 	cost_of_goods_sold: float
 	net_credit_sales: float
-   

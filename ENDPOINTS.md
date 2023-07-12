@@ -2133,6 +2133,14 @@ Sample Output
   "Loss Percentage": 6.67,
 }
 ``` 
+**POST** `/rate_return_calculator`
+
+- Request body : `{
+  "initial_investment": 10000,
+  "final_value": 12500,
+  "time_period": 3,
+  "cash_flows": [500, 800, -200],
+  "holding_period": 2,
 
 **POST** `/financial_assest_ratio`
 
@@ -2148,6 +2156,10 @@ Sample Output
 
 ```py
 {
+  "Tag": "Rate of return",
+  "rate_of_return": 25.0,
+  "annualized_return": 8.333333333333334,
+  "holding_period_return": 50.0,
   "Tag": "Financial assest ratio",
   "current_ratio": 1.5,
   "debt_to_equity_ratio": 0.8,

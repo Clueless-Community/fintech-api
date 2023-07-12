@@ -131,8 +131,9 @@ from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from tasks.profit_percentage import profit_percentage_task
 from tasks.loss_percentage import loss_percentage_task
 from tasks.defensive_interval_ratio import defensive_interval_ratio_task
+from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, financialAssestRatio
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio
 from tasks.financialAssestRatio import financial_assest_ratio
 
 # Creating the app
@@ -1881,6 +1882,19 @@ def defensive_interval_ratio(request: DefensiveIntervalRatio):
     return defensive_interval_ratio_task(request.cash, request.marketable_securities, 
     request.net_receivables, request.annual_operating_expenses , request.non_cash_charges)
 
+# Endpoint to calculate Rate of return
+
+@app.post(
+    "/rate_of_return",
+    tags=["rate_of_return"],
+    description="Calculate Rate of return",
+)
+def rate_of_return(request: RateofReturn):
+    return calculate_rate_of_return(request.initial_investment,
+	request.final_value,
+	request.cash_flows,
+	request.time_period,
+	request.holding_period)
 # Endpoint to calculate Financial assest Ratio
 
 @app.post(
@@ -1896,6 +1910,7 @@ def financial_assest_ratio(request: financialAssestRatio):
 	request.net_income,
     request.total_revenue)
 
+
 # Endpoint to calculate Cash Conversion Cycle
 
 @app.post(
@@ -1907,4 +1922,3 @@ def cash_conversion_cycle(request: CashConversionCycle):
     return cash_conversion_cycle_task(request.beginning_inventory , request.ending_inventory ,
     request.beginning_receivables, request.ending_receivables , request.beginning_payable, 
     request.ending_payable , request.net_credit_sales , request.cost_of_goods_sold)
-

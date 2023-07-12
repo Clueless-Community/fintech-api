@@ -1982,7 +1982,13 @@ net_receivables: float, annual_operating_expenses: float, non_cash_charges: floa
 	ratio = current_assets / daily_operational_expenses
 	return ratio
 
-## Function to Calculate Financial Assest Ratio
+# Function to Calculate Debt Service Coverage Ratio. 
+
+def rate_of_return(initial_investment: float, final_value: float ):
+    rate_of_return = ((final_value - initial_investment) / initial_investment) * 100
+    return rate_of_return 
+
+  ## Function to Calculate Financial Assest Ratio
 
 def calculate_financial_asset_ratios(current_assets, current_liabilities, total_debt, total_equity, net_income, total_revenue, total_assets):
 
