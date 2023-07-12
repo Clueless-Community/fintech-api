@@ -128,7 +128,7 @@ from tasks.personal_savings import personal_savings_task
 from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
 from tasks.calculate_capm import calculate_capm
 from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue
 
 # Creating the app
 app = FastAPI(
@@ -898,15 +898,15 @@ def future_value_of_ordinary_due(
 
 
 # Endpoint to calculate future value of the annuity due
-@app.get(
+@app.post(
     "/future_value_of_annuity_due",
     tags=["future_value_of_annuity_due"],
     description="Calculating future value of annuity due",
 )
 def future_value_of_annuity_due(
-    request: futureValueOfAnnuity,
+    request: futureValueOfAnnuity
 ):
-    return future_value_of_annuity_due_task(request.periodic_payment, request.number_of_periods, request.rate_per_period)
+    return future_value_of_annuity_due_task(request.periodic_payment, request.interest_rate, request.number_of_payments)
 
 
 # Endpoint to calculate present value of the annuity due
