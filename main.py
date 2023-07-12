@@ -319,7 +319,7 @@ def future_sip(
 def calculate_pension(
     request: calculatePension
 ):
-    return calculate_pension_task(request.current_age, request.retirement_age, request.current_salary, request.percentage_saved, request.employer_match, request.expected_annual_raise, request.savings_goal)
+    return calculate_pension_task(request.monthly_investment_amount, request.no_of_years, request.annuity_rates, request.annuity_purchased, request.yearly_interest_rates)
 
 
 # endpoint for payback period
