@@ -1962,3 +1962,42 @@ tax_rate: float, principal: float):
     total_debt_service = (interest * (1 - tax_rate)) + principal
     ratio = net_operating_income / total_debt_service
     return ratio 
+
+#Function to calculate profit percentage
+def profit_percentage(profit: float, cost_price: float):
+    profit_percent = (profit / cost_price) * 100
+    return profit_percent
+
+#Function to calculate loss percentage
+def loss_percentage(loss: float, cost_price: float):
+    loss_percent = (loss / cost_price) * 100
+    return loss_percent
+
+## Function to Calculate Defensive Interval Ratio
+
+def defensive_interval_ratio(cash: float, marketable_securities: float,
+net_receivables: float, annual_operating_expenses: float, non_cash_charges: float):
+	current_assets = cash + marketable_securities + net_receivables	
+	daily_operational_expenses  = (annual_operating_expenses - non_cash_charges) / 365
+	ratio = current_assets / daily_operational_expenses
+	return ratio
+
+## Function to Calculate Financial Assest Ratio
+
+def calculate_financial_asset_ratios(current_assets, current_liabilities, total_debt, total_equity, net_income, total_revenue, total_assets):
+
+    current_ratio = current_assets / current_liabilities
+    debt_to_equity_ratio = total_debt / total_equity
+    return_on_assets = net_income / total_assets
+    return_on_equity = net_income / total_equity
+    profit_margin = net_income / total_revenue
+
+    ratios = {
+        "current_ratio": current_ratio,
+        "debt_to_equity_ratio": debt_to_equity_ratio,
+        "return_on_assets": return_on_assets,
+        "return_on_equity": return_on_equity,
+        "profit_margin": profit_margin
+    }
+
+    return ratios
