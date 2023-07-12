@@ -52,6 +52,11 @@ class compoundedAnnualGrowthRate(BaseModel):
     initial_investment_value: float
     years: int
 
+class modifiedInternalGrowthRate(BaseModel):
+    ending_cash_flow: float
+    initial_cash_flow: float
+    number_of_periods: int
+
 class jensensAlpha(BaseModel):
     return_from_investment: float
     return_of_appropriate_market_index: float

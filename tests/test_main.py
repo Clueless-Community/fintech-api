@@ -740,9 +740,24 @@ def test_present_value_of_annuity_due():
   "PV of Annuity Due": "5326.999867991974"
 }
 
-def test_compound_annual_growth_rate():
+
+def test_modified_internal_rate_of_return():
     response = client.get(
-        "http://127.0.0.1:8000/compound_annual_growth_rate?ending_value=345&beginning_value=223&number_of_periods=3"
+        "http://127.0.0.1:8000/compound_annual_growth_rate?initial_cash_flow=-300000&ending_cash_flow=500000&number_of_periods=5"
+    )
+    assert response.status_code == status.HTTP_200_OK
+
+  assert response.json() ==  {
+    "Tag": "Modified internal rate",
+    "Ending cash flow": 500000,
+    "Initial cash flow": -300000,
+    "Number of periods": 5,
+    "Modified internal rate of return": f"12.04%",
+    }
+
+def test_compound_annual_growth_rate():
+  response = client.get(
+        "http://127.0.0.1:8000/modified_internal_rate_of_return?ending_value=345&beginning_value=223&number_of_periods=3"
     )
     assert response.status_code == status.HTTP_200_OK
 
@@ -752,7 +767,7 @@ def test_compound_annual_growth_rate():
   "beginning value": 223,
   "Number of periods": 3,
   "compound annual growth rate": "0.0%"
-}
+    }
 
 def test_loan_to_value():
     response = client.get(
@@ -1210,7 +1225,7 @@ def test_commission_calc():
   "headers": None
 }
 
-
+main, function, self, 
 def test_college_cost():
     response = client.get(
         "http://127.0.0.1:8000/college_cost?book_cost=4566&college_tuition=34&Devices=33&travel_expenses=44&hostel_charges=55&mess_fee=33&miscellaneous=45"

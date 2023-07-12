@@ -1545,6 +1545,21 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
+**GET** `/modified_internal_rate_of_return`
+
+- Required parameters : 'ending_cash_flow','initial_cash_flow', 'number_of_periods'
+- Sample output
+
+```py
+{
+            "Tag": "Modified internal rate",
+            "Ending cash flow": 500000,
+            "Initial cash flow": -300000,
+            "Number of periods": 5,
+            "Modified internal rate of return": f"12.04%",
+}
+```
+
 **GET** `/roi_equity_funds`
 
 - Required parameters : `amount_invested`,

@@ -102,6 +102,7 @@ from tasks.k401 import estimate_401k_task
 from tasks.monthly_lease_payment import monthly_lease_payment_task
 from tasks.calculate_period_FV_PV_rate import CalculatePeriods_task
 from tasks.bid_ask_spread import bid_ask_spread_task
+from tasks.calculate_modified_internal_rate_of_return import calculate_modified_internal_rate_task
 from tasks.asset_turnover_ratio import asset_turnover_ratio_task
 from tasks.preferred_stock_value import preferred_stock_value_task
 from tasks.accounts_payable_turnover_ratio import accounts_payable_turnover_ratio_task
@@ -259,6 +260,7 @@ def index():
             "/personal_loan": "Calculate personal loan",
             "/lumpsum": "",
             "/refinance": "Calculate refinance",
+            "/modified_internal_rate_of_return": "Calculate modified internal rate of return",
             "/commission_calc": "compute any one of the following, given inputs for the remaining two: sales price, commission rate, or commission.",
             "/college_cost": "calculate total college fee of one year assuming full tuition fee is being paid.",
             "/diluted-earnings-per-share": "Calculate Diluted Earnings Per Share (EPS).",
@@ -1479,6 +1481,26 @@ def calculate_roi_equity_funds(
         amount_returned,
         tenure,
     )
+
+# Endpoint to calculate Modified Internal Rate of Return (MIRR)
+
+@app.get(
+    "/modified_internal_rate_of_return",
+    tags=["mirr"],
+    description="Calculate Modified Internal Rate of Return (MIRR)",
+)
+def calculate_modified_internal_rate_of_return(
+    ending_cash_flow: float,
+    initial_cash_flow: float,
+    number_of_periods: int
+):
+    return calculate_modified_internal_rate_task(
+        ending_cash_flow,
+        initial_cash_flow,
+        number_of_periods,
+    )
+
+
 
 
 # Endpoint to compute Student loan and monthly emi for the same

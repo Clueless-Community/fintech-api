@@ -1843,6 +1843,14 @@ def capital_gains_yield(
     gains_yield = ((price_after_first_period - inital_price) / inital_price) * 100
     return gains_yield
 
+# Function to calculate Modified Internal Rate of Return (MIRR)
+
+def calculate_modified_internal_rate_of_return(ending_cash_flow: float,
+                                                initial_cash_flow: float,
+                                                number_of_periods: int):
+    mirr = ((ending_cash_flow / initial_cash_flow) ** (1 / number_of_periods)) - 1
+    return mirr*100
+
 #function to calculate macaulay duration
 def calculate_macaulay_duration(face_value : float, coupon_rate : float, dt : int, month : int, year : int, coupon_frequency : int, discount_rate : float):
     cash_flows = []
