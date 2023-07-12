@@ -1696,7 +1696,7 @@ def calculate_post_tax_return_percentage(tax_rate_percentage: float,
 
 # Endpoint for function Treynor Ratio
 
-@app.get(
+@app.post(
     "/treynor_ratio",
     tags=["treynor_ratio"],
     description="Calculate Treynor ratio",
