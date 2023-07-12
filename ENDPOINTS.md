@@ -2077,3 +2077,83 @@ Sample Output
   "Debt Service Coverage Ratio": 1.34
 }
 ```
+
+**POST** `/profit_percent`
+
+- Request body : `{
+  "profit": 1560.8,
+  "cost_price": 7500.4
+=======
+**POST** `/defensive_interval_ratio`
+
+- Request body : `{
+	"cash": 40000.00,
+	"marketable_securities": 20000.00,
+	"net_receivables": 10000.00,
+	"annual_operating_expenses": 300000.00,
+	"non_cash_charges": 25000.00
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Profit Percentage",
+  "Profit": 1560.86,
+  "Cost Price": 7500.47,
+  "Profit Percentage": 20.81,
+}
+```
+
+**POST** `/loss_percent`
+
+- Request body : `{
+  "loss": 500.96,
+  "cost_price": 7500.47
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Loss Percentage",
+  "Loss": 500.96,
+  "Cost Price": 7500.47,
+  "Loss Percentage": 6.67,
+}
+```
+	"Tag": "Defensive Interval Ratio",
+	"Cash": 40000.00,
+	"Marketable Securites": 20000.00,
+	"Net Receivables": 10000.00,
+	"Annual Operating Expenses": 300000.00,
+	"Non Cash Charges": 25000.00,
+	"Current Assets": 70000.0,
+	"Daily Operational Expenses": 753.42,
+	"Defensive Interval Ratio": 92.90
+}
+``` 
+
+**POST** `/financial_assest_ratio`
+
+- Request body : `{
+    "current_assets": 500000,
+    "current_liabilities": 300000,
+    "total_debt": 200000,
+    "total_equity": 400000,
+    "net_income": 100000,
+    "total_revenue": 800000,
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Financial assest ratio",
+  "current_ratio": 1.5,
+  "debt_to_equity_ratio": 0.8,
+  "return_on_assets": 0.1,
+  "return_on_equity": 0.15,
+  "asset_turnover_ratio": 1.8,
+  "gross_profit_margin": 0.35,
+  "net_profit_margin": 0.2,
+  "price_to_earnings_ratio": 20.5
+}
+```

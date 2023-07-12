@@ -326,10 +326,6 @@ class zeroCoupounBondValue(BaseModel):
     interest_rate: float
     years_to_maturity: int
 
-class zeroCoupounBondYield(BaseModel):
-    face_value: float
-    current_bond_price: float
-    years_to_maturity: int
 
 class profitabilityIndex(BaseModel):
     initial_investment: float
@@ -386,34 +382,6 @@ class calculatePeriodFV(BaseModel):
     future_value: float
     rate: float
 
-class balloonLoanPayment(BaseModel):
-    loan_amount: float
-    interest_rate: float
-    number_of_payments: int
-
-class monthlyLeasePayment(BaseModel):
-    present_value: float
-    interest_rate: float
-    number_of_payments: int
-
-class estimate401k(BaseModel):
-    current_age: float
-    retirement_age: float
-    current_401k_balance: float
-    annual_contribution: float
-    annual_salary: float
-    annual_raise: float
-    employer_match: float
-    employer_max_match: float
-
-class rothIra(BaseModel):
-    current_age: float
-    retirement_age: float
-    annual_contribution: float
-    annual_salary: float
-    annual_raise: float
-    current_roth_balance: float
-    expected_annual_return: float
 
 class mortgageAmortization(BaseModel):
     loan_amount: float
@@ -428,11 +396,6 @@ class enterpriseValue(BaseModel):
 class salaryCalculate(BaseModel):
     salary: float
     pay_frequency: str
-
-class personalLoan(BaseModel):
-    loan_amount: float
-    interest_rate: float
-    number_of_payments: int
 
 class lumpsum(BaseModel):
     initial_investment: float
@@ -565,98 +528,6 @@ class portfolioReturnMonteCarlo(BaseModel):
     standard_deviation: float
     years: int
     iterations: int
-
-class calculatePeriodFV(BaseModel):
-    present_value: float
-    future_value: float
-    rate: float
-
-class balloonLoanPayment(BaseModel):
-    loan_amount: float
-    interest_rate: float
-    number_of_payments: int
-
-class monthlyLeasePayment(BaseModel):
-    present_value: float
-    interest_rate: float
-    number_of_payments: int
-
-class estimate401k(BaseModel):
-    current_age: float
-    retirement_age: float
-    current_401k_balance: float
-    annual_contribution: float
-    annual_salary: float
-    annual_raise: float
-    employer_match: float
-    employer_max_match: float
-
-class rothIra(BaseModel):
-    current_age: float
-    retirement_age: float
-    annual_contribution: float
-    annual_salary: float
-    annual_raise: float
-    current_roth_balance: float
-    expected_annual_return: float
-
-class mortgageAmortization(BaseModel):
-    loan_amount: float
-    interest_rate: float
-    number_of_payments: int
-
-class enterpriseValue(BaseModel):
-    market_capitalization: float
-    total_debt: float
-    cash_and_cash_equivalents: float
-
-class salaryCalculate(BaseModel):
-    salary: float
-    pay_frequency: str
-
-class personalLoan(BaseModel):
-    loan_amount: float
-    interest_rate: float
-    number_of_payments: int
-
-class lumpsum(BaseModel):
-    initial_investment: float
-    interest_rate: float
-    number_of_payments: int
-
-class refinance(BaseModel):
-    current_loan_balance: float
-    current_interest_rate: float
-    current_loan_term: int
-    new_interest_rate: float
-    new_loan_term: int
-
-class commissionCalc(BaseModel):
-    sales_price: float
-    commission_rate: float
-    commission: float
-
-class collegeCost(BaseModel):
-    tuition_fee: float
-    annual_increase: float
-    years: int
-
-class dilutedEps(BaseModel):
-    net_income: float
-    weighted_average_shares: float
-    dilutive_securities: float
-
-class asdcr(BaseModel):
-    net_operating_income: float
-    total_debt_service: float
-
-class calculateGst(BaseModel):
-    price: float
-    gst_rate: float
-
-class calculateMarketCap(BaseModel):
-    price_per_share: float
-    number_of_shares: float
 
 class calculateRetirementGoals(BaseModel):
     current_age: float
@@ -668,104 +539,6 @@ class calculateRetirementGoals(BaseModel):
     retirement_income: float
     retirement_inflation: float
 
-class calculateExpectedReturnOfPortfolio(BaseModel):
-    expected_return_of_asset_1: float
-    expected_return_of_asset_2: float
-    weight_of_asset_1: float
-    weight_of_asset_2: float
-
-class calculateFinancialLeverage(BaseModel):
-    total_assets: float
-    total_equity: float
-
-class calculateGratuity(BaseModel):
-    basic_salary: float
-    dearness_allowance: float
-    number_of_years: float
-    gratuity_rate: float
-
-class calculateMacaulayDuration(BaseModel):
-    cash_flow: float
-    discount_rate: float
-    time_period: int
-
-class calculateNetProfitMargin(BaseModel):
-    net_income: float
-    net_sales: float
-
-class calculatePostTaxReturnPercentage(BaseModel):
-    pre_tax_return: float
-    tax_rate: float
-
-class calculateSalary(BaseModel):
-    salary: float
-    pay_frequency: str
-
-class capitalGainsYield(BaseModel):
-    initial_price: float
-    ending_price: float
-    dividends: float
-
-class capitalizationRate(BaseModel):
-    net_operating_income: float
-    property_value: float
-
-class freeCashFlowToEquity(BaseModel):
-    net_income: float
-    capital_expenditure: float
-    change_in_working_capital: float
-    debt_issued: float
-    debt_repaid: float
-
-class loanAffordability(BaseModel):
-    monthly_income: float
-    monthly_debt: float
-    interest_rate: float
-    loan_term: int
-
-class bondEquivalentYield(BaseModel):
-    face_value: float
-    price: float
-    days_to_maturity: int
-
-class calculateVat(BaseModel):
-    price: float
-    vat_rate: float
-
-class loanToValueRatio(BaseModel):
-    loan_amount: float
-    value_of_property: float
-
-class mortrage(BaseModel):
-    loan_amount: float
-    interest_rate: float
-    number_of_payments: int
-
-class netWorth(BaseModel):
-    assets: float
-    liabilities: float
-
-class personalSavings(BaseModel):
-    annual_salary: float
-    monthly_expenses: float
-    savings_rate: float
-    annual_raise: float
-    current_savings: float
-    years: int
-
-class portfolioReturnMonteCarlo(BaseModel):
-    initial_investment: float
-    annual_contribution: float
-    annual_return: float
-    standard_deviation: float
-    years: int
-    iterations: int
-
-class calculatePeriodFV(BaseModel):
-    present_value: float
-    future_value: float
-    rate: float
-
 class balloonLoanPayment(BaseModel):
     loan_amount: float
     interest_rate: float
@@ -795,63 +568,10 @@ class rothIra(BaseModel):
     current_roth_balance: float
     expected_annual_return: float
 
-class mortgageAmortization(BaseModel):
-    loan_amount: float
-    interest_rate: float
-    number_of_payments: int
-
-class enterpriseValue(BaseModel):
-    market_capitalization: float
-    total_debt: float
-    cash_and_cash_equivalents: float
-
-class salaryCalculate(BaseModel):
-    salary: float
-    pay_frequency: str
-
 class personalLoan(BaseModel):
     loan_amount: float
     interest_rate: float
     number_of_payments: int
-
-class lumpsum(BaseModel):
-    initial_investment: float
-    interest_rate: float
-    number_of_payments: int
-
-class refinance(BaseModel):
-    current_loan_balance: float
-    current_interest_rate: float
-    current_loan_term: int
-    new_interest_rate: float
-    new_loan_term: int
-
-class commissionCalc(BaseModel):
-    sales_price: float
-    commission_rate: float
-    commission: float
-
-class collegeCost(BaseModel):
-    tuition_fee: float
-    annual_increase: float
-    years: int
-
-class dilutedEps(BaseModel):
-    net_income: float
-    weighted_average_shares: float
-    dilutive_securities: float
-
-class asdcr(BaseModel):
-    net_operating_income: float
-    total_debt_service: float
-
-class calculateGst(BaseModel):
-    price: float
-    gst_rate: float
-
-class calculateMarketCap(BaseModel):
-    price_per_share: float
-    number_of_shares: float
 
 class calculateBvps(BaseModel):
     total_equity: float
@@ -868,3 +588,27 @@ class DebtServiceCoverageRatio(BaseModel):
 	interest: float
 	tax_rate: float
 	principal: float
+        
+class ProfitPercentage(BaseModel):
+    profit: float
+    cost_price: float
+
+class LossPercentage(BaseModel):
+    loss: float
+    cost_price: float
+
+class DefensiveIntervalRatio(BaseModel):
+	cash: float 
+	marketable_securities: float
+	net_receivables: float
+	annual_operating_expenses: float 
+	non_cash_charges: float
+        
+class financialAssestRatio(BaseModel):
+    current_assets: float
+    current_liabilities: float
+    total_debt: float
+    total_equity: float
+    net_income: float
+    total_revenue: float
+   
