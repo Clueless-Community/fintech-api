@@ -1982,3 +1982,8 @@ net_receivables: float, annual_operating_expenses: float, non_cash_charges: floa
 	ratio = current_assets / daily_operational_expenses
 	return ratio
 
+# Function to Calculate Debt Service Coverage Ratio. 
+
+def rate_of_return(initial_investment: float, final_value: float ):
+    rate_of_return = ((final_value - initial_investment) / initial_investment) * 100
+    return rate_of_return 

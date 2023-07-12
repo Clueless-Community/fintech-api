@@ -26,3 +26,10 @@
 |                                |                                           | - `net_receivables` (float): The amount of net_receivables.|
 |                                |                                           | - `annual_operating_expenses` (float): The amount of annual_operating_expenses.|
 |                                |                                           | - `non_cash_charges` (float): The amount of non cash charges.|
+|-----------------------------|----------------------------------------------|-----------------------------------------------------------|
+| post /rate_of_return   | Calculate Rate of Return                         | - `initial_investment` (float): Initial amount invested.                 |
+|                             |                                              | - `final_value` (float): the value of the investment at the end of the investment.       |
+|                             |                                              | - `time_period` (float): The number of months.                   |
+|                             |                                              | - `cash_flows`  (float): A list of cash flows over the investment period.                   |
+|                             |                                              | - `holding_period` (float): The specific holding period of the investment.                   |
+| --------------------------- | ----------------------------------------     | --------------------------------------------------------- |

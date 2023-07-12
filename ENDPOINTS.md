@@ -2131,3 +2131,22 @@ Sample Output
 	"Defensive Interval Ratio": 92.90
 }
 ``` 
+**POST** `/rate_return_calculator`
+
+- Request body : `{
+  "initial_investment": 10000,
+  "final_value": 12500,
+  "time_period": 3,
+  "cash_flows": [500, 800, -200],
+  "holding_period": 2,
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Rate of return",
+  "rate_of_return": 25.0,
+  "annualized_return": 8.333333333333334,
+  "holding_period_return": 50.0,
+}
+```
