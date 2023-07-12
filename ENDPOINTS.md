@@ -2083,7 +2083,16 @@ Sample Output
 - Request body : `{
   "profit": 1560.8,
   "cost_price": 7500.4
-=======
+}`
+```py
+{
+  "Tag": "Profit Percentage",
+  "Profit": 1560.86,
+  "Cost Price": 7500.47,
+  "Profit Percentage": 20.81,
+}
+```
+
 **POST** `/defensive_interval_ratio`
 
 - Request body : `{
@@ -2094,15 +2103,19 @@ Sample Output
 	"non_cash_charges": 25000.00
 }`
 - Sample output
-
 ```py
 {
-  "Tag": "Profit Percentage",
-  "Profit": 1560.86,
-  "Cost Price": 7500.47,
-  "Profit Percentage": 20.81,
+  "Tag": "Defensive Interval Ratio",
+	"Cash": 40000.00,
+	"Marketable Securites": 20000.00,
+	"Net Receivables": 10000.00,
+	"Annual Operating Expenses": 300000.00,
+	"Non Cash Charges": 25000.00,
+	"Current Assets": 70000.0,
+	"Daily Operational Expenses": 753.42,
+	"Defensive Interval Ratio": 92.90
 }
-```
+``` 
 
 **POST** `/loss_percent`
 
@@ -2118,17 +2131,6 @@ Sample Output
   "Loss": 500.96,
   "Cost Price": 7500.47,
   "Loss Percentage": 6.67,
-}
-```
-	"Tag": "Defensive Interval Ratio",
-	"Cash": 40000.00,
-	"Marketable Securites": 20000.00,
-	"Net Receivables": 10000.00,
-	"Annual Operating Expenses": 300000.00,
-	"Non Cash Charges": 25000.00,
-	"Current Assets": 70000.0,
-	"Daily Operational Expenses": 753.42,
-	"Defensive Interval Ratio": 92.90
 }
 ``` 
 
@@ -2155,5 +2157,38 @@ Sample Output
   "gross_profit_margin": 0.35,
   "net_profit_margin": 0.2,
   "price_to_earnings_ratio": 20.5
+}
+```
+
+**POST** `/cash_conversion_cycle`
+
+- Request body : `{
+  "beginning_inventory": 1000,
+  "ending_inventory": 2000, 
+  "beginning_receivables": 100
+  "ending_receivables": 90,
+  "beginning_payable": 800,
+  "ending_payable": 900,
+  "cost_of_goods_sold": 3000,
+  "net_credit_sales": 3000
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Cash Conversion Cycle",
+  "Beginning Inventory": 1000,
+  "Ending Inventory": 2000,
+  "Average Inventory": 1500,
+  "Beginning Receivables": 100,
+  "Ending Receivables": 90,
+  "Average Receivables": 95,
+  "Beginning Payable": 800,
+  "Ending Payable": 900,
+  "Average Payable": 850,
+  "Days of inventory_outstanding": 182.5,
+  "Days of Sales Outstanding": 11.56,
+  "Days of Payables Outstanding": 103.42,
+  "Cash Conversion Cycle":  90.64 days",
 }
 ```

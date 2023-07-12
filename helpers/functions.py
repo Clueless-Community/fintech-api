@@ -2001,3 +2001,17 @@ def calculate_financial_asset_ratios(current_assets, current_liabilities, total_
     }
 
     return ratios
+
+# Function to Calculate Cash Conversion Cycle
+
+def cash_conversion_cycle(beginning_inventory: float, ending_inventory: float, beginning_receivables: float, 
+ending_receivables: float, beginning_payable: float, ending_payable: float, cost_of_goods_sold: float, 
+net_credit_sales: float):
+	average_inventory = beginning_inventory - ending_inventory / 2
+	average_receivables = beginning_receivables - ending_receivables / 2
+	average_payable = beginning_payable - ending_payable / 2
+	days_of_inventory_outstanding = (average_inventory / cost_of_goods_sold) * 365 
+	days_of_sales_outstanding = (average_receivables / net_credit_sales) * 365
+	days_of_payables_outstanding = (average_payable / cost_of_goods_sold / 365)
+	ccc = days_of_inventory_outstanding + days_of_sales_outstanding - days_of_payables_outstanding
+	return ccc

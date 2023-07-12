@@ -26,10 +26,23 @@
 |                                |                                           | - `net_receivables` (float): The amount of net_receivables.|
 |                                |                                           | - `annual_operating_expenses` (float): The amount of annual_operating_expenses.|
 |                                |                                           | - `non_cash_charges` (float): The amount of non cash charges.|
+| --------------------------- | ----------------------------------------     | --------------------------------------------------------- |
 | GET /financial_assest_ratio   | Calculate financial assest ratio           | - `current_assets` (float): used up within a short period.                 |
 |                             |                                            | - `current_liabilities` (float): debts that are due .       |
 |                             |                                              | - `total_debt` (float): aggregate amount of money.                   |
 |                             |                                              | - `total_equity`(float): residual interest in the assets.                   |
 |                             |                                              | - `net_income` (float): net earnings.                   |
 |                             |                                              | - `total_revenue` (float): sum of all sales.                   |
-| --------------------------- | ----------------------------------------     | --------------------------------------------------------- |
+
+|----------------------------|----------------------------------------|-------------------------------------------------------------------------------|
+| GET /cash_conversion_cycle | Calculate Cash Conversion Cycle  | - `beginning_inventory` (float): The amount of inventory beginning the cycle. |
+|                            |                                  | - `ending_inventory` (float): The final amount of inventory ending the cycle. |
+|                            |                                  | - `beginning_receivables` (float): The amount of receivables beginning the cycle. |
+|                            |                                  | - `ending_receivables` (float): The final amount of receivables ending the cycle. |
+|                            |                                  | - `beginning_payable` (float): The amount of payable beginning the cycle. |
+|                            |                                  | - `ending_payable` (float): The final amount of payable ending the cycle. |
+|                            |                                  | - `cost_of_goods_sold` (float): The total cost related to producing goods sold by a business. |
+|                            |                                  | - `net_credit_sales` (float): Sales where the cash is collected at a later date. |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------|
+
+
