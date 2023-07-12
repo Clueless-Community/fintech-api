@@ -32,4 +32,10 @@
 |                             |                                              | - `time_period` (float): The number of months.                   |
 |                             |                                              | - `cash_flows`  (float): A list of cash flows over the investment period.                   |
 |                             |                                              | - `holding_period` (float): The specific holding period of the investment.                   |
+| GET /financial_assest_ratio   | Calculate financial assest ratio           | - `current_assets` (float): used up within a short period.                 |
+|                             |                                            | - `current_liabilities` (float): debts that are due .       |
+|                             |                                              | - `total_debt` (float): aggregate amount of money.                   |
+|                             |                                              | - `total_equity`(float): residual interest in the assets.                   |
+|                             |                                              | - `net_income` (float): net earnings.                   |
+|                             |                                              | - `total_revenue` (float): sum of all sales.                   |
 | --------------------------- | ----------------------------------------     | --------------------------------------------------------- |

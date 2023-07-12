@@ -610,3 +610,12 @@ class RateofReturn(BaseModel):
     cash_flows: float
     time_period: float
     holding_period: float
+      
+class financialAssestRatio(BaseModel):
+    current_assets: float
+    current_liabilities: float
+    total_debt: float
+    total_equity: float
+    net_income: float
+    total_revenue: float
+   

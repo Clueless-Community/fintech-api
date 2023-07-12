@@ -2139,6 +2139,16 @@ Sample Output
   "time_period": 3,
   "cash_flows": [500, 800, -200],
   "holding_period": 2,
+
+**POST** `/financial_assest_ratio`
+
+- Request body : `{
+    "current_assets": 500000,
+    "current_liabilities": 300000,
+    "total_debt": 200000,
+    "total_equity": 400000,
+    "net_income": 100000,
+    "total_revenue": 800000,
 }`
 - Sample output
 
@@ -2148,5 +2158,14 @@ Sample Output
   "rate_of_return": 25.0,
   "annualized_return": 8.333333333333334,
   "holding_period_return": 50.0,
+  "Tag": "Financial assest ratio",
+  "current_ratio": 1.5,
+  "debt_to_equity_ratio": 0.8,
+  "return_on_assets": 0.1,
+  "return_on_equity": 0.15,
+  "asset_turnover_ratio": 1.8,
+  "gross_profit_margin": 0.35,
+  "net_profit_margin": 0.2,
+  "price_to_earnings_ratio": 20.5
 }
 ```
