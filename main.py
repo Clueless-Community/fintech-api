@@ -1550,7 +1550,9 @@ def asdcr(
     description="Calculate VAT for both excluding and including amounts",
 )
 async def calculate_vat(price: float, vat_rate: float):
-    return calculate_vat_task(price, vat_rate)
+    calculate_vat_price = await calculate_vat_task(price, vat_rate)
+    return calculate_vat_price
+
 
 
 # Endpoint For calculating bond equivalent yield
