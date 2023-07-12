@@ -131,7 +131,7 @@ from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from tasks.profit_percentage import profit_percentage_task
 from tasks.loss_percentage import loss_percentage_task
 from tasks.defensive_interval_ratio import defensive_interval_ratio_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, financialAssestRatio
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, financialAssestRatio
 from tasks.financialAssestRatio import financial_assest_ratio
 
 # Creating the app
@@ -324,7 +324,7 @@ def future_sip(
 def calculate_pension(
     request: calculatePension
 ):
-    return calculate_pension_task(request.current_age, request.retirement_age, request.current_salary, request.percentage_saved, request.employer_match, request.expected_annual_raise, request.savings_goal)
+    return calculate_pension_task(request.monthly_investment_amount, request.no_of_years, request.annuity_rates, request.annuity_purchased, request.yearly_interest_rates)
 
 
 # endpoint for payback period
@@ -903,15 +903,15 @@ def future_value_of_ordinary_due(
 
 
 # Endpoint to calculate future value of the annuity due
-@app.get(
+@app.post(
     "/future_value_of_annuity_due",
     tags=["future_value_of_annuity_due"],
     description="Calculating future value of annuity due",
 )
 def future_value_of_annuity_due(
-    request: futureValueOfAnnuity,
+    request: futureValueOfAnnuity
 ):
-    return future_value_of_annuity_due_task(request.periodic_payment, request.number_of_periods, request.rate_per_period)
+    return future_value_of_annuity_due_task(request.periodic_payment, request.interest_rate, request.number_of_payments)
 
 
 # Endpoint to calculate present value of the annuity due
@@ -1555,7 +1555,9 @@ def asdcr(
     description="Calculate VAT for both excluding and including amounts",
 )
 async def calculate_vat(price: float, vat_rate: float):
-    return calculate_vat_task(price, vat_rate)
+    calculate_vat_price = await calculate_vat_task(price, vat_rate)
+    return calculate_vat_price
+
 
 
 # Endpoint For calculating bond equivalent yield
@@ -1699,7 +1701,7 @@ def calculate_post_tax_return_percentage(tax_rate_percentage: float,
 
 # Endpoint for function Treynor Ratio
 
-@app.get(
+@app.post(
     "/treynor_ratio",
     tags=["treynor_ratio"],
     description="Calculate Treynor ratio",
