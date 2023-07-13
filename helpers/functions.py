@@ -2021,3 +2021,12 @@ net_credit_sales: float):
 	days_of_payables_outstanding = (average_payable / cost_of_goods_sold / 365)
 	ccc = days_of_inventory_outstanding + days_of_sales_outstanding - days_of_payables_outstanding
 	return ccc
+
+# Function to Calculate Price Elasticity for demand Calculator
+
+def calculate_price_elasticity(initial_price: float, final_price: float, initial_quantity: float, final_quantity: float):
+    percentage_change_price = (final_price - initial_price) / initial_price
+    percentage_change_quantity = (final_quantity - initial_quantity) / initial_quantity
+    price_elasticity = percentage_change_quantity / percentage_change_price
+
+    return price_elasticity

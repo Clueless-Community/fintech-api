@@ -2204,3 +2204,19 @@ Sample Output
   "Cash Conversion Cycle":  90.64 days",
 }
 ```
+**POST** `/price-elasticity`
+
+- Request body : `{
+  "initial_price": 10.0,
+  "final_price": 8.0,
+  "initial_quantity": 1000,
+  "final_quantity": 1200
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Price Elasticity for Demand Calculator",
+    "price_elasticity": -1.5
+}
+```

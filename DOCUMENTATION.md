@@ -50,5 +50,11 @@
 |                            |                                  | - `cost_of_goods_sold` (float): The total cost related to producing goods sold by a business. |
 |                            |                                  | - `net_credit_sales` (float): Sales where the cash is collected at a later date. |
 |----------------------------|----------------------------------------|----------------------------------------------------------------------|
+| GET /price_elasticity | Price Elasticity for Demand Calculator | - `initial_price` (float): 
+The initial price of the product or service. |
+|                            |                                  | - `final_price` (float): The final price of the product or service. |
+|                            |                                  | - `initial_quantity` (float): The initial quantity demanded of the product or service. |
+|                            |                                  | - `final_quantity` (float): The final quantity demanded of the product or service. |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------|
 
 
