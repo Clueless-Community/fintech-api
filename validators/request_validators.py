@@ -628,3 +628,9 @@ class CashConversionCycle(BaseModel):
 	ending_payable: float
 	cost_of_goods_sold: float
 	net_credit_sales: float
+
+class PriceElasticity(BaseModel):
+	initial_price: float 
+	final_price: float  
+	initial_quantity: float 
+	final_quantity: float  

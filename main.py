@@ -133,8 +133,9 @@ from tasks.loss_percentage import loss_percentage_task
 from tasks.defensive_interval_ratio import defensive_interval_ratio_task
 from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity
 from tasks.financialAssestRatio import financial_assest_ratio
+from tasks.PriceElasticity import calculate_price_elasticity
 
 # Creating the app
 app = FastAPI(
@@ -1922,3 +1923,16 @@ def cash_conversion_cycle(request: CashConversionCycle):
     return cash_conversion_cycle_task(request.beginning_inventory , request.ending_inventory ,
     request.beginning_receivables, request.ending_receivables , request.beginning_payable, 
     request.ending_payable , request.net_credit_sales , request.cost_of_goods_sold)
+
+# Endpoint to calculate Price Elasticity 
+
+@app.post(
+    "/price_elasticity",
+    tags=["price_elasticity"],
+    description="Calculate Cash Conversion Cycle",
+)
+def price_elasticity(request: PriceElasticity):
+    return calculate_price_elasticity(request.initial_price , 
+    request.final_price ,
+    request.initial_quantity, 
+    request.final_quantity )
