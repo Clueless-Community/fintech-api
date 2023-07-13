@@ -50,5 +50,12 @@
 |                            |                                  | - `cost_of_goods_sold` (float): The total cost related to producing goods sold by a business. |
 |                            |                                  | - `net_credit_sales` (float): Sales where the cash is collected at a later date. |
 |----------------------------|----------------------------------------|----------------------------------------------------------------------|
+| GET /policy_premium | Calculate Policy Premium                | - `policy_type` (str): The type of insurance policy. |
+|                            |                                  | - `age` (int): The age of the policyholder. |
+|                            |                                  | - `coverage_amount` (int): The desired coverage amount for the policy. |
+|                            |                                  | - `deductible` (int): The deductible amount for the policy.|
+|                            |                                  | - `num_claims` (int): The number of claims made by the policyholder. |
+|                            |                                  | - `num_accidents` (int): The number of accidents the policyholder has been involved in. |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------|
 
 

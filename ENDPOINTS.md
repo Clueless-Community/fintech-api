@@ -2204,3 +2204,21 @@ Sample Output
   "Cash Conversion Cycle":  90.64 days",
 }
 ```
+
+**POST** `/policy-premium`
+
+- Request body : `{
+    "policy_type": "auto",
+    "age": 35,
+    "coverage_amount": 250000,
+    "deductible": 500,
+    "num_claims": 0,
+    "num_accidents": 1
+}`
+- Sample output
+
+```py
+{
+  "premium_amount": 1200.50
+}
+```
