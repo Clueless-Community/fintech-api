@@ -637,3 +637,9 @@ class PolicyPremium(BaseModel):
     num_claims: int  
     num_accidents: int 
 	
+
+class PriceElasticity(BaseModel):
+	initial_price: float 
+	final_price: float  
+	initial_quantity: float 
+	final_quantity: float  

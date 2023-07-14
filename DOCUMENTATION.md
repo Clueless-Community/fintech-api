@@ -56,6 +56,11 @@
 |                            |                                  | - `deductible` (int): The deductible amount for the policy.|
 |                            |                                  | - `num_claims` (int): The number of claims made by the policyholder. |
 |                            |                                  | - `num_accidents` (int): The number of accidents the policyholder has been involved in. |
+| GET /price_elasticity | Price Elasticity for Demand Calculator | - `initial_price` (float): 
+The initial price of the product or service. |
+|                            |                                  | - `final_price` (float): The final price of the product or service. |
+|                            |                                  | - `initial_quantity` (float): The initial quantity demanded of the product or service. |
+|                            |                                  | - `final_quantity` (float): The final quantity demanded of the product or service. |
 |----------------------------|----------------------------------------|----------------------------------------------------------------------|
 
 

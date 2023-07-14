@@ -2038,3 +2038,11 @@ def calculate_policy_premium_ratios(premiums_collected, claims_paid, commissions
     }
 
     return ratios
+# Function to Calculate Price Elasticity for demand Calculator
+
+def calculate_price_elasticity(initial_price: float, final_price: float, initial_quantity: float, final_quantity: float):
+    percentage_change_price = (final_price - initial_price) / initial_price
+    percentage_change_quantity = (final_quantity - initial_quantity) / initial_quantity
+    price_elasticity = percentage_change_quantity / percentage_change_price
+
+    return price_elasticity

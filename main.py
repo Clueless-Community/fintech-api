@@ -136,6 +136,9 @@ from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PolicyPremium
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity
+from tasks.financialAssestRatio import financial_assest_ratio
+from tasks.PriceElasticity import calculate_price_elasticity
 
 # Creating the app
 app = FastAPI(
@@ -1938,3 +1941,15 @@ def policy_premium(request: PolicyPremium):
 	request.deductible,
 	request.num_claims,
     request.num_accidents)
+# Endpoint to calculate Price Elasticity 
+
+@app.post(
+    "/price_elasticity",
+    tags=["price_elasticity"],
+    description="Calculate Cash Conversion Cycle",
+)
+def price_elasticity(request: PriceElasticity):
+    return calculate_price_elasticity(request.initial_price , 
+    request.final_price ,
+    request.initial_quantity, 
+    request.final_quantity )

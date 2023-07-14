@@ -2214,11 +2214,20 @@ Sample Output
     "deductible": 500,
     "num_claims": 0,
     "num_accidents": 1
+**POST** `/price-elasticity`
+
+- Request body : `{
+  "initial_price": 10.0,
+  "final_price": 8.0,
+  "initial_quantity": 1000,
+  "final_quantity": 1200
 }`
 - Sample output
 
 ```py
 {
   "premium_amount": 1200.50
+  "Tag": "Price Elasticity for Demand Calculator",
+    "price_elasticity": -1.5
 }
 ```
