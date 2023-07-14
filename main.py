@@ -1935,7 +1935,7 @@ def cash_conversion_cycle(request: CashConversionCycle):
     description="Calculate Policy premium",
 )
 def policy_premium(request: PolicyPremium):
-    return policy_premium(request.policy_type,
+    return calculate_policy_premium(request.policy_type,
 	request.age,
 	request.coverage_amount,
 	request.deductible,
