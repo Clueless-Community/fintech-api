@@ -628,6 +628,15 @@ class CashConversionCycle(BaseModel):
 	ending_payable: float
 	cost_of_goods_sold: float
 	net_credit_sales: float
+        
+class PolicyPremium(BaseModel):
+    policy_type: str
+    age: int 
+    coverage_amount: int  
+    deductible: int 
+    num_claims: int  
+    num_accidents: int 
+	
 
 class PriceElasticity(BaseModel):
 	initial_price: float 

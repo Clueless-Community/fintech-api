@@ -2022,6 +2022,22 @@ net_credit_sales: float):
 	ccc = days_of_inventory_outstanding + days_of_sales_outstanding - days_of_payables_outstanding
 	return ccc
 
+# Function to Calculate Policy Premium. 
+
+def calculate_policy_premium_ratios(premiums_collected, claims_paid, commissions_paid, operating_expenses):
+    loss_ratio = (claims_paid / premiums_collected) * 100
+    expense_ratio = ((commissions_paid + operating_expenses) / premiums_collected) * 100
+    combined_ratio = loss_ratio + expense_ratio
+    profit_margin = 100 - combined_ratio
+
+    ratios = {
+        "loss_ratio": loss_ratio,
+        "expense_ratio": expense_ratio,
+        "combined_ratio": combined_ratio,
+        "profit_margin": profit_margin
+    }
+
+    return ratios
 # Function to Calculate Price Elasticity for demand Calculator
 
 def calculate_price_elasticity(initial_price: float, final_price: float, initial_quantity: float, final_quantity: float):
