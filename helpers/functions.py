@@ -2046,3 +2046,28 @@ def calculate_price_elasticity(initial_price: float, final_price: float, initial
     price_elasticity = percentage_change_quantity / percentage_change_price
 
     return price_elasticity
+
+# Function to calculate Financial goal planner
+
+def financial_goal_planner(initial_savings, monthly_savings, target_savings, timeframe):
+    total_savings_goal = target_savings - initial_savings
+    months = timeframe if isinstance(timeframe, int) else timeframe * 12
+    monthly_savings_goal = total_savings_goal / months
+
+    savings_schedule = []
+    current_savings = initial_savings
+
+    for month in range(1, months + 1):
+        current_savings += monthly_savings
+        savings_schedule.append((month, current_savings))
+
+    savings_ratio = current_savings / target_savings
+
+    output = {
+        "monthly_savings_goal": monthly_savings_goal,
+        "total_savings_goal": total_savings_goal,
+        "savings_schedule": savings_schedule,
+        "savings_ratio": savings_ratio
+    }
+
+    return output

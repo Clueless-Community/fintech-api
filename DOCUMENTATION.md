@@ -62,5 +62,10 @@ The initial price of the product or service. |
 |                            |                                  | - `initial_quantity` (float): The initial quantity demanded of the product or service. |
 |                            |                                  | - `final_quantity` (float): The final quantity demanded of the product or service. |
 |----------------------------|----------------------------------------|----------------------------------------------------------------------|
-
+| GET /financial_goal_planner | Financial Goal Planner Calculator | - `initial_savings_amount`(int): 
+The initial amount of savings. |
+|                            |                                  | - `monthly_savings_amount` (int): The amount you plan to save. |
+|                            |                                  | - `target_savings_amount` (int): The total amount of savings. |
+|                            |                                  | - `timeframe` (int): The fiduration in which you plan to achieve. |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------|
 

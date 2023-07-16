@@ -2231,3 +2231,34 @@ Sample Output
     "price_elasticity": -1.5
 }
 ```
+**POST** `/financial_goal_planner`
+
+- Request body : `{
+  "initial_savings_amount": 1000,
+  "monthly_savings_amount": 200,
+  "target_savings_amount": 5000,
+  "timeframe": 12
+}`
+- Sample output
+
+```py
+{
+  "Tag": "financial goal planner",
+   "monthly_savings_goal": 333
+   "total_savings_goal": 4000
+   "savings_schedule": [
+    (1, 1200),
+    (2, 1400),
+    (3, 1600),
+    (4, 1800),
+    (5, 2000),
+    (6, 2200),
+    (7, 2400),
+    (8, 2600),
+    (9, 2800),
+    (10, 3000),
+    (11, 3200),
+    (12, 3400)
+  ]
+}
+```

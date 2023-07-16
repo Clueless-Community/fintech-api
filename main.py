@@ -135,10 +135,10 @@ from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, FinancialGoalPlanner
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
-
+from tasks.Financialgoalplanner import financial_goal_palnner
 # Creating the app
 app = FastAPI(
     title="FinTech API",
@@ -1952,3 +1952,16 @@ def price_elasticity(request: PriceElasticity):
     request.final_price ,
     request.initial_quantity, 
     request.final_quantity )
+
+# Endpoint to calculate Financial goal planner 
+
+@app.post(
+    "/financial_goal_palnner",
+    tags=["financial_goal_palnner"],
+    description="Calculate Financial goal planner",
+)
+def financial_goal_palnner(request: FinancialGoalPlanner):
+    return financial_goal_palnner(request.initial_savings_amount , 
+    request.monthly_savings_amount ,
+    request.target_savings_amount, 
+    request.timeframe )
