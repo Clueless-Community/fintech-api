@@ -2231,3 +2231,23 @@ Sample Output
     "price_elasticity": -1.5
 }
 ```
+
+**POST** `/average_payment_period`
+
+- Request body : `{
+  "beginning_accounts_payable": 110000,
+  "ending_accounts_payable": 95000, 
+  "total_credit_purchases": 1110000
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Average Payment Period",
+  "Beginning Accounts Payable": 110000,
+  "Ending Accounts Payable": 95000,
+  "Total Credit Purchases": 1110000,
+  "Average Accounts Payable": 102500,
+  "Average Payment Period": "33.7days",
+}
+```

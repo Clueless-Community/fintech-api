@@ -2046,3 +2046,12 @@ def calculate_price_elasticity(initial_price: float, final_price: float, initial
     price_elasticity = percentage_change_quantity / percentage_change_price
 
     return price_elasticity
+
+# Function to Calculate Average Payment Period
+
+def average_payment_period(beginning_accounts_payable: float, ending_accounts_payable: float,
+total_credit_purchases: float):
+    average_accounts_payable = (beginning_accounts_payable + ending_accounts_payable) / 2
+    app = average_accounts_payable / (total_credit_purchases / 365)
+    return app
+

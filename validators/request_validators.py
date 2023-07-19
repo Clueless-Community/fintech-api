@@ -643,3 +643,8 @@ class PriceElasticity(BaseModel):
 	final_price: float  
 	initial_quantity: float 
 	final_quantity: float  
+
+class AveragePaymentPeriod(BaseModel):
+	beginning_accounts_payable: float
+	ending_accounts_payable: float
+	total_credit_purchases: float

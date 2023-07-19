@@ -62,5 +62,7 @@ The initial price of the product or service. |
 |                            |                                  | - `initial_quantity` (float): The initial quantity demanded of the product or service. |
 |                            |                                  | - `final_quantity` (float): The final quantity demanded of the product or service. |
 |----------------------------|----------------------------------------|----------------------------------------------------------------------|
-
-
+| GET /average_payment_period | Calculate Average Payment Period       | - `beginning_accounts_payable` (float): The amount of accounts payable beginning the cycle. |
+|                             |                                        | - `ending_inventory` (float): The final amount of accounts payable ending the cycle. |
+|                             |                                        | - `total_credit_purchases` (float): The amount of purchases on credit during the cycle. |
+|-----------------------------|----------------------------------------|---------------------------------------------------------------------|
