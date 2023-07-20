@@ -135,9 +135,10 @@ from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, SavingGoal
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
+from tasks.average_payment_period import average_payment_period_task
 from tasks.Saving_Goal import saving_goal
 
 # Creating the app
@@ -270,6 +271,7 @@ def index():
             "/portfolio_return_monte_carlo":"Calculates Portfolio returns based on Monte Carlo Simulation",
             "/profit_percent": "Calculates the profit percentage",
             "/loss_percent": "Calculates the loss percentage",
+            "/average_payment_period": "Calculate Average Payment Period a metric that allows a business to see how long it takes on average to pay its vendors."
         },
     }
 
@@ -1953,6 +1955,16 @@ def price_elasticity(request: PriceElasticity):
     request.final_price ,
     request.initial_quantity, 
     request.final_quantity )
+
+# Endpoint to calculate Average Payment Period
+@app.post(
+    "/average_payment_period",
+    tags=["average_payment_period"],
+    description="Calculate Average Payment Period",
+)
+def average_payment_period(request: AveragePaymentPeriod):
+    return average_payment_period_task(request.beginning_accounts_payable , 
+    request.ending_accounts_payable , request.total_credit_purchases)
 
 # Endpoint to calculate Saving Goal 
 
