@@ -643,3 +643,10 @@ class PriceElasticity(BaseModel):
 	final_price: float  
 	initial_quantity: float 
 	final_quantity: float  
+
+
+class SavingGoal(BaseModel):
+    current_savings: float 
+    monthly_contributions : float  
+    interest_rate: float 
+    goal_amount: float

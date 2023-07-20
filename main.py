@@ -135,9 +135,10 @@ from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, SavingGoal
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
+from tasks.Saving_Goal import saving_goal
 
 # Creating the app
 app = FastAPI(
@@ -1952,3 +1953,16 @@ def price_elasticity(request: PriceElasticity):
     request.final_price ,
     request.initial_quantity, 
     request.final_quantity )
+
+# Endpoint to calculate Saving Goal 
+
+@app.post(
+    "/saving_goal",
+    tags=["saving_goal"],
+    description="Calculate Saving Goal",
+)
+def saving_goal(request: SavingGoal):
+    return saving_goal(request.current_savings , 
+    request.monthly_contributions ,
+    request.interest_rate, 
+    request.goal_amount )

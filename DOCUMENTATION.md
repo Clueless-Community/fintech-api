@@ -62,5 +62,11 @@ The initial price of the product or service. |
 |                            |                                  | - `initial_quantity` (float): The initial quantity demanded of the product or service. |
 |                            |                                  | - `final_quantity` (float): The final quantity demanded of the product or service. |
 |----------------------------|----------------------------------------|----------------------------------------------------------------------|
+| GET /saving_goal | Saving Goal Calculator | - `current_savings` (float): 
+The current amount of savings. |
+|                            |                                  | - `monthly_contributions` (float): The amount of money contributed each month towards the savings goal. |
+|                            |                                  | - `interest_rate` (float): The annual interest rate on the savings. |
+|                            |                                  | - `goal_amount ` (float): The desired savings goal amount. |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------|
 
 

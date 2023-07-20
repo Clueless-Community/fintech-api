@@ -2046,3 +2046,9 @@ def calculate_price_elasticity(initial_price: float, final_price: float, initial
     price_elasticity = percentage_change_quantity / percentage_change_price
 
     return price_elasticity
+
+# Function to Calculate Price Elasticity for demand Calculator
+
+def saving_goal(current_savings: float, monthly_contributions: float, interest_rate: float, goal_amount: float):
+    savings_ratio = current_savings / goal_amount
+    return savings_ratio
