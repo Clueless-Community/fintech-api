@@ -1,5 +1,4 @@
-
-<h1 align=center> FinTech API </h1>
+<h1 align=center> FinTech API v2</h1>
 
 <p align=center>
 Welcome to FinTech API, our powerful API is designed to simplify your life by offering a wide range of financial calculations at your fingertips. From simple interest and compound interest to return on investment (ROI) and more, FinTech APIzap provides the tools you need to handle a variety of financial tasks effortlessly such as annual percentage rate (APR), FHA loans, debt-to-income ratio and income related calculations. Whether you're building a web app, mobile application, or even a chrome extension, integrating our API is a breeze.  You can focus on the core aspects of your project while leaving the financial calculations to us. </p>
@@ -21,6 +20,14 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 ![ClueLess x GSSOC](https://github.com/Clueless-Community/fintech-api/assets/93722719/978d4ad0-6353-450a-b144-bb591b71223f)
 
 ## ✨ Features
+
+- **Modular structure**: Not the API has a clean structure which benifits in improved code organizationqn and enhanced reusability of components
+
+- **Request validation**: It improves security, prevents errors and vulnerabilities to the API
+
+- **API Docs**: API documentation provides clear and comprehensive guidance to developers, simplifies integration and usage, promotes rapid adoption
+
+- **Authentication**: And finally the API has authentication enabled, for endpoints with much latency calculation, we can provide authentication which will enhance security.
 
 - **User-Friendly Integration**: Seamlessly integrate the FinTech APIzap into your web app, mobile application, or chrome extension with our user-friendly API.
 
