@@ -2055,3 +2055,11 @@ total_credit_purchases: float):
     app = average_accounts_payable / (total_credit_purchases / 365)
     return app
 
+# Function to Calculate PPF
+
+def ppf_calculator(depos:int,
+                   tenure:int,
+                   interest:float):
+    a=1+interest/100
+    total_value= depos*(((a**tenure) - 1)/(interest/100))*a
+    return total_value

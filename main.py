@@ -139,6 +139,7 @@ from validators.request_validators import SimpleInterestRateRequest, calculatePe
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
 from tasks.average_payment_period import average_payment_period_task
+from tasks.PPFCalculator import ppf_calculator
 
 # Creating the app
 app = FastAPI(
@@ -271,6 +272,7 @@ def index():
             "/profit_percent": "Calculates the profit percentage",
             "/loss_percent": "Calculates the loss percentage",
             "/average_payment_period": "Calculate Average Payment Period a metric that allows a business to see how long it takes on average to pay its vendors."
+            "/ppf_calculator": "Calculates Public Provident Fund(PPF)"
         },
     }
 
@@ -1966,3 +1968,12 @@ def average_payment_period(request: AveragePaymentPeriod):
     return average_payment_period_task(request.beginning_accounts_payable , 
     request.ending_accounts_payable , request.total_credit_purchases)
 
+#Endpoint to Calculate Public Provident Fund(PPF)
+
+@app.post(
+    "/ppf_calculator",
+    tags=["ppf_calculator"],
+    description="Calculates Public Provident Fund(PPF)",
+)
+def simple_interest_rate(request: PPFCalculator):
+    return simple_interest_rate_task(request.depos, request.tenure, request.interest)

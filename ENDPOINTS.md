@@ -2251,3 +2251,21 @@ Sample Output
   "Average Payment Period": "33.7days",
 }
 ```
+
+**POST** `/ppf_calculator`
+
+- Request body : `{
+  "depos": 500,
+  "tenure": 15,
+  "interest": 7.1
+}`
+- Sample output
+
+```py
+{
+  "Tag": "PPF Calcultor",
+  "Amount Anually deposited": 500,
+  "No. of Years": 15,
+  "percentage interst Rate": 7.1,
+  "Total Value of PPF": "13560"
+}

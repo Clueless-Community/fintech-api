@@ -66,3 +66,7 @@ The initial price of the product or service. |
 |                             |                                        | - `ending_inventory` (float): The final amount of accounts payable ending the cycle. |
 |                             |                                        | - `total_credit_purchases` (float): The amount of purchases on credit during the cycle. |
 |-----------------------------|----------------------------------------|---------------------------------------------------------------------|
+|---------------------------|----------------------------------------|---------------------------------------------------------|
+| GET /ppf_calculator       | Calculate Public Provident Fund(PPF)   | - `depos` (int): Annual Deposit.                        |
+|                           |                                        | - `tenure` (int): Total years of investment.            |
+|                           |                                        | - `interest` (float): percentage interest rate.         |
