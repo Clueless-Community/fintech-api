@@ -2046,3 +2046,13 @@ def calculate_price_elasticity(initial_price: float, final_price: float, initial
     price_elasticity = percentage_change_quantity / percentage_change_price
 
     return price_elasticity
+
+# Function to Calculate Loan Eligibility check
+
+def loan_eligibility_check(credit_score: float, monthly_income: float, existing_debt: float, loan_amount: float):
+     max_debt_to_income_ratio = 0.4
+     max_loan_amount = monthly_income * max_debt_to_income_ratio
+     if loan_amount > max_loan_amount:
+        return False
+     else:
+         return True

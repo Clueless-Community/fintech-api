@@ -643,3 +643,9 @@ class PriceElasticity(BaseModel):
 	final_price: float  
 	initial_quantity: float 
 	final_quantity: float  
+
+class LoanEligibility(BaseModel):
+	credit_score: float 
+	monthly_income: float  
+	existing_debt: float 
+	loan_amount: float  

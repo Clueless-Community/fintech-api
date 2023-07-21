@@ -135,10 +135,10 @@ from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, LoanEligibility
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
-
+from tasks.loan_eligibility import loan_eligibility_check
 # Creating the app
 app = FastAPI(
     title="FinTech API",
@@ -1952,3 +1952,16 @@ def price_elasticity(request: PriceElasticity):
     request.final_price ,
     request.initial_quantity, 
     request.final_quantity )
+
+# Endpoint to calculate Loan Eligibility 
+
+@app.post(
+    "/loan_eligibility_check",
+    tags=["loan_eligibility_check"],
+    description="Calculate Loan Eligibility",
+)
+def loan_eligibility_check(request: LoanEligibility):
+    return loan_eligibility_check(request.credit_score , 
+    request.monthly_income ,
+    request.existing_debt, 
+    request.loan_amount )
