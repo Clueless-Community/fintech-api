@@ -2056,3 +2056,11 @@ def loan_eligibility_check(credit_score: float, monthly_income: float, existing_
         return False
      else:
          return True
+# Function to Calculate Average Payment Period
+
+def average_payment_period(beginning_accounts_payable: float, ending_accounts_payable: float,
+total_credit_purchases: float):
+    average_accounts_payable = (beginning_accounts_payable + ending_accounts_payable) / 2
+    app = average_accounts_payable / (total_credit_purchases / 365)
+    return app
+

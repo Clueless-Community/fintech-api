@@ -649,3 +649,8 @@ class LoanEligibility(BaseModel):
 	monthly_income: float  
 	existing_debt: float 
 	loan_amount: float  
+    
+class AveragePaymentPeriod(BaseModel):
+	beginning_accounts_payable: float
+	ending_accounts_payable: float
+	total_credit_purchases: float
