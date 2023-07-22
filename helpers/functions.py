@@ -2055,7 +2055,7 @@ total_credit_purchases: float):
     app = average_accounts_payable / (total_credit_purchases / 365)
     return app
 
-# Function to Calculate Price Elasticity for demand Calculator
+# Function to Saving Goal Calculator
 
 def saving_goal(current_savings: float, monthly_contributions: float, interest_rate: float, goal_amount: float):
     savings_ratio = current_savings / goal_amount
