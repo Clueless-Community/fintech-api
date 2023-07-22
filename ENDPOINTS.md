@@ -2048,3 +2048,52 @@ Sample Output
   "Capitalization Rate": 6.16%
 }
 ```
+
+**GET** `net_income`
+- Required Parameters : `revenue`, `expenses`
+- Sample output 
+```py
+{
+ "Tag" : "Net Income",
+ "Revenue" : 30000,
+ "Expenses": 25000,
+ "Net Income" : 5000
+}
+```
+
+**GET** `break_even_point`
+- Required Parameters : `fixed_costs`, `sales_price_per_unit`,`variable_price_per_unit`
+- Sample output 
+```py
+{
+"Tag": "Break-even Point",
+"Fixed Costs": 2500,
+"Sales Price Per Unit": 2.95,
+"Variable Price Per Unit": 1.40,
+"Break-even Point": 1612.9032258064512
+}
+```
+**GET** `day_sales_in_inventory_ratio`
+- Required Parameters : `avg_inventory`, `cost_of_goods_sold`,`no_of_days`
+- Sample output 
+```py
+{
+ "Tag": "Day Sales in Inventory Ratio",
+ "Average Inventory": 50000,
+ "Cost of Goods Sold": 200000,
+ "No of Days": 365,
+ "Day Sales in Inventory Ratio": "91.25"
+}
+```
+**GET** `cash_ratio`
+- Required Parameters : `cash`,`cash_equivalents`, `current_liabilities`
+- Sample output 
+```py
+{
+ "Tag": "Cash Ratio",
+ "Cash": 37.1,
+ "Cash Equivalents": 26.8,
+ "Current Liabilities": 123.5,
+ "Cash Ratio": "0.52"
+}
+```
