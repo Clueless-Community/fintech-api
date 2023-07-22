@@ -1848,6 +1848,7 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
 
 
 
+
 # Endpoint to calculate the net income
 @app.get(
     "/net_income",
@@ -1922,4 +1923,3 @@ def cash_ratio(cash: float, cash_equivalents:float,current_liabilities:float):
         }
     except:
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
