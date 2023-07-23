@@ -139,6 +139,8 @@ from validators.request_validators import SimpleInterestRateRequest, calculatePe
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
 from tasks.average_payment_period import average_payment_period_task
+from tasks.modified_internal_rate_of_return import calculate_modified_internal_rate_of_return_task
+
 
 # Creating the app
 app = FastAPI(
@@ -270,7 +272,8 @@ def index():
             "/portfolio_return_monte_carlo":"Calculates Portfolio returns based on Monte Carlo Simulation",
             "/profit_percent": "Calculates the profit percentage",
             "/loss_percent": "Calculates the loss percentage",
-            "/average_payment_period": "Calculate Average Payment Period a metric that allows a business to see how long it takes on average to pay its vendors."
+            "/average_payment_period": "Calculate Average Payment Period a metric that allows a business to see how long it takes on average to pay its vendors.",
+            "/modified_internal_rate_of_return": "Calculate modified internal rate of return",
         },
     }
 
@@ -1857,6 +1860,24 @@ def debt_service_coverage_ratio(request: DebtServiceCoverageRatio):
 	request.interest,
 	request.tax_rate,
 	request.principal)
+
+
+@app.get(
+    "/modified_internal_rate_of_return",
+    tags=["mirr"],
+    description="Calculate Modified Internal Rate of Return (MIRR)",
+)
+def calculate_modified_internal_rate_of_return(
+    ending_cash_flow: float,
+    initial_cash_flow: float,
+    number_of_periods: int
+):
+    return calculate_modified_internal_rate_of_return_task(
+        ending_cash_flow,
+        initial_cash_flow,
+        number_of_periods,
+    )
+    
 
 #Endpoint to calculate profit percentage
 @app.post(
