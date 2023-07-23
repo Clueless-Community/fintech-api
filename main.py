@@ -131,7 +131,16 @@ from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from tasks.profit_percentage import profit_percentage_task
 from tasks.loss_percentage import loss_percentage_task
 from tasks.defensive_interval_ratio import defensive_interval_ratio_task
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio
+from tasks.RateofReturn import calculate_rate_of_return
+from tasks.cash_conversion_cycle import cash_conversion_cycle_task
+from tasks.financialAssestRatio import financial_assest_ratio
+from tasks.PolicyPremium import calculate_policy_premium
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod
+from tasks.financialAssestRatio import financial_assest_ratio
+from tasks.PriceElasticity import calculate_price_elasticity
+from tasks.average_payment_period import average_payment_period_task
+from tasks.quick_ratio import quick_ratio_task
+from tasks.quick_ratio import cash_ratio_task
 
 # Creating the app
 app = FastAPI(
@@ -263,6 +272,7 @@ def index():
             "/portfolio_return_monte_carlo":"Calculates Portfolio returns based on Monte Carlo Simulation",
             "/profit_percent": "Calculates the profit percentage",
             "/loss_percent": "Calculates the loss percentage",
+            "/average_payment_period": "Calculate Average Payment Period a metric that allows a business to see how long it takes on average to pay its vendors."
         },
     }
 
@@ -323,7 +333,7 @@ def future_sip(
 def calculate_pension(
     request: calculatePension
 ):
-    return calculate_pension_task(request.current_age, request.retirement_age, request.current_salary, request.percentage_saved, request.employer_match, request.expected_annual_raise, request.savings_goal)
+    return calculate_pension_task(request.monthly_investment_amount, request.no_of_years, request.annuity_rates, request.annuity_purchased, request.yearly_interest_rates)
 
 
 # endpoint for payback period
@@ -345,9 +355,9 @@ def payback_period(
     description="Calculate compound interest amount",
 )
 def compound_interest(
-    request: compoundInterest,
+    request: compoundInterest
 ):
-    return compound_interest_task(request.principal_amount, request.interest_rate, request.time)
+    return compound_interest_task(request.principal_amount, request.interest_rate, request.years ,request.compounding_period)
 
 
 # Endpoints to calculate certificate of deposit (CD)
@@ -902,15 +912,15 @@ def future_value_of_ordinary_due(
 
 
 # Endpoint to calculate future value of the annuity due
-@app.get(
+@app.post(
     "/future_value_of_annuity_due",
     tags=["future_value_of_annuity_due"],
     description="Calculating future value of annuity due",
 )
 def future_value_of_annuity_due(
-    request: futureValueOfAnnuity,
+    request: futureValueOfAnnuity
 ):
-    return future_value_of_annuity_due_task(request.periodic_payment, request.number_of_periods, request.rate_per_period)
+    return future_value_of_annuity_due_task(request.periodic_payment, request.interest_rate, request.number_of_payments)
 
 
 # Endpoint to calculate present value of the annuity due
@@ -1554,7 +1564,9 @@ def asdcr(
     description="Calculate VAT for both excluding and including amounts",
 )
 async def calculate_vat(price: float, vat_rate: float):
-    return calculate_vat_task(price, vat_rate)
+    calculate_vat_price = await calculate_vat_task(price, vat_rate)
+    return calculate_vat_price
+
 
 
 # Endpoint For calculating bond equivalent yield
@@ -1723,7 +1735,7 @@ def calculate_post_tax_return_percentage(tax_rate_percentage: float,
 
 # Endpoint for function Treynor Ratio
 
-@app.get(
+@app.post(
     "/treynor_ratio",
     tags=["treynor_ratio"],
     description="Calculate Treynor ratio",
@@ -1902,3 +1914,101 @@ def defensive_interval_ratio(request: DefensiveIntervalRatio):
     return defensive_interval_ratio_task(request.cash, request.marketable_securities, 
     request.net_receivables, request.annual_operating_expenses , request.non_cash_charges)
 
+# Endpoint to calculate Rate of return
+
+@app.post(
+    "/rate_of_return",
+    tags=["rate_of_return"],
+    description="Calculate Rate of return",
+)
+def rate_of_return(request: RateofReturn):
+    return calculate_rate_of_return(request.initial_investment,
+	request.final_value,
+	request.cash_flows,
+	request.time_period,
+	request.holding_period)
+# Endpoint to calculate Financial assest Ratio
+
+@app.post(
+    "/financial_assest_ratio",
+    tags=["financial_assest_ratio"],
+    description="Calculate financial assest Ratio",
+)
+def financial_assest_ratio(request: financialAssestRatio):
+    return financial_assest_ratio(request.current_assets,
+	request.current_liabilities,
+	request.total_debt,
+	request.total_equity,
+	request.net_income,
+    request.total_revenue)
+
+
+# Endpoint to calculate Cash Conversion Cycle
+
+@app.post(
+    "/cash_conversion_cycle",
+    tags=["cash_conversion_cycle"],
+    description="Calculate Cash Conversion Cycle",
+)
+def cash_conversion_cycle(request: CashConversionCycle):
+    return cash_conversion_cycle_task(request.beginning_inventory , request.ending_inventory ,
+    request.beginning_receivables, request.ending_receivables , request.beginning_payable, 
+    request.ending_payable , request.net_credit_sales , request.cost_of_goods_sold)
+
+# Endpoint to calculate Policy Premium
+
+@app.post(
+    "/policy_premium",
+    tags=["policy_premium"],
+    description="Calculate Policy premium",
+)
+def policy_premium(request: PolicyPremium):
+    return calculate_policy_premium(request.policy_type,
+	request.age,
+	request.coverage_amount,
+	request.deductible,
+	request.num_claims,
+    request.num_accidents)
+# Endpoint to calculate Price Elasticity 
+
+@app.post(
+    "/price_elasticity",
+    tags=["price_elasticity"],
+    description="Calculate Cash Conversion Cycle",
+)
+def price_elasticity(request: PriceElasticity):
+    return calculate_price_elasticity(request.initial_price , 
+    request.final_price ,
+    request.initial_quantity, 
+    request.final_quantity )
+
+
+# Endpoint to calculate Average Payment Period
+@app.post(
+    "/average_payment_period",
+    tags=["average_payment_period"],
+    description="Calculate Average Payment Period",
+)
+def average_payment_period(request: AveragePaymentPeriod):
+    return average_payment_period_task(request.beginning_accounts_payable , 
+    request.ending_accounts_payable , request.total_credit_purchases)
+
+# Endpoint to calculate Quick Ratio
+@app.post(
+ "/quick_ratio",
+ tags=["quick_ratio"],
+ description="Calculate Quick Ratio",   
+)
+def quick_ratio(cash: float , accounts_receivable: float ,
+               marketable_security: float , current_liabilities: float):
+    return quick_ratio_task(cash , accounts_receivable ,
+                            marketable_security , current_liabilities)
+
+# Endpoint to get Cash Ratio    
+@app.post(
+    "/cash_ratio",
+    tags=["/cash_ratio"],
+    description="Calculate Cash Ratio",
+)
+def cash_ratio(cash: float , marketable_securities: float , current_liabilities: float):
+    return cash_ratio_task(cash , marketable_securities , current_liabilities)
