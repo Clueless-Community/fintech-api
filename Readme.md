@@ -1,4 +1,3 @@
-
 <h1 align=center> FinTech API v2</h1>
 
 <p align=center>

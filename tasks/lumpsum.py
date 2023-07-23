@@ -1,7 +1,6 @@
 from helpers import functions
 from fastapi import HTTPException, status
-
-async def calculate_lumpsum_task(principal: float, interest_rate: float, years: int):
+def calculate_lumpsum_task(principal: float, interest_rate: float, years: int):
 
     try:
         total_amount = principal * (
