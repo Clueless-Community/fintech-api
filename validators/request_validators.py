@@ -603,3 +603,48 @@ class DefensiveIntervalRatio(BaseModel):
 	net_receivables: float
 	annual_operating_expenses: float 
 	non_cash_charges: float
+        
+class RateofReturn(BaseModel):
+    initial_investment: float 
+    final_value: float
+    cash_flows: float
+    time_period: float
+    holding_period: float
+      
+class financialAssestRatio(BaseModel):
+    current_assets: float
+    current_liabilities: float
+    total_debt: float
+    total_equity: float
+    net_income: float
+    total_revenue: float
+
+class CashConversionCycle(BaseModel):
+	beginning_inventory: float 
+	ending_inventory: float  
+	beginning_receivables: float 
+	ending_receivables: float  
+	beginning_payable: float 
+	ending_payable: float
+	cost_of_goods_sold: float
+	net_credit_sales: float
+        
+class PolicyPremium(BaseModel):
+    policy_type: str
+    age: int 
+    coverage_amount: int  
+    deductible: int 
+    num_claims: int  
+    num_accidents: int 
+	
+
+class PriceElasticity(BaseModel):
+	initial_price: float 
+	final_price: float  
+	initial_quantity: float 
+	final_quantity: float  
+
+class AveragePaymentPeriod(BaseModel):
+	beginning_accounts_payable: float
+	ending_accounts_payable: float
+	total_credit_purchases: float

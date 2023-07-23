@@ -2083,7 +2083,16 @@ Sample Output
 - Request body : `{
   "profit": 1560.8,
   "cost_price": 7500.4
-=======
+}`
+```py
+{
+  "Tag": "Profit Percentage",
+  "Profit": 1560.86,
+  "Cost Price": 7500.47,
+  "Profit Percentage": 20.81,
+}
+```
+
 **POST** `/defensive_interval_ratio`
 
 - Request body : `{
@@ -2094,15 +2103,19 @@ Sample Output
 	"non_cash_charges": 25000.00
 }`
 - Sample output
-
 ```py
 {
-  "Tag": "Profit Percentage",
-  "Profit": 1560.86,
-  "Cost Price": 7500.47,
-  "Profit Percentage": 20.81,
+  "Tag": "Defensive Interval Ratio",
+	"Cash": 40000.00,
+	"Marketable Securites": 20000.00,
+	"Net Receivables": 10000.00,
+	"Annual Operating Expenses": 300000.00,
+	"Non Cash Charges": 25000.00,
+	"Current Assets": 70000.0,
+	"Daily Operational Expenses": 753.42,
+	"Defensive Interval Ratio": 92.90
 }
-```
+``` 
 
 **POST** `/loss_percent`
 
@@ -2119,15 +2132,122 @@ Sample Output
   "Cost Price": 7500.47,
   "Loss Percentage": 6.67,
 }
-```
-	"Tag": "Defensive Interval Ratio",
-	"Cash": 40000.00,
-	"Marketable Securites": 20000.00,
-	"Net Receivables": 10000.00,
-	"Annual Operating Expenses": 300000.00,
-	"Non Cash Charges": 25000.00,
-	"Current Assets": 70000.0,
-	"Daily Operational Expenses": 753.42,
-	"Defensive Interval Ratio": 92.90
-}
 ``` 
+**POST** `/rate_return_calculator`
+
+- Request body : `{
+  "initial_investment": 10000,
+  "final_value": 12500,
+  "time_period": 3,
+  "cash_flows": [500, 800, -200],
+  "holding_period": 2,
+
+**POST** `/financial_assest_ratio`
+
+- Request body : `{
+    "current_assets": 500000,
+    "current_liabilities": 300000,
+    "total_debt": 200000,
+    "total_equity": 400000,
+    "net_income": 100000,
+    "total_revenue": 800000,
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Rate of return",
+  "rate_of_return": 25.0,
+  "annualized_return": 8.333333333333334,
+  "holding_period_return": 50.0,
+  "Tag": "Financial assest ratio",
+  "current_ratio": 1.5,
+  "debt_to_equity_ratio": 0.8,
+  "return_on_assets": 0.1,
+  "return_on_equity": 0.15,
+  "asset_turnover_ratio": 1.8,
+  "gross_profit_margin": 0.35,
+  "net_profit_margin": 0.2,
+  "price_to_earnings_ratio": 20.5
+}
+```
+
+**POST** `/cash_conversion_cycle`
+
+- Request body : `{
+  "beginning_inventory": 1000,
+  "ending_inventory": 2000, 
+  "beginning_receivables": 100
+  "ending_receivables": 90,
+  "beginning_payable": 800,
+  "ending_payable": 900,
+  "cost_of_goods_sold": 3000,
+  "net_credit_sales": 3000
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Cash Conversion Cycle",
+  "Beginning Inventory": 1000,
+  "Ending Inventory": 2000,
+  "Average Inventory": 1500,
+  "Beginning Receivables": 100,
+  "Ending Receivables": 90,
+  "Average Receivables": 95,
+  "Beginning Payable": 800,
+  "Ending Payable": 900,
+  "Average Payable": 850,
+  "Days of inventory_outstanding": 182.5,
+  "Days of Sales Outstanding": 11.56,
+  "Days of Payables Outstanding": 103.42,
+  "Cash Conversion Cycle":  90.64 days",
+}
+```
+
+**POST** `/policy-premium`
+
+- Request body : `{
+    "policy_type": "auto",
+    "age": 35,
+    "coverage_amount": 250000,
+    "deductible": 500,
+    "num_claims": 0,
+    "num_accidents": 1
+**POST** `/price-elasticity`
+
+- Request body : `{
+  "initial_price": 10.0,
+  "final_price": 8.0,
+  "initial_quantity": 1000,
+  "final_quantity": 1200
+}`
+- Sample output
+
+```py
+{
+  "premium_amount": 1200.50
+  "Tag": "Price Elasticity for Demand Calculator",
+    "price_elasticity": -1.5
+}
+```
+
+**POST** `/average_payment_period`
+
+- Request body : `{
+  "beginning_accounts_payable": 110000,
+  "ending_accounts_payable": 95000, 
+  "total_credit_purchases": 1110000
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Average Payment Period",
+  "Beginning Accounts Payable": 110000,
+  "Ending Accounts Payable": 95000,
+  "Total Credit Purchases": 1110000,
+  "Average Accounts Payable": 102500,
+  "Average Payment Period": "33.7days",
+}
+```

@@ -1982,3 +1982,76 @@ net_receivables: float, annual_operating_expenses: float, non_cash_charges: floa
 	ratio = current_assets / daily_operational_expenses
 	return ratio
 
+# Function to Calculate Debt Service Coverage Ratio. 
+
+def rate_of_return(initial_investment: float, final_value: float ):
+    rate_of_return = ((final_value - initial_investment) / initial_investment) * 100
+    return rate_of_return 
+
+  ## Function to Calculate Financial Assest Ratio
+
+def calculate_financial_asset_ratios(current_assets, current_liabilities, total_debt, total_equity, net_income, total_revenue, total_assets):
+
+    current_ratio = current_assets / current_liabilities
+    debt_to_equity_ratio = total_debt / total_equity
+    return_on_assets = net_income / total_assets
+    return_on_equity = net_income / total_equity
+    profit_margin = net_income / total_revenue
+
+    ratios = {
+        "current_ratio": current_ratio,
+        "debt_to_equity_ratio": debt_to_equity_ratio,
+        "return_on_assets": return_on_assets,
+        "return_on_equity": return_on_equity,
+        "profit_margin": profit_margin
+    }
+
+    return ratios
+
+# Function to Calculate Cash Conversion Cycle
+
+def cash_conversion_cycle(beginning_inventory: float, ending_inventory: float, beginning_receivables: float, 
+ending_receivables: float, beginning_payable: float, ending_payable: float, cost_of_goods_sold: float, 
+net_credit_sales: float):
+	average_inventory = beginning_inventory - ending_inventory / 2
+	average_receivables = beginning_receivables - ending_receivables / 2
+	average_payable = beginning_payable - ending_payable / 2
+	days_of_inventory_outstanding = (average_inventory / cost_of_goods_sold) * 365 
+	days_of_sales_outstanding = (average_receivables / net_credit_sales) * 365
+	days_of_payables_outstanding = (average_payable / cost_of_goods_sold / 365)
+	ccc = days_of_inventory_outstanding + days_of_sales_outstanding - days_of_payables_outstanding
+	return ccc
+
+# Function to Calculate Policy Premium. 
+
+def calculate_policy_premium_ratios(premiums_collected, claims_paid, commissions_paid, operating_expenses):
+    loss_ratio = (claims_paid / premiums_collected) * 100
+    expense_ratio = ((commissions_paid + operating_expenses) / premiums_collected) * 100
+    combined_ratio = loss_ratio + expense_ratio
+    profit_margin = 100 - combined_ratio
+
+    ratios = {
+        "loss_ratio": loss_ratio,
+        "expense_ratio": expense_ratio,
+        "combined_ratio": combined_ratio,
+        "profit_margin": profit_margin
+    }
+
+    return ratios
+# Function to Calculate Price Elasticity for demand Calculator
+
+def calculate_price_elasticity(initial_price: float, final_price: float, initial_quantity: float, final_quantity: float):
+    percentage_change_price = (final_price - initial_price) / initial_price
+    percentage_change_quantity = (final_quantity - initial_quantity) / initial_quantity
+    price_elasticity = percentage_change_quantity / percentage_change_price
+
+    return price_elasticity
+
+# Function to Calculate Average Payment Period
+
+def average_payment_period(beginning_accounts_payable: float, ending_accounts_payable: float,
+total_credit_purchases: float):
+    average_accounts_payable = (beginning_accounts_payable + ending_accounts_payable) / 2
+    app = average_accounts_payable / (total_credit_purchases / 365)
+    return app
+

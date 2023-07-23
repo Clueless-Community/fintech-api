@@ -26,3 +26,43 @@
 |                                |                                           | - `net_receivables` (float): The amount of net_receivables.|
 |                                |                                           | - `annual_operating_expenses` (float): The amount of annual_operating_expenses.|
 |                                |                                           | - `non_cash_charges` (float): The amount of non cash charges.|
+|-----------------------------|----------------------------------------------|-----------------------------------------------------------|
+| post /rate_of_return   | Calculate Rate of Return                         | - `initial_investment` (float): Initial amount invested.                 |
+|                             |                                              | - `final_value` (float): the value of the investment at the end of the investment.       |
+|                             |                                              | - `time_period` (float): The number of months.                   |
+|                             |                                              | - `cash_flows`  (float): A list of cash flows over the investment period.                   |
+|                             |                                              | - `holding_period` (float): The specific holding period of the investment.                   |
+| --------------------------- | ----------------------------------------     | --------------------------------------------------------- |
+| GET /financial_assest_ratio   | Calculate financial assest ratio           | - `current_assets` (float): used up within a short period.                 |
+|                             |                                            | - `current_liabilities` (float): debts that are due .       |
+|                             |                                              | - `total_debt` (float): aggregate amount of money.                   |
+|                             |                                              | - `total_equity`(float): residual interest in the assets.                   |
+|                             |                                              | - `net_income` (float): net earnings.                   |
+|                             |                                              | - `total_revenue` (float): sum of all sales.                   |
+
+|----------------------------|----------------------------------------|-------------------------------------------------------------------------------|
+| GET /cash_conversion_cycle | Calculate Cash Conversion Cycle  | - `beginning_inventory` (float): The amount of inventory beginning the cycle. |
+|                            |                                  | - `ending_inventory` (float): The final amount of inventory ending the cycle. |
+|                            |                                  | - `beginning_receivables` (float): The amount of receivables beginning the cycle. |
+|                            |                                  | - `ending_receivables` (float): The final amount of receivables ending the cycle. |
+|                            |                                  | - `beginning_payable` (float): The amount of payable beginning the cycle. |
+|                            |                                  | - `ending_payable` (float): The final amount of payable ending the cycle. |
+|                            |                                  | - `cost_of_goods_sold` (float): The total cost related to producing goods sold by a business. |
+|                            |                                  | - `net_credit_sales` (float): Sales where the cash is collected at a later date. |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------|
+| GET /policy_premium | Calculate Policy Premium                | - `policy_type` (str): The type of insurance policy. |
+|                            |                                  | - `age` (int): The age of the policyholder. |
+|                            |                                  | - `coverage_amount` (int): The desired coverage amount for the policy. |
+|                            |                                  | - `deductible` (int): The deductible amount for the policy.|
+|                            |                                  | - `num_claims` (int): The number of claims made by the policyholder. |
+|                            |                                  | - `num_accidents` (int): The number of accidents the policyholder has been involved in. |
+| GET /price_elasticity | Price Elasticity for Demand Calculator | - `initial_price` (float): 
+The initial price of the product or service. |
+|                            |                                  | - `final_price` (float): The final price of the product or service. |
+|                            |                                  | - `initial_quantity` (float): The initial quantity demanded of the product or service. |
+|                            |                                  | - `final_quantity` (float): The final quantity demanded of the product or service. |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------|
+| GET /average_payment_period | Calculate Average Payment Period       | - `beginning_accounts_payable` (float): The amount of accounts payable beginning the cycle. |
+|                             |                                        | - `ending_inventory` (float): The final amount of accounts payable ending the cycle. |
+|                             |                                        | - `total_credit_purchases` (float): The amount of purchases on credit during the cycle. |
+|-----------------------------|----------------------------------------|---------------------------------------------------------------------|
