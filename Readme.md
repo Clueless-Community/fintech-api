@@ -75,7 +75,8 @@ Join our growing community of developers who have already discovered the power o
 
 This project is a part of these Open Source Programs
 
-- [Diversion 2K33](https://diversion.tech/) 
+- [Diversion 2K33](https://diversion.tech/)
+- [GSSoC 2K33](https://gssoc.girlscript.tech/)
 
 
 ## ✨ Thank You for Your Contribution!
