@@ -66,7 +66,7 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 ## ✨ Contributing Roadmap
 
  - Go through the [CONTRIBUTING.md](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md) file, where all the guidelines have been mentioned that will guide you to make your contribution.
- - Do checkout the [project workflow](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-worflow) section.
+ - Do checkout the [project workflow](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-workflow) section.
 
 Join our growing community of developers who have already discovered the power of FinTech APIzap and contribute to the project's ambition to empower users with the ability to handle financial tasks efficiently.
 
