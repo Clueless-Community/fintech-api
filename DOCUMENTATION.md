@@ -75,4 +75,3 @@ The initial price of the product or service. |
 | GET /cash-ratio | Calculate cash ratio        | - `cash` (float): Total cash as asset. |
 |                           |                                        | - `marketable_security` (float): Expected within an year amount.     |
 |                           |                                        | - `current_liabilities` (float): current liabilities       |
-

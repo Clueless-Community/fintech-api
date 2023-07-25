@@ -140,7 +140,7 @@ from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
 from tasks.average_payment_period import average_payment_period_task
 from tasks.quick_ratio import quick_ratio_task
-from tasks.quick_ratio import cash_ratio_task
+from tasks.cash_ratio import cash_ratio_task
 
 # Creating the app
 app = FastAPI(
@@ -2012,3 +2012,4 @@ def quick_ratio(cash: float , accounts_receivable: float ,
 )
 def cash_ratio(cash: float , marketable_securities: float , current_liabilities: float):
     return cash_ratio_task(cash , marketable_securities , current_liabilities)
+
