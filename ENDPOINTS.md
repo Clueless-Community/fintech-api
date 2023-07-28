@@ -1600,7 +1600,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
             "Depreciation":20000.0,
             "Non Cash Expenses":5000.0,
             "Annual Debt":60000.0
-    
+
   }
 
 ```
@@ -1617,7 +1617,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
   "Price (including VAT)": 100.0,
   "VAT Amount": 16.67
 
-} 
+}
 ```
 
 **GET** `/bond_equivalent_yield`
@@ -1639,9 +1639,10 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 **GET** `/loan-affordability`
 
 - Required parameters : `income`,
-        `expenses`,
-        `loan_term`,
-        `interest_rate`,
+
+  `expenses`,
+  `loan_term`,
+  `interest_rate`,
 - Sample Request: `GET`, `http://127.0.0.1:8000/loan-affordability?income=5000&expenses=2000&loan_term=12&interest_rate=5`,
 
 - Sample output
@@ -1660,13 +1661,12 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 **GET** `/calculate_bvps`
 
 - Required parameters : `stockholders_equity`,
-    `preferred_stock`, `average_outstanding_shares`,
-
+                         `preferred_stock`, `average_outstanding_shares`
 - Sample output
 
 ```py
 {
-        
+
             "Tag": "Calculate Book value per share",
             "Stockholders Equity":1000000.0,
             "Preferred Stock value":50000.0,
@@ -1679,8 +1679,9 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 **GET** `/gratuity-amount`
 
 - Required parameters : `last_salary`,
-        `tenure_years`,
-        `tenure_months`,
+
+  `tenure_years`,
+  `tenure_months`,
 - Sample Request: `GET`, `http://localhost:8000/calculate_gratuity?last_salary=20000000&tenure_years=10&tenure_months=1`,
 - Sample output
 
@@ -1710,7 +1711,8 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 ```
 
-  **GET** `/personal_savings`
+
+**GET** `/personal_savings`
 
 - Required parameters : 'init','monthly', 'tenure'
 - Sample output
@@ -1744,7 +1746,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-# GET #  Endpoint --> '/mortrage'
+# GET # Endpoint --> '/mortrage'
 
 Required Paramenters --> princial:int,interest_rate:float,years:int,down_payment:int,property_tax_rate:float,insurance_rate:float
 Sample request --> <http://127.0.0.1:8000/mortrages?princial=200000&interest_rate=4.5&years=45&down_payment=50000&property_tax_rate=1.3&insurance_rate=0.5>
@@ -1855,7 +1857,7 @@ Sample Output
             "tax percentage":15,
             "any additional deduction":0,
             "ctc calculated":2040000.0
-    
+
   }
 
 ```
@@ -1947,12 +1949,12 @@ Sample Output
 **GET** `/macaulay-duration`
 
 - Required parameters : `face_value`,
-        `coupon_rate`,
-        `dt`,
-        `month`,
-        `year`,
-        `coupon_frequency`,
-        `discount_rate`,
+  `coupon_rate`,
+  `dt`,
+  `month`,
+  `year`,
+  `coupon_frequency`,
+  `discount_rate`,
 
 - Sample Request: `GET`, `http://localhost:8000/calculate_macaulay_duration?face_value=1000.0&coupon_rate=0.06&dt=19&month=6&year=2026&coupon_frequency=2&discount_rate=0.06`,
 - Sample output
@@ -2052,6 +2054,21 @@ Sample Output
   "Net Operating Income": 92500.0,
   "Current Market Value": 1500000.0
   "Capitalization Rate": 6.16%
+}
+```
+
+**GET** `/modified_internal_rate_of_return`
+
+- Required parameters : 'ending_cash_flow','initial_cash_flow', 'number_of_periods'
+- Sample output
+
+```py
+{
+  "Tag": "Modified internal rate of return",
+  "Ending cash flow": 500000,
+  "Initial cash flow": -300000,
+  "Number of periods": 5,
+  "Modified internal rate of return": f"12.04%",
 }
 ```
 

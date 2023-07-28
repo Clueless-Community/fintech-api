@@ -648,7 +648,12 @@ class AveragePaymentPeriod(BaseModel):
 	beginning_accounts_payable: float
 	ending_accounts_payable: float
 	total_credit_purchases: float
- 
+
+
+class ModifiedInternalRateOfReturn(BaseModel):
+	ending_cash_flow: float
+	initial_cash_flow: float
+	number_of_periods: int
 
 class DebtPayoffPlannerRequest(BaseModel):
     debt_amount: float
