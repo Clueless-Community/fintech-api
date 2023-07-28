@@ -1862,20 +1862,18 @@ def debt_service_coverage_ratio(request: DebtServiceCoverageRatio):
 	request.principal)
 
 
-@app.get(
+@app.post(
     "/modified_internal_rate_of_return",
     tags=["mirr"],
     description="Calculate Modified Internal Rate of Return (MIRR)",
 )
 def calculate_modified_internal_rate_of_return(
-    ending_cash_flow: float,
-    initial_cash_flow: float,
-    number_of_periods: int
+    request: ModifiedInternalRateOfReturn
 ):
     return calculate_modified_internal_rate_of_return_task(
-        ending_cash_flow,
-        initial_cash_flow,
-        number_of_periods,
+        request.ending_cash_flow,
+        request.initial_cash_flow,
+        request.number_of_periods,
     )
     
 
