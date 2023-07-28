@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException, status,Query
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.responses import JSONResponse
 import jwt
@@ -1966,3 +1966,47 @@ def average_payment_period(request: AveragePaymentPeriod):
     return average_payment_period_task(request.beginning_accounts_payable , 
     request.ending_accounts_payable , request.total_credit_purchases)
 
+# Endpoint for Debt Payoff Planner
+
+app = FastAPI()
+
+@app.get(
+    "/debt_payoff_planner",
+    tags=["debt_payoff_planner"],
+    description="Calculate debt payoff plan",
+)
+def debt_payoff_planner(
+    debt_amount: float = Query(..., description="The total amount of debt."),
+    interest_rate: float = Query(..., description="The annual interest rate (as a percentage)."),
+    monthly_payment: float = Query(..., description="The fixed monthly payment amount.")
+):
+    try:
+        if interest_rate <= 0 or monthly_payment <= 0:
+            raise HTTPException(status_code=400, detail="Interest rate and monthly payment must be positive.")
+
+        # Convert the interest rate from percentage to decimal
+        monthly_interest_rate = interest_rate / 100 / 12
+
+        months_left = 0
+        total_interest_paid = 0
+        remaining_debt = debt_amount
+
+        while remaining_debt > 0:
+            months_left += 1
+            interest_payment = remaining_debt * monthly_interest_rate
+            total_interest_paid += interest_payment
+            remaining_debt += interest_payment - monthly_payment
+
+            if remaining_debt <= 0:
+                break
+
+        return {
+            "Tag": "Debt Payoff Planner",
+            "Debt Amount": debt_amount,
+            "Interest Rate": interest_rate,
+            "Monthly Payment": monthly_payment,
+            "Months to Pay Off": months_left,
+            "Total Interest Paid": round(total_interest_paid, 2),
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

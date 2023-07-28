@@ -105,7 +105,6 @@
  }
 ```
 
-
 **GET** `/asset_portfolio`
 
 - Required parameters : `price_A`, `price_B`, `return_A`, `return_B`, `standard_dev_A`, `standard_dev_B` and `correlation` where A and B refer to the 2 stocks.
@@ -1357,7 +1356,7 @@
 ```
 
 \*_GET_ `calculate_lumpsum`
--Required Parameters: `principal`, `interest_rate `, `years`
+-Required Parameters: `principal`, `interest_rate`, `years`
 -sample output
 
 ```py
@@ -1584,7 +1583,6 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-
 **GET** `/asdcr`
 
 - Required parameters :`net_operating_cost`,
@@ -1592,7 +1590,6 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
   `non_cash_expenses`
   `annual_debt_service`
 - Sample output
-
 
 ```py
   {
@@ -1609,9 +1606,11 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 ```
 
 **GET** `/calculate_vat`
+
 - required parameters : `price`, `vat_rate`
 - Sample Request: GET /calculate_vat?price=100&vat_rate=20
 - Sample output
+
 ```py
 {
   "Price (excluding VAT)": 83.33,
@@ -1622,9 +1621,11 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 ```
 
 **GET** `/bond_equivalent_yield`
+
 - required parameters : `face_value`, `purchase_price`,`days_to_maturity`
 - Sample Request: GET /bond_equivalent_yield?face_value=1000&purchase_price=900&days_to_maturity=182
 - Sample output
+
 ```py
 {
   "Tag": "Bond Equivalent Yield",
@@ -1641,7 +1642,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
         `expenses`,
         `loan_term`,
         `interest_rate`,
-- Sample Request: `GET`, `http://127.0.0.1:8000/loan-affordability?income=5000&expenses=2000&loan_term=12&interest_rate=5`,    
+- Sample Request: `GET`, `http://127.0.0.1:8000/loan-affordability?income=5000&expenses=2000&loan_term=12&interest_rate=5`,
 
 - Sample output
 
@@ -1660,7 +1661,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 
 - Required parameters : `stockholders_equity`,
     `preferred_stock`, `average_outstanding_shares`,
-    
+
 - Sample output
 
 ```py
@@ -1676,11 +1677,13 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 ```
 
 **GET** `/gratuity-amount`
+
 - Required parameters : `last_salary`,
         `tenure_years`,
         `tenure_months`,
-- Sample Request: `GET`, `http://localhost:8000/calculate_gratuity?last_salary=20000000&tenure_years=10&tenure_months=1`,    
+- Sample Request: `GET`, `http://localhost:8000/calculate_gratuity?last_salary=20000000&tenure_years=10&tenure_months=1`,
 - Sample output
+
 ```py
 {
   {
@@ -1708,8 +1711,10 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 ```
 
   **GET** `/personal_savings`
+
 - Required parameters : 'init','monthly', 'tenure'
 - Sample output
+
 ```py
 {
             "Tag": "Simple Personal Savings",
@@ -1721,9 +1726,11 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 ```
 
 **GET** `/accrint`
+
 - Required parameters : `issue_date`,`settlement_date`,`rate`,`par`,
-- Sample Request: `GET`, `http://localhost:8000/accrint?issue_date=01-01-2012&settlement_date=15-02-2012&rate=5.25&par=5000&frequency=4&basis=3`,    
+- Sample Request: `GET`, `http://localhost:8000/accrint?issue_date=01-01-2012&settlement_date=15-02-2012&rate=5.25&par=5000&frequency=4&basis=3`,
 - Sample output
+
 ```py
 {
       "Tag":"Accrued Interest",
@@ -1737,12 +1744,13 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 ```
 
-
 # GET #  Endpoint --> '/mortrage'
+
 Required Paramenters --> princial:int,interest_rate:float,years:int,down_payment:int,property_tax_rate:float,insurance_rate:float
-Sample request --> http://127.0.0.1:8000/mortrages?princial=200000&interest_rate=4.5&years=45&down_payment=50000&property_tax_rate=1.3&insurance_rate=0.5
+Sample request --> <http://127.0.0.1:8000/mortrages?princial=200000&interest_rate=4.5&years=45&down_payment=50000&property_tax_rate=1.3&insurance_rate=0.5>
 
 Sample Output
+
 ```py
 {
   "Monthly Payment": 648.4110284532501,
@@ -1755,10 +1763,12 @@ Sample Output
 ```
 
 ## GET ## Endpoint --> '/social_securities'
+
 Required Parameters --> birth_date:str,earnings:int,retirement_age:int
 
-Sample request --> http://127.0.0.1:8000/social_securities?birth_date=10-08-2002&earnings=250000&retirement_age=70
+Sample request --> <http://127.0.0.1:8000/social_securities?birth_date=10-08-2002&earnings=250000&retirement_age=70>
 Sample Output
+
 ```py
 [
   "The monthly benefits are 20833.333333333332 and future benefits are 55349.83286723857"
@@ -1768,6 +1778,7 @@ Sample Output
 **GET** `/calculate_net_profit_margin`
 -Required parameters: `revenue`, `cost_of_goods_sold`, `operating_expenses`, `other_expenses`, `interest`, `taxes`
 -Sample Output
+
 ```py
 {
   "Tag":"Net Profit Margin",
@@ -1785,6 +1796,7 @@ Sample Output
 **GET** `/calculate_expected_return_of_portfolio`
 -Required parameters: `no_of_investments`, `weight_of_investment`, `rate_of_return`
 -Sample Output
+
 ```py
 {
   "Tag": "Expected Return of Portfolio",
@@ -1797,10 +1809,10 @@ Sample Output
 
 ```
 
-
 **GET** `/calculate_sharpe_ratio_function`
 -Required parameters: `returns`, `risk_free_rate`
 -Sample Output
+
 ```py
 
 {
@@ -1814,6 +1826,7 @@ Sample Output
 **GET** `/calculate_post_tax_return_percentage`
 -Required parameters: `tax_rate_percentage`, `annual_net_income`, `initial_cost_of_investment`
 -Sample Output
+
 ```py
 {
   "Tag" : "Post Tax Return Percentage",
@@ -1829,6 +1842,7 @@ Sample Output
 
 - Required parameters :`base`,`jb`,`stock`,`pb`,`bonus`,`ptax`,`deduction`
 - Sample output
+
 ```py
   {
 
@@ -1848,7 +1862,7 @@ Sample Output
 
 **GET** `/loan_to_value_ratio`
 
-- Required parameters : `loan_amount`, `value_of_collateral` 
+- Required parameters : `loan_amount`, `value_of_collateral`
 - Sample output
 
 ```py
@@ -1863,6 +1877,7 @@ Sample Output
 **GET** `/calculate_treynor_ratio_function`
 -Required parameters: `returns`, `risk_free_rate`,`beta`
 -Sample Output
+
 ```py
 {
   "Tag": "Treynor Ratio",
@@ -1876,6 +1891,7 @@ Sample Output
 
 - Required parameters
 - Sample output
+
 ```py
   {
     "Tag":"Free Cash Flow to Equity",
@@ -1916,7 +1932,7 @@ Sample Output
 
 **GET** `/capital_gains_yield`
 
-- Required parameters : `inital_price`, `price_after_first_period` 
+- Required parameters : `inital_price`, `price_after_first_period`
 - Sample output
 
 ```py
@@ -1927,8 +1943,9 @@ Sample Output
     "Capital Gains Yield": 10%,
 }
 ```
-    
+
 **GET** `/macaulay-duration`
+
 - Required parameters : `face_value`,
         `coupon_rate`,
         `dt`,
@@ -1937,8 +1954,9 @@ Sample Output
         `coupon_frequency`,
         `discount_rate`,
 
-- Sample Request: `GET`, `http://localhost:8000/calculate_macaulay_duration?face_value=1000.0&coupon_rate=0.06&dt=19&month=6&year=2026&coupon_frequency=2&discount_rate=0.06`,    
+- Sample Request: `GET`, `http://localhost:8000/calculate_macaulay_duration?face_value=1000.0&coupon_rate=0.06&dt=19&month=6&year=2026&coupon_frequency=2&discount_rate=0.06`,
 - Sample output
+
 ```py
 {
   {
@@ -1958,6 +1976,7 @@ Sample Output
 **GET** `/calculate_financial_leverage`
 -Required parameters: `total_assets`, `total_liabilities`, `short_term_debt`, `long_term_debt`
 -Sample Output
+
 ```py
 {
   "Tag" : "Calculate financial leverage",
@@ -1973,6 +1992,7 @@ Sample Output
 **GET** `/portfolio_return_monte_carlo`
 -Required parameters: `principal`, `expected_return_range_start`,`expected_return_range_end`, `volatility_range_start`,`volatility_range_end`, `num_simulations`
 -Sample Output
+
 ```py
 {
   'Tag': 'Portfolio Return Monte Carlo',
@@ -2034,6 +2054,7 @@ Sample Output
   "Capitalization Rate": 6.16%
 }
 ```
+
 **POST** `/capm`
 
 - Request body : `{
@@ -2084,6 +2105,7 @@ Sample Output
   "profit": 1560.8,
   "cost_price": 7500.4
 }`
+
 ```py
 {
   "Tag": "Profit Percentage",
@@ -2096,26 +2118,27 @@ Sample Output
 **POST** `/defensive_interval_ratio`
 
 - Request body : `{
-	"cash": 40000.00,
-	"marketable_securities": 20000.00,
-	"net_receivables": 10000.00,
-	"annual_operating_expenses": 300000.00,
-	"non_cash_charges": 25000.00
+ "cash": 40000.00,
+ "marketable_securities": 20000.00,
+ "net_receivables": 10000.00,
+ "annual_operating_expenses": 300000.00,
+ "non_cash_charges": 25000.00
 }`
 - Sample output
+
 ```py
 {
   "Tag": "Defensive Interval Ratio",
-	"Cash": 40000.00,
-	"Marketable Securites": 20000.00,
-	"Net Receivables": 10000.00,
-	"Annual Operating Expenses": 300000.00,
-	"Non Cash Charges": 25000.00,
-	"Current Assets": 70000.0,
-	"Daily Operational Expenses": 753.42,
-	"Defensive Interval Ratio": 92.90
+ "Cash": 40000.00,
+ "Marketable Securites": 20000.00,
+ "Net Receivables": 10000.00,
+ "Annual Operating Expenses": 300000.00,
+ "Non Cash Charges": 25000.00,
+ "Current Assets": 70000.0,
+ "Daily Operational Expenses": 753.42,
+ "Defensive Interval Ratio": 92.90
 }
-``` 
+```
 
 **POST** `/loss_percent`
 
@@ -2132,7 +2155,8 @@ Sample Output
   "Cost Price": 7500.47,
   "Loss Percentage": 6.67,
 }
-``` 
+```
+
 **POST** `/rate_return_calculator`
 
 - Request body : `{
@@ -2176,7 +2200,7 @@ Sample Output
 
 - Request body : `{
   "beginning_inventory": 1000,
-  "ending_inventory": 2000, 
+  "ending_inventory": 2000,
   "beginning_receivables": 100
   "ending_receivables": 90,
   "beginning_payable": 800,
@@ -2214,7 +2238,7 @@ Sample Output
     "deductible": 500,
     "num_claims": 0,
     "num_accidents": 1
-**POST** `/price-elasticity`
+**POST**`/price-elasticity`
 
 - Request body : `{
   "initial_price": 10.0,
@@ -2236,7 +2260,7 @@ Sample Output
 
 - Request body : `{
   "beginning_accounts_payable": 110000,
-  "ending_accounts_payable": 95000, 
+  "ending_accounts_payable": 95000,
   "total_credit_purchases": 1110000
 }`
 - Sample output
@@ -2249,5 +2273,23 @@ Sample Output
   "Total Credit Purchases": 1110000,
   "Average Accounts Payable": 102500,
   "Average Payment Period": "33.7days",
+}
+```
+
+**POST** `/debt_payoff_planner`
+- Request body :
+  {
+    "amount_paid": 20.23,
+    "principle_amount": 30.9,
+    "months": 5
+  }
+- Sample Output:
+```py
+{
+  "Tag": "Simple Interest Rate",
+  "Total amount paid": 20.23,
+  "Principle amount": 30.9,
+  "Interest Paid": -10.67,
+  "Interest Rate": "-82.87%"
 }
 ```

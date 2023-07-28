@@ -648,3 +648,9 @@ class AveragePaymentPeriod(BaseModel):
 	beginning_accounts_payable: float
 	ending_accounts_payable: float
 	total_credit_purchases: float
+ 
+
+class DebtPayoffPlannerRequest(BaseModel):
+    debt_amount: float
+    interest_rate: float
+    monthly_payment: float

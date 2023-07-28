@@ -66,3 +66,8 @@ The initial price of the product or service. |
 |                             |                                        | - `ending_inventory` (float): The final amount of accounts payable ending the cycle. |
 |                             |                                        | - `total_credit_purchases` (float): The amount of purchases on credit during the cycle. |
 |-----------------------------|----------------------------------------|---------------------------------------------------------------------|
+| Endpoint                  | Description                            | Request Parameters                                       |
+|---------------------------|----------------------------------------|---------------------------------------------------------|
+| POST /debt_payoff_planner | Calculate debt payoff plan             | - `debt_amount` (float): The total amount of debt.       |
+|                           |                                        | - `interest_rate` (float): The annual interest rate.    |
+|                           |                                        | - `monthly_payment` (float): The fixed monthly payment. |

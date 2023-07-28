@@ -5,6 +5,7 @@ import math
 import datetime
 from dateutil.relativedelta import relativedelta
 from typing import Union
+from fastapi import FastAPI, HTTPException, Query
 
 
 # Function to Calculate Simple Interest Rate
@@ -2055,3 +2056,36 @@ total_credit_purchases: float):
     app = average_accounts_payable / (total_credit_purchases / 365)
     return app
 
+
+
+# Function for Debt Payoff Planner
+
+
+def debt_payoff_planner(debt_amount: float, interest_rate: float, monthly_payment: float):
+    if interest_rate <= 0 or monthly_payment <= 0:
+        raise ValueError("Interest rate and monthly payment must be positive.")
+
+    # Convert the interest rate from percentage to decimal
+    monthly_interest_rate = interest_rate / 100 / 12
+
+    months_left = 0
+    total_interest_paid = 0
+    remaining_debt = debt_amount
+
+    while remaining_debt > 0:
+        months_left += 1
+        interest_payment = remaining_debt * monthly_interest_rate
+        total_interest_paid += interest_payment
+        remaining_debt += interest_payment - monthly_payment
+
+        if remaining_debt <= 0:
+            break
+
+    return {
+        "Tag": "Debt Payoff Planner",
+        "Debt Amount": debt_amount,
+        "Interest Rate": interest_rate,
+        "Monthly Payment": monthly_payment,
+        "Months to Pay Off": months_left,
+        "Total Interest Paid": round(total_interest_paid, 2),
+    }
