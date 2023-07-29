@@ -659,3 +659,7 @@ class ModifiedInternalRateOfReturn(BaseModel):
 	ending_cash_flow: float
 	initial_cash_flow: float
 	number_of_periods: int
+
+class StockPricePrediction(BaseModel):
+    Historical_Price_Data: int
+    Time_Horizon:int

@@ -71,3 +71,6 @@ The initial price of the product or service. |
 |                             |                                        | - `interest_rate` (float): The annual interest rate on the savings. |
 |                             |                                        | - `goal_amount ` (float): The desired savings goal amount. |
 |-----------------------------|----------------------------------------|----------------------------------------------------------------------|
+| GET /predict_stock_price | Calculate Stock Price                     | - `Historical_Price_Data` (int):  A list or numpy array containing historical stock prices, used as input for stock price prediction. |
+|                             |                                        | - `Time_Horizon` (int): The number of days in the future for which the stock price is to be predicted. |
+|-----------------------------|----------------------------------------|---------------------------------------------------------------------|

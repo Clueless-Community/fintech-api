@@ -2305,4 +2305,22 @@ Sample Output
     "months_required": 18,
     "total_contributions": 3600,
     "interest_earned": 315.27777777777777
-    }```
+    }
+    ```
+
+*POST* `/stock_price_prediction`
+
+- Request body : `{
+  "Historical_Price_Data": [100, 105, 110, 115, 120, 125, 130, 135], 
+  "Time_Horizon": 5
+ }`
+ - Sample output
+
+``` py
+{
+   "Tag": "Stock Price Prediction",
+   "Predicted_Stock_Price": 135,
+   "Prediction_Confidence": 0.95,
+   "Prediction_Date": 1110000,
+   }
+   ```

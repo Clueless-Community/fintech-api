@@ -2068,3 +2068,18 @@ def calculate_modified_internal_rate_of_return(ending_cash_flow: float,
                                                 number_of_periods: int):
     mirr = ((ending_cash_flow / initial_cash_flow) ** (1 / number_of_periods)) - 1
     return mirr*100
+
+# Function to Calculate Stock Price
+
+def predict_stock_price(historical_prices: int, time_horizon: int):
+    """
+    Predict stock prices using the naive method (last observed stock price).
+
+    Parameters:
+        historical_prices (list or numpy array): A list or numpy array containing historical stock prices.
+        time_horizon (int): The number of days in the future for which to predict the stock price.
+
+    Returns:
+        predicted_price (float): The predicted stock price for the specified time horizon.
+    """
+    return historical_prices[-1]

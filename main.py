@@ -135,7 +135,7 @@ from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn
+from validators.request_validators import SavingGoal, SimpleInterestRateRequest, StockPricePrediction, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
 from tasks.average_payment_period import average_payment_period_task
@@ -1991,8 +1991,18 @@ def average_payment_period(request: AveragePaymentPeriod):
     tags=["saving_goal"],
     description="Calculate Saving Goal",
 )
-def saving_goal(request: SavingGoal):
+def saving_goal(request:SavingGoal):
     return saving_goal(request.current_savings , 
     request.monthly_contributions ,
     request.interest_rate, 
     request.goal_amount )
+
+# Endpoint to calculate Stock Price 
+@app.post(
+    "/predict_stock_price",
+    tags=["predict_stock_price"],
+    description="Calculate Stock Price",
+)
+def predict_stock_price(request:StockPricePrediction):
+    return predict_stock_price(request.Historical_Price_Data , 
+    request.Time_Horizon)
