@@ -174,12 +174,12 @@ def simple_interest_rate(request: SimpleInterestRateRequest):
   "Principle amount": 30.9,
   "Interest Paid": -10.669999999999998,
   "Interest Rate": "-82.87378640776697%"
-}
+} ```
 ```
 +Update the Docs
 ```
 |---------------------------|----------------------------------------|---------------------------------------------------------|
-| GET /simple_interest_rate | Calculate simple interest rates        | - `amount_paid` (float): The amount paid.               |
+| POST /simple_interest_rate | Calculate simple interest rates        | - `amount_paid` (float): The amount paid.               |
 |                           |                                        | - `principle_amount` (float): The principle amount.     |
 |                           |                                        | - `months` (int): The number of months.                 |
 ```
