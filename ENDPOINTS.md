@@ -2051,7 +2051,7 @@ Sample Output
 **POST** `opearating_cash_flow_ratio`
 - Request body : `{
  "Operating Cash Flow": 150000,
- "Current Liabilities": 1200000,
+ "Current Liabilities": 120000,
   }`
   - Sample output 
 ```py
