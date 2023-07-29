@@ -2050,8 +2050,11 @@ Sample Output
 ```
 
 **POST** `net_income`
-- Required Parameters : `revenue`, `expenses`
-- Sample output 
+- Request body : `{
+ "Revenue" : 30000,
+ "Expenses": 25000
+  }`
+  - Sample output 
 ```py
 {
  "Tag" : "Net Income",
@@ -2062,8 +2065,12 @@ Sample Output
 ```
 
 **POST** `break_even_point`
-- Required Parameters : `fixed_costs`, `sales_price_per_unit`,`variable_price_per_unit`
-- Sample output 
+- Request body : `{
+ "Fixed Costs": 2500,
+ "Sales Price Per Unit": 2.95,
+ "Variable Price Per Unit": 1.40
+  }`
+  - Sample output 
 ```py
 {
 "Tag": "Break-even Point",
@@ -2074,8 +2081,12 @@ Sample Output
 }
 ```
 **POST** `day_sales_in_inventory_ratio`
-- Required Parameters : `avg_inventory`, `cost_of_goods_sold`,`no_of_days`
-- Sample output 
+- Request body : `{
+ "Average Inventory": 50000,
+ "Cost of Goods Sold": 200000,
+ "No of Days": 365
+  }`
+  - Sample outputt 
 ```py
 {
  "Tag": "Day Sales in Inventory Ratio",
@@ -2086,8 +2097,12 @@ Sample Output
 }
 ```
 **POST** `cash_ratio`
-- Required Parameters : `cash`,`cash_equivalents`, `current_liabilities`
-- Sample output 
+- Request body : `{
+ "Cash": 37.1,
+ "Cash Equivalents": 26.8,
+ "Current Liabilities": 123.5
+  }`
+  - Sample output 
 ```py
 {
  "Tag": "Cash Ratio",
@@ -2097,3 +2112,4 @@ Sample Output
  "Cash Ratio": "0.52"
 }
 ```
+
