@@ -2055,6 +2055,12 @@ total_credit_purchases: float):
     app = average_accounts_payable / (total_credit_purchases / 365)
     return app
 
+# Function to Saving Goal Calculator
+
+def saving_goal(current_savings: float, monthly_contributions: float, interest_rate: float, goal_amount: float):
+    savings_ratio = current_savings / goal_amount
+    return savings_ratio
+
 # Function to calculate Modified Internal Rate of Return (MIRR)
 
 def calculate_modified_internal_rate_of_return(ending_cash_flow: float,
