@@ -654,3 +654,8 @@ class SavingGoal(BaseModel):
     monthly_contributions : float  
     interest_rate: float 
     goal_amount: float
+
+class ModifiedInternalRateOfReturn(BaseModel):
+	ending_cash_flow: float
+	initial_cash_flow: float
+	number_of_periods: int
