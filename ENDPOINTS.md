@@ -2048,3 +2048,28 @@ Sample Output
   "Capitalization Rate": 6.16%
 }
 ```
+**POST** `opearating_cash_flow_ratio`
+- Request body : `{
+ "Operating Cash Flow": 150000,
+ "Current Liabilities": 1200000,
+  }`
+  - Sample output 
+```py
+{
+ "Tag": "Operating Cash Flow Ratio",
+	- Sample output
+}
+```
+
+**POST** `interest_coverage_ratio`
+- Request body : `{
+ "Operating Income": 1000,
+ "Interest Expenses": 50,
+  }`
+  - Sample output 
+```py
+{
+ "Tag": "Interest Coverage Ratio",
+  - Sample Output
+}
+```
