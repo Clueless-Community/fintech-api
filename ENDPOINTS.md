@@ -2305,4 +2305,27 @@ Sample Output
     "months_required": 18,
     "total_contributions": 3600,
     "interest_earned": 315.27777777777777
-    }```
+    }
+```
+
+**POST** `/interest_coverage_ratio`
+
+- Request body : `{
+  "revenue": 150000,
+  "cost_of_goods_services": 50000,
+  "operating_expenses": 40000
+  "interest_expense": 16000
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Interest Coverage Ratio"
+  "Revenue": 150000,
+  "Cost of Goods and Services": 50000,
+  "Operating Expenses": 40000,
+  "Interest Expenses": 16000,
+  "Earnings Before Interest and Taxes": 60000,
+  "Interest Coverage Ratio": "3.75%",
+}
+```
