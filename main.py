@@ -1906,7 +1906,7 @@ def day_sales_in_inventory_ratio(avg_inventory: int, cost_of_goods_sold: int, no
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Endpoint to calculate the Cash Ratio   
-@app.get(
+@app.post(
     "/cash_ratio",
     tags=["cash_ratio"],
     description="Calculating the Cash Ratio",
