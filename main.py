@@ -1846,6 +1846,40 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
                                     ending_accounts_payable: float):
     return accounts_payable_turnover_ratio_task(total_supply_purchases, beginning_accounts_payable, ending_accounts_payable)
 
-
-
+# Endpoint to calculate the Operating Cash Flow Ratio     
+@app.post(
+    "/opearating_cash_flow_ratio",
+    tags=["opearating_cash_flow_ratio"],
+    description="Calculating the Operating Cash Flow Ratio",
+)
+def opearating_cash_flow_ratio(operating_cash_flow:int,current_liabilities: int):
+    try:
+        opearating_cash_flow_ratio_value = functions.opearating_cash_flow_ratio(operating_cash_flow,current_liabilities)
+        return {
+            "Tag": "Operation Cash Flow Ratio",
+            "Operating Cash Flow": operating_cash_flow ,
+            "Current Libilites": current_liabilities ,
+            "Operation Cash Flow Ratio": opearating_cash_flow_ratio_value,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+	
+# Endpoint to calculate the Interest Coverage Ratio     
+@app.post(
+    "/interest_coverage_ratio",
+    tags=["interest_coverage_ratio"],
+    description="Calculating the Interest Coverage Ratio",
+)
+def interest_coverage_ratio(operating_income:int,interest_expenses: int):
+    try:
+        interest_coverage_ratio_value = functions.interest_coverage_ratio(operating_income,interest_expenses)
+        return {
+            "Tag": "Interest Coverage Ratio",
+            "Operating Income": operating_income ,
+            "Interest Expenses": interest_expenses ,
+            "Interest Coverage Ratio": interest_coverage_ratio_value,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+   
     
