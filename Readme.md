@@ -66,7 +66,7 @@ Welcome to FinTech API, our powerful API is designed to simplify your life by of
 ## ✨ Contributing Roadmap
 
  - Go through the [CONTRIBUTING.md](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md) file, where all the guidelines have been mentioned that will guide you to make your contribution.
- - Do checkout the [project workflow](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-worflow) section.
+ - Do checkout the [project workflow](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-workflow) section.
 
 Join our growing community of developers who have already discovered the power of FinTech APIzap and contribute to the project's ambition to empower users with the ability to handle financial tasks efficiently.
 
@@ -75,10 +75,15 @@ Join our growing community of developers who have already discovered the power o
 
 This project is a part of these Open Source Programs
 
-- [Diversion 2K33](https://diversion.tech/) 
+- [Diversion 2K33](https://diversion.tech/)
+- [GSSoC 2K33](https://gssoc.girlscript.tech/)
 
 
 ## ✨ Thank You for Your Contribution!
+Thanks a lot for spending your time helping fintech-api grow. Thanks a lot! Keep rocking 🍻
+<p>
+  <img src="https://api.vaunt.dev/v1/github/entities/Clueless-Community/repositories/fintech-api/contributors?format=svg&limit=54" width="600" height"250" />
+</p>
 <p align=center>
 <a href="https://github.com/Clueless-Community/fintech-api/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Clueless-Community/fintech-api" />

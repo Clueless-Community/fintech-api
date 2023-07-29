@@ -135,11 +135,13 @@ from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
 from tasks.average_payment_period import average_payment_period_task
+from tasks.modified_internal_rate_of_return import calculate_modified_internal_rate_of_return_task
 from tasks.PPFCalculator import ppf_calculator
+
 
 # Creating the app
 app = FastAPI(
@@ -271,8 +273,9 @@ def index():
             "/portfolio_return_monte_carlo":"Calculates Portfolio returns based on Monte Carlo Simulation",
             "/profit_percent": "Calculates the profit percentage",
             "/loss_percent": "Calculates the loss percentage",
-            "/average_payment_period": "Calculate Average Payment Period a metric that allows a business to see how long it takes on average to pay its vendors."
-            "/ppf_calculator": "Calculates Public Provident Fund(PPF)"
+            "/average_payment_period": "Calculate Average Payment Period a metric that allows a business to see how long it takes on average to pay its vendors.",
+            "/modified_internal_rate_of_return": "Calculate modified internal rate of return",
+            "/ppf_calculator": "Calculates Public Provident Fund(PPF)",
         },
     }
 
@@ -1859,6 +1862,22 @@ def debt_service_coverage_ratio(request: DebtServiceCoverageRatio):
 	request.interest,
 	request.tax_rate,
 	request.principal)
+
+
+@app.post(
+    "/modified_internal_rate_of_return",
+    tags=["mirr"],
+    description="Calculate Modified Internal Rate of Return (MIRR)",
+)
+def calculate_modified_internal_rate_of_return(
+    request: ModifiedInternalRateOfReturn
+):
+    return calculate_modified_internal_rate_of_return_task(
+        request.ending_cash_flow,
+        request.initial_cash_flow,
+        request.number_of_periods,
+    )
+    
 
 #Endpoint to calculate profit percentage
 @app.post(

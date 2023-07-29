@@ -179,7 +179,7 @@ def simple_interest_rate(request: SimpleInterestRateRequest):
 +Update the Docs
 ```
 |---------------------------|----------------------------------------|---------------------------------------------------------|
-| GET /simple_interest_rate | Calculate simple interest rates        | - `amount_paid` (float): The amount paid.               |
+| POST /simple_interest_rate | Calculate simple interest rates        | - `amount_paid` (float): The amount paid.               |
 |                           |                                        | - `principle_amount` (float): The principle amount.     |
 |                           |                                        | - `months` (int): The number of months.                 |
 ```
