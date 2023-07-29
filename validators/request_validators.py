@@ -856,3 +856,11 @@ class calculateMarketCap(BaseModel):
 class calculateBvps(BaseModel):
     total_equity: float
     number_of_shares: float
+
+class opearating_cash_flow_ratio(BaseModel):
+    operating_cash_flow :int
+    current_liabilities: int
+
+class interest_coverage_ratio(BaseModel):
+    operating_income :int
+    interest_expenses: int
