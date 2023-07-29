@@ -1,5 +1,5 @@
-from helpers import functions
 from fastapi import HTTPException, status
+
 def loan_eligibility_check(credit_score: float, monthly_income: float,  loan_amount:float):
 
     try:
