@@ -1850,7 +1850,7 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
 
 
 # Endpoint to calculate the net income
-@app.get(
+@app.post(
     "/net_income",
     tags=["net_income"],
     description="Calculating the Net Income",
@@ -1868,7 +1868,7 @@ def net_income(revenue: float, expenses: float):
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Endpoint to calculate the break-even point
-@app.get(
+@app.post(
     "/break_even_point",
     tags=["break_even_point"],
     description="Calculating the Break-even Point",
@@ -1887,7 +1887,7 @@ def break_even_point(fixed_costs: int, sales_price_per_unit: float, variable_pri
         return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Endpoint to calculate the Day Sales in Inventory Ratio   
-@app.get(
+@app.post(
     "/day_sales_in_inventory_ratio",
     tags=["day_sales_in_inventory_ratio"],
     description="Calculating the Day Sales in Inventory Ratio",
