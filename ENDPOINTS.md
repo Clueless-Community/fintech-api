@@ -2049,7 +2049,7 @@ Sample Output
 }
 ```
 
-**GET** `net_income`
+**POST** `net_income`
 - Required Parameters : `revenue`, `expenses`
 - Sample output 
 ```py
@@ -2061,7 +2061,7 @@ Sample Output
 }
 ```
 
-**GET** `break_even_point`
+**POST** `break_even_point`
 - Required Parameters : `fixed_costs`, `sales_price_per_unit`,`variable_price_per_unit`
 - Sample output 
 ```py
@@ -2073,7 +2073,7 @@ Sample Output
 "Break-even Point": 1612.9032258064512
 }
 ```
-**GET** `day_sales_in_inventory_ratio`
+**POST** `day_sales_in_inventory_ratio`
 - Required Parameters : `avg_inventory`, `cost_of_goods_sold`,`no_of_days`
 - Sample output 
 ```py
@@ -2085,7 +2085,7 @@ Sample Output
  "Day Sales in Inventory Ratio": "91.25"
 }
 ```
-**GET** `cash_ratio`
+**POST** `cash_ratio`
 - Required Parameters : `cash`,`cash_equivalents`, `current_liabilities`
 - Sample output 
 ```py
