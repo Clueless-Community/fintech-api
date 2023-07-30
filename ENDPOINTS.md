@@ -2272,7 +2272,6 @@ Sample Output
     "price_elasticity": -1.5
 }
 ```
-
 **POST** `/average_payment_period`
 
 - Request body : `{
@@ -2292,6 +2291,24 @@ Sample Output
   "Average Payment Period": "33.7days",
 }
 ```
+
+**POST** `/saving_goal  `
+
+- Request body : `{
+  "current_savings": 100,
+  "monthly_contributions ": 200,
+  "interest_rate" 5,
+  "goal_amount" 5000
+  }`
+  - Sample output
+
+```py
+{
+  "Tag": "Saving Goal Calculator",
+    "months_required": 18,
+    "total_contributions": 3600,
+    "interest_earned": 315.27777777777777
+    }```
 
 **POST** `/debt_payoff_planner`
 - Request body :

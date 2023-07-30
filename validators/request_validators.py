@@ -649,7 +649,12 @@ class AveragePaymentPeriod(BaseModel):
 	ending_accounts_payable: float
 	total_credit_purchases: float
 
-
+class SavingGoal(BaseModel):
+    current_savings: float 
+    monthly_contributions : float  
+    interest_rate: float 
+    goal_amount: float
+      
 class ModifiedInternalRateOfReturn(BaseModel):
 	ending_cash_flow: float
 	initial_cash_flow: float

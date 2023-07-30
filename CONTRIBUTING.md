@@ -174,7 +174,7 @@ def simple_interest_rate(request: SimpleInterestRateRequest):
   "Principle amount": 30.9,
   "Interest Paid": -10.669999999999998,
   "Interest Rate": "-82.87378640776697%"
-}
+} ```
 ```
 +Update the Docs
 ```
