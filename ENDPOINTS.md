@@ -2306,3 +2306,27 @@ Sample Output
     "total_contributions": 3600,
     "interest_earned": 315.27777777777777
     }```
+
+```
+
+**POST** `/fd_payout`
+- Request body : `p`,
+        `t`,
+        `r`,
+        `c`,
+        
+- Sample output
+```py
+{
+  {
+        "Tag": "fd_payout",
+        "Principal": 1000,
+        "Term (in years)": 2,
+        "Rate (as a decimal)" : 0.04,
+        "Compounding period" : 6,
+        "Payout_monthly": 80,
+        "Payout_yearly": 81,
+        "Payout_cumulative": 82,
+  }
+}
+```

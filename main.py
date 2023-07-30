@@ -1996,3 +1996,17 @@ def saving_goal(request: SavingGoal):
     request.monthly_contributions ,
     request.interest_rate, 
     request.goal_amount )
+
+
+# Endpoint for function fd_payout
+
+@app.post(
+    "/fd_payout",
+    tags=["fd_payout"],
+    description="Calculate monthly, yearly and cumulative fixed deposit payout",
+)
+def fd_payout(
+    request: FdPayout
+):
+    return fd_payout(request.p, request.t, request.r, request.c)
+
