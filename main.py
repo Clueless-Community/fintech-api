@@ -1846,6 +1846,42 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
                                     ending_accounts_payable: float):
     return accounts_payable_turnover_ratio_task(total_supply_purchases, beginning_accounts_payable, ending_accounts_payable)
 
+# Endpoint to calculate the Book Value Per Share Ratio     
+@app.post(
+    "/book_value_per_share_ratio",
+    tags=["book_value_per_share_ratio"],
+    description="Calculating the Book Value Per Share Ratio",
+)
+def book_value_per_share_ratio(shareholders_equity:int,preferred_equity:int,total_common_share_outstanding:int):
+    try:
+        book_value_per_share_ratio_value = functions.book_value_per_share_ratio(shareholders_equity,preferred_equity,total_common_share_outstanding)
+        return {
+            "Tag": "Book Value Per Share Ratio",
+            "Shareholders Equity": shareholders_equity ,
+            "Preferred Equity":preferred_equity,
+            "Total Common Share Outstanding": total_common_share_outstanding ,
+            "Book Value Per Share Ratio": book_value_per_share_ratio_value,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate the Operating Margin Ratio    
+@app.post(
+    "/operating_margin_ratio",
+    tags=["operating_margin_ratio"],
+    description="Calculating the Operating Margin Ratio",
+)
+def operating_margin_ratio(operating_income:int,net_sales:int):
+    try:
+        operating_margin_ratio_value = functions.operating_margin_ratio(operating_income,net_sales)
+        return {
+            "Tag": "Operating Margin Ratio",
+            "Operating Income": operating_income ,
+            "Net Sales": net_sales ,
+            "Operating Margin Ratio": operating_margin_ratio_value,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
     
