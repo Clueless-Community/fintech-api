@@ -1998,3 +1998,14 @@ def net_worth_calculation(assets: float, liabilities: float, loans: float, mortg
             "Liabilities": total_liabilities,
             "Net Worth": net_worth,
         }
+# Endpoint to calculate the Gross Margin Ratio 
+def gross_margin_ratio(gross_profit: int,net_sales:int):
+    return gross_profit/net_sales
+
+# Endpoint to calculate the Price Earnings Ratio 
+def price_earnings_ratio(share_price: int,earnings_per_share:int):
+    return share_price/earnings_per_share
+
+# Endpoint to calculate the Earnings Per Share Ratio 
+def earnings_per_share_ratio(net_earnings: int,total_share_outstanding:int):
+    return net_earnings/total_share_outstanding
