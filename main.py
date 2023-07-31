@@ -1846,6 +1846,59 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
                                     ending_accounts_payable: float):
     return accounts_payable_turnover_ratio_task(total_supply_purchases, beginning_accounts_payable, ending_accounts_payable)
 
+# Endpoint to calculate the Gross Margin Ratio      
+@app.post(
+    "/gross_margin_ratio",
+    tags=["gross_margin_ratio"],
+    description="Calculating the Gross Margin Ratio",
+)
+def gross_margin_ratio(gross_profit:int,net_sales: int):
+    try:
+        gross_margin_ratio_value = functions.gross_margin_ratio(gross_profit,net_sales)
+        return {
+            "Tag": "Gross Margin Ratio",
+            "Gross Profit": gross_profit ,
+            "Net Sales": net_sales ,
+            "Gross Margin Ratio": gross_margin_ratio_value,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+# Endpoint to calculate the Price Earnings Ratio      
+@app.post(
+    "/price_earnings_ratio",
+    tags=["price_earnings_ratio"],
+    description="Calculating the Price Earnings Ratio",
+)
+def price_earnings_ratio(share_price:int,earnings_per_share: int):
+    try:
+        price_earnings_ratio_value = functions.price_earnings_ratio(share_price,earnings_per_share)
+        return {
+            "Tag": "Price Earnings Ratio",
+            "Share Price": share_price ,
+            "Earnings Per Shares": earnings_per_share ,
+            "Price Earnings Ratio": price_earnings_ratio_value,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Endpoint to calculate the Earnings Per Share Ratio      
+@app.post(
+    "/earnings_per_share_ratio",
+    tags=["earnings_per_share_ratio"],
+    description="Calculating the Earnings Per Share Ratio",
+)
+def earnings_per_share_ratio(net_earnings:int,total_share_outstanding: int):
+    try:
+        earnings_per_share_ratio_value = functions.earnings_per_share_ratio(net_earnings,total_share_outstanding)
+        return {
+            "Tag": "Earnings Per Share Ratio",
+            "Net Earnings": net_earnings ,
+            "Total Share Outstanding": total_share_outstanding ,
+            "Earnings Per Share Ratio": earnings_per_share_ratio_value,
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
     
