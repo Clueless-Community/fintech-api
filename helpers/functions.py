@@ -1998,3 +1998,11 @@ def net_worth_calculation(assets: float, liabilities: float, loans: float, mortg
             "Liabilities": total_liabilities,
             "Net Worth": net_worth,
         }
+
+# Endpoint to calculate the Book Value Per Share Ratio 
+def book_value_per_share_ratio(shareholders_equity: int,preferred_equity:int,total_common_share_outstanding:int):
+    return (shareholders_equity-preferred_equity)/total_common_share_outstanding
+
+# Endpoint to calculate the Operating Margin Ratio 
+def operating_margin_ratio(operating_income: int,net_sales:int):
+    return operating_income/net_sales
