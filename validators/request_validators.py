@@ -857,14 +857,14 @@ class calculateBvps(BaseModel):
     total_equity: float
     number_of_shares: float
 
-# Endpoint to calculate the Gross Margin Ratio 
-def gross_margin_ratio(gross_profit: int,net_sales:int):
-    return gross_profit/net_sales
+class gross_margin_ratio(BaseModel):
+    gross_profit :int
+    net_sales: int
 
-# Endpoint to calculate the Price Earnings Ratio 
-def price_earnings_ratio(share_price: int,earnings_per_share:int):
-    return share_price/earnings_per_share
+class price_earnings_ratio(BaseModel):
+    share_price :int
+    earnings_per_share: int
 
-# Endpoint to calculate the Earnings Per Share Ratio 
-def earnings_per_share_ratio(net_earnings: int,total_share_outstanding:int):
-    return net_earnings/total_share_outstanding
+class earnings_per_share_ratio(BaseModel):
+    net_earnings :int
+    total_share_outstanding: int
