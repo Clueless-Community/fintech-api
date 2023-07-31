@@ -2048,3 +2048,40 @@ Sample Output
   "Capitalization Rate": 6.16%
 }
 ```
+**POST** `gross_margin_ratio`
+- Request body : `{
+ "Gross Profit": 1000,
+ "Net Sales": 100,
+  }`
+  - Sample output 
+```py
+{
+ "Tag": "Gross Margin Ratio",
+  - Sample Output
+}
+```
+**POST** `price_earnings_ratio`
+- Request body : `{
+ "Share Price": 1000,
+ "Earnings Per Share": 100,
+  }`
+  - Sample output 
+```py
+{
+ "Tag": "Price Earnings Ratio",
+  - Sample Output
+}
+```
+**POST** `earnings_per_share_ratio`
+- Request body : `{
+ "Net Earnings": 1000,
+ "Total Share Outstanding": 100,
+  }`
+  - Sample output 
+```py
+{
+ "Tag": "Earnings Per Share Ratio",
+  - Sample Output
+}
+```
+
