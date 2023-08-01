@@ -135,12 +135,14 @@ from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
 from tasks.average_payment_period import average_payment_period_task
 from tasks.quick_ratio import quick_ratio_task
 from tasks.cash_ratio import cash_ratio_task
+from tasks.Saving_Goal import saving_goal
+from tasks.modified_internal_rate_of_return import calculate_modified_internal_rate_of_return_task
 
 # Creating the app
 app = FastAPI(
@@ -272,7 +274,8 @@ def index():
             "/portfolio_return_monte_carlo":"Calculates Portfolio returns based on Monte Carlo Simulation",
             "/profit_percent": "Calculates the profit percentage",
             "/loss_percent": "Calculates the loss percentage",
-            "/average_payment_period": "Calculate Average Payment Period a metric that allows a business to see how long it takes on average to pay its vendors."
+            "/average_payment_period": "Calculate Average Payment Period a metric that allows a business to see how long it takes on average to pay its vendors.",
+            "/modified_internal_rate_of_return": "Calculate modified internal rate of return",
         },
     }
 
@@ -1885,6 +1888,22 @@ def debt_service_coverage_ratio(request: DebtServiceCoverageRatio):
 	request.tax_rate,
 	request.principal)
 
+
+@app.post(
+    "/modified_internal_rate_of_return",
+    tags=["mirr"],
+    description="Calculate Modified Internal Rate of Return (MIRR)",
+)
+def calculate_modified_internal_rate_of_return(
+    request: ModifiedInternalRateOfReturn
+):
+    return calculate_modified_internal_rate_of_return_task(
+        request.ending_cash_flow,
+        request.initial_cash_flow,
+        request.number_of_periods,
+    )
+    
+
 #Endpoint to calculate profit percentage
 @app.post(
     "/profit_percent",
@@ -1982,7 +2001,6 @@ def price_elasticity(request: PriceElasticity):
     request.initial_quantity, 
     request.final_quantity )
 
-
 # Endpoint to calculate Average Payment Period
 @app.post(
     "/average_payment_period",
@@ -2013,3 +2031,15 @@ def quick_ratio(cash: float , accounts_receivable: float ,
 def cash_ratio(cash: float , marketable_securities: float , current_liabilities: float):
     return cash_ratio_task(cash , marketable_securities , current_liabilities)
 
+# Endpoint to calculate Saving Goal 
+
+@app.post(
+    "/saving_goal",
+    tags=["saving_goal"],
+    description="Calculate Saving Goal",
+)
+def saving_goal(request: SavingGoal):
+    return saving_goal(request.current_savings , 
+    request.monthly_contributions ,
+    request.interest_rate, 
+    request.goal_amount )

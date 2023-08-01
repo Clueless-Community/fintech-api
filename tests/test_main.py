@@ -1423,3 +1423,20 @@ def test_loan_to_value_ratio():
   "Loan to Value Ratio": "91066.66666666666%"
 }
 
+
+def test_modified_internal_rate_of_return():
+    response = client.get(
+        "http://127.0.0.1:8000/modified_internal_rate_of_return?initial_cash_flow=-300000&ending_cash_flow=500000&number_of_periods=5"
+    )
+    assert response.status_code == status.HTTP_200_OK
+
+  assert response.json() ==  {
+    "Tag": "Modified internal rate",
+    "Ending cash flow": 500000,
+    "Initial cash flow": -300000,
+    "Number of periods": 5,
+    "Modified internal rate of return": "12.04%",
+    }
+
+
+

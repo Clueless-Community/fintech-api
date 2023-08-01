@@ -2069,3 +2069,17 @@ def quick_ratio(cash: float, accounts_recievable: float, marketable_security: fl
 def cash_ratio(cash: float, marketable_securities: float, current_liabilities: float):
     cashRatio = (cash + marketable_securities)/current_liabilities
     return cashRatio
+
+# Function to Saving Goal Calculator
+
+def saving_goal(current_savings: float, monthly_contributions: float, interest_rate: float, goal_amount: float):
+    savings_ratio = current_savings / goal_amount
+    return savings_ratio
+
+# Function to calculate Modified Internal Rate of Return (MIRR)
+
+def calculate_modified_internal_rate_of_return(ending_cash_flow: float,
+                                                initial_cash_flow: float,
+                                                number_of_periods: int):
+    mirr = ((ending_cash_flow / initial_cash_flow) ** (1 / number_of_periods)) - 1
+    return mirr*100
