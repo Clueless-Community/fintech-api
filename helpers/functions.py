@@ -2077,3 +2077,11 @@ def calculate_modified_internal_rate_of_return(ending_cash_flow: float,
                                                 number_of_periods: int):
     mirr = ((ending_cash_flow / initial_cash_flow) ** (1 / number_of_periods)) - 1
     return mirr*100
+
+# Function to Calculate Interest Coverage Ratio
+
+def interest_coverage_ratio(revenue:float, cost_of_goods_services:float, operating_expenses:float, 
+interest_expense:float):
+	EBIT = revenue - cost_of_goods_services - operating_expenses
+	ratio = EBIT / interest_expense 
+	return ratio
