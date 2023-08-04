@@ -2068,3 +2068,13 @@ def calculate_modified_internal_rate_of_return(ending_cash_flow: float,
                                                 number_of_periods: int):
     mirr = ((ending_cash_flow / initial_cash_flow) ** (1 / number_of_periods)) - 1
     return mirr*100
+
+# Function to calculate fixed deposit payout for monthly, yearly, cumulative based on given compounding period
+def fd_payout(p : float, t : int, r : float, c : int) -> list[int]:
+    c = 12//c
+    interest_monthly = p * t * r
+    amount_yearly = p * ((1 + r/c)**c)
+    interest_yearly = (amount_yearly - p) * t
+    amount_cumulative = p * ((1 + r/c)**(c * t))
+    interest_cumulative = amount_cumulative - p
+    return [round(interest_monthly), round(interest_yearly), round(interest_cumulative)]

@@ -71,3 +71,8 @@ The initial price of the product or service. |
 |                             |                                        | - `interest_rate` (float): The annual interest rate on the savings. |
 |                             |                                        | - `goal_amount ` (float): The desired savings goal amount. |
 |-----------------------------|----------------------------------------|----------------------------------------------------------------------|
+| GET /fd_payout              | Calculate fd payout monthly vs yearly vs cumulative | -  `p` (int): principal                                 |
+|                             |                                        | - `t` (int): term in years                                           |
+|                             |                                        | - `r` (float): rate in decimals                                      |
+|                             |                                        | - `c` (int): number of months after which to compund                 |
+|-----------------------------|----------------------------------------|----------------------------------------------------------------------|
