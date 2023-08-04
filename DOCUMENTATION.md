@@ -76,3 +76,6 @@ The initial price of the product or service. |
 |                               |                                      | - `operating_expenses` (int): The amount of operating expenses. |
 |                               |                                      | - `interest_expense` (int): The cost incurred by an entity for borrowed funds. |
 |-------------------------------|----------------------------------------|---------------------------------------------------------|
+| POST /margin_of_safety        | Calculate margin of safety             | - `current_sales` (float): The amount of current sales. |
+|                               |                                        | - `break_even_point` (float): The break_even_point amount. |
+|--------------------------- ---|----------------------------------------|---------------------------------------------------------|
