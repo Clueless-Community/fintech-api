@@ -78,3 +78,8 @@ The initial amount of savings. |
 |                             |                                        | - `interest_rate` (float): The annual interest rate on the savings. |
 |                             |                                        | - `goal_amount ` (float): The desired savings goal amount. |
 |-----------------------------|----------------------------------------|----------------------------------------------------------------------|
+| POST /interest_coverage_ratio | Calculate interest coverage ratio    | - `revenue` (float): The amount of income generated through business operations.  |
+|                               |                                      | - `cost_of_goods_services` (float): Total amount of costs spent on goods and services.|
+|                               |                                      | - `operating_expenses` (int): The amount of operating expenses. |
+|                               |                                      | - `interest_expense` (int): The cost incurred by an entity for borrowed funds. |
+|-------------------------------|----------------------------------------|---------------------------------------------------------|
