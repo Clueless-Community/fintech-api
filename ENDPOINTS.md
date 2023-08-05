@@ -2064,4 +2064,21 @@ Sample Output
   "Book Value Per Share Ratio": "3"
 } ```
 
+**POST** `/operating_margin_ratio`
+- Request body : `{
+  "operating_income": 1000,
+  "net_sales": 100
+}`
+- Sample output 
+
+```py
+{
+  "Tag": "Operating Margin Ratio",
+  "Operating Income": 1000,
+  "Net Sales": 100,
+  "Operating Margin Ratio" : "10"
+} ```
+
+
+
 
