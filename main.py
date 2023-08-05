@@ -129,6 +129,8 @@ from tasks.net_worth import net_worth_calculation_task
 from tasks.personal_savings import personal_savings_task
 from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
 from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod
+from tasks.operating_margin_ratio import operating_margin_ratio
+from tasks.book_value_per_share_ratio import book_value_per_share_ratio
 
 # Creating the app
 app = FastAPI(
@@ -1852,18 +1854,8 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
     tags=["book_value_per_share_ratio"],
     description="Calculating the Book Value Per Share Ratio",
 )
-def book_value_per_share_ratio(shareholders_equity:int,preferred_equity:int,total_common_share_outstanding:int):
-    try:
-        book_value_per_share_ratio_value = functions.book_value_per_share_ratio(shareholders_equity,preferred_equity,total_common_share_outstanding)
-        return {
-            "Tag": "Book Value Per Share Ratio",
-            "Shareholders Equity": shareholders_equity ,
-            "Preferred Equity":preferred_equity,
-            "Total Common Share Outstanding": total_common_share_outstanding ,
-            "Book Value Per Share Ratio": book_value_per_share_ratio_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def book_value_per_share_ratio(request: BookValuePerShareRatio):
+    return book_value_per_share_ratio(request.shareholders_equity, request.preferred_equity,request.total_common_share_outstanding)
 
 # Endpoint to calculate the Operating Margin Ratio    
 @app.post(
@@ -1871,17 +1863,8 @@ def book_value_per_share_ratio(shareholders_equity:int,preferred_equity:int,tota
     tags=["operating_margin_ratio"],
     description="Calculating the Operating Margin Ratio",
 )
-def operating_margin_ratio(operating_income:int,net_sales:int):
-    try:
-        operating_margin_ratio_value = functions.operating_margin_ratio(operating_income,net_sales)
-        return {
-            "Tag": "Operating Margin Ratio",
-            "Operating Income": operating_income ,
-            "Net Sales": net_sales ,
-            "Operating Margin Ratio": operating_margin_ratio_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def operating_margin_ratio(request: OperatingMarginRatio):
+    return operating_margin_ratio(request.operating_income, request.net_sales)
 
 
     
