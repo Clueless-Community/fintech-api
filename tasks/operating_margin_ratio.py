@@ -3,7 +3,7 @@ from fastapi import HTTPException, status
 
 def operating_margin_ratio(operating_income:int,net_sales:int):
     try:
-        operating_margin_ratio_value = functions.operating_margin_ratio(operating_income,net_sales)
+        operating_margin_ratio_value = operating_income/net_sales
         return {
             "Tag": "Operating Margin Ratio",
             "Operating Income": operating_income ,
