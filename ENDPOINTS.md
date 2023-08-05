@@ -2048,28 +2048,19 @@ Sample Output
   "Capitalization Rate": 6.16%
 }
 ```
-**POST** `book_value_per_share_ratio`
+**POST** `/book_value_per_share_ratio`
 - Request body : `{
- "Shareholders Equity": 20,
- "Preferred Equity": 5,
- "Total Common Share Outstanding":5,
-  }`
-  - Sample output 
+  "shareholders_equity": 20,
+  "preferred_equity": 5,
+  "total_common_share_outstanding":5
+}`
+- Sample output 
 ```py
 {
- "Tag": "Book Value Per Share Ratio",
-  - Sample Output
-}
-```
-**POST** `operating_margin_ratio`
-- Request body : `{
- "Operating Income": 1000,
- "Net Sales": 100,
-  }`
-  - Sample output 
-```py
-{
- "Tag": "Operating Margin Ratio",
-  - Sample Output
-}
-```
+  "Tag": "Book Value Per Share Ratio",
+  "Shareholders Equity": 20,
+  "Preferred Equity": 5,
+  "Total Common Share Outstanding": 5,
+  "Book Value Per Share Ratio": "3"
+} ```
+
