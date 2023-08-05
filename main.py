@@ -129,8 +129,7 @@ from tasks.net_worth import net_worth_calculation_task
 from tasks.personal_savings import personal_savings_task
 from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
 from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod
-from tasks.operating_margin_ratio import operating_margin_ratio
-from tasks.book_value_per_share_ratio import book_value_per_share_ratio
+from validators.request_validators import BookValuePerShareRatio, OperatingMarginRatio
 
 # Creating the app
 app = FastAPI(
