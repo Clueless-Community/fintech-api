@@ -857,12 +857,12 @@ class calculateBvps(BaseModel):
     total_equity: float
     number_of_shares: float
 
-class book_value_per_share_ratio(BaseModel):
+class BookValuePerShareRatio(BaseModel):
     shareholders_equity :int
     preferred_equity: int
     total_common_share_outstanding:int
 
-class operating_margin_ratio(BaseModel):
+class OperatingMarginRatio(BaseModel):
     operating_income:int
     net_sales:int
 
