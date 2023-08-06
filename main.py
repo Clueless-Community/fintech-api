@@ -129,6 +129,8 @@ from tasks.net_worth import net_worth_calculation_task
 from tasks.personal_savings import personal_savings_task
 from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
 from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod
+from validators.request_validators import NetIncome, CashRatio, DaySalesinInventoryRatio, BreakevenPoint
+
 
 # Creating the app
 app = FastAPI(
@@ -1847,79 +1849,39 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
     return accounts_payable_turnover_ratio_task(total_supply_purchases, beginning_accounts_payable, ending_accounts_payable)
 
 
-
-
 # Endpoint to calculate the net income
-@app.post(
+@app.get(
     "/net_income",
     tags=["net_income"],
     description="Calculating the Net Income",
 )
-def net_income(revenue: float, expenses: float):
-    try:
-        net_income_value = functions.net_income(revenue, expenses)
-        return {
-            "Tag": "Net Income",
-            "Revenue": revenue,
-            "Expenses": expenses,
-            "Net Income": net_income_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def net_income(request:NetIncome):
+    return net_income(request.revenue, request.expenses)
 
 # Endpoint to calculate the break-even point
-@app.post(
+@app.get(
     "/break_even_point",
     tags=["break_even_point"],
     description="Calculating the Break-even Point",
 )
-def break_even_point(fixed_costs: int, sales_price_per_unit: float, variable_price_per_unit: float):
-    try:
-        break_even_point_value = functions.break_even_point(fixed_costs,sales_price_per_unit,variable_price_per_unit)
-        return {
-            "Tag": "Break-even Point",
-            "Fixed Costs": fixed_costs,
-            "Sales Price Per Unit": sales_price_per_unit,
-            "Variable Price Per Unit":variable_price_per_unit ,
-            "Break-even Point": break_even_point_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def break_even_point(request:BreakevenPoint):
+    return break_even_point(request.avg_inventory, request.sales_price_per_unit,request.variable_price_per_unit)
 
 # Endpoint to calculate the Day Sales in Inventory Ratio   
-@app.post(
+@app.get(
     "/day_sales_in_inventory_ratio",
     tags=["day_sales_in_inventory_ratio"],
     description="Calculating the Day Sales in Inventory Ratio",
 )
-def day_sales_in_inventory_ratio(avg_inventory: int, cost_of_goods_sold: int, no_of_days: int):
-    try:
-        day_sales_in_inventory_ratio_value = functions.day_sales_in_inventory_ratio(avg_inventory,cost_of_goods_sold,no_of_days)
-        return {
-            "Tag": "Day Sales in Inventory Ratio",
-            "Average Inventory": avg_inventory,
-            "Cost Of Goods Sold": cost_of_goods_sold,
-            "Number Of Days":no_of_days ,
-            "Day Sales in Inventory Ratio": day_sales_in_inventory_ratio_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def day_sales_in_inventory_ratio(request:DaySalesinInventoryRatio):
+    return day_sales_in_inventory_ratio(request.avg_inventory, request.cost_of_goods_sold,request.no_of_days)
 
 # Endpoint to calculate the Cash Ratio   
-@app.post(
+@app.get(
     "/cash_ratio",
     tags=["cash_ratio"],
     description="Calculating the Cash Ratio",
 )
-def cash_ratio(cash: float, cash_equivalents:float,current_liabilities:float):
-    try:
-        cash_ratio_value = functions.cash_ratio(cash,cash_equivalents,current_liabilities)
-        return {
-            "Tag": "Cash Ratio",
-            "Cash": cash,
-            "Cash Equivalents": cash_equivalents,
-            "Current Libilites":current_liabilities ,
-            "Cash Ratio": cash_ratio_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def cash_ratio(request:CashRatio):
+    return cash_ratio(request.cash, request.cash_equivalents,request.current_liabilities)
+  
