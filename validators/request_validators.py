@@ -857,14 +857,16 @@ class calculateBvps(BaseModel):
     total_equity: float
     number_of_shares: float
 
-class gross_margin_ratio(BaseModel):
+class GrossMarginRatio(BaseModel):
     gross_profit :int
     net_sales: int
 
-class price_earnings_ratio(BaseModel):
+class PriceToEarningRatio(BaseModel):
     share_price :int
     earnings_per_share: int
 
-class earnings_per_share_ratio(BaseModel):
+class EarningsPerShareRatio(BaseModel):
     net_earnings :int
     total_share_outstanding: int
+
+
