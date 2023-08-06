@@ -857,21 +857,21 @@ class calculateBvps(BaseModel):
     total_equity: float
     number_of_shares: float
 
-class net_income(BaseModel):
+class NetIncome(BaseModel):
     revenue: float
     expenses: float
 
-class break_even_point(BaseModel):
+class BreakevenPoint(BaseModel):
     fixed_costs: int 
     sales_price_per_unit: float
     variable_price_per_unit: float
 
-class day_sales_in_inventory_ratio(BaseModel):
+class DaySalesinInventoryRatio(BaseModel):
     avg_inventory : int
     no_of_days: int
     cost_of_goods_sold: int
 
-class cash_ratio(BaseModel):
+class CashRatio(BaseModel):
     cash :float
     cash_equivalents: float
     current_liabilities: float
