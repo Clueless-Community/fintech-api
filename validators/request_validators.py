@@ -660,6 +660,11 @@ class ModifiedInternalRateOfReturn(BaseModel):
 	initial_cash_flow: float
 	number_of_periods: int
 
+class InterestCoverageRatio(BaseModel):
+	revenue:float
+	cost_of_goods_services:float
+	operating_expenses:float
+	interest_expense:float
 class DebtPayoffPlannerRequest(BaseModel):
     debt_amount: float
     interest_rate: float

@@ -71,6 +71,11 @@ The initial price of the product or service. |
 |                             |                                        | - `interest_rate` (float): The annual interest rate on the savings. |
 |                             |                                        | - `goal_amount ` (float): The desired savings goal amount. |
 |-----------------------------|----------------------------------------|----------------------------------------------------------------------|
+| POST /interest_coverage_ratio | Calculate interest coverage ratio    | - `revenue` (float): The amount of income generated through business operations.  |
+|                               |                                      | - `cost_of_goods_services` (float): Total amount of costs spent on goods and services.|
+|                               |                                      | - `operating_expenses` (int): The amount of operating expenses. |
+|                               |                                      | - `interest_expense` (int): The cost incurred by an entity for borrowed funds. |
+|-------------------------------|----------------------------------------|---------------------------------------------------------|
 | Endpoint                  | Description                            | Request Parameters                                       |
 |---------------------------|----------------------------------------|---------------------------------------------------------|
 | POST /debt_payoff_planner | Calculate debt payoff plan             | - `debt_amount` (float): The total amount of debt.       |
