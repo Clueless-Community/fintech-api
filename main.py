@@ -129,6 +129,7 @@ from tasks.net_worth import net_worth_calculation_task
 from tasks.personal_savings import personal_savings_task
 from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
 from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod
+from validators.request_validators import  InterestCoverageRatio, OperatingCashFlowRatio
 
 # Creating the app
 app = FastAPI(
@@ -1852,17 +1853,9 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
     tags=["opearating_cash_flow_ratio"],
     description="Calculating the Operating Cash Flow Ratio",
 )
-def opearating_cash_flow_ratio(operating_cash_flow:int,current_liabilities: int):
-    try:
-        opearating_cash_flow_ratio_value = functions.opearating_cash_flow_ratio(operating_cash_flow,current_liabilities)
-        return {
-            "Tag": "Operation Cash Flow Ratio",
-            "Operating Cash Flow": operating_cash_flow ,
-            "Current Libilites": current_liabilities ,
-            "Operation Cash Flow Ratio": opearating_cash_flow_ratio_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def opearating_cash_flow_ratio(request:OperatingCashFlowRatio):
+    return opearating_cash_flow_ratio(request.operating_cash_flow, request.current_liabilities)
+
 	
 # Endpoint to calculate the Interest Coverage Ratio     
 @app.post(
@@ -1870,16 +1863,8 @@ def opearating_cash_flow_ratio(operating_cash_flow:int,current_liabilities: int)
     tags=["interest_coverage_ratio"],
     description="Calculating the Interest Coverage Ratio",
 )
-def interest_coverage_ratio(operating_income:int,interest_expenses: int):
-    try:
-        interest_coverage_ratio_value = functions.interest_coverage_ratio(operating_income,interest_expenses)
-        return {
-            "Tag": "Interest Coverage Ratio",
-            "Operating Income": operating_income ,
-            "Interest Expenses": interest_expenses ,
-            "Interest Coverage Ratio": interest_coverage_ratio_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def interest_coverage_ratio(request:InterestCoverageRatio):
+    return interest_coverage_ratio(request.gross_profit, request.net_sales)
+   
    
     
