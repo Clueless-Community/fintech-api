@@ -129,6 +129,7 @@ from tasks.net_worth import net_worth_calculation_task
 from tasks.personal_savings import personal_savings_task
 from tasks.portfolio_return_monte_carlo import portfolio_return_monte_carlo_task
 from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod
+from validators.request_validators import EarningsPerShareRatio, GrossMarginRatio, OperatingMarginRatio
 
 # Creating the app
 app = FastAPI(
@@ -1852,17 +1853,8 @@ def accounts_payable_turnover_ratio(total_supply_purchases: float,
     tags=["gross_margin_ratio"],
     description="Calculating the Gross Margin Ratio",
 )
-def gross_margin_ratio(gross_profit:int,net_sales: int):
-    try:
-        gross_margin_ratio_value = functions.gross_margin_ratio(gross_profit,net_sales)
-        return {
-            "Tag": "Gross Margin Ratio",
-            "Gross Profit": gross_profit ,
-            "Net Sales": net_sales ,
-            "Gross Margin Ratio": gross_margin_ratio_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def gross_margin_ratio(request:GrossMarginRatio):
+    return gross_margin_ratio(request.gross_profit, request.net_sales)
     
 # Endpoint to calculate the Price Earnings Ratio      
 @app.post(
@@ -1870,17 +1862,8 @@ def gross_margin_ratio(gross_profit:int,net_sales: int):
     tags=["price_earnings_ratio"],
     description="Calculating the Price Earnings Ratio",
 )
-def price_earnings_ratio(share_price:int,earnings_per_share: int):
-    try:
-        price_earnings_ratio_value = functions.price_earnings_ratio(share_price,earnings_per_share)
-        return {
-            "Tag": "Price Earnings Ratio",
-            "Share Price": share_price ,
-            "Earnings Per Shares": earnings_per_share ,
-            "Price Earnings Ratio": price_earnings_ratio_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def price_earnings_ratio(request: price_to_earning_ratio_task):
+    return price_earnings_ratio(request.share_price, request.earnings_per_share)
 
 # Endpoint to calculate the Earnings Per Share Ratio      
 @app.post(
@@ -1888,17 +1871,8 @@ def price_earnings_ratio(share_price:int,earnings_per_share: int):
     tags=["earnings_per_share_ratio"],
     description="Calculating the Earnings Per Share Ratio",
 )
-def earnings_per_share_ratio(net_earnings:int,total_share_outstanding: int):
-    try:
-        earnings_per_share_ratio_value = functions.earnings_per_share_ratio(net_earnings,total_share_outstanding)
-        return {
-            "Tag": "Earnings Per Share Ratio",
-            "Net Earnings": net_earnings ,
-            "Total Share Outstanding": total_share_outstanding ,
-            "Earnings Per Share Ratio": earnings_per_share_ratio_value,
-        }
-    except:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+def earnings_per_share_ratio(request:EarningsPerShareRatio):
+    return earnings_per_share_ratio(request.net_earnings, request.total_share_outstanding)
 
 
     
