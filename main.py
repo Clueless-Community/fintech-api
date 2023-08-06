@@ -2029,3 +2029,37 @@ def debt_payoff_planner(
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+#Endpoint for Loan Comparison
+@app.get(
+    "/loan_comparison",
+    tags=["loan_comparison"],
+    description="Compare loan offers based on total repayment amounts",
+)
+def loan_comparison(
+    loan_amount: float = Query(..., description="The loan amount."),
+    loan_term: int = Query(..., description="The loan term in months.")
+):
+    try:
+        if loan_amount <= 0 or loan_term <= 0:
+            raise HTTPException(status_code=400, detail="Loan amount and loan term must be positive.")
+
+        # Calculate the total repayment amount for each loan offer
+        loan_offers_with_total_repayment = [
+            {
+                "name": offer.name,
+                "interest_rate": offer.interest_rate,
+                "loan_term": offer.loan_term,
+                "processing_fee": offer.processing_fee,
+                "total_repayment": loan_amount + (loan_amount * (offer.interest_rate / 100)) + offer.processing_fee
+            }
+            for offer in loan_offers
+        ]
+
+        # Sort the loan offers based on total repayment amounts (lowest to highest)
+        sorted_loan_offers = sorted(loan_offers_with_total_repayment, key=lambda x: x["total_repayment"])
+
+        return sorted_loan_offers
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

@@ -659,3 +659,10 @@ class DebtPayoffPlannerRequest(BaseModel):
     debt_amount: float
     interest_rate: float
     monthly_payment: float
+
+
+class LoanOffer(BaseModel):
+    name: str
+    interest_rate: float
+    loan_term: int
+    processing_fee: float

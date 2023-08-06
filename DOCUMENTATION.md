@@ -71,3 +71,8 @@ The initial price of the product or service. |
 | POST /debt_payoff_planner | Calculate debt payoff plan             | - `debt_amount` (float): The total amount of debt.       |
 |                           |                                        | - `interest_rate` (float): The annual interest rate.    |
 |                           |                                        | - `monthly_payment` (float): The fixed monthly payment. |
+|---------------------------|----------------------------------------|---------------------------------------------------------|
+| GET /loan_comparison         Compare loan plans                    | - `loan_amount` (float): The loan amount..              |
+|                           |                                        | - `loan_term` (int): The loan term in months.           |
+
+

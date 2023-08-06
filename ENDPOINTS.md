@@ -2310,3 +2310,44 @@ Sample Output
   "Interest Rate": "-82.87%"
 }
 ```
+
+
+**GET** `/loan_comparison`
+- Request body : `{
+  "loan_amount": 110000,
+  "loan_term": 12,
+}`
+- Sample Output:
+  ```json
+  [
+    {
+      "name": "Loan Offer B",
+      "interest_rate": 7.9,
+      "loan_term": 24,
+      "processing_fee": 150,
+      "total_repayment": 520.23
+    },
+    {
+      "name": "Loan Offer C",
+      "interest_rate": 9.2,
+      "loan_term": 18,
+      "processing_fee": 250,
+      "total_repayment": 522.57
+    },
+    {
+      "name": "Loan Offer A",
+      "interest_rate": 8.5,
+      "loan_term": 12,
+      "processing_fee": 200,
+      "total_repayment": 523.15
+    },
+    {
+      "name": "Loan Offer D",
+      "interest_rate": 6.5,
+      "loan_term": 36,
+      "processing_fee": 100,
+      "total_repayment": 529.28
+    }
+  ]
+  ```
+
