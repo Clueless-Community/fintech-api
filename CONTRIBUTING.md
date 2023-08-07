@@ -24,16 +24,25 @@ fintect-api
 │
 └───📂tasks
 │   │   { Python functions for different tasks }
-│
+|
+└───📂tests
+│   |   { Python functions for different tests }
+|
 └───📂validators
 │   │   { Pydantic Models for different validations }
 
+📄.dockerfile
 📄.gitignore
+📄CODE_OF_CONDUCT.md
 📄CONTRIBUTING.md
+📄docker-compose.yml
+📄Dockerfile
+📄DOCUMENTATION.md
+📄ENDPOINTS.md
+📄LICENSE.md
 📄main.py
 📄README.md
 📄requirements.txt
-📄test_main.py
 ```
 
 
