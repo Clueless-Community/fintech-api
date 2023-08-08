@@ -2329,3 +2329,19 @@ Sample Output
   "Interest Coverage Ratio": "3.75%",
 }
 ```
+**POST** `/margin_of_safety`
+
+- Request body : `{
+  "current_sales": 50000,
+  "break_even_point": 46000
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Margin Of Safety",
+  "Current Sales": 50000,
+  "Break Even Point": 46000,
+  "Margin Of Safety": 8%,
+}
+```

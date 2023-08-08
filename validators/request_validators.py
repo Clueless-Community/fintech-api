@@ -665,3 +665,7 @@ class InterestCoverageRatio(BaseModel):
 	cost_of_goods_services:float
 	operating_expenses:float
 	interest_expense:float
+
+class MarginOfSafety(BaseModel):
+	current_sales:float 
+	break_even_point: float
