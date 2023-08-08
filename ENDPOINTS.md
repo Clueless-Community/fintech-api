@@ -2345,3 +2345,36 @@ Sample Output
   "Interest Coverage Ratio": "3.75%",
 }
 ```
+
+**POST** `/tax_bracket_calculator`
+
+- Request body : `{
+  "income": 50000,
+  "filing_status": single,
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Tax Bracket Calculator"
+  "applicable_tax_bracket": 12.00%,
+  "tax_liability": 6000.00,
+}
+```
+
+**POST** `/margin_of_safety`
+
+- Request body : `{
+  "current_sales": 50000,
+  "break_even_point": 46000
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Margin Of Safety",
+  "Current Sales": 50000,
+  "Break Even Point": 46000,
+  "Margin Of Safety": 8%,
+}
+```
