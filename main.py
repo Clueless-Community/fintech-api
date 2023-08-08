@@ -135,12 +135,16 @@ from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
-from validators.request_validators import SavingGoal, SimpleInterestRateRequest, StockPricePrediction, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
 from tasks.average_payment_period import average_payment_period_task
 from tasks.Saving_Goal import saving_goal
 from tasks.modified_internal_rate_of_return import calculate_modified_internal_rate_of_return_task
+from tasks.interest_coverage_ratio import interest_coverage_ratio_task
+from tasks.tax_bracket_calculator import tax_bracket_calculator
+from tasks.margin_of_safety import margin_of_safety_task
+from validators.request_validators import SavingGoal, SimpleInterestRateRequest, StockPricePrediction, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn, SavingGoal, InterestCoverageRatio, MarginOfSafety, TaxBracketCalculator
 
 # Creating the app
 app = FastAPI(
@@ -274,6 +278,9 @@ def index():
             "/loss_percent": "Calculates the loss percentage",
             "/average_payment_period": "Calculate Average Payment Period a metric that allows a business to see how long it takes on average to pay its vendors.",
             "/modified_internal_rate_of_return": "Calculate modified internal rate of return",
+            "/interest_coverage_ratio": "Calculates interest coverage ratio",
+            "/margin_of_safety": "Calculates margin of safety",
+    
         },
     }
 
@@ -1996,6 +2003,40 @@ def saving_goal(request:SavingGoal):
     request.monthly_contributions ,
     request.interest_rate, 
     request.goal_amount )
+request.Historical_Price_Data , 
+    request.Time_Horizon)
+
+# Endpoint to calculate Interest Coverage Ratio
+
+@app.post(
+    "/interest_coverage_ratio",
+    tags=["interest_coverage_ratio"],
+    description="Calculates interest coverage ratio",
+)
+def interest_coverage_ratio(request: InterestCoverageRatio):
+    return interest_coverage_ratio_task(request.revenue, request.cost_of_goods_services,
+    request.operating_expenses, request.interest_expense)
+
+# Endpoint to calculate Tax Bracket Calculator
+
+@app.post(
+    "/tax_bracket_calculator",
+    tags=["tax_bracket_calculator"],
+    description="Calculates Tax Bracket Calculator",
+)
+def tax_bracket_calculator(request: TaxBracketCalculator):
+    return interest_coverage_ratio_task(request.income, request.filing_status)
+
+# Endpoint to calculate Margin of Safety
+
+@app.post(
+    "/margin_of_safety",
+    tags=["margin_of_safety"],
+    description="Calculates margin of safety",
+)
+def margin_of_safety(request: MarginOfSafety):
+    return margin_of_safety_task(request.current_sales, request.break_even_point)
+
 
 # Endpoint to calculate Stock Price 
 @app.post(
@@ -2004,5 +2045,4 @@ def saving_goal(request:SavingGoal):
     description="Calculate Stock Price",
 )
 def predict_stock_price(request:StockPricePrediction):
-    return predict_stock_price(request.Historical_Price_Data , 
-    request.Time_Horizon)
+    return predict_stock_price(
