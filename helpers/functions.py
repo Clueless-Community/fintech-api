@@ -2077,6 +2077,7 @@ interest_expense:float):
 	ratio = EBIT / interest_expense 
 	return ratio
 
+
 # Function to Calculate Tax Bracket Calculator
 
 def tax_bracket_calculator(income:float, filing_status:str):
@@ -2105,3 +2106,9 @@ def tax_bracket_calculator(income:float, filing_status:str):
         tax_ratio = tax_liability / income
 
         return {"Tax Ratio": "{:.2%}".format(tax_ratio)}
+
+# Function to Calculate Margin of Safety
+
+def margin_of_safety(current_sales:float, break_even_point: float):
+	margin = ((current_sales - break_even_point) / current_sales) * 100
+	return margin

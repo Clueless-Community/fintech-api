@@ -669,3 +669,7 @@ class InterestCoverageRatio(BaseModel):
 class TaxBracketCalculator(BaseModel):
 	income:float
 	filing_status:str
+
+class MarginOfSafety(BaseModel):
+	current_sales:float 
+	break_even_point: float
