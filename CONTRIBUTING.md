@@ -114,7 +114,7 @@ Briefly explaining, this project is an API providing endpoints that makes your f
 + Here you can see, we are calling a function `simple_interest_rate()` that is defined inside `./helpers/functions.py`.
 + This function is responsible for making some calculations based on the parameter passed and returns the required value.
 
-+ So, to add an endpoint, raise an issue regarding adding an endpoint. Once you are assigned, go through the [project setup ]() and set up the project on the local machine.
++ So, to add an endpoint, raise an issue regarding adding an endpoint. Once you are assigned, go through the [project setup ](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-setup) and set up the project on the local machine.
 
 + Then create a function in `./helpers/functions.py`, passing the required parameters and returning the output as shown below
 ```python
