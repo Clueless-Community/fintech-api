@@ -83,3 +83,9 @@ The initial amount of savings. |
 |                               |                                      | - `operating_expenses` (int): The amount of operating expenses. |
 |                               |                                      | - `interest_expense` (int): The cost incurred by an entity for borrowed funds. |
 |-------------------------------|----------------------------------------|---------------------------------------------------------|
+| POST /tax_bracket_calculator | Calculate Tax Bracket Calculator    | - `income` (float): The total income earned by the individual.  |
+|                               |                                      | - `filing_status` (String): The tax filing status of the individual.|
+|-------------------------------|----------------------------------------|---------------------------------------------------------|
+| POST /margin_of_safety        | Calculate margin of safety             | - `current_sales` (float): The amount of current sales. |
+|                               |                                        | - `break_even_point` (float): The break_even_point amount. |
+|--------------------------- ---|----------------------------------------|---------------------------------------------------------|

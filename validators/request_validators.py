@@ -671,3 +671,11 @@ class InterestCoverageRatio(BaseModel):
 	cost_of_goods_services:float
 	operating_expenses:float
 	interest_expense:float
+
+class TaxBracketCalculator(BaseModel):
+	income:float
+	filing_status:str
+
+class MarginOfSafety(BaseModel):
+	current_sales:float 
+	break_even_point: float
