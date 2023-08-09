@@ -2112,3 +2112,19 @@ def tax_bracket_calculator(income:float, filing_status:str):
 def margin_of_safety(current_sales:float, break_even_point: float):
 	margin = ((current_sales - break_even_point) / current_sales) * 100
 	return margin
+
+# Function to Calculate Investment Assest Allocation
+
+def investment_assest_allocation(risk_tolerance:str, investment_goals:str, age:int, market_outlook:str):
+    allocation = {
+        "conservative": {"stocks": 30, "bonds": 60, "cash": 10},
+        "moderate": {"stocks": 50, "bonds": 40, "cash": 10},
+        "aggressive": {"stocks": 70, "bonds": 20, "cash": 10}
+    }
+
+    allocation_mix = allocation.get(risk_tolerance)
+        
+    total_allocation = sum(allocation_mix.values())
+    allocation_ratio = {asset_class: (allocation / total_allocation) for asset_class, allocation in allocation_mix.items()}
+
+    return allocation_ratio

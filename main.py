@@ -135,7 +135,7 @@ from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn, SavingGoal, InterestCoverageRatio, MarginOfSafety, TaxBracketCalculator
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn, SavingGoal, InterestCoverageRatio, MarginOfSafety, TaxBracketCalculator, InvestmentAssestAllocation
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
 from tasks.average_payment_period import average_payment_period_task
@@ -144,6 +144,7 @@ from tasks.modified_internal_rate_of_return import calculate_modified_internal_r
 from tasks.interest_coverage_ratio import interest_coverage_ratio_task
 from tasks.tax_bracket_calculator import tax_bracket_calculator
 from tasks.margin_of_safety import margin_of_safety_task
+from tasks.Investment_Assest_Allocation import investment_assest_allocation
 
 # Creating the app
 app = FastAPI(
@@ -2033,3 +2034,14 @@ def tax_bracket_calculator(request: TaxBracketCalculator):
 )
 def margin_of_safety(request: MarginOfSafety):
     return margin_of_safety_task(request.current_sales, request.break_even_point)
+
+# Endpoint to calculate Investment Assest Allocation
+
+@app.post(
+    "/investment_assest_allocation",
+    tags=["investment_assest_allocation"],
+    description="Calculates Investment Assest Allocation",
+)
+def investment_assest_allocation(request: InvestmentAssestAllocation):
+    return investment_assest_allocation(request.risk_tolerance, request.investment_goals,
+                                     request.age, request.market_outlook)

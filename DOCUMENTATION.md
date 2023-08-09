@@ -82,3 +82,8 @@ The initial price of the product or service. |
 | POST /margin_of_safety        | Calculate margin of safety             | - `current_sales` (float): The amount of current sales. |
 |                               |                                        | - `break_even_point` (float): The break_even_point amount. |
 |--------------------------- ---|----------------------------------------|---------------------------------------------------------|
+| POST /investment_assest_allocation  | Calculate Investment Assest Allocation | - `risk_tolerance` (String): The degree of willingness and capacity to endure potential investment losses in pursuit of higher returns. |
+|                               |                                        | - `investment_goals` (String): Specific financial objectives an investor aims to achieve through their investment. |
+|                               |                                        | - `age` (int): The current age of the investor. |
+|                               |                                        | - `market_outlook` (String): An assessment of the anticipated direction. |
+|--------------------------- ---|----------------------------------------|---------------------------------------------------------|
