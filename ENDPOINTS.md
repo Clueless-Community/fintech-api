@@ -2374,6 +2374,20 @@ Sample Output
 {
   "Tag": "financial goal planner",
    "monthly_savings_goal": 333
-   "total_savings_goal": 4000
-   "savings_schedule":
+   "total_savings_goal": 5000
+   "savings_ratio": 1.0
+   "savings_schedule":[
+        {"Month": 1, "Savings": 1200},
+        {"Month": 2, "Savings": 1400},
+        {"Month": 3, "Savings": 1600},
+        {"Month": 4, "Savings": 1800},
+        {"Month": 5, "Savings": 2000},
+        {"Month": 6, "Savings": 2200},
+        {"Month": 7, "Savings": 2400},
+        {"Month": 8, "Savings": 2600},
+        {"Month": 9, "Savings": 2800},
+        {"Month": 10, "Savings": 3000},
+        {"Month": 11, "Savings": 3200},
+        {"Month": 12, "Savings": 3400}
+  ]
 }
