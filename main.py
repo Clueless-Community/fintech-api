@@ -135,7 +135,7 @@ from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PolicyPremium import calculate_policy_premium
-from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn, SavingGoal, InterestCoverageRatio, MarginOfSafety, TaxBracketCalculator
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, futureValueOfAnnuityDue, ProfitPercentage, LossPercentage, DefensiveIntervalRatio, CashConversionCycle, RateofReturn, financialAssestRatio, PriceElasticity, PolicyPremium, AveragePaymentPeriod, ModifiedInternalRateOfReturn, SavingGoal, InterestCoverageRatio, MarginOfSafety, TaxBracketCalculator, FinancialGoalPlanner
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
 from tasks.average_payment_period import average_payment_period_task
@@ -144,7 +144,7 @@ from tasks.modified_internal_rate_of_return import calculate_modified_internal_r
 from tasks.interest_coverage_ratio import interest_coverage_ratio_task
 from tasks.tax_bracket_calculator import tax_bracket_calculator
 from tasks.margin_of_safety import margin_of_safety_task
-
+from tasks.FinancialGoalPlanner import financial_goal_palnner
 # Creating the app
 app = FastAPI(
     title="FinTech API",
@@ -2033,3 +2033,14 @@ def tax_bracket_calculator(request: TaxBracketCalculator):
 )
 def margin_of_safety(request: MarginOfSafety):
     return margin_of_safety_task(request.current_sales, request.break_even_point)
+
+# Endpoint to calculate financial Goal Planner
+
+@app.post(
+    "/financial_goal_planner",
+    tags=["financial_goal_planner"],
+    description="Calculates financial Goal Planner",
+)
+def financial_goal_planner(request: FinancialGoalPlanner):
+    return financial_goal_planner(request.initial_savings_amount, request.monthly_savings_amount,
+                                  request.target_savings_amount, request.timeframe)

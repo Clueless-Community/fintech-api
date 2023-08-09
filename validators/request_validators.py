@@ -673,3 +673,9 @@ class TaxBracketCalculator(BaseModel):
 class MarginOfSafety(BaseModel):
 	current_sales:float 
 	break_even_point: float
+
+class FinancialGoalPlanner(BaseModel):
+	initial_saving_amount: int
+	monthly_savings_amount: int 
+	target_savings_amount: int
+	timeframe: int

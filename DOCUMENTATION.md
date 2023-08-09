@@ -82,3 +82,9 @@ The initial price of the product or service. |
 | POST /margin_of_safety        | Calculate margin of safety             | - `current_sales` (float): The amount of current sales. |
 |                               |                                        | - `break_even_point` (float): The break_even_point amount. |
 |--------------------------- ---|----------------------------------------|---------------------------------------------------------|
+| GET /financial_goal_planner | Financial Goal Planner Calculator | - `initial_savings_amount`(int): 
+The initial amount of savings. |
+|                            |                                  | - `monthly_savings_amount` (int): The amount you plan to save. |
+|                            |                                  | - `target_savings_amount` (int): The total amount of savings. |
+|                            |                                  | - `timeframe` (int): The fiduration in which you plan to achieve. |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------|

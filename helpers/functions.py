@@ -2112,3 +2112,28 @@ def tax_bracket_calculator(income:float, filing_status:str):
 def margin_of_safety(current_sales:float, break_even_point: float):
 	margin = ((current_sales - break_even_point) / current_sales) * 100
 	return margin
+
+# Function to Calculate financial goal planner
+
+def financial_goal_planner(initial_savings:float, monthly_savings:float, target_savings:float, timeframe:float):
+    total_savings_goal = target_savings - initial_savings
+    months = timeframe if isinstance(timeframe, int) else timeframe * 12
+    monthly_savings_goal = total_savings_goal / months
+
+    savings_schedule = []
+    current_savings = initial_savings
+
+    for month in range(1, months + 1):
+        current_savings += monthly_savings
+        savings_schedule.append((month, current_savings))
+
+    savings_ratio = current_savings / target_savings
+
+    output = {
+        "monthly_savings_goal": monthly_savings_goal,
+        "total_savings_goal": total_savings_goal,
+        "savings_schedule": savings_schedule,
+        "savings_ratio": savings_ratio
+    }
+
+    return output

@@ -2362,3 +2362,18 @@ Sample Output
   "Margin Of Safety": 8%,
 }
 ```
+**POST** `/financial_goal_planner`
+- Request body : `{
+  "initial_savings_amount": 1000,
+  "monthly_savings_amount": 200,
+  "target_savings_amount": 5000,
+  "timeframe": 12
+}`
+- Sample output
+```py
+{
+  "Tag": "financial goal planner",
+   "monthly_savings_goal": 333
+   "total_savings_goal": 4000
+   "savings_schedule":
+}
