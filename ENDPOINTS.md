@@ -1356,7 +1356,7 @@
 ```
 
 \*_GET_ `calculate_lumpsum`
--Required Parameters: `principal`, `interest_rate `, `years`
+-Required Parameters: `principal`, `interest_rate`, `years`
 -sample output
 
 ```py
@@ -1639,6 +1639,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 **GET** `/loan-affordability`
 
 - Required parameters : `income`,
+
   `expenses`,
   `loan_term`,
   `interest_rate`,
@@ -1660,7 +1661,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 **GET** `/calculate_bvps`
 
 - Required parameters : `stockholders_equity`,
-  `preferred_stock`, `average_outstanding_shares`,
+                         `preferred_stock`, `average_outstanding_shares`
 - Sample output
 
 ```py
@@ -1678,6 +1679,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 **GET** `/gratuity-amount`
 
 - Required parameters : `last_salary`,
+
   `tenure_years`,
   `tenure_months`,
 - Sample Request: `GET`, `http://localhost:8000/calculate_gratuity?last_salary=20000000&tenure_years=10&tenure_months=1`,
@@ -1708,6 +1710,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 }
 
 ```
+
 
 **GET** `/personal_savings`
 
@@ -1746,7 +1749,7 @@ Add-function-and-endpoint-to-calculate-lump-sum-mutual-fund-investment
 # GET # Endpoint --> '/mortrage'
 
 Required Paramenters --> princial:int,interest_rate:float,years:int,down_payment:int,property_tax_rate:float,insurance_rate:float
-Sample request --> http://127.0.0.1:8000/mortrages?princial=200000&interest_rate=4.5&years=45&down_payment=50000&property_tax_rate=1.3&insurance_rate=0.5
+Sample request --> <http://127.0.0.1:8000/mortrages?princial=200000&interest_rate=4.5&years=45&down_payment=50000&property_tax_rate=1.3&insurance_rate=0.5>
 
 Sample Output
 
@@ -1765,7 +1768,7 @@ Sample Output
 
 Required Parameters --> birth_date:str,earnings:int,retirement_age:int
 
-Sample request --> http://127.0.0.1:8000/social_securities?birth_date=10-08-2002&earnings=250000&retirement_age=70
+Sample request --> <http://127.0.0.1:8000/social_securities?birth_date=10-08-2002&earnings=250000&retirement_age=70>
 Sample Output
 
 ```py
@@ -2132,25 +2135,25 @@ Sample Output
 **POST** `/defensive_interval_ratio`
 
 - Request body : `{
-	"cash": 40000.00,
-	"marketable_securities": 20000.00,
-	"net_receivables": 10000.00,
-	"annual_operating_expenses": 300000.00,
-	"non_cash_charges": 25000.00
+ "cash": 40000.00,
+ "marketable_securities": 20000.00,
+ "net_receivables": 10000.00,
+ "annual_operating_expenses": 300000.00,
+ "non_cash_charges": 25000.00
 }`
 - Sample output
 
 ```py
 {
   "Tag": "Defensive Interval Ratio",
-	"Cash": 40000.00,
-	"Marketable Securites": 20000.00,
-	"Net Receivables": 10000.00,
-	"Annual Operating Expenses": 300000.00,
-	"Non Cash Charges": 25000.00,
-	"Current Assets": 70000.0,
-	"Daily Operational Expenses": 753.42,
-	"Defensive Interval Ratio": 92.90
+ "Cash": 40000.00,
+ "Marketable Securites": 20000.00,
+ "Net Receivables": 10000.00,
+ "Annual Operating Expenses": 300000.00,
+ "Non Cash Charges": 25000.00,
+ "Current Assets": 70000.0,
+ "Daily Operational Expenses": 753.42,
+ "Defensive Interval Ratio": 92.90
 }
 ```
 
@@ -2214,7 +2217,7 @@ Sample Output
 
 - Request body : `{
   "beginning_inventory": 1000,
-  "ending_inventory": 2000, 
+  "ending_inventory": 2000,
   "beginning_receivables": 100
   "ending_receivables": 90,
   "beginning_payable": 800,
@@ -2252,7 +2255,7 @@ Sample Output
     "deductible": 500,
     "num_claims": 0,
     "num_accidents": 1
-**POST** `/price-elasticity`
+**POST**`/price-elasticity`
 
 - Request body : `{
   "initial_price": 10.0,
@@ -2273,7 +2276,7 @@ Sample Output
 
 - Request body : `{
   "beginning_accounts_payable": 110000,
-  "ending_accounts_payable": 95000, 
+  "ending_accounts_payable": 95000,
   "total_credit_purchases": 1110000
 }`
 - Sample output
@@ -2362,3 +2365,21 @@ Sample Output
   "Margin Of Safety": 8%,
 }
 ```
+
+}```
+
+**POST** `/debt_payoff_planner`
+- Request body :
+  {
+    "amount_paid": 20.23,
+    "principle_amount": 30.9,
+    "months": 5
+  }
+- Sample Output:
+```py
+{
+  "Tag": "Simple Interest Rate",
+  "Total amount paid": 20.23,
+  "Principle amount": 30.9,
+  "Interest Paid": -10.67,
+  "Interest Rate": "-82.87%"

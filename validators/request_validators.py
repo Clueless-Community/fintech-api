@@ -654,7 +654,7 @@ class SavingGoal(BaseModel):
     monthly_contributions : float  
     interest_rate: float 
     goal_amount: float
-
+      
 class ModifiedInternalRateOfReturn(BaseModel):
 	ending_cash_flow: float
 	initial_cash_flow: float
@@ -673,3 +673,8 @@ class TaxBracketCalculator(BaseModel):
 class MarginOfSafety(BaseModel):
 	current_sales:float 
 	break_even_point: float
+
+class DebtPayoffPlannerRequest(BaseModel):
+    debt_amount: float
+    interest_rate: float
+    monthly_payment: float
