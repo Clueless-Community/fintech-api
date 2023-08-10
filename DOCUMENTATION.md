@@ -76,8 +76,16 @@ The initial price of the product or service. |
 |                               |                                      | - `operating_expenses` (int): The amount of operating expenses. |
 |                               |                                      | - `interest_expense` (int): The cost incurred by an entity for borrowed funds. |
 |-------------------------------|----------------------------------------|---------------------------------------------------------|
+| POST /tax_bracket_calculator | Calculate Tax Bracket Calculator    | - `income` (float): The total income earned by the individual.  |
+|                               |                                      | - `filing_status` (String): The tax filing status of the individual.|
+|-------------------------------|----------------------------------------|---------------------------------------------------------|
+| POST /margin_of_safety        | Calculate margin of safety             | - `current_sales` (float): The amount of current sales. |
+|                               |                                        | - `break_even_point` (float): The break_even_point amount. |
+|--------------------------- ---|----------------------------------------|---------------------------------------------------------|
+
 | Endpoint                  | Description                            | Request Parameters                                       |
 |---------------------------|----------------------------------------|---------------------------------------------------------|
 | POST /debt_payoff_planner | Calculate debt payoff plan             | - `debt_amount` (float): The total amount of debt.       |
 |                           |                                        | - `interest_rate` (float): The annual interest rate.    |
 |                           |                                        | - `monthly_payment` (float): The fixed monthly payment. |
+

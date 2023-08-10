@@ -17,23 +17,32 @@ cd fintech-api
 
 > Folder Structure
 ```
-fintect-api
+fintech-api
 │
 └───📂helpers
 │   │   { Python functions for different calculations }
 │
 └───📂tasks
 │   │   { Python functions for different tasks }
-│
+|
+└───📂tests
+│   |   { Python functions for different tests }
+|
 └───📂validators
 │   │   { Pydantic Models for different validations }
 
+📄.dockerfile
 📄.gitignore
+📄CODE_OF_CONDUCT.md
 📄CONTRIBUTING.md
+📄docker-compose.yml
+📄Dockerfile
+📄DOCUMENTATION.md
+📄ENDPOINTS.md
+📄LICENSE.md
 📄main.py
 📄README.md
 📄requirements.txt
-📄test_main.py
 ```
 
 
@@ -105,7 +114,7 @@ Briefly explaining, this project is an API providing endpoints that makes your f
 + Here you can see, we are calling a function `simple_interest_rate()` that is defined inside `./helpers/functions.py`.
 + This function is responsible for making some calculations based on the parameter passed and returns the required value.
 
-+ So, to add an endpoint, raise an issue regarding adding an endpoint. Once you are assigned, go through the [project setup ]() and set up the project on the local machine.
++ So, to add an endpoint, raise an issue regarding adding an endpoint. Once you are assigned, go through the [project setup ](https://github.com/Clueless-Community/fintech-api/blob/main/CONTRIBUTING.md#project-setup) and set up the project on the local machine.
 
 + Then create a function in `./helpers/functions.py`, passing the required parameters and returning the output as shown below
 ```python
@@ -156,7 +165,7 @@ def simple_interest_rate(request: SimpleInterestRateRequest):
     return simple_interest_rate_task(request.amount_paid, request.principle_amount, request.months)
 ```
 
-+Also add your funtion in `ENDPOINTS.md`.
++Also add your function in `ENDPOINTS.md`.
 ```
 **POST** `/simple_interest_rate`
 
