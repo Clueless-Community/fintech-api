@@ -71,7 +71,17 @@ The initial price of the product or service. |
 |                             |                                        | - `interest_rate` (float): The annual interest rate on the savings. |
 |                             |                                        | - `goal_amount ` (float): The desired savings goal amount. |
 |-----------------------------|----------------------------------------|----------------------------------------------------------------------|
-|---------------------------|----------------------------------------|---------------------------------------------------------|
-| GET /ppf_calculator       | Calculate Public Provident Fund(PPF)   | - `depos` (int): Annual Deposit.                        |
-|                           |                                        | - `tenure` (int): Total years of investment.            |
-|                           |                                        | - `interest` (float): percentage interest rate.         |
+| POST /interest_coverage_ratio | Calculate interest coverage ratio    | - `revenue` (float): The amount of income generated through business operations.  |
+|                               |                                      | - `cost_of_goods_services` (float): Total amount of costs spent on goods and services.|
+|                               |                                      | - `operating_expenses` (int): The amount of operating expenses. |
+|                               |                                      | - `interest_expense` (int): The cost incurred by an entity for borrowed funds. |
+|-------------------------------|----------------------------------------|---------------------------------------------------------|
+| POST /tax_bracket_calculator | Calculate Tax Bracket Calculator    | - `income` (float): The total income earned by the individual.  |
+|                               |                                      | - `filing_status` (String): The tax filing status of the individual.|
+|-------------------------------|----------------------------------------|---------------------------------------------------------|
+| POST /margin_of_safety        | Calculate margin of safety             | - `current_sales` (float): The amount of current sales. |
+|                               |                                        | - `break_even_point` (float): The break_even_point amount. |
+|--------------------------- ---|----------------------------------------|---------------------------------------------------------|
+| GET /ppf_calculator           | Calculate Public Provident Fund(PPF)   | - `depos` (int): Annual Deposit.                        |
+|                               |                                        | - `tenure` (int): Total years of investment.            |
+|                               |                                        | - `interest` (float): percentage interest rate.         |
