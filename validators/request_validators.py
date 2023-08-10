@@ -673,3 +673,10 @@ class TaxBracketCalculator(BaseModel):
 class MarginOfSafety(BaseModel):
 	current_sales:float 
 	break_even_point: float
+
+class InvestmentAssestAllocation(BaseModel):
+     risk_tolerance: str
+     investment_goals: str
+     time_horizon: float
+     age: int
+     market_outlook: str

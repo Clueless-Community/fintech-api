@@ -2362,3 +2362,22 @@ Sample Output
   "Margin Of Safety": 8%,
 }
 ```
+**POST** `/investment_assest_allocation`
+
+- Request body : `{
+  "risk_tolerance": moderate,
+  "investment_goals": retirement,
+  "age":30
+  "market_outlook":bullish
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Investment Assest Allocation",
+  "expected_return": 50000,
+  "risk_level": 46000,
+  "diversification_metrics": 0.08,
+  "rebalancing_strategy": calendar-based,
+}
+```
