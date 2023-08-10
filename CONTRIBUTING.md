@@ -165,7 +165,7 @@ def simple_interest_rate(request: SimpleInterestRateRequest):
     return simple_interest_rate_task(request.amount_paid, request.principle_amount, request.months)
 ```
 
-+Also add your funtion in `ENDPOINTS.md`.
++Also add your function in `ENDPOINTS.md`.
 ```
 **POST** `/simple_interest_rate`
 
