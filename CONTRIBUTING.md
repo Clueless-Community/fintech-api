@@ -17,7 +17,7 @@ cd fintech-api
 
 > Folder Structure
 ```
-fintect-api
+fintech-api
 │
 └───📂helpers
 │   │   { Python functions for different calculations }
