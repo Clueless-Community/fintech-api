@@ -2269,17 +2269,33 @@ Sample Output
     "price_elasticity": -1.5
 }
 ```
+
+**POST** `/loan_eligibility`
+
+- Request body : `{
+  "credit_score": 700,
+  "monthly_income": 4000,
+  "existing_debt": 1500,
+  "loan_amount": 20000
+
 **POST** `/average_payment_period`
 
 - Request body : `{
   "beginning_accounts_payable": 110000,
   "ending_accounts_payable": 95000, 
   "total_credit_purchases": 1110000
+ 
 }`
 - Sample output
 
 ```py
 {
+  "Tag": "Loan Eligibility check",
+    "loan_eligibility": -1.5
+    "loan_terms": 5 years
+    "loan_amount": 20000
+    "interest_rate": 5.5
+    "monthly_payment": 375.8333333333333
   "Tag": "Average Payment Period",
   "Beginning Accounts Payable": 110000,
   "Ending Accounts Payable": 95000,

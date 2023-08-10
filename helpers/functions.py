@@ -2047,6 +2047,15 @@ def calculate_price_elasticity(initial_price: float, final_price: float, initial
 
     return price_elasticity
 
+# Function to Calculate Loan Eligibility check
+
+def loan_eligibility_check(credit_score: float, monthly_income: float, existing_debt: float, loan_amount: float):
+     max_debt_to_income_ratio = 0.4
+     max_loan_amount = monthly_income * max_debt_to_income_ratio
+     if loan_amount > max_loan_amount:
+        return False
+     else:
+         return True
 # Function to Calculate Average Payment Period
 
 def average_payment_period(beginning_accounts_payable: float, ending_accounts_payable: float,

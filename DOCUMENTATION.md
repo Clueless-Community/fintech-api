@@ -62,6 +62,14 @@ The initial price of the product or service. |
 |                            |                                  | - `initial_quantity` (float): The initial quantity demanded of the product or service. |
 |                            |                                  | - `final_quantity` (float): The final quantity demanded of the product or service. |
 |----------------------------|----------------------------------------|----------------------------------------------------------------------|
+| GET /loan_eligibility_check | Loan Eligibility Calculator | - `credit_score` (float): 
+ An individual's credit score. |
+|                            |                                  | - `monthly_income` (float): The total income earned by the individual on a monthly basis. |
+|                            |                                  | - `existing_debt` (float): The amount of debt the individual already owes. |
+|                            |                                  | - `loan_amount` (float): TThe requested amount of money the individual wants to borrow as a loan. |
+|----------------------------|----------------------------------------|----------------------------------------------------------------------|
+
+
 | GET /average_payment_period | Calculate Average Payment Period       | - `beginning_accounts_payable` (float): The amount of accounts payable beginning the cycle. |
 |                             |                                        | - `ending_inventory` (float): The final amount of accounts payable ending the cycle. |
 |                             |                                        | - `total_credit_purchases` (float): The amount of purchases on credit during the cycle. |

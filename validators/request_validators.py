@@ -644,12 +644,18 @@ class PriceElasticity(BaseModel):
 	initial_quantity: float 
 	final_quantity: float  
 
+class LoanEligibility(BaseModel):
+	credit_score: float 
+	monthly_income: float  
+	existing_debt: float 
+	loan_amount: float  
+    
 class AveragePaymentPeriod(BaseModel):
 	beginning_accounts_payable: float
 	ending_accounts_payable: float
 	total_credit_purchases: float
 
-class SavingGoal(BaseModel):
+    class SavingGoal(BaseModel):
     current_savings: float 
     monthly_contributions : float  
     interest_rate: float 
