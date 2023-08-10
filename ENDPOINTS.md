@@ -2289,6 +2289,7 @@ Sample Output
 }
 ```
 
+
 **POST** `/saving_goal  `
 
 - Request body : `{
@@ -2305,8 +2306,6 @@ Sample Output
     "months_required": 18,
     "total_contributions": 3600,
     "interest_earned": 315.27777777777777
-    }
-```
 
 **POST** `/interest_coverage_ratio`
 
@@ -2362,3 +2361,22 @@ Sample Output
   "Margin Of Safety": 8%,
 }
 ```
+
+
+**POST** `/ppf_calculator`
+
+- Request body : `{
+  "depos": 500,
+  "tenure": 15,
+  "interest": 7.1
+   }`
+   
+- Sample Output
+ 
+```py
+  "Tag": "PPF Calcultor",
+  "Amount Anually deposited": 500,
+  "No. of Years": 15,
+  "percentage interst Rate": 7.1,
+  "Total Value of PPF": "13560"
+}

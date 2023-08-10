@@ -2112,3 +2112,11 @@ def tax_bracket_calculator(income:float, filing_status:str):
 def margin_of_safety(current_sales:float, break_even_point: float):
 	margin = ((current_sales - break_even_point) / current_sales) * 100
 	return margin
+
+# Function to Calculate PPF
+def ppf_calculator(depos:int,
+                   tenure:int,
+                   interest:float):
+    a=1+interest/100
+    total_value= depos*(((a**tenure) - 1)/(interest/100))*a
+    return total_value

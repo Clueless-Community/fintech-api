@@ -673,3 +673,8 @@ class TaxBracketCalculator(BaseModel):
 class MarginOfSafety(BaseModel):
 	current_sales:float 
 	break_even_point: float
+
+class PPFCalculator(BaseModel):
+    depos:int
+    tenure:int
+    interest:float

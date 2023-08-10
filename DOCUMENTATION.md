@@ -82,3 +82,6 @@ The initial price of the product or service. |
 | POST /margin_of_safety        | Calculate margin of safety             | - `current_sales` (float): The amount of current sales. |
 |                               |                                        | - `break_even_point` (float): The break_even_point amount. |
 |--------------------------- ---|----------------------------------------|---------------------------------------------------------|
+| GET /ppf_calculator           | Calculate Public Provident Fund(PPF)   | - `depos` (int): Annual Deposit.                        |
+|                               |                                        | - `tenure` (int): Total years of investment.            |
+|                               |                                        | - `interest` (float): percentage interest rate.         |

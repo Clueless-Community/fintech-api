@@ -144,6 +144,7 @@ from tasks.modified_internal_rate_of_return import calculate_modified_internal_r
 from tasks.interest_coverage_ratio import interest_coverage_ratio_task
 from tasks.tax_bracket_calculator import tax_bracket_calculator
 from tasks.margin_of_safety import margin_of_safety_task
+from tasks.PPFCalculator import ppf_calculator
 
 # Creating the app
 app = FastAPI(
@@ -279,7 +280,9 @@ def index():
             "/modified_internal_rate_of_return": "Calculate modified internal rate of return",
             "/interest_coverage_ratio": "Calculates interest coverage ratio",
             "/margin_of_safety": "Calculates margin of safety",
+            "/ppf_calculator": "Calculates Public Provident Fund(PPF)",
     
+
         },
     }
 
@@ -1990,6 +1993,7 @@ def average_payment_period(request: AveragePaymentPeriod):
     return average_payment_period_task(request.beginning_accounts_payable , 
     request.ending_accounts_payable , request.total_credit_purchases)
 
+  
 # Endpoint to calculate Saving Goal 
 
 @app.post(
@@ -2033,3 +2037,14 @@ def tax_bracket_calculator(request: TaxBracketCalculator):
 )
 def margin_of_safety(request: MarginOfSafety):
     return margin_of_safety_task(request.current_sales, request.break_even_point)
+
+
+#Endpoint to Calculate Public Provident Fund(PPF)
+
+@app.post(
+    "/ppf_calculator",
+    tags=["ppf_calculator"],
+    description="Calculates Public Provident Fund(PPF)",
+)
+def ppf_calculator(request: PPFCalculator):
+    return ppf_calculator(request.depos, request.tenure, request.interest)
