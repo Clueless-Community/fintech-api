@@ -2112,3 +2112,12 @@ def tax_bracket_calculator(income:float, filing_status:str):
 def margin_of_safety(current_sales:float, break_even_point: float):
 	margin = ((current_sales - break_even_point) / current_sales) * 100
 	return margin
+
+# Function to Calculate Bond Valuation
+
+def calculate_bond_value(face_value, coupon_rate, years_to_maturity, discount_rate):
+    coupon_payment = face_value * coupon_rate
+    cash_flows = [coupon_payment] * years_to_maturity
+    cash_flows[-1] += face_value
+    bond_value = sum([cf / (1 + discount_rate) ** i for i, cf in enumerate(cash_flows)])
+    return bond_value

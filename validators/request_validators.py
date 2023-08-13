@@ -673,3 +673,9 @@ class TaxBracketCalculator(BaseModel):
 class MarginOfSafety(BaseModel):
 	current_sales:float 
 	break_even_point: float
+        
+class BondValuation(BaseModel):
+    face_value: int
+    coupon_rate: float
+    years_to_maturity: int
+    discount_rate : float

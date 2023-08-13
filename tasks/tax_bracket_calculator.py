@@ -44,5 +44,5 @@ def tax_bracket_calculator(income: float, filing_status: str,):
             'Tax Bracket': "{:.2%}".format(tax_rate),
             'Tax Liability': tax_liability,
         }
-     except:
+  except:
          return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

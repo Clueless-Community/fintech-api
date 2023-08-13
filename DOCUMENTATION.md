@@ -82,3 +82,8 @@ The initial price of the product or service. |
 | POST /margin_of_safety        | Calculate margin of safety             | - `current_sales` (float): The amount of current sales. |
 |                               |                                        | - `break_even_point` (float): The break_even_point amount. |
 |--------------------------- ---|----------------------------------------|---------------------------------------------------------|
+| POST /bond_valuation          | Calculate Bond valuation               | - `face_value` (int):Amount calculated for coupon payments. |
+|                               |                                        | - `coupon_rate` (float): The annul coupon payment. |
+|                               |                                        | - `years_to_maturity` (int): Years remaining till its maturity date. |
+|                               |                                        | - `discount_rate` (float): It is used to discount future cash flows. |
+|--------------------------- ---|----------------------------------------|---------------------------------------------------------|
