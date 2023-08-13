@@ -2362,3 +2362,24 @@ Sample Output
   "Margin Of Safety": 8%,
 }
 ```
+
+**POST** `/bond_valuation`
+
+- Request body : `{
+  "face_value": 1000,
+  "coupon_rate": 0.05,
+  "years_to_maturity": 10,
+  "discount_rate": 0.08
+}`
+- Sample output
+
+```py
+{
+  "Tag": "Bond Valuation",
+  "Face Value": 1000,
+  "Coupon Rate": 0.05,
+  "Years to Maturity": 10,
+  "Discount Rate": 0.08,
+  "Bond Valuation": 928.50",
+}
+```
