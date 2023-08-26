@@ -649,6 +649,17 @@ class AveragePaymentPeriod(BaseModel):
 	ending_accounts_payable: float
 	total_credit_purchases: float
 
+class QuickRatio(BaseModel):
+    cash: float
+    accounts_receivable: float
+    marketable_security: float
+    current_liabilities: float     
+
+class CashRatio(BaseModel):
+    cash: float
+    marketable_securities: float
+    current_liabilities: float
+        
 class SavingGoal(BaseModel):
     current_savings: float 
     monthly_contributions : float  

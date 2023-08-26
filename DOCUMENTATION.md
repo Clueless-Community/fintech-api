@@ -66,6 +66,15 @@ The initial price of the product or service. |
 |                             |                                        | - `ending_inventory` (float): The final amount of accounts payable ending the cycle. |
 |                             |                                        | - `total_credit_purchases` (float): The amount of purchases on credit during the cycle. |
 |-----------------------------|----------------------------------------|---------------------------------------------------------------------|
+|---------------------------|----------------------------------------|---------------------------------------------------------|
+| GET /quick-ratio | Calculate quick ratio        | - `cash` (float): Total cash as asset. |
+|                           |                                        | - `marketable_security` (float): Expected within an year amount.     |
+|                           |                                        | - `current_liabilities` (float): current liabilities       |
+|                           |                                        | - `accounts_receivable` (float): expected income       |
+|---------------------------|----------------------------------------|---------------------------------------------------------|
+| GET /cash-ratio | Calculate cash ratio        | - `cash` (float): Total cash as asset. |
+|                           |                                        | - `marketable_security` (float): Expected within an year amount.     |
+|                           |                                        | - `current_liabilities` (float): current liabilities       |
 | GET /saving_goal            | Saving Goal Calculator                 | - `current_savings` (float): The current amount of savings. |
 |                             |                                        | - `monthly_contributions` (float): The amount of money contributed each month towards the savings goal. |
 |                             |                                        | - `interest_rate` (float): The annual interest rate on the savings. |

@@ -2289,6 +2289,44 @@ Sample Output
 }
 ```
 
+
+**GET** `/quick_ratio`
+- Request body : `{
+  "cash" : 20000,
+  "marketable security" : 10000,
+  "accounts receivable" : 25000,
+  "current liabilities" : 5000,
+}`
+- Sample output
+
+```py
+{
+    "Tag": "quick_ratio",
+    "Total cash as asset" : 20000,
+    "Total receivable cash": 25000,
+    "Total marketable security" : 10000,
+    "Total current liabilities" : 5000,
+    "quick ratio": 2.0 %
+}
+```
+**GET** `/cash_ratio`
+- Request body : `{
+  "cash" : 5000,
+  "marketable security" : 5000,
+  "current liabilities" : 10000,
+}`
+- Sample output
+
+```py
+{
+    "Tag" : "cash ratio",
+    "cash" : 5000,
+    "marketable security" : 5000,
+    "current liabilities" : 10000,
+    "cash ratio" : 1.0 %
+}
+```
+
 **POST** `/saving_goal  `
 
 - Request body : `{
@@ -2305,6 +2343,9 @@ Sample Output
     "months_required": 18,
     "total_contributions": 3600,
     "interest_earned": 315.27777777777777
+    }```
+
+=======
     }
 ```
 

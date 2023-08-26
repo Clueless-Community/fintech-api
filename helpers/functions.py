@@ -2055,6 +2055,21 @@ total_credit_purchases: float):
     app = average_accounts_payable / (total_credit_purchases / 365)
     return app
 
+# Function to Calculate Liquidity ratios
+
+# 1: Quick ratio
+def quick_ratio(cash: float, accounts_recievable: float, marketable_security: float, current_liabilities: float):
+    quickRatio = (cash + accounts_recievable + marketable_security) / current_liabilities
+    return quickRatio
+# 2: Current ratio (already exists)
+# def current_ratio(current_assets: float, current_liabilities: float):
+#    currentRatio = (current_assets / current_liabilities)
+#    return currentRatio
+# 3: Cash ratio
+def cash_ratio(cash: float, marketable_securities: float, current_liabilities: float):
+    cashRatio = (cash + marketable_securities)/current_liabilities
+    return cashRatio
+
 # Function to Saving Goal Calculator
 
 def saving_goal(current_savings: float, monthly_contributions: float, interest_rate: float, goal_amount: float):

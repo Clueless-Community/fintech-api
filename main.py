@@ -139,6 +139,8 @@ from validators.request_validators import SimpleInterestRateRequest, calculatePe
 from tasks.financialAssestRatio import financial_assest_ratio
 from tasks.PriceElasticity import calculate_price_elasticity
 from tasks.average_payment_period import average_payment_period_task
+from tasks.quick_ratio import quick_ratio_task
+from tasks.cash_ratio import cash_ratio_task
 from tasks.Saving_Goal import saving_goal
 from tasks.modified_internal_rate_of_return import calculate_modified_internal_rate_of_return_task
 from tasks.interest_coverage_ratio import interest_coverage_ratio_task
@@ -1684,7 +1686,32 @@ def calculate_expected_return_of_portfolio(no_of_investments: int,
     "/calculate_salary",
     tags=["calculate_salary"],
     description="Calculate Net annual salary of an employee",
-)
+
+    )
+def calculate_salary(base:int,
+                     jb:int,
+                     stock:int,
+                     pb:int,
+                     bonus:int,
+                     ptax:int,
+                     deduction:int):
+    try:
+        calculate_salary = functions.calculate_salary(base,jb,stock,pb,bonus,ptax,deduction) 
+        return {
+
+            "Tag":"Net Salary Calculator",
+            "Base Salary per month":base,
+            "joining bonus/retention bonus":jb,
+            "RSU/stock bonus":stock,
+            "performance bonus":pb,
+            "any additional bonus":bonus,
+            "tax percentage":ptax,
+            "any additional deduction":deduction,
+            "ctc calculated": f"{ctc}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 def calculate_salary(base: int,
                      jb: int,
                      stock: int,
@@ -1989,6 +2016,26 @@ def price_elasticity(request: PriceElasticity):
 def average_payment_period(request: AveragePaymentPeriod):
     return average_payment_period_task(request.beginning_accounts_payable , 
     request.ending_accounts_payable , request.total_credit_purchases)
+
+# Endpoint to calculate Quick Ratio
+@app.post(
+ "/quick_ratio",
+ tags=["quick_ratio"],
+ description="Calculate Quick Ratio",   
+)
+def quick_ratio(cash: float , accounts_receivable: float ,
+               marketable_security: float , current_liabilities: float):
+    return quick_ratio_task(cash , accounts_receivable ,
+                            marketable_security , current_liabilities)
+
+# Endpoint to get Cash Ratio    
+@app.post(
+    "/cash_ratio",
+    tags=["/cash_ratio"],
+    description="Calculate Cash Ratio",
+)
+def cash_ratio(cash: float , marketable_securities: float , current_liabilities: float):
+    return cash_ratio_task(cash , marketable_securities , current_liabilities)
 
 # Endpoint to calculate Saving Goal 
 
