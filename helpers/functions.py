@@ -2083,3 +2083,47 @@ def calculate_modified_internal_rate_of_return(ending_cash_flow: float,
                                                 number_of_periods: int):
     mirr = ((ending_cash_flow / initial_cash_flow) ** (1 / number_of_periods)) - 1
     return mirr*100
+
+# Function to Calculate Interest Coverage Ratio
+
+def interest_coverage_ratio(revenue:float, cost_of_goods_services:float, operating_expenses:float, 
+interest_expense:float):
+	EBIT = revenue - cost_of_goods_services - operating_expenses
+	ratio = EBIT / interest_expense 
+	return ratio
+
+
+# Function to Calculate Tax Bracket Calculator
+
+def tax_bracket_calculator(income:float, filing_status:str):
+        tax_brackets = {
+            'single': {0: 0.10, 9875: 0.12, 40125: 0.22, 85525: 0.24, 163300: 0.32, 207350: 0.35, 518400: 0.37},
+            'married_joint': {0: 0.10, 19750: 0.12, 80250: 0.22, 171050: 0.24, 326600: 0.32, 414700: 0.35, 622050: 0.37},
+            'head_of_household': {0: 0.10, 14100: 0.12, 53700: 0.22, 85500: 0.24, 163300: 0.32, 207350: 0.35, 518400: 0.37}
+        }
+
+        if filing_status not in tax_brackets:
+            raise ValueError("Invalid filing status.")
+
+        applicable_brackets = tax_brackets[filing_status]
+        tax_liability = 0
+        remaining_income = income
+
+        for bracket, tax_rate in applicable_brackets.items():
+            if remaining_income <= bracket:
+                tax_liability += remaining_income * tax_rate
+                break
+            else:
+                taxable_income_in_bracket = bracket - max(0, income - remaining_income)
+                tax_liability += taxable_income_in_bracket * tax_rate
+                remaining_income -= taxable_income_in_bracket
+
+        tax_ratio = tax_liability / income
+
+        return {"Tax Ratio": "{:.2%}".format(tax_ratio)}
+
+# Function to Calculate Margin of Safety
+
+def margin_of_safety(current_sales:float, break_even_point: float):
+	margin = ((current_sales - break_even_point) / current_sales) * 100
+	return margin

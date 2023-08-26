@@ -1,3 +1,10 @@
+import sys
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+sys.path.insert(0, os.path.join(current_dir, '..'))
+
 from main import app
 from fastapi import status
 from fastapi.testclient import TestClient
@@ -1430,13 +1437,13 @@ def test_modified_internal_rate_of_return():
     )
     assert response.status_code == status.HTTP_200_OK
 
-  assert response.json() ==  {
-    "Tag": "Modified internal rate",
-    "Ending cash flow": 500000,
-    "Initial cash flow": -300000,
-    "Number of periods": 5,
-    "Modified internal rate of return": "12.04%",
-    }
+    assert response.json() ==  {
+      "Tag": "Modified internal rate",
+      "Ending cash flow": 500000,
+      "Initial cash flow": -300000,
+      "Number of periods": 5,
+      "Modified internal rate of return": "12.04%",
+      }
 
 
 
