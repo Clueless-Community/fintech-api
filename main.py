@@ -131,6 +131,8 @@ from tasks.debt_service_coverage_ratio import debt_service_coverage_ratio_task
 from tasks.profit_percentage import profit_percentage_task
 from tasks.loss_percentage import loss_percentage_task
 from tasks.defensive_interval_ratio import defensive_interval_ratio_task
+from validators.request_validators import SimpleInterestRateRequest, calculatePension, compoundInterest, futureSip, paybackPeriod, capmRequest, DebtServiceCoverageRatio, futureValueOfAnnuity, ProfitPercentage, LossPercentage, DefensiveIntervalRatio
+
 from tasks.RateofReturn import calculate_rate_of_return
 from tasks.cash_conversion_cycle import cash_conversion_cycle_task
 from tasks.financialAssestRatio import financial_assest_ratio
@@ -144,6 +146,7 @@ from tasks.modified_internal_rate_of_return import calculate_modified_internal_r
 from tasks.interest_coverage_ratio import interest_coverage_ratio_task
 from tasks.tax_bracket_calculator import tax_bracket_calculator
 from tasks.margin_of_safety import margin_of_safety_task
+
 
 # Creating the app
 app = FastAPI(
@@ -1684,7 +1687,32 @@ def calculate_expected_return_of_portfolio(no_of_investments: int,
     "/calculate_salary",
     tags=["calculate_salary"],
     description="Calculate Net annual salary of an employee",
-)
+
+    )
+def calculate_salary(base:int,
+                     jb:int,
+                     stock:int,
+                     pb:int,
+                     bonus:int,
+                     ptax:int,
+                     deduction:int):
+    try:
+        calculate_salary = functions.calculate_salary(base,jb,stock,pb,bonus,ptax,deduction) 
+        return {
+
+            "Tag":"Net Salary Calculator",
+            "Base Salary per month":base,
+            "joining bonus/retention bonus":jb,
+            "RSU/stock bonus":stock,
+            "performance bonus":pb,
+            "any additional bonus":bonus,
+            "tax percentage":ptax,
+            "any additional deduction":deduction,
+            "ctc calculated": f"{ctc}",
+        }
+    except:
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 def calculate_salary(base: int,
                      jb: int,
                      stock: int,
